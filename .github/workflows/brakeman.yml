@@ -32,4 +32,4 @@ jobs:
         with:
           name: brakeman-reports
           path: tmp/brakeman/
-          if-no-files-found: error
+          if-no-files-found: warn
