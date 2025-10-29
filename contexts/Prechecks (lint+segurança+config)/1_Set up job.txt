@@ -1,0 +1,30 @@
+﻿2025-10-29T20:54:54.6254795Z Current runner version: '2.328.0'
+2025-10-29T20:54:54.6277596Z ##[group]Runner Image Provisioner
+2025-10-29T20:54:54.6278510Z Hosted Compute Agent
+2025-10-29T20:54:54.6279040Z Version: 20250912.392
+2025-10-29T20:54:54.6279653Z Commit: d921fda672a98b64f4f82364647e2f10b2267d0b
+2025-10-29T20:54:54.6280338Z Build Date: 2025-09-12T15:23:14Z
+2025-10-29T20:54:54.6280944Z ##[endgroup]
+2025-10-29T20:54:54.6281503Z ##[group]Operating System
+2025-10-29T20:54:54.6282056Z Ubuntu
+2025-10-29T20:54:54.6282554Z 24.04.3
+2025-10-29T20:54:54.6283235Z LTS
+2025-10-29T20:54:54.6283764Z ##[endgroup]
+2025-10-29T20:54:54.6284245Z ##[group]Runner Image
+2025-10-29T20:54:54.6284829Z Image: ubuntu-24.04
+2025-10-29T20:54:54.6285292Z Version: 20250929.60.1
+2025-10-29T20:54:54.6286357Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250929.60/images/ubuntu/Ubuntu2404-Readme.md
+2025-10-29T20:54:54.6287697Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250929.60
+2025-10-29T20:54:54.6288826Z ##[endgroup]
+2025-10-29T20:54:54.6289821Z ##[group]GITHUB_TOKEN Permissions
+2025-10-29T20:54:54.6291758Z Contents: read
+2025-10-29T20:54:54.6292331Z Metadata: read
+2025-10-29T20:54:54.6293047Z ##[endgroup]
+2025-10-29T20:54:54.6295089Z Secret source: Actions
+2025-10-29T20:54:54.6295798Z Prepare workflow directory
+2025-10-29T20:54:54.6611512Z Prepare all required actions
+2025-10-29T20:54:54.6651408Z Getting action download info
+2025-10-29T20:54:55.1649667Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+2025-10-29T20:54:55.3783596Z Download action repository 'ruby/setup-ruby@v1' (SHA:d5126b9b3579e429dd52e51e68624dda2e05be25)
+2025-10-29T20:54:55.9301092Z Download action repository 'hadolint/hadolint-action@v3.1.0' (SHA:54c9adbab1582c2ef04b2016b760714a4bfde3cf)
+2025-10-29T20:54:56.4602766Z Complete job name: Prechecks (lint+segurança+config)

@@ -17,9 +17,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libpq-dev
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "+~> 3.3"
+          ruby-version: "3.3"
           bundler-cache: true
       - name: RuboCop
         run: bundle exec rubocop
@@ -59,9 +63,13 @@ jobs:
       DATABASE_URL: postgres://postgres:postgres@localhost:5432/test
     steps:
       - uses: actions/checkout@v4
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libpq-dev
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "+~> 3.3"
+          ruby-version: "3.3"
           bundler-cache: true
       - name: Prepare DB
         run: bin/rails db:prepare
@@ -93,9 +101,13 @@ jobs:
       DATABASE_URL: postgres://postgres:postgres@localhost:5432/test
     steps:
       - uses: actions/checkout@v4
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libpq-dev
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "+~> 3.3"
+          ruby-version: "3.3"
           bundler-cache: true
       - name: Reset + migrate do zero
         run: bin/rails db:drop db:create db:migrate

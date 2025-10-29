@@ -1,0 +1,32 @@
+name: Convert PDFs in contexts to Markdown
+
+on:
+  push:
+    paths:
+      - 'contexts/**/*.pdf'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  pdf_to_md:
+    name: Convert PDFs to .md
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install converters (poppler-utils)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+      - name: Convert PDFs to Markdown
+        run: |
+          bash script/convert_pdfs_to_md.sh
+      - name: Commit converted Markdown files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore(contexts): convert PDFs to Markdown'
+          file_pattern: contexts/**/*.md
