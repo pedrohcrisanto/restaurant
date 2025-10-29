@@ -1,4 +1,0 @@
-﻿2025-10-29T22:28:33.8381179Z ##[group]Run bundle exec reek || true
-2025-10-29T22:28:33.8381481Z [36;1mbundle exec reek || true[0m
-2025-10-29T22:28:33.8418469Z shell: /usr/bin/bash -e {0}
-2025-10-29T22:28:33.8418713Z ##[endgroup]

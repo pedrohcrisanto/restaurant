@@ -1,0 +1,500 @@
+﻿2025-10-29T23:14:43.8048096Z Current runner version: '2.328.0'
+2025-10-29T23:14:43.8070578Z ##[group]Runner Image Provisioner
+2025-10-29T23:14:43.8071263Z Hosted Compute Agent
+2025-10-29T23:14:43.8071802Z Version: 20250912.392
+2025-10-29T23:14:43.8072332Z Commit: d921fda672a98b64f4f82364647e2f10b2267d0b
+2025-10-29T23:14:43.8072975Z Build Date: 2025-09-12T15:23:14Z
+2025-10-29T23:14:43.8073515Z ##[endgroup]
+2025-10-29T23:14:43.8074150Z ##[group]Operating System
+2025-10-29T23:14:43.8074670Z Ubuntu
+2025-10-29T23:14:43.8075061Z 24.04.3
+2025-10-29T23:14:43.8075518Z LTS
+2025-10-29T23:14:43.8075893Z ##[endgroup]
+2025-10-29T23:14:43.8076310Z ##[group]Runner Image
+2025-10-29T23:14:43.8076832Z Image: ubuntu-24.04
+2025-10-29T23:14:43.8077283Z Version: 20250929.60.1
+2025-10-29T23:14:43.8078183Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250929.60/images/ubuntu/Ubuntu2404-Readme.md
+2025-10-29T23:14:43.8079576Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250929.60
+2025-10-29T23:14:43.8080391Z ##[endgroup]
+2025-10-29T23:14:43.8081308Z ##[group]GITHUB_TOKEN Permissions
+2025-10-29T23:14:43.8083319Z Contents: read
+2025-10-29T23:14:43.8083816Z Metadata: read
+2025-10-29T23:14:43.8084382Z ##[endgroup]
+2025-10-29T23:14:43.8086300Z Secret source: Actions
+2025-10-29T23:14:43.8087120Z Prepare workflow directory
+2025-10-29T23:14:43.8392817Z Prepare all required actions
+2025-10-29T23:14:43.8431123Z Getting action download info
+2025-10-29T23:14:44.2118347Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+2025-10-29T23:14:44.4559046Z Complete job name: Validar OpenAPI/Swagger
+2025-10-29T23:14:44.5127337Z ##[group]Run actions/checkout@v4
+2025-10-29T23:14:44.5128295Z with:
+2025-10-29T23:14:44.5128758Z   repository: pedrohcrisanto/restaurant
+2025-10-29T23:14:44.5129430Z   token: ***
+2025-10-29T23:14:44.5129909Z   ssh-strict: true
+2025-10-29T23:14:44.5130335Z   ssh-user: git
+2025-10-29T23:14:44.5130757Z   persist-credentials: true
+2025-10-29T23:14:44.5131278Z   clean: true
+2025-10-29T23:14:44.5131727Z   sparse-checkout-cone-mode: true
+2025-10-29T23:14:44.5132235Z   fetch-depth: 1
+2025-10-29T23:14:44.5132670Z   fetch-tags: false
+2025-10-29T23:14:44.5133127Z   show-progress: true
+2025-10-29T23:14:44.5133540Z   lfs: false
+2025-10-29T23:14:44.5134161Z   submodules: false
+2025-10-29T23:14:44.5134576Z   set-safe-directory: true
+2025-10-29T23:14:44.5135340Z ##[endgroup]
+2025-10-29T23:14:44.6164917Z Syncing repository: pedrohcrisanto/restaurant
+2025-10-29T23:14:44.6167071Z ##[group]Getting Git version info
+2025-10-29T23:14:44.6167940Z Working directory is '/home/runner/work/restaurant/restaurant'
+2025-10-29T23:14:44.6169044Z [command]/usr/bin/git version
+2025-10-29T23:14:44.6226392Z git version 2.51.0
+2025-10-29T23:14:44.6252184Z ##[endgroup]
+2025-10-29T23:14:44.6267167Z Temporarily overriding HOME='/home/runner/work/_temp/ca066081-a7fa-4d86-adff-63e516fdafe0' before making global git config changes
+2025-10-29T23:14:44.6269475Z Adding repository directory to the temporary git global config as a safe directory
+2025-10-29T23:14:44.6281556Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/restaurant/restaurant
+2025-10-29T23:14:44.6313725Z Deleting the contents of '/home/runner/work/restaurant/restaurant'
+2025-10-29T23:14:44.6317366Z ##[group]Initializing the repository
+2025-10-29T23:14:44.6321581Z [command]/usr/bin/git init /home/runner/work/restaurant/restaurant
+2025-10-29T23:14:44.6422456Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-10-29T23:14:44.6424315Z hint: is subject to change. To configure the initial branch name to use in all
+2025-10-29T23:14:44.6425434Z hint: of your new repositories, which will suppress this warning, call:
+2025-10-29T23:14:44.6426258Z hint:
+2025-10-29T23:14:44.6426963Z hint: 	git config --global init.defaultBranch <name>
+2025-10-29T23:14:44.6427655Z hint:
+2025-10-29T23:14:44.6428706Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-10-29T23:14:44.6430626Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-10-29T23:14:44.6431802Z hint:
+2025-10-29T23:14:44.6432468Z hint: 	git branch -m <name>
+2025-10-29T23:14:44.6433796Z hint:
+2025-10-29T23:14:44.6434970Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-10-29T23:14:44.6436652Z Initialized empty Git repository in /home/runner/work/restaurant/restaurant/.git/
+2025-10-29T23:14:44.6441480Z [command]/usr/bin/git remote add origin https://github.com/pedrohcrisanto/restaurant
+2025-10-29T23:14:44.6473566Z ##[endgroup]
+2025-10-29T23:14:44.6474509Z ##[group]Disabling automatic garbage collection
+2025-10-29T23:14:44.6476893Z [command]/usr/bin/git config --local gc.auto 0
+2025-10-29T23:14:44.6499184Z ##[endgroup]
+2025-10-29T23:14:44.6499948Z ##[group]Setting up auth
+2025-10-29T23:14:44.6505523Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-10-29T23:14:44.6531596Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-10-29T23:14:44.6821133Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-10-29T23:14:44.6847630Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-10-29T23:14:44.7017591Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-10-29T23:14:44.7053312Z ##[endgroup]
+2025-10-29T23:14:44.7054295Z ##[group]Fetching the repository
+2025-10-29T23:14:44.7061341Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +eb027554622b940dd7428ccee417adf9b08f77ac:refs/remotes/origin/main
+2025-10-29T23:14:45.3530649Z From https://github.com/pedrohcrisanto/restaurant
+2025-10-29T23:14:45.3532209Z  * [new ref]         eb027554622b940dd7428ccee417adf9b08f77ac -> origin/main
+2025-10-29T23:14:45.3560736Z ##[endgroup]
+2025-10-29T23:14:45.3562150Z ##[group]Determining the checkout info
+2025-10-29T23:14:45.3563610Z ##[endgroup]
+2025-10-29T23:14:45.3568496Z [command]/usr/bin/git sparse-checkout disable
+2025-10-29T23:14:45.3605896Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-10-29T23:14:45.3633893Z ##[group]Checking out the ref
+2025-10-29T23:14:45.3639239Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-10-29T23:14:45.3837293Z Switched to a new branch 'main'
+2025-10-29T23:14:45.3838629Z branch 'main' set up to track 'origin/main'.
+2025-10-29T23:14:45.3841236Z ##[endgroup]
+2025-10-29T23:14:45.3873229Z [command]/usr/bin/git log -1 --format=%H
+2025-10-29T23:14:45.3891911Z eb027554622b940dd7428ccee417adf9b08f77ac
+2025-10-29T23:14:45.4066480Z ##[group]Run npm i -g @redocly/cli
+2025-10-29T23:14:45.4067222Z [36;1mnpm i -g @redocly/cli[0m
+2025-10-29T23:14:45.4068146Z [36;1m# Tenta validar o arquivo principal; se falhar, tenta o de public[0m
+2025-10-29T23:14:45.4069479Z [36;1mredocly lint ./swagger/v1/swagger.yaml || redocly lint ./public/api-docs/v1/swagger.json[0m
+2025-10-29T23:14:45.4092951Z shell: /usr/bin/bash -e {0}
+2025-10-29T23:14:45.4093530Z ##[endgroup]
+2025-10-29T23:15:05.1243841Z 
+2025-10-29T23:15:05.1244696Z added 265 packages in 18s
+2025-10-29T23:15:05.1245244Z 
+2025-10-29T23:15:05.1245465Z 49 packages are looking for funding
+2025-10-29T23:15:05.1246269Z   run `npm fund` for details
+2025-10-29T23:15:05.9693031Z No configurations were provided -- using built in [34mrecommended[39m configuration by default.
+2025-10-29T23:15:05.9693943Z 
+2025-10-29T23:15:05.9694493Z [90mvalidating swagger/v1/swagger.yaml...
+2025-10-29T23:15:06.0243057Z [1] [41mswagger/v1/swagger.yaml:568:21[49m [90mat #/components/schemas/import_log_entry/properties/error/nullable[39m
+2025-10-29T23:15:06.0274192Z 
+2025-10-29T23:15:06.0275504Z The `type` field must be defined when the `nullable` field is used.
+2025-10-29T23:15:06.0276085Z 
+2025-10-29T23:15:06.0276409Z [90m566 |[39m         [90mitems:[39m
+2025-10-29T23:15:06.0276932Z [90m567 |[39m           [90mtype: string[39m
+2025-10-29T23:15:06.0277425Z [90m568 |[39m       nullable: [31mtrue[39m
+2025-10-29T23:15:06.0277889Z [90m569 |[39m [90mimport_result:[39m
+2025-10-29T23:15:06.0278245Z [90m570 |[39m   [90mtype: object[39m
+2025-10-29T23:15:06.0278520Z 
+2025-10-29T23:15:06.0278803Z Error was generated by the [34mnullable-type-sibling[39m rule.
+2025-10-29T23:15:06.0279096Z 
+2025-10-29T23:15:06.0279109Z 
+2025-10-29T23:15:06.0279447Z [2] [43m[30mswagger/v1/swagger.yaml:393:8[39m[49m [90mat #/servers/0/url[39m
+2025-10-29T23:15:06.0279786Z 
+2025-10-29T23:15:06.0280023Z Server `url` should not point to example.com or localhost.
+2025-10-29T23:15:06.0280379Z 
+2025-10-29T23:15:06.0280623Z [90m391 |[39m           [90mdescription: restaurant not found[39m
+2025-10-29T23:15:06.0281076Z [90m392 |[39m [90mservers:[39m
+2025-10-29T23:15:06.0281612Z [90m393 |[39m - url: [31mhttp://localhost:3000[39m
+2025-10-29T23:15:06.0282159Z [90m394 |[39m   [90mdescription: Development server[39m
+2025-10-29T23:15:06.0282663Z [90m395 |[39m [90m- url: https://staging.example.com[39m
+2025-10-29T23:15:06.0282930Z 
+2025-10-29T23:15:06.0283228Z Warning was generated by the [34mno-server-example.com[39m rule.
+2025-10-29T23:15:06.0283569Z 
+2025-10-29T23:15:06.0283576Z 
+2025-10-29T23:15:06.0283897Z [3] [43m[30mswagger/v1/swagger.yaml:395:8[39m[49m [90mat #/servers/1/url[39m
+2025-10-29T23:15:06.0284527Z 
+2025-10-29T23:15:06.0284827Z Server `url` should not point to example.com or localhost.
+2025-10-29T23:15:06.0285090Z 
+2025-10-29T23:15:06.0285344Z [90m393 |[39m [90m- url: http://localhost:3000[39m
+2025-10-29T23:15:06.0285870Z [90m394 |[39m   [90mdescription: Development server[39m
+2025-10-29T23:15:06.0286372Z [90m395 |[39m - url: [31mhttps://staging.example.com[39m
+2025-10-29T23:15:06.0286836Z [90m396 |[39m   [90mdescription: Staging server[39m
+2025-10-29T23:15:06.0391943Z [90m397 |[39m [90m- url: https://api.example.com[39m
+2025-10-29T23:15:06.0392252Z 
+2025-10-29T23:15:06.0392533Z Warning was generated by the [34mno-server-example.com[39m rule.
+2025-10-29T23:15:06.0392806Z 
+2025-10-29T23:15:06.0392815Z 
+2025-10-29T23:15:06.0393102Z [4] [43m[30mswagger/v1/swagger.yaml:397:8[39m[49m [90mat #/servers/2/url[39m
+2025-10-29T23:15:06.0393430Z 
+2025-10-29T23:15:06.0393618Z Server `url` should not point to example.com or localhost.
+2025-10-29T23:15:06.0393847Z 
+2025-10-29T23:15:06.0394359Z [90m395 |[39m [90m- url: https://staging.example.com[39m
+2025-10-29T23:15:06.0394782Z [90m396 |[39m   [90mdescription: Staging server[39m
+2025-10-29T23:15:06.0395193Z [90m397 |[39m - url: [31mhttps://api.example.com[39m
+2025-10-29T23:15:06.0396098Z [90m398 |[39m   [90mdescription: Production server[39m
+2025-10-29T23:15:06.0396461Z [90m399 |[39m [90mtags:[39m
+2025-10-29T23:15:06.0396629Z 
+2025-10-29T23:15:06.0396877Z Warning was generated by the [34mno-server-example.com[39m rule.
+2025-10-29T23:15:06.0397147Z 
+2025-10-29T23:15:06.0397156Z 
+2025-10-29T23:15:06.0397584Z [5] [43m[30mswagger/v1/swagger.yaml:35:5[39m[49m [90mat #/paths/~1api~1v1~1imports~1restaurants_json/post/operationId[39m
+2025-10-29T23:15:06.0397966Z 
+2025-10-29T23:15:06.0398142Z Operation object should contain `operationId` field.
+2025-10-29T23:15:06.0398362Z 
+2025-10-29T23:15:06.0398497Z [90m33 |[39m [90mpaths:[39m
+2025-10-29T23:15:06.0398850Z [90m34 |[39m   [90m"/api/v1/imports/restaurants_json":[39m
+2025-10-29T23:15:06.0399197Z [90m35 |[39m     [31mpost[39m:
+2025-10-29T23:15:06.0399567Z [90m36 |[39m       [90msummary: Import restaurants via JSON file[39m
+2025-10-29T23:15:06.0399933Z [90m37 |[39m       [90mtags:[39m
+2025-10-29T23:15:06.0400096Z 
+2025-10-29T23:15:06.0400343Z Warning was generated by the [34moperation-operationId[39m rule.
+2025-10-29T23:15:06.0400688Z 
+2025-10-29T23:15:06.0400697Z 
+2025-10-29T23:15:06.0401137Z [6] [43m[30mswagger/v1/swagger.yaml:60:5[39m[49m [90mat #/paths/~1api~1v1~1restaurants~1{restaurant_id}~1menu_items/get/operationId[39m
+2025-10-29T23:15:06.0401546Z 
+2025-10-29T23:15:06.0401720Z Operation object should contain `operationId` field.
+2025-10-29T23:15:06.0401936Z 
+2025-10-29T23:15:06.0402072Z [90m58 |[39m   [90mschema:[39m
+2025-10-29T23:15:06.0402383Z [90m59 |[39m     [90mtype: integer[39m
+2025-10-29T23:15:06.0402683Z [90m60 |[39m [31mget[39m:
+2025-10-29T23:15:06.0403046Z [90m61 |[39m   [90msummary: List menu items for a restaurant[39m
+2025-10-29T23:15:06.0403397Z [90m62 |[39m   [90mtags:[39m
+2025-10-29T23:15:06.0403568Z 
+2025-10-29T23:15:06.0403806Z Warning was generated by the [34moperation-operationId[39m rule.
+2025-10-29T23:15:06.0404303Z 
+2025-10-29T23:15:06.0404314Z 
+2025-10-29T23:15:06.0404776Z [7] [43m[30mswagger/v1/swagger.yaml:86:5[39m[49m [90mat #/paths/~1api~1v1~1restaurants~1{restaurant_id}~1menu_items/post/operationId[39m
+2025-10-29T23:15:06.0405194Z 
+2025-10-29T23:15:06.0405360Z Operation object should contain `operationId` field.
+2025-10-29T23:15:06.0405590Z 
+2025-10-29T23:15:06.0405721Z [90m84 |[39m     [90m'404':[39m
+2025-10-29T23:15:06.0406070Z [90m85 |[39m       [90mdescription: restaurant not found[39m
+2025-10-29T23:15:06.0406409Z [90m86 |[39m [31mpost[39m:
+2025-10-29T23:15:06.0406736Z [90m87 |[39m   [90msummary: Create a menu item[39m
+2025-10-29T23:15:06.0407051Z [90m88 |[39m   [90mtags:[39m
+2025-10-29T23:15:06.0407208Z 
+2025-10-29T23:15:06.0407507Z Warning was generated by the [34moperation-operationId[39m rule.
+2025-10-29T23:15:06.0407758Z 
+2025-10-29T23:15:06.0407766Z 
+2025-10-29T23:15:06.0408221Z [8] [43m[30mswagger/v1/swagger.yaml:125:5[39m[49m [90mat #/paths/~1api~1v1~1restaurants~1{restaurant_id}~1menu_items~1{id}/get/operationId[39m
+2025-10-29T23:15:06.0408889Z 
+2025-10-29T23:15:06.0409167Z Operation object should contain `operationId` field.
+2025-10-29T23:15:06.0409406Z 
+2025-10-29T23:15:06.0409566Z [90m123 |[39m   [90mschema:[39m
+2025-10-29T23:15:06.0409863Z [90m124 |[39m     [90mtype: integer[39m
+2025-10-29T23:15:06.0410167Z [90m125 |[39m [31mget[39m:
+2025-10-29T23:15:06.0410478Z [90m126 |[39m   [90msummary: Show a menu item[39m
+2025-10-29T23:15:06.0410810Z [90m127 |[39m   [90mtags:[39m
+2025-10-29T23:15:06.0410997Z 
+2025-10-29T23:15:06.0411244Z Warning was generated by the [34moperation-operationId[39m rule.
+2025-10-29T23:15:06.0411492Z 
+2025-10-29T23:15:06.0411501Z 
+2025-10-29T23:15:06.0411956Z [9] [43m[30mswagger/v1/swagger.yaml:134:5[39m[49m [90mat #/paths/~1api~1v1~1restaurants~1{restaurant_id}~1menu_items~1{id}/put/operationId[39m
+2025-10-29T23:15:06.0412402Z 
+2025-10-29T23:15:06.0412576Z Operation object should contain `operationId` field.
+2025-10-29T23:15:06.0412785Z 
+2025-10-29T23:15:06.0413048Z [90m132 |[39m     [90m'404':[39m
+2025-10-29T23:15:06.0413446Z [90m133 |[39m       [90mdescription: menu item not found for restaurant[39m
+2025-10-29T23:15:06.0413835Z [90m134 |[39m [31mput[39m:
+2025-10-29T23:15:06.0414249Z [90m135 |[39m   [90msummary: Update a menu item[39m
+2025-10-29T23:15:06.0414584Z [90m136 |[39m   [90mtags:[39m
+2025-10-29T23:15:06.0414746Z 
+2025-10-29T23:15:06.0414982Z Warning was generated by the [34moperation-operationId[39m rule.
+2025-10-29T23:15:06.0415242Z 
+2025-10-29T23:15:06.0415249Z 
+2025-10-29T23:15:06.0415646Z [39m[90mswagger/v1/swagger.yaml: validated in 60ms
+2025-10-29T23:15:06.0415858Z 
+2025-10-29T23:15:06.0416260Z [39m[31m❌ Validation failed with 1 error and 27 warnings.
+2025-10-29T23:15:06.0416792Z [39m[90mrun `redocly lint --generate-ignore-file` to add all problems to the ignore file.
+2025-10-29T23:15:06.0417193Z [39m
+2025-10-29T23:15:06.0417795Z [10] [43m[30mswagger/v1/swagger.yaml:155:5[39m[49m [90mat #/paths/~1api~1v1~1restaurants~1{restaurant_id}~1menu_items~1{id}/delete/operationId[39m
+2025-10-29T23:15:06.0418233Z 
+2025-10-29T23:15:06.0418518Z Operation object should contain `operationId` field.
+2025-10-29T23:15:06.0418736Z 
+2025-10-29T23:15:06.0418890Z [90m153 |[39m                 [90mname:[39m
+2025-10-29T23:15:06.0419246Z [90m154 |[39m                   [90mtype: string[39m
+2025-10-29T23:15:06.0419563Z [90m155 |[39m [31mdelete[39m:
+2025-10-29T23:15:06.0419906Z [90m156 |[39m   [90msummary: Delete a menu item[39m
+2025-10-29T23:15:06.0420223Z [90m157 |[39m   [90mtags:[39m
+2025-10-29T23:15:06.0420390Z 
+2025-10-29T23:15:06.0420630Z Warning was generated by the [34moperation-operationId[39m rule.
+2025-10-29T23:15:06.0420882Z 
+2025-10-29T23:15:06.0420889Z 
+2025-10-29T23:15:06.0421319Z [11] [43m[30mswagger/v1/swagger.yaml:172:5[39m[49m [90mat #/paths/~1api~1v1~1restaurants~1{restaurant_id}~1menus/get/operationId[39m
+2025-10-29T23:15:06.0421718Z 
+2025-10-29T23:15:06.0421886Z Operation object should contain `operationId` field.
+2025-10-29T23:15:06.0422119Z 
+2025-10-29T23:15:06.0422256Z [90m170 |[39m   [90mschema:[39m
+2025-10-29T23:15:06.0422575Z [90m171 |[39m     [90mtype: integer[39m
+2025-10-29T23:15:06.0422884Z [90m172 |[39m [31mget[39m:
+2025-10-29T23:15:06.0423230Z [90m173 |[39m   [90msummary: List menus for a restaurant[39m
+2025-10-29T23:15:06.0423571Z [90m174 |[39m   [90mtags:[39m
+2025-10-29T23:15:06.0423730Z 
+2025-10-29T23:15:06.0424102Z Warning was generated by the [34moperation-operationId[39m rule.
+2025-10-29T23:15:06.0424361Z 
+2025-10-29T23:15:06.0424369Z 
+2025-10-29T23:15:06.0424813Z [12] [43m[30mswagger/v1/swagger.yaml:198:5[39m[49m [90mat #/paths/~1api~1v1~1restaurants~1{restaurant_id}~1menus/post/operationId[39m
+2025-10-29T23:15:06.0425225Z 
+2025-10-29T23:15:06.0425392Z Operation object should contain `operationId` field.
+2025-10-29T23:15:06.0425607Z 
+2025-10-29T23:15:06.0425750Z [90m196 |[39m     [90m'404':[39m
+2025-10-29T23:15:06.0426113Z [90m197 |[39m       [90mdescription: restaurant not found[39m
+2025-10-29T23:15:06.0426457Z [90m198 |[39m [31mpost[39m:
+2025-10-29T23:15:06.0426818Z [90m199 |[39m   [90msummary: Create a menu for a restaurant[39m
+2025-10-29T23:15:06.0427172Z [90m200 |[39m   [90mtags:[39m
+2025-10-29T23:15:06.0427333Z 
+2025-10-29T23:15:06.0427578Z Warning was generated by the [34moperation-operationId[39m rule.
+2025-10-29T23:15:06.0427822Z 
+2025-10-29T23:15:06.0427829Z 
+2025-10-29T23:15:06.0428265Z [13] [43m[30mswagger/v1/swagger.yaml:237:5[39m[49m [90mat #/paths/~1api~1v1~1restaurants~1{restaurant_id}~1menus~1{id}/get/operationId[39m
+2025-10-29T23:15:06.0428689Z 
+2025-10-29T23:15:06.0428854Z Operation object should contain `operationId` field.
+2025-10-29T23:15:06.0429072Z 
+2025-10-29T23:15:06.0429205Z [90m235 |[39m   [90mschema:[39m
+2025-10-29T23:15:06.0429515Z [90m236 |[39m     [90mtype: integer[39m
+2025-10-29T23:15:06.0429820Z [90m237 |[39m [31mget[39m:
+2025-10-29T23:15:06.0430122Z [90m238 |[39m   [90msummary: Show a menu[39m
+2025-10-29T23:15:06.0430538Z [90m239 |[39m   [90mtags:[39m
+2025-10-29T23:15:06.0430700Z 
+2025-10-29T23:15:06.0430950Z Warning was generated by the [34moperation-operationId[39m rule.
+2025-10-29T23:15:06.0431206Z 
+2025-10-29T23:15:06.0431214Z 
+2025-10-29T23:15:06.0431655Z [14] [43m[30mswagger/v1/swagger.yaml:246:5[39m[49m [90mat #/paths/~1api~1v1~1restaurants~1{restaurant_id}~1menus~1{id}/put/operationId[39m
+2025-10-29T23:15:06.0432071Z 
+2025-10-29T23:15:06.0432245Z Operation object should contain `operationId` field.
+2025-10-29T23:15:06.0432460Z 
+2025-10-29T23:15:06.0432596Z [90m244 |[39m     [90m'404':[39m
+2025-10-29T23:15:06.0432994Z [90m245 |[39m       [90mdescription: menu belongs to another restaurant[39m
+2025-10-29T23:15:06.0433369Z [90m246 |[39m [31mput[39m:
+2025-10-29T23:15:06.0433688Z [90m247 |[39m   [90msummary: Update a menu[39m
+2025-10-29T23:15:06.0434141Z [90m248 |[39m   [90mtags:[39m
+2025-10-29T23:15:06.0434427Z 
+2025-10-29T23:15:06.0434677Z Warning was generated by the [34moperation-operationId[39m rule.
+2025-10-29T23:15:06.0434923Z 
+2025-10-29T23:15:06.0435014Z 
+2025-10-29T23:15:06.0435472Z [15] [43m[30mswagger/v1/swagger.yaml:267:5[39m[49m [90mat #/paths/~1api~1v1~1restaurants~1{restaurant_id}~1menus~1{id}/delete/operationId[39m
+2025-10-29T23:15:06.0435894Z 
+2025-10-29T23:15:06.0436060Z Operation object should contain `operationId` field.
+2025-10-29T23:15:06.0436340Z 
+2025-10-29T23:15:06.0436513Z [90m265 |[39m                 [90mname:[39m
+2025-10-29T23:15:06.0436863Z [90m266 |[39m                   [90mtype: string[39m
+2025-10-29T23:15:06.0437192Z [90m267 |[39m [31mdelete[39m:
+2025-10-29T23:15:06.0437516Z [90m268 |[39m   [90msummary: Delete a menu[39m
+2025-10-29T23:15:06.0437874Z [90m269 |[39m   [90mtags:[39m
+2025-10-29T23:15:06.0438033Z 
+2025-10-29T23:15:06.0438281Z Warning was generated by the [34moperation-operationId[39m rule.
+2025-10-29T23:15:06.0438529Z 
+2025-10-29T23:15:06.0438537Z 
+2025-10-29T23:15:06.0438970Z [16] [43m[30mswagger/v1/swagger.yaml:277:5[39m[49m [90mat #/paths/~1api~1v1~1restaurants/get/operationId[39m
+2025-10-29T23:15:06.0439521Z 
+2025-10-29T23:15:06.0439690Z Operation object should contain `operationId` field.
+2025-10-29T23:15:06.0439906Z 
+2025-10-29T23:15:06.0440111Z [90m275 |[39m         [90mdescription: menu not found[39m
+2025-10-29T23:15:06.0440479Z [90m276 |[39m [90m"/api/v1/restaurants":[39m
+2025-10-29T23:15:06.0440804Z [90m277 |[39m   [31mget[39m:
+2025-10-29T23:15:06.0441134Z [90m278 |[39m     [90msummary: List all restaurants[39m
+2025-10-29T23:15:06.0441480Z [90m279 |[39m     [90mtags:[39m
+2025-10-29T23:15:06.0441644Z 
+2025-10-29T23:15:06.0441882Z Warning was generated by the [34moperation-operationId[39m rule.
+2025-10-29T23:15:06.0442135Z 
+2025-10-29T23:15:06.0442142Z 
+2025-10-29T23:15:06.0442478Z [17] [43m[30mswagger/v1/swagger.yaml:294:7[39m[49m [90mat #/paths/~1api~1v1~1restaurants/get/responses[39m
+2025-10-29T23:15:06.0442808Z 
+2025-10-29T23:15:06.0442980Z Operation must have at least one `4XX` response.
+2025-10-29T23:15:06.0443180Z 
+2025-10-29T23:15:06.0443323Z [90m292 |[39m   [90mschema:[39m
+2025-10-29T23:15:06.0443636Z [90m293 |[39m     [90mtype: integer[39m
+2025-10-29T23:15:06.0443951Z [90m294 |[39m [31mresponses[39m:
+2025-10-29T23:15:06.0444519Z [90m295 |[39m   [90m'200':[39m
+2025-10-29T23:15:06.0444933Z [90m296 |[39m     [90mdescription: empty list when no restaurants[39m
+2025-10-29T23:15:06.0445181Z 
+2025-10-29T23:15:06.0445428Z Warning was generated by the [34moperation-4xx-response[39m rule.
+2025-10-29T23:15:06.0445703Z 
+2025-10-29T23:15:06.0445710Z 
+2025-10-29T23:15:06.0446062Z [18] [43m[30mswagger/v1/swagger.yaml:314:5[39m[49m [90mat #/paths/~1api~1v1~1restaurants/post/operationId[39m
+2025-10-29T23:15:06.0446405Z 
+2025-10-29T23:15:06.0446573Z Operation object should contain `operationId` field.
+2025-10-29T23:15:06.0446801Z 
+2025-10-29T23:15:06.0446944Z [90m312 |[39m           [90mschema:[39m
+2025-10-29T23:15:06.0447456Z [90m313 |[39m             [90m"$ref": "#/components/schemas/restaurant_list"[39m
+2025-10-29T23:15:06.0447827Z [90m314 |[39m [31mpost[39m:
+2025-10-29T23:15:06.0448167Z [90m315 |[39m   [90msummary: Create a restaurant[39m
+2025-10-29T23:15:06.0448490Z [90m316 |[39m   [90mtags:[39m
+2025-10-29T23:15:06.0448660Z 
+2025-10-29T23:15:06.0448899Z Warning was generated by the [34moperation-operationId[39m rule.
+2025-10-29T23:15:06.0449149Z 
+2025-10-29T23:15:06.0449156Z 
+2025-10-29T23:15:06.0449538Z [19] [43m[30mswagger/v1/swagger.yaml:347:5[39m[49m [90mat #/paths/~1api~1v1~1restaurants~1{id}/get/operationId[39m
+2025-10-29T23:15:06.0449888Z 
+2025-10-29T23:15:06.0450052Z Operation object should contain `operationId` field.
+2025-10-29T23:15:06.0450274Z 
+2025-10-29T23:15:06.0450406Z [90m345 |[39m   [90mschema:[39m
+2025-10-29T23:15:06.0450704Z [90m346 |[39m     [90mtype: integer[39m
+2025-10-29T23:15:06.0451013Z [90m347 |[39m [31mget[39m:
+2025-10-29T23:15:06.0451335Z [90m348 |[39m   [90msummary: Show a restaurant[39m
+2025-10-29T23:15:06.0451670Z [90m349 |[39m   [90mtags:[39m
+2025-10-29T23:15:06.0451900Z 
+2025-10-29T23:15:06.0452147Z Warning was generated by the [34moperation-operationId[39m rule.
+2025-10-29T23:15:06.0452393Z 
+2025-10-29T23:15:06.0452400Z 
+2025-10-29T23:15:06.0452759Z [20] [43m[30mswagger/v1/swagger.yaml:360:5[39m[49m [90mat #/paths/~1api~1v1~1restaurants~1{id}/put/operationId[39m
+2025-10-29T23:15:06.0453121Z 
+2025-10-29T23:15:06.0453285Z Operation object should contain `operationId` field.
+2025-10-29T23:15:06.0453498Z 
+2025-10-29T23:15:06.0453636Z [90m358 |[39m     [90m'404':[39m
+2025-10-29T23:15:06.0454064Z [90m359 |[39m       [90mdescription: restaurant not found[39m
+2025-10-29T23:15:06.0454416Z [90m360 |[39m [31mput[39m:
+2025-10-29T23:15:06.0454755Z [90m361 |[39m   [90msummary: Update a restaurant[39m
+2025-10-29T23:15:06.0455075Z [90m362 |[39m   [90mtags:[39m
+2025-10-29T23:15:06.0455238Z 
+2025-10-29T23:15:06.0455481Z Warning was generated by the [34moperation-operationId[39m rule.
+2025-10-29T23:15:06.0455726Z 
+2025-10-29T23:15:06.0455733Z 
+2025-10-29T23:15:06.0456111Z [21] [43m[30mswagger/v1/swagger.yaml:383:5[39m[49m [90mat #/paths/~1api~1v1~1restaurants~1{id}/delete/operationId[39m
+2025-10-29T23:15:06.0456469Z 
+2025-10-29T23:15:06.0456628Z Operation object should contain `operationId` field.
+2025-10-29T23:15:06.0456847Z 
+2025-10-29T23:15:06.0456998Z [90m381 |[39m                 [90mname:[39m
+2025-10-29T23:15:06.0457340Z [90m382 |[39m                   [90mtype: string[39m
+2025-10-29T23:15:06.0457663Z [90m383 |[39m [31mdelete[39m:
+2025-10-29T23:15:06.0458165Z [90m384 |[39m   [90msummary: Delete a restaurant[39m
+2025-10-29T23:15:06.0458484Z [90m385 |[39m   [90mtags:[39m
+2025-10-29T23:15:06.0458645Z 
+2025-10-29T23:15:06.0458888Z Warning was generated by the [34moperation-operationId[39m rule.
+2025-10-29T23:15:06.0459133Z 
+2025-10-29T23:15:06.0459140Z 
+2025-10-29T23:15:06.0459456Z [22] [43m[30mswagger/v1/swagger.yaml:426:5[39m[49m [90mat #/components/schemas/restaurant_input[39m
+2025-10-29T23:15:06.0459783Z 
+2025-10-29T23:15:06.0459932Z Component: "restaurant_input" is never used.
+2025-10-29T23:15:06.0460122Z 
+2025-10-29T23:15:06.0460257Z [90m424 |[39m   [90m- id[39m
+2025-10-29T23:15:06.0460539Z [90m425 |[39m   [90m- name[39m
+2025-10-29T23:15:06.0460844Z [90m426 |[39m [31mrestaurant_input[39m:
+2025-10-29T23:15:06.0461153Z [90m427 |[39m   [90mtype: object[39m
+2025-10-29T23:15:06.0461465Z [90m428 |[39m   [90mproperties:[39m
+2025-10-29T23:15:06.0461637Z 
+2025-10-29T23:15:06.0461871Z Warning was generated by the [34mno-unused-components[39m rule.
+2025-10-29T23:15:06.0462122Z 
+2025-10-29T23:15:06.0462130Z 
+2025-10-29T23:15:06.0462425Z [23] [43m[30mswagger/v1/swagger.yaml:455:5[39m[49m [90mat #/components/schemas/menu_input[39m
+2025-10-29T23:15:06.0462727Z 
+2025-10-29T23:15:06.0462859Z Component: "menu_input" is never used.
+2025-10-29T23:15:06.0463037Z 
+2025-10-29T23:15:06.0463282Z [90m453 |[39m   [90m- id[39m
+2025-10-29T23:15:06.0463561Z [90m454 |[39m   [90m- name[39m
+2025-10-29T23:15:06.0463848Z [90m455 |[39m [31mmenu_input[39m:
+2025-10-29T23:15:06.0464231Z [90m456 |[39m   [90mtype: object[39m
+2025-10-29T23:15:06.0464542Z [90m457 |[39m   [90mproperties:[39m
+2025-10-29T23:15:06.0464716Z 
+2025-10-29T23:15:06.0464950Z Warning was generated by the [34mno-unused-components[39m rule.
+2025-10-29T23:15:06.0465194Z 
+2025-10-29T23:15:06.0465202Z 
+2025-10-29T23:15:06.0465517Z [24] [43m[30mswagger/v1/swagger.yaml:480:5[39m[49m [90mat #/components/schemas/menu_item_input[39m
+2025-10-29T23:15:06.0465828Z 
+2025-10-29T23:15:06.0465960Z Component: "menu_item_input" is never used.
+2025-10-29T23:15:06.0466153Z 
+2025-10-29T23:15:06.0466282Z [90m478 |[39m   [90m- id[39m
+2025-10-29T23:15:06.0466591Z [90m479 |[39m   [90m- name[39m
+2025-10-29T23:15:06.0466897Z [90m480 |[39m [31mmenu_item_input[39m:
+2025-10-29T23:15:06.0467201Z [90m481 |[39m   [90mtype: object[39m
+2025-10-29T23:15:06.0467520Z [90m482 |[39m   [90mproperties:[39m
+2025-10-29T23:15:06.0467692Z 
+2025-10-29T23:15:06.0468029Z Warning was generated by the [34mno-unused-components[39m rule.
+2025-10-29T23:15:06.0468277Z 
+2025-10-29T23:15:06.0468284Z 
+2025-10-29T23:15:06.0468565Z [25] [43m[30mswagger/v1/swagger.yaml:509:5[39m[49m [90mat #/components/schemas/error[39m
+2025-10-29T23:15:06.0468857Z 
+2025-10-29T23:15:06.0468984Z Component: "error" is never used.
+2025-10-29T23:15:06.0469148Z 
+2025-10-29T23:15:06.0469273Z [90m507 |[39m   [90m- name[39m
+2025-10-29T23:15:06.0469563Z [90m508 |[39m   [90m- price[39m
+2025-10-29T23:15:06.0469847Z [90m509 |[39m [31merror[39m:
+2025-10-29T23:15:06.0470141Z [90m510 |[39m   [90mtype: object[39m
+2025-10-29T23:15:06.0470445Z [90m511 |[39m   [90mproperties:[39m
+2025-10-29T23:15:06.0470627Z 
+2025-10-29T23:15:06.0470860Z Warning was generated by the [34mno-unused-components[39m rule.
+2025-10-29T23:15:06.0471100Z 
+2025-10-29T23:15:06.0471108Z 
+2025-10-29T23:15:06.0471435Z [26] [43m[30mswagger/v1/swagger.yaml:526:5[39m[49m [90mat #/components/schemas/validation_error[39m
+2025-10-29T23:15:06.0471754Z 
+2025-10-29T23:15:06.0471893Z Component: "validation_error" is never used.
+2025-10-29T23:15:06.0472089Z 
+2025-10-29T23:15:06.0472224Z [90m524 |[39m   [90mrequired:[39m
+2025-10-29T23:15:06.0472516Z [90m525 |[39m   [90m- error[39m
+2025-10-29T23:15:06.0472823Z [90m526 |[39m [31mvalidation_error[39m:
+2025-10-29T23:15:06.0473139Z [90m527 |[39m   [90mtype: object[39m
+2025-10-29T23:15:06.0473433Z [90m528 |[39m   [90mproperties:[39m
+2025-10-29T23:15:06.0473602Z 
+2025-10-29T23:15:06.0473842Z Warning was generated by the [34mno-unused-components[39m rule.
+2025-10-29T23:15:06.0474261Z 
+2025-10-29T23:15:06.0474274Z 
+2025-10-29T23:15:06.0474609Z [27] [43m[30mswagger/v1/swagger.yaml:569:5[39m[49m [90mat #/components/schemas/import_result[39m
+2025-10-29T23:15:06.0474929Z 
+2025-10-29T23:15:06.0475060Z Component: "import_result" is never used.
+2025-10-29T23:15:06.0475254Z 
+2025-10-29T23:15:06.0475418Z [90m567 |[39m           [90mtype: string[39m
+2025-10-29T23:15:06.0475754Z [90m568 |[39m       [90mnullable: true[39m
+2025-10-29T23:15:06.0476076Z [90m569 |[39m [31mimport_result[39m:
+2025-10-29T23:15:06.0476378Z [90m570 |[39m   [90mtype: object[39m
+2025-10-29T23:15:06.0476686Z [90m571 |[39m   [90mproperties:[39m
+2025-10-29T23:15:06.0476973Z 
+2025-10-29T23:15:06.0477207Z Warning was generated by the [34mno-unused-components[39m rule.
+2025-10-29T23:15:06.0477461Z 
+2025-10-29T23:15:06.0477469Z 
+2025-10-29T23:15:06.0477834Z [28] [43m[30mswagger/v1/swagger.yaml:582:5[39m[49m [90mat #/components/requestBodies/ImportRestaurantsJson[39m
+2025-10-29T23:15:06.0478188Z 
+2025-10-29T23:15:06.0478356Z Component: "ImportRestaurantsJson" is never used.
+2025-10-29T23:15:06.0478566Z 
+2025-10-29T23:15:06.0478698Z [90m580 |[39m     [90m- logs[39m
+2025-10-29T23:15:06.0479001Z [90m581 |[39m [90mrequestBodies:[39m
+2025-10-29T23:15:06.0479423Z [90m582 |[39m   [31mImportRestaurantsJson[39m:
+2025-10-29T23:15:06.0479832Z [90m583 |[39m     [90mdescription: Multipart JSON file upload[39m
+2025-10-29T23:15:06.0480210Z [90m584 |[39m     [90mrequired: true[39m
+2025-10-29T23:15:06.0480391Z 
+2025-10-29T23:15:06.0480623Z Warning was generated by the [34mno-unused-components[39m rule.
+2025-10-29T23:15:06.0480864Z 
+2025-10-29T23:15:06.0480872Z 
+2025-10-29T23:15:07.8548374Z [33m
+2025-10-29T23:15:07.8549098Z public/api-docs/v1/swagger.json [31mdoes not exist or is invalid.
+2025-10-29T23:15:07.8549608Z 
+2025-10-29T23:15:07.8549944Z [33m[39m[31mPlease provide a valid path.
+2025-10-29T23:15:07.8550266Z 
+2025-10-29T23:15:08.6534908Z [39m
+2025-10-29T23:15:08.6549769Z ##[error]Process completed with exit code 1.
+2025-10-29T23:15:08.6639105Z Post job cleanup.
+2025-10-29T23:15:08.7525382Z [command]/usr/bin/git version
+2025-10-29T23:15:08.7562101Z git version 2.51.0
+2025-10-29T23:15:08.7602146Z Temporarily overriding HOME='/home/runner/work/_temp/4f2c51ad-e270-4728-8629-d815e87e82e7' before making global git config changes
+2025-10-29T23:15:08.7603503Z Adding repository directory to the temporary git global config as a safe directory
+2025-10-29T23:15:08.7607216Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/restaurant/restaurant
+2025-10-29T23:15:08.7641950Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-10-29T23:15:08.7669873Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-10-29T23:15:08.7856038Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-10-29T23:15:08.7876150Z http.https://github.com/.extraheader
+2025-10-29T23:15:08.7887794Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-10-29T23:15:08.7915237Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-10-29T23:15:08.8197091Z Cleaning up orphan processes

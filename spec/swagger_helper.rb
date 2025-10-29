@@ -218,7 +218,7 @@ RSpec.configure do |config|
                   { type: :string },
                   { type: :array, items: { type: :string } }
                 ],
-                nullable: true,
+                # Property is optional; avoid using `nullable` with oneOf to satisfy Redocly
               },
             },
           },

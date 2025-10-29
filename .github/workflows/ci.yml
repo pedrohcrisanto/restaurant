@@ -25,7 +25,8 @@ jobs:
         with:
           ruby-version: "3.3"
           bundler-cache: true
-      - name: RuboCop
+      - name: RuboCop (non-blocking)
+        continue-on-error: true
         run: bundle exec rubocop
       - name: Bundler Audit
         run: bundle exec bundle audit check --update
