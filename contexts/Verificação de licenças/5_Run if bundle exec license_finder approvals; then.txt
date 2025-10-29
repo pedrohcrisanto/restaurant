@@ -1,21 +1,21 @@
-﻿2025-10-29T22:22:44.9031252Z ##[group]Run if bundle exec license_finder approvals; then
-2025-10-29T22:22:44.9031674Z [36;1mif bundle exec license_finder approvals; then[0m
-2025-10-29T22:22:44.9031981Z [36;1m  echo "Licenças OK"[0m
-2025-10-29T22:22:44.9032202Z [36;1melse[0m
-2025-10-29T22:22:44.9032418Z [36;1m  echo "Reprovar por licenças" && exit 1[0m
-2025-10-29T22:22:44.9032681Z [36;1mfi[0m
-2025-10-29T22:22:44.9068017Z shell: /usr/bin/bash -e {0}
-2025-10-29T22:22:44.9068516Z ##[endgroup]
-2025-10-29T22:22:45.4720732Z Commands:
-2025-10-29T22:22:45.4849272Z   license_finder approvals add DEPENDENCY...  # Approve one or more dependenc...
-2025-10-29T22:22:45.4850256Z   license_finder approvals help [COMMAND]     # Describe subcommands or one s...
-2025-10-29T22:22:45.4851140Z   license_finder approvals remove DEPENDENCY  # Unapprove a dependency
-2025-10-29T22:22:45.4851692Z 
-2025-10-29T22:22:45.4851827Z Options:
-2025-10-29T22:22:45.4852355Z   [--project-path=PROJECT_PATH]               # Path to the project. Defaults to current working directory.
-2025-10-29T22:22:45.4853409Z   [--decisions-file=DECISIONS_FILE]           # Where decisions are saved. Defaults to doc/dependency_decisions.yml.
-2025-10-29T22:22:45.4854497Z   [--log-directory=LOG_DIRECTORY]             # Where logs are saved. Defaults to ./lf_logs/$PROJECT/prepare_$PACKAGE_MANAGER.log
-2025-10-29T22:22:45.4855716Z   [--enabled-package-managers=one two three]  # List of package managers to be enabled. Defaults to all supported package managers.
-2025-10-29T22:22:45.4857688Z                                               # Possible values: gomodules, godep, goworkspace, go15vendorexperiment, glide, gvt, govendor, trash, bundler, npm, pnpm, pip, yarn, bower, maven, gradle, cocoapods, rebar, erlangmk, nuget, carthage, mix, conan, sbt, cargo, dotnet, composer, pipenv, conda, spm, pub
-2025-10-29T22:22:45.4859256Z 
-2025-10-29T22:22:45.4923024Z Licenças OK
+﻿2025-10-29T22:28:26.0819492Z ##[group]Run if bundle exec license_finder approvals; then
+2025-10-29T22:28:26.0820354Z [36;1mif bundle exec license_finder approvals; then[0m
+2025-10-29T22:28:26.0820671Z [36;1m  echo "Licenças OK"[0m
+2025-10-29T22:28:26.0820905Z [36;1melse[0m
+2025-10-29T22:28:26.0821121Z [36;1m  echo "Reprovar por licenças" && exit 1[0m
+2025-10-29T22:28:26.0821385Z [36;1mfi[0m
+2025-10-29T22:28:26.0858846Z shell: /usr/bin/bash -e {0}
+2025-10-29T22:28:26.0859096Z ##[endgroup]
+2025-10-29T22:28:26.6788438Z Commands:
+2025-10-29T22:28:26.6918094Z   license_finder approvals add DEPENDENCY...  # Approve one or more dependenc...
+2025-10-29T22:28:26.6919004Z   license_finder approvals help [COMMAND]     # Describe subcommands or one s...
+2025-10-29T22:28:26.6919699Z   license_finder approvals remove DEPENDENCY  # Unapprove a dependency
+2025-10-29T22:28:26.6920226Z 
+2025-10-29T22:28:26.6920320Z Options:
+2025-10-29T22:28:26.6920724Z   [--project-path=PROJECT_PATH]               # Path to the project. Defaults to current working directory.
+2025-10-29T22:28:26.6921472Z   [--decisions-file=DECISIONS_FILE]           # Where decisions are saved. Defaults to doc/dependency_decisions.yml.
+2025-10-29T22:28:26.6922239Z   [--log-directory=LOG_DIRECTORY]             # Where logs are saved. Defaults to ./lf_logs/$PROJECT/prepare_$PACKAGE_MANAGER.log
+2025-10-29T22:28:26.6923084Z   [--enabled-package-managers=one two three]  # List of package managers to be enabled. Defaults to all supported package managers.
+2025-10-29T22:28:26.6924414Z                                               # Possible values: gomodules, godep, goworkspace, go15vendorexperiment, glide, gvt, govendor, trash, bundler, npm, pnpm, pip, yarn, bower, maven, gradle, cocoapods, rebar, erlangmk, nuget, carthage, mix, conan, sbt, cargo, dotnet, composer, pipenv, conda, spm, pub
+2025-10-29T22:28:26.6925403Z 
+2025-10-29T22:28:26.6994179Z Licenças OK

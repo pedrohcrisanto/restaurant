@@ -1,5 +1,5 @@
-2025-10-29T22:21:49.4100000Z Requested labels: ubuntu-latest
-2025-10-29T22:21:49.4100000Z Job defined at: pedrohcrisanto/restaurant/.github/workflows/ci.yml@refs/heads/main
-2025-10-29T22:21:49.4100000Z Waiting for a runner to pick up this job...
-2025-10-29T22:21:49.9070000Z Job is waiting for a hosted runner to come online.
-2025-10-29T22:21:49.9080000Z Job is about to start running on the hosted runner: GitHub Actions 1000000779
+2025-10-29T22:28:02.2990000Z Job is waiting for a hosted runner to come online.
+2025-10-29T22:28:02.2880000Z Requested labels: ubuntu-latest
+2025-10-29T22:28:02.2880000Z Job defined at: pedrohcrisanto/restaurant/.github/workflows/ci.yml@refs/heads/main
+2025-10-29T22:28:02.2880000Z Waiting for a runner to pick up this job...
+2025-10-29T22:28:02.2990000Z Job is about to start running on the hosted runner: GitHub Actions 1000000793

@@ -1,29 +1,29 @@
-﻿2025-10-29T22:21:52.0988453Z Current runner version: '2.328.0'
-2025-10-29T22:21:52.1020195Z ##[group]Runner Image Provisioner
-2025-10-29T22:21:52.1021064Z Hosted Compute Agent
-2025-10-29T22:21:52.1021610Z Version: 20250912.392
-2025-10-29T22:21:52.1022217Z Commit: d921fda672a98b64f4f82364647e2f10b2267d0b
-2025-10-29T22:21:52.1022859Z Build Date: 2025-09-12T15:23:14Z
-2025-10-29T22:21:52.1023525Z ##[endgroup]
-2025-10-29T22:21:52.1024046Z ##[group]Operating System
-2025-10-29T22:21:52.1024599Z Ubuntu
-2025-10-29T22:21:52.1025119Z 24.04.3
-2025-10-29T22:21:52.1025585Z LTS
-2025-10-29T22:21:52.1026044Z ##[endgroup]
-2025-10-29T22:21:52.1026638Z ##[group]Runner Image
-2025-10-29T22:21:52.1027218Z Image: ubuntu-24.04
-2025-10-29T22:21:52.1027692Z Version: 20250929.60.1
-2025-10-29T22:21:52.1029078Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250929.60/images/ubuntu/Ubuntu2404-Readme.md
-2025-10-29T22:21:52.1030490Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250929.60
-2025-10-29T22:21:52.1031705Z ##[endgroup]
-2025-10-29T22:21:52.1032994Z ##[group]GITHUB_TOKEN Permissions
-2025-10-29T22:21:52.1035208Z Contents: read
-2025-10-29T22:21:52.1035809Z Metadata: read
-2025-10-29T22:21:52.1036271Z ##[endgroup]
-2025-10-29T22:21:52.1038609Z Secret source: Actions
-2025-10-29T22:21:52.1039377Z Prepare workflow directory
-2025-10-29T22:21:52.1360470Z Prepare all required actions
-2025-10-29T22:21:52.1398956Z Getting action download info
-2025-10-29T22:21:52.4519443Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
-2025-10-29T22:21:52.5915726Z Download action repository 'ruby/setup-ruby@v1' (SHA:d5126b9b3579e429dd52e51e68624dda2e05be25)
-2025-10-29T22:21:53.0285486Z Complete job name: Reek (code smells)
+﻿2025-10-29T22:28:05.5106512Z Current runner version: '2.328.0'
+2025-10-29T22:28:05.5130725Z ##[group]Runner Image Provisioner
+2025-10-29T22:28:05.5131535Z Hosted Compute Agent
+2025-10-29T22:28:05.5132099Z Version: 20250912.392
+2025-10-29T22:28:05.5132723Z Commit: d921fda672a98b64f4f82364647e2f10b2267d0b
+2025-10-29T22:28:05.5133591Z Build Date: 2025-09-12T15:23:14Z
+2025-10-29T22:28:05.5134177Z ##[endgroup]
+2025-10-29T22:28:05.5134796Z ##[group]Operating System
+2025-10-29T22:28:05.5135354Z Ubuntu
+2025-10-29T22:28:05.5135846Z 24.04.3
+2025-10-29T22:28:05.5136363Z LTS
+2025-10-29T22:28:05.5136817Z ##[endgroup]
+2025-10-29T22:28:05.5137332Z ##[group]Runner Image
+2025-10-29T22:28:05.5137874Z Image: ubuntu-24.04
+2025-10-29T22:28:05.5138569Z Version: 20250929.60.1
+2025-10-29T22:28:05.5139556Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250929.60/images/ubuntu/Ubuntu2404-Readme.md
+2025-10-29T22:28:05.5140907Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250929.60
+2025-10-29T22:28:05.5142145Z ##[endgroup]
+2025-10-29T22:28:05.5143183Z ##[group]GITHUB_TOKEN Permissions
+2025-10-29T22:28:05.5145312Z Contents: read
+2025-10-29T22:28:05.5145856Z Metadata: read
+2025-10-29T22:28:05.5146436Z ##[endgroup]
+2025-10-29T22:28:05.5148377Z Secret source: Actions
+2025-10-29T22:28:05.5149099Z Prepare workflow directory
+2025-10-29T22:28:05.5464998Z Prepare all required actions
+2025-10-29T22:28:05.5502072Z Getting action download info
+2025-10-29T22:28:06.0107291Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+2025-10-29T22:28:06.2010164Z Download action repository 'ruby/setup-ruby@v1' (SHA:d5126b9b3579e429dd52e51e68624dda2e05be25)
+2025-10-29T22:28:06.9487805Z Complete job name: Reek (code smells)
