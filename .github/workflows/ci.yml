@@ -1,191 +1,216 @@
 name: CI
-
 on:
   push:
-    branches: [ "**" ]
+    branches: [ main ]
   pull_request:
-    branches: [ "**" ]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  rubocop:
-    name: RuboCop (Ruby 3.4.4)
+  prechecks: # REQUIRED
+    name: Prechecks (lint+segurança+config)
     runs-on: ubuntu-latest
-    env:
-      BUNDLE_WITHOUT: production
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.4.4'
+          ruby-version: "+~> 3.3"
           bundler-cache: true
-
-      - name: Run RuboCop
+      - name: RuboCop
+        run: bundle exec rubocop
+      - name: Bundler Audit
+        run: bundle exec bundle audit check --update
+      - name: Brakeman (Rails SAST)
+        run: bundle exec brakeman -q -w2
+      - name: YAML lint
         run: |
-          mkdir -p tmp
-          bundle exec rubocop | tee tmp/rubocop_output.txt
-
-      - name: Upload RuboCop output on failure
-        if: failure()
-        uses: actions/upload-artifact@v4
+          sudo apt-get update && sudo apt-get install -y yamllint
+          yamllint .
+      - name: JSON lint (configs)
+        run: |
+          sudo apt-get install -y jq
+          set -o pipefail
+          git ls-files '*.json' | xargs -I{} sh -c 'jq -e . {} > /dev/null'
+      - name: Dockerfile lint (se existir)
+        if: ${{ hashFiles('Dockerfile') != '' }}
+        uses: hadolint/hadolint-action@v3.1.0
         with:
-          name: rubocop-output
-          path: tmp/rubocop_output.txt
+          dockerfile: Dockerfile
 
-  test:
-    name: RSpec (Ruby ${{ matrix.ruby }}, PG ${{ matrix.postgres }})
+  test: # REQUIRED
+    name: RSpec
+    needs: prechecks
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        ruby: [ '3.4.4' ]  # Add more versions if needed
-        postgres: [ '16' ]
-
-    env:
-      RAILS_ENV: test
-      DB_HOST: localhost
-      DB_PORT: 5432
-      DB_USER: postgres
-      DB_PASSWORD: postgres
-      BUNDLE_WITHOUT: production
-
-    services:
-      postgres:
-        image: postgres:${{ matrix.postgres }}
-        ports:
-          - "5432:5432"
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: restaurant_test
-        options: >-
-          --health-cmd "pg_isready -U postgres"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ matrix.ruby }}
-          bundler-cache: true
-
-      - name: Install system dependencies (PostgreSQL client and headers)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y postgresql-client libpq-dev
-
-      - name: Wait for Postgres
-        run: |
-          for i in {1..30}; do
-            pg_isready -h "$DB_HOST" -p "$DB_PORT" -U "$DB_USER" && break
-            echo "Postgres is not ready yet... ($i)" && sleep 1
-          done
-          psql -h "$DB_HOST" -p "$DB_PORT" -U "$DB_USER" -c "SELECT 1" || exit 1
-        env:
-          PGPASSWORD: ${{ env.DB_PASSWORD }}
-
-      - name: Prepare database
-        run: bin/rails db:prepare
-
-      - name: Run RSpec
-        run: |
-          mkdir -p tmp
-          bundle exec rspec --format documentation --backtrace --color | tee tmp/rspec_output.txt
-
-      - name: Upload RSpec output on failure
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: rspec-output-ruby-${{ matrix.ruby }}-pg-${{ matrix.postgres }}
-          path: tmp/rspec_output.txt
-
-      - name: Upload code coverage (if generated)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-ruby-${{ matrix.ruby }}-pg-${{ matrix.postgres }}
-          path: coverage
-          if-no-files-found: ignore
-
-  swagger:
-    name: Swagger (rswag)
-    runs-on: ubuntu-latest
-    needs: test
-    env:
-      RAILS_ENV: test
-      DB_HOST: localhost
-      DB_PORT: 5432
-      DB_USER: postgres
-      DB_PASSWORD: postgres
-      BUNDLE_WITHOUT: production
-
     services:
       postgres:
         image: postgres:16
-        ports:
-          - "5432:5432"
         env:
-          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: restaurant_test
+        ports: ["5432:5432"]
         options: >-
-          --health-cmd "pg_isready -U postgres"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
+          --health-cmd="pg_isready -U postgres" --health-interval=10s --health-timeout=5s --health-retries=5
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/test
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.4.4'
+          ruby-version: "+~> 3.3"
           bundler-cache: true
-
-      - name: Install system dependencies (PostgreSQL client and headers)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y postgresql-client libpq-dev
-
-      - name: Wait for Postgres
-        run: |
-          for i in {1..30}; do
-            pg_isready -h "$DB_HOST" -p "$DB_PORT" -U "$DB_USER" && break
-            echo "Postgres is not ready yet... ($i)" && sleep 1
-          done
-          psql -h "$DB_HOST" -p "$DB_PORT" -U "$DB_USER" -c "SELECT 1" || exit 1
-        env:
-          PGPASSWORD: ${{ env.DB_PASSWORD }}
-
-      - name: Prepare database
+      - name: Prepare DB
         run: bin/rails db:prepare
+      - name: Run RSpec
+        run: bundle exec rspec --format progress --format RspecJunitFormatter --out tmp/rspec.xml
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: |
+            tmp/rspec.xml
+            coverage/
 
-      - name: Generate Swagger (YAML)
-        run: bundle exec rake rswag:specs:swaggerize
-
-      - name: Generate Swagger JSON
+  migrations: # REQUIRED
+    name: Migrações limpas + verificação
+    needs: test
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd="pg_isready -U postgres" --health-interval=10s --health-timeout=5s --health-retries=5
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "+~> 3.3"
+          bundler-cache: true
+      - name: Reset + migrate do zero
+        run: bin/rails db:drop db:create db:migrate
+      - name: Strong Migrations (se instalado)
         run: |
-          mkdir -p public/api-docs/v1
-          ruby -ryaml -rjson -e 'puts JSON.pretty_generate(YAML.load_file(%q{swagger/v1/swagger.yaml}))' > public/api-docs/v1/swagger.json
+          if bundle exec rake -T | grep -q strong_migrations:check; then
+            bundle exec rake strong_migrations:check
+          else
+            echo "strong_migrations não detectado; pulando."
+          fi
 
-      - name: Upload Swagger YAML
-        uses: actions/upload-artifact@v4
+  build_and_scan: # REQUIRED
+    name: Build Docker + Scan CVEs
+    needs: migrations
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build imagem
+        run: docker build -t app:ci .
+      - name: Trivy scan (CRITICAL/HIGH falham)
+        uses: aquasecurity/trivy-action@master
         with:
-          name: swagger-yaml
-          path: swagger/v1/swagger.yaml
+          image-ref: app:ci
+          format: table
+          exit-code: 1
+          severity: CRITICAL,HIGH
 
-      - name: Upload Swagger JSON
-        uses: actions/upload-artifact@v4
+  # ===== Alto valor (recomendados) =====
+  contracts:
+    name: Validar OpenAPI/Swagger
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lint OpenAPI
+        run: |
+          npm i -g @redocly/cli
+          # Tenta validar o arquivo principal; se falhar, tenta o de public
+          redocly lint ./swagger/v1/swagger.yaml || redocly lint ./public/api-docs/v1/swagger.json
+
+  n_plus_one:
+    name: N+1 detector (subset de specs)
+    needs: test
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd="pg_isready -U postgres" --health-interval=10s --health-timeout=5s --health-retries=5
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/test
+      BULLET: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
         with:
-          name: swagger-json
-          path: public/api-docs/v1/swagger.json
-          if-no-files-found: error
+          ruby-version: "+~> 3.3"
+          bundler-cache: true
+      - run: bin/rails db:prepare
+      - name: Rodar subset sensível a N+1 (requests + repositories)
+        run: |
+          # Ajuste os caminhos conforme necessidade do projeto
+          if [ -d spec/requests ]; then
+            PATHS="spec/requests"
+          fi
+          if [ -d spec/repositories ]; then
+            PATHS="$PATHS spec/repositories"
+          fi
+          if [ -z "$PATHS" ]; then
+            PATHS="spec"
+          fi
+          bundle exec rspec $PATHS
+
+  reek:
+    name: Reek (code smells)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "+~> 3.3"
+          bundler-cache: true
+      - run: bundle exec reek || true # inicialmente informativo
+
+  licenses:
+    name: Verificação de licenças
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "+~> 3.3"
+          bundler-cache: true
+      - run: |
+          if bundle exec license_finder approvals; then
+            echo "Licenças OK"
+          else
+            echo "Reprovar por licenças" && exit 1
+          fi
+
+  i18n:
+    name: i18n-tasks (chaves órfãs/ausentes)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "+~> 3.3"
+          bundler-cache: true
+      - run: |
+          if bundle exec i18n-tasks health; then
+            echo "i18n OK"
+          else
+            echo "Problemas de i18n" && exit 1
+          fi

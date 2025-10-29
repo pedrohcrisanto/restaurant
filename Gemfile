@@ -36,6 +36,7 @@ group :development, :test do
 
   # Testing framework
   gem "rspec-rails", "~> 6.1"
+  gem "rspec_junit_formatter", "~> 0.6", require: false
 
   # Test data generation
   gem "factory_bot_rails", "~> 6.4"
@@ -50,8 +51,9 @@ group :development, :test do
   # API documentation
   gem "rswag-specs", "~> 2.13"
 
-  # Security scanner
+  # Security scanners
   gem "brakeman", "~> 6.1", require: false
+  gem "bundler-audit", "~> 0.9", require: false
 end
 
 group :development do
@@ -59,6 +61,9 @@ group :development do
   gem "rubocop", "~> 1.59", require: false
   gem "rubocop-rails", "~> 2.23", require: false
   gem "rubocop-rspec", "~> 2.26", require: false
+  gem "reek", require: false
+  gem "i18n-tasks", require: false
+  gem "license_finder", require: false
 
   # API documentation UI
   gem "rswag-api", "~> 2.13"
