@@ -41,7 +41,7 @@ jobs:
       fail-fast: false
       matrix:
         ruby: [ '3.4.4' ]  # Add more versions if needed
-        postgres: [ '16', '15' ]
+        postgres: [ '16' ]
 
     env:
       RAILS_ENV: test

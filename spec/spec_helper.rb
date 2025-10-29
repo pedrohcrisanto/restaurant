@@ -99,8 +99,8 @@ RSpec.configure do |config|
   # Profile slowest examples
   config.profile_examples = 10
 
-  # Show retry counts for flaky tests
-  config.default_retry_count = 0
+  # Show retry counts for flaky tests (only if rspec-retry is available)
+  config.default_retry_count = 0 if config.respond_to?(:default_retry_count=)
 
   # Colorize output
   config.color = true
