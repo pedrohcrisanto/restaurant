@@ -1,0 +1,35 @@
+name: Security - Brakeman
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+
+jobs:
+  brakeman:
+    name: Run Brakeman
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Show Docker version
+        run: |
+          docker --version
+          docker compose version
+
+      - name: Build app image
+        run: docker compose build app
+
+      - name: Run Brakeman (fails on any alert)
+        run: make brakeman
+        # The Make target returns non-zero if Brakeman flags any issues (-z)
+
+      - name: Upload Brakeman reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: brakeman-reports
+          path: tmp/brakeman/
+          if-no-files-found: error

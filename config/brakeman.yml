@@ -1,0 +1,12 @@
+# Brakeman configuration
+# See: https://brakemanscanner.org/docs/options/
+
+# Paths to ignore during scan
+skip_files:
+  - vendor/**
+  - tmp/**
+  - public/**
+  - spec/**
+
+# Additional options are provided via CLI in Makefile target.
+# We intentionally do NOT suppress warnings here because CI must fail on any alert.

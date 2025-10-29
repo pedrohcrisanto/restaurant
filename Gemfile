@@ -49,6 +49,9 @@ group :development, :test do
 
   # API documentation
   gem "rswag-specs", "~> 2.13"
+
+  # Security scanner
+  gem "brakeman", "~> 6.1", require: false
 end
 
 group :development do

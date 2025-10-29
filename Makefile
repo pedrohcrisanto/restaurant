@@ -1,6 +1,6 @@
 DC ?= docker compose
 
-.PHONY: help build up-db bundle db-prepare test rswag import up-web logs down clean bash
+.PHONY: help build up-db bundle db-prepare test rswag import up-web logs down clean bash brakeman
 
 help:
 	@echo "Targets:"
@@ -11,6 +11,7 @@ help:
 	@echo "  test            Run RSpec with color & documentation"
 	@echo "  rswag           Generate Swagger (YAML) from specs"
 		@echo "  rswag-json      Generate Swagger JSON into public/api-docs"
+	@echo "  brakeman        Run Brakeman security scan (reports in tmp/brakeman)"
 
 	@echo "  import          Run JSON import using contexts/data.json"
 	@echo "  up-web          Start Rails server on http://localhost:3000"
@@ -88,3 +89,9 @@ bash:
 agent-watch:
 	@echo "Starting local agent watcher (CTRL+C to stop)..."
 	bash -lc "bash ./bin/agent_runner.sh"
+
+
+
+.PHONY: brakeman
+brakeman: bundle
+	$(DC) run --rm app bash -lc "set -euo pipefail; mkdir -p tmp/brakeman; CMD=brakeman; if bundle show brakeman >/dev/null 2>&1; then CMD='bundle exec brakeman'; else echo 'Brakeman not in bundle; installing gem...'; gem install brakeman --no-document; fi; EXIT=0; $$CMD -q -c config/brakeman.yml -f json -o tmp/brakeman/brakeman.json -z || EXIT=$$?; $$CMD -q -c config/brakeman.yml -f html -o tmp/brakeman/brakeman.html || true; exit $$EXIT"
