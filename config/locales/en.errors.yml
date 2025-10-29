@@ -1,0 +1,15 @@
+# frozen_string_literal: true
+
+en:
+  errors:
+    validation_failed: "Validation failed"
+    not_found: "Resource not found"
+    unexpected_error: "Unexpected error"
+    restaurants:
+      not_found: "Restaurant not found"
+    menus:
+      not_found: "Menu not found"
+    menu_items:
+      not_found: "Menu item not found"
+    validation:
+      name_required: "Name can't be blank"

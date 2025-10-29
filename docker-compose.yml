@@ -1,0 +1,63 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d postgres || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    profiles: ["dev", "test"]
+
+
+  app:
+    build: .
+    working_dir: /app
+    environment:
+      DB_HOST: db
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      RAILS_ENV: development
+      # Rails em modo API na porta 3000 caso queira subir o servidor
+      # PORT: 3000
+    volumes:
+      - .:/app:cached
+      - bundle:/usr/local/bundle
+    depends_on:
+      db:
+        condition: service_healthy
+    profiles: ["dev", "test"]
+
+    # Exemplo de comando para subir servidor (opcional)
+    # command: bash -lc "bin/rails s -b 0.0.0.0"
+
+  web:
+    build: .
+    working_dir: /app
+    entrypoint: ["bin/docker-entrypoint"]
+    command: bash -lc "bin/rails db:prepare && bin/rails s -b 0.0.0.0 -p 3000"
+    environment:
+      DB_HOST: db
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      RAILS_ENV: development
+      PORT: 3000
+      RAILS_LOG_TO_STDOUT: "1"
+    volumes:
+      - .:/app:cached
+      - bundle:/usr/local/bundle
+    profiles: ["dev"]
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  db-data:
+  bundle:
+

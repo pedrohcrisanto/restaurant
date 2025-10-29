@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Remove PID antigo se existir
+rm -f tmp/pids/server.pid 2>/dev/null || true
+
+exec "$@"
+

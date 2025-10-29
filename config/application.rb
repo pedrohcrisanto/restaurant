@@ -18,7 +18,7 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Restaurant
+module RestaurantApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.0
@@ -39,6 +39,15 @@ module Restaurant
     # Autoload custom directories
     config.eager_load_paths << Rails.root.join("app/blueprints")
     config.eager_load_paths << Rails.root.join("app/use_cases")
+
+      config.eager_load_paths << Rails.root.join("app/repositories")
+      config.eager_load_paths << Rails.root.join("app/services")
+
+	    # I18n configuration
+	    config.i18n.available_locales = [:en]
+	    config.i18n.default_locale = :en
+	    config.i18n.fallbacks = true
+
 
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.

@@ -6,6 +6,8 @@ gem "rails", "~> 8.0.2"
 gem "pg", "~> 1.1"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
+gem "ostruct"
+
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
@@ -19,7 +21,16 @@ gem "u-case", "~> 4.5"
 # API Blueprint serializer
 gem "blueprinter", "~> 1.0"
 
+# Pagination
+gem "pagy", "~> 6.0"
+
+# Rails i18n translations (framework messages)
+gem "rails-i18n"
+
+
 group :development, :test do
+  gem "dotenv-rails"
+
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
