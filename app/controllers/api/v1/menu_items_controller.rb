@@ -57,7 +57,7 @@ module Api
       end
 
       def menu_item_params
-        params.fetch(:menu_item, params).permit(:name)
+        params.require(:menu_item).permit(:name)
       end
     end
   end

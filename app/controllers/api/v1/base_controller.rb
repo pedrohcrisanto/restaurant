@@ -10,6 +10,7 @@ module Api
       include RepositoryInjection
 
       rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
+      rescue_from ActionController::ParameterMissing, with: :handle_parameter_missing
       rescue_from StandardError, with: :handle_unexpected_error
 
       DEFAULT_PER_PAGE = 100
@@ -47,17 +48,22 @@ module Api
         empty
       end
 
+      # Use common X-* header names
       def pagy_headers_merge(pagy_obj)
         headers.merge!(
-          "Current-Page" => pagy_obj.page.to_s,
-          "Page-Items" => pagy_obj.items.to_s,
-          "Total-Count" => pagy_obj.count.to_s,
-          "Total-Pages" => pagy_obj.pages.to_s
+          "X-Current-Page" => pagy_obj.page.to_s,
+          "X-Per-Page" => pagy_obj.items.to_s,
+          "X-Total" => pagy_obj.count.to_s,
+          "X-Total-Pages" => pagy_obj.pages.to_s
         )
       end
 
       def handle_not_found
         render json: { error: { message: I18n.t("errors.not_found") } }, status: :not_found
+      end
+
+      def handle_parameter_missing(exception)
+        render json: { error: { message: I18n.t("errors.validation_failed"), details: [exception.message] } }, status: :unprocessable_entity
       end
 
       def handle_unexpected_error(exception)

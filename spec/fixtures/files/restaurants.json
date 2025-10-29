@@ -1,0 +1,16 @@
+{
+  "restaurants": [
+    {
+      "name": "Sample Restaurant",
+      "menus": [
+        {
+          "name": "Dinner",
+          "menu_items": [
+            { "name": "Spaghetti", "price": "15.50" },
+            { "name": "Salad", "price": "8.00" }
+          ]
+        }
+      ]
+    }
+  ]
+}

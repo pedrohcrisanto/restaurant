@@ -55,7 +55,7 @@ module Api
       end
 
       def restaurant_params
-        params.fetch(:restaurant, params).permit(:name)
+        params.require(:restaurant).permit(:name)
       end
     end
   end

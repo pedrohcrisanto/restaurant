@@ -74,6 +74,14 @@ RSpec.configure do |config|
           name: "Menus",
           description: "Menu management endpoints (nested under restaurants)",
         },
+        {
+          name: "MenuItems",
+          description: "Menu item endpoints (nested under restaurants)",
+        },
+        {
+          name: "Imports",
+          description: "Data import endpoints",
+        },
       ],
       components: {
         schemas: {
@@ -127,6 +135,27 @@ RSpec.configure do |config|
             items: { "$ref" => "#/components/schemas/menu" },
           },
 
+          # Menu Item schemas
+          menu_item: {
+            type: :object,
+            properties: {
+              id: { type: :integer, example: 1 },
+              name: { type: :string, example: "Grilled Salmon" },
+            },
+            required: %w[id name],
+          },
+          menu_item_input: {
+            type: :object,
+            properties: {
+              name: { type: :string, example: "Grilled Salmon", minLength: 1 },
+            },
+            required: %w[name],
+          },
+          menu_item_list: {
+            type: :array,
+            items: { "$ref" => "#/components/schemas/menu_item" },
+          },
+
           # Menu Item Placement schemas
           menu_item_placement: {
             type: :object,
@@ -172,6 +201,36 @@ RSpec.configure do |config|
               },
             },
             required: %w[error],
+          },
+
+          # Imports schemas
+          import_log_entry: {
+            type: :object,
+            properties: {
+              restaurant: { type: :string, nullable: true },
+              menu: { type: :string, nullable: true },
+              item: { type: :string, nullable: true },
+              action: { type: :string, example: "created_menu" },
+              price: { type: :string, nullable: true },
+              error: {
+                oneOf: [
+                  { type: :string },
+                  { type: :array, items: { type: :string } }
+                ],
+                nullable: true,
+              },
+            },
+          },
+          import_result: {
+            type: :object,
+            properties: {
+              success: { type: :boolean },
+              logs: {
+                type: :array,
+                items: { "$ref" => "#/components/schemas/import_log_entry" },
+              },
+            },
+            required: %w[success logs],
           },
         },
         securitySchemes: {

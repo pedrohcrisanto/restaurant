@@ -14,12 +14,19 @@ RSpec.describe "Api::V1::Menus", type: :request do
       produces "application/json"
 
       response "200", "menus found" do
+        schema "$ref" => "#/components/schemas/menu_list"
+        header "X-Current-Page", schema: { type: :string }
+        header "X-Per-Page", schema: { type: :string }
+        header "X-Total", schema: { type: :string }
+        header "X-Total-Pages", schema: { type: :string }
+
         let(:restaurant_id) { restaurant.id }
         let!(:menus) { create_list(:menu, 2, restaurant: restaurant) }
 
         run_test! do |response|
-          expect(json["data"]).to be_an(Array)
-          expect(json["data"].size).to eq(2)
+          expect(json).to be_an(Array)
+          expect(json.size).to eq(2)
+          expect(response.headers).to include("X-Current-Page", "X-Per-Page", "X-Total", "X-Total-Pages")
         end
       end
 
@@ -54,8 +61,8 @@ RSpec.describe "Api::V1::Menus", type: :request do
         let(:menu) { { menu: { name: "Lunch Menu" } } }
 
         run_test! do |response|
-          expect(json["data"]["name"]).to eq("Lunch Menu")
-          expect(json["data"]["id"]).to be_present
+          expect(json["name"]).to eq("Lunch Menu")
+          expect(json["id"]).to be_present
         end
       end
 
@@ -93,8 +100,8 @@ RSpec.describe "Api::V1::Menus", type: :request do
         let(:id) { menu_record.id }
 
         run_test! do |response|
-          expect(json["data"]["id"]).to eq(id)
-          expect(json["data"]["name"]).to be_present
+          expect(json["id"]).to eq(id)
+          expect(json["name"]).to be_present
         end
       end
 
@@ -142,7 +149,7 @@ RSpec.describe "Api::V1::Menus", type: :request do
         let(:menu) { { menu: { name: "Updated Menu" } } }
 
         run_test! do |response|
-          expect(json["data"]["name"]).to eq("Updated Menu")
+          expect(json["name"]).to eq("Updated Menu")
         end
       end
 

@@ -13,43 +13,24 @@ RSpec.describe "Api::V1::Restaurants", type: :request do
       parameter name: :per_page, in: :query, type: :integer, required: false, description: "Items per page"
 
       response "200", "restaurants found" do
-        schema type: :object,
-               properties: {
-                 data: {
-                   type: :array,
-                   items: {
-                     type: :object,
-                     properties: {
-                       id: { type: :integer },
-                       name: { type: :string },
-                       menus: { type: :array }
-                     },
-                     required: %w[id name menus]
-                   }
-                 },
-                 meta: {
-                   type: :object,
-                   properties: {
-                     current_page: { type: :integer },
-                     total_pages: { type: :integer },
-                     total_count: { type: :integer }
-                   }
-                 }
-               },
-               required: %w[data meta]
+        schema "$ref" => "#/components/schemas/restaurant_list"
+        header "X-Current-Page", schema: { type: :string }
+        header "X-Per-Page", schema: { type: :string }
+        header "X-Total", schema: { type: :string }
+        header "X-Total-Pages", schema: { type: :string }
 
         let!(:restaurants) { create_list(:restaurant, 3) }
 
         run_test! do |response|
-          expect(json["data"]).to be_an(Array)
-          expect(json["data"].size).to eq(3)
-          expect(json["meta"]).to have_key("current_page")
+          expect(json).to be_an(Array)
+          expect(json.size).to eq(3)
+          expect(response.headers).to include("X-Current-Page", "X-Per-Page", "X-Total", "X-Total-Pages")
         end
       end
 
       response "200", "empty list when no restaurants" do
         run_test! do |response|
-          expect(json["data"]).to eq([])
+          expect(json).to eq([])
         end
       end
     end
@@ -76,8 +57,8 @@ RSpec.describe "Api::V1::Restaurants", type: :request do
         let(:restaurant) { { restaurant: { name: "New Restaurant" } } }
 
         run_test! do |response|
-          expect(json["data"]["name"]).to eq("New Restaurant")
-          expect(json["data"]["id"]).to be_present
+          expect(json["name"]).to eq("New Restaurant")
+          expect(json["id"]).to be_present
         end
       end
 
@@ -94,7 +75,7 @@ RSpec.describe "Api::V1::Restaurants", type: :request do
         let(:restaurant) { { restaurant: { name: "Existing" } } }
 
         run_test! do |response|
-          expect(json["error"]).to include(/already been taken/i)
+          expect(json.dig("error", "message")).to match(/already been taken/i)
         end
       end
     end
@@ -108,25 +89,13 @@ RSpec.describe "Api::V1::Restaurants", type: :request do
       produces "application/json"
 
       response "200", "restaurant found" do
-        schema type: :object,
-               properties: {
-                 data: {
-                   type: :object,
-                   properties: {
-                     id: { type: :integer },
-                     name: { type: :string },
-                     menus: { type: :array }
-                   },
-                   required: %w[id name menus]
-                 }
-               },
-               required: %w[data]
+        schema "$ref" => "#/components/schemas/restaurant"
 
         let(:id) { create(:restaurant).id }
 
         run_test! do |response|
-          expect(json["data"]["id"]).to eq(id)
-          expect(json["data"]["name"]).to be_present
+          expect(json["id"]).to eq(id)
+          expect(json["name"]).to be_present
         end
       end
 
@@ -160,7 +129,7 @@ RSpec.describe "Api::V1::Restaurants", type: :request do
         let(:restaurant) { { restaurant: { name: "Updated Name" } } }
 
         run_test! do |response|
-          expect(json["data"]["name"]).to eq("Updated Name")
+          expect(json["name"]).to eq("Updated Name")
         end
       end
 

@@ -13,6 +13,10 @@ module ResourceRendering
     render_success(resource, blueprint_class, status: :created)
   end
 
+  def render_no_content
+    head :no_content
+  end
+
   def render_not_found(error_key)
     render_error(I18n.t(error_key), status: :not_found)
   end

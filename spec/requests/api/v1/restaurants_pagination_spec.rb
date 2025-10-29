@@ -11,7 +11,7 @@ RSpec.describe "API V1 Restaurants pagination" do
 
       if defined?(Pagy)
         expect(json.size).to eq(100)
-        expect(response.headers).to include("Current-Page", "Page-Items", "Total-Count", "Total-Pages")
+        expect(response.headers).to include("X-Current-Page", "X-Per-Page", "X-Total", "X-Total-Pages")
       else
         # Pagy gem not installed in the test runtime; fallback returns all
         expect(json.size).to be >= 100

@@ -89,7 +89,7 @@ module ResourceActions
   def execute_destroy(find_use_case, destroy_use_case_class, resource_key, error_key, **destroy_params)
     with_resource(find_use_case, error_key) do |find_result|
       destroy_use_case_class.call(resource_key => find_result[resource_key], **destroy_params)
-      head :no_content
+      render_no_content
     end
   end
 end

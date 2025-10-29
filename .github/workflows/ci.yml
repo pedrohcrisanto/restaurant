@@ -2,37 +2,70 @@ name: CI
 
 on:
   push:
-    branches: [ main, master, develop ]
+    branches: [ "**" ]
   pull_request:
+    branches: [ "**" ]
 
 jobs:
+  rubocop:
+    name: RuboCop (Ruby 3.4.4)
+    runs-on: ubuntu-latest
+    env:
+      BUNDLE_WITHOUT: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4.4'
+          bundler-cache: true
+
+      - name: Run RuboCop
+        run: |
+          mkdir -p tmp
+          bundle exec rubocop | tee tmp/rubocop_output.txt
+
+      - name: Upload RuboCop output on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rubocop-output
+          path: tmp/rubocop_output.txt
+
   test:
+    name: RSpec (Ruby ${{ matrix.ruby }}, PG ${{ matrix.postgres }})
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        ruby: ["3.2", "3.3"]
+        ruby: [ '3.4.4' ]  # Add more versions if needed
+        postgres: [ '16', '15' ]
 
     env:
       RAILS_ENV: test
-      DB_HOST: 127.0.0.1
+      DB_HOST: localhost
       DB_PORT: 5432
       DB_USER: postgres
       DB_PASSWORD: postgres
       BUNDLE_WITHOUT: production
+
     services:
       postgres:
-        image: postgres:15
+        image: postgres:${{ matrix.postgres }}
+        ports:
+          - "5432:5432"
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: restaurant_test
-        ports:
-          - "5432:5432"
         options: >-
           --health-cmd "pg_isready -U postgres"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -43,29 +76,71 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
 
-      - name: Install system dependencies
+      - name: Install system dependencies (PostgreSQL client and headers)
         run: |
-          sudo apt-get update -y
-          sudo apt-get install -y libpq-dev postgresql-client build-essential
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client libpq-dev
 
-      - name: Print Ruby and Bundler versions
+      - name: Wait for Postgres
         run: |
-          ruby -v
-          bundle -v
+          for i in {1..30}; do
+            pg_isready -h "$DB_HOST" -p "$DB_PORT" -U "$DB_USER" && break
+            echo "Postgres is not ready yet... ($i)" && sleep 1
+          done
+          psql -h "$DB_HOST" -p "$DB_PORT" -U "$DB_USER" -c "SELECT 1" || exit 1
+        env:
+          PGPASSWORD: ${{ env.DB_PASSWORD }}
 
       - name: Prepare database
-        run: |
-          bin/rails db:prepare
+        run: bin/rails db:prepare
 
       - name: Run RSpec
         run: |
-          bin/rspec --format documentation --color
+          mkdir -p tmp
+          bundle exec rspec --format documentation --backtrace --color | tee tmp/rspec_output.txt
 
+      - name: Upload RSpec output on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rspec-output-ruby-${{ matrix.ruby }}-pg-${{ matrix.postgres }}
+          path: tmp/rspec_output.txt
 
-  lint:
+      - name: Upload code coverage (if generated)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-ruby-${{ matrix.ruby }}-pg-${{ matrix.postgres }}
+          path: coverage
+          if-no-files-found: ignore
+
+  swagger:
+    name: Swagger (rswag)
     runs-on: ubuntu-latest
+    needs: test
     env:
+      RAILS_ENV: test
+      DB_HOST: localhost
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
       BUNDLE_WITHOUT: production
+
+    services:
+      postgres:
+        image: postgres:16
+        ports:
+          - "5432:5432"
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: restaurant_test
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -73,15 +148,44 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.2"
+          ruby-version: '3.4.4'
           bundler-cache: true
 
-      - name: Print Ruby and Bundler versions
+      - name: Install system dependencies (PostgreSQL client and headers)
         run: |
-          ruby -v
-          bundle -v
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client libpq-dev
 
-      - name: Run RuboCop
+      - name: Wait for Postgres
         run: |
-          bundle exec rubocop -f github || bundle exec rubocop
+          for i in {1..30}; do
+            pg_isready -h "$DB_HOST" -p "$DB_PORT" -U "$DB_USER" && break
+            echo "Postgres is not ready yet... ($i)" && sleep 1
+          done
+          psql -h "$DB_HOST" -p "$DB_PORT" -U "$DB_USER" -c "SELECT 1" || exit 1
+        env:
+          PGPASSWORD: ${{ env.DB_PASSWORD }}
 
+      - name: Prepare database
+        run: bin/rails db:prepare
+
+      - name: Generate Swagger (YAML)
+        run: bundle exec rake rswag:specs:swaggerize
+
+      - name: Generate Swagger JSON
+        run: |
+          mkdir -p public/api-docs/v1
+          ruby -ryaml -rjson -e 'puts JSON.pretty_generate(YAML.load_file(%q{swagger/v1/swagger.yaml}))' > public/api-docs/v1/swagger.json
+
+      - name: Upload Swagger YAML
+        uses: actions/upload-artifact@v4
+        with:
+          name: swagger-yaml
+          path: swagger/v1/swagger.yaml
+
+      - name: Upload Swagger JSON
+        uses: actions/upload-artifact@v4
+        with:
+          name: swagger-json
+          path: public/api-docs/v1/swagger.json
+          if-no-files-found: error
