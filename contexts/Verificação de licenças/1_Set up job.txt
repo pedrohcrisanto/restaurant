@@ -1,29 +1,29 @@
-﻿2025-10-29T20:54:54.5146446Z Current runner version: '2.328.0'
-2025-10-29T20:54:54.5171136Z ##[group]Runner Image Provisioner
-2025-10-29T20:54:54.5171998Z Hosted Compute Agent
-2025-10-29T20:54:54.5172668Z Version: 20250912.392
-2025-10-29T20:54:54.5173330Z Commit: d921fda672a98b64f4f82364647e2f10b2267d0b
-2025-10-29T20:54:54.5174017Z Build Date: 2025-09-12T15:23:14Z
-2025-10-29T20:54:54.5174683Z ##[endgroup]
-2025-10-29T20:54:54.5175200Z ##[group]Operating System
-2025-10-29T20:54:54.5175834Z Ubuntu
-2025-10-29T20:54:54.5176275Z 24.04.3
-2025-10-29T20:54:54.5176805Z LTS
-2025-10-29T20:54:54.5177242Z ##[endgroup]
-2025-10-29T20:54:54.5178047Z ##[group]Runner Image
-2025-10-29T20:54:54.5178738Z Image: ubuntu-24.04
-2025-10-29T20:54:54.5179234Z Version: 20250929.60.1
-2025-10-29T20:54:54.5180264Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250929.60/images/ubuntu/Ubuntu2404-Readme.md
-2025-10-29T20:54:54.5181689Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250929.60
-2025-10-29T20:54:54.5182817Z ##[endgroup]
-2025-10-29T20:54:54.5183923Z ##[group]GITHUB_TOKEN Permissions
-2025-10-29T20:54:54.5186026Z Contents: read
-2025-10-29T20:54:54.5186694Z Metadata: read
-2025-10-29T20:54:54.5187178Z ##[endgroup]
-2025-10-29T20:54:54.5189521Z Secret source: Actions
-2025-10-29T20:54:54.5190311Z Prepare workflow directory
-2025-10-29T20:54:54.5512021Z Prepare all required actions
-2025-10-29T20:54:54.5568630Z Getting action download info
-2025-10-29T20:54:55.0344524Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
-2025-10-29T20:54:55.2001606Z Download action repository 'ruby/setup-ruby@v1' (SHA:d5126b9b3579e429dd52e51e68624dda2e05be25)
-2025-10-29T20:54:55.9739035Z Complete job name: Verificação de licenças
+﻿2025-10-29T21:33:13.1975233Z Current runner version: '2.328.0'
+2025-10-29T21:33:13.1999278Z ##[group]Runner Image Provisioner
+2025-10-29T21:33:13.2000105Z Hosted Compute Agent
+2025-10-29T21:33:13.2000661Z Version: 20250912.392
+2025-10-29T21:33:13.2001296Z Commit: d921fda672a98b64f4f82364647e2f10b2267d0b
+2025-10-29T21:33:13.2002020Z Build Date: 2025-09-12T15:23:14Z
+2025-10-29T21:33:13.2002622Z ##[endgroup]
+2025-10-29T21:33:13.2003189Z ##[group]Operating System
+2025-10-29T21:33:13.2003775Z Ubuntu
+2025-10-29T21:33:13.2004223Z 24.04.3
+2025-10-29T21:33:13.2004731Z LTS
+2025-10-29T21:33:13.2005183Z ##[endgroup]
+2025-10-29T21:33:13.2005679Z ##[group]Runner Image
+2025-10-29T21:33:13.2006292Z Image: ubuntu-24.04
+2025-10-29T21:33:13.2006794Z Version: 20250929.60.1
+2025-10-29T21:33:13.2007813Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250929.60/images/ubuntu/Ubuntu2404-Readme.md
+2025-10-29T21:33:13.2009295Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250929.60
+2025-10-29T21:33:13.2010537Z ##[endgroup]
+2025-10-29T21:33:13.2011632Z ##[group]GITHUB_TOKEN Permissions
+2025-10-29T21:33:13.2013426Z Contents: read
+2025-10-29T21:33:13.2013996Z Metadata: read
+2025-10-29T21:33:13.2014773Z ##[endgroup]
+2025-10-29T21:33:13.2016944Z Secret source: Actions
+2025-10-29T21:33:13.2017659Z Prepare workflow directory
+2025-10-29T21:33:13.2332194Z Prepare all required actions
+2025-10-29T21:33:13.2369815Z Getting action download info
+2025-10-29T21:33:13.7101408Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+2025-10-29T21:33:13.9071697Z Download action repository 'ruby/setup-ruby@v1' (SHA:d5126b9b3579e429dd52e51e68624dda2e05be25)
+2025-10-29T21:33:14.5803096Z Complete job name: Verificação de licenças

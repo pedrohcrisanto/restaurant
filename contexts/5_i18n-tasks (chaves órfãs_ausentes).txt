@@ -1,0 +1,127 @@
+﻿2025-10-29T21:33:13.2702484Z Current runner version: '2.328.0'
+2025-10-29T21:33:13.2726093Z ##[group]Runner Image Provisioner
+2025-10-29T21:33:13.2727096Z Hosted Compute Agent
+2025-10-29T21:33:13.2727687Z Version: 20250912.392
+2025-10-29T21:33:13.2728314Z Commit: d921fda672a98b64f4f82364647e2f10b2267d0b
+2025-10-29T21:33:13.2728998Z Build Date: 2025-09-12T15:23:14Z
+2025-10-29T21:33:13.2729600Z ##[endgroup]
+2025-10-29T21:33:13.2730189Z ##[group]Operating System
+2025-10-29T21:33:13.2730718Z Ubuntu
+2025-10-29T21:33:13.2731234Z 24.04.3
+2025-10-29T21:33:13.2731698Z LTS
+2025-10-29T21:33:13.2732166Z ##[endgroup]
+2025-10-29T21:33:13.2732811Z ##[group]Runner Image
+2025-10-29T21:33:13.2733481Z Image: ubuntu-24.04
+2025-10-29T21:33:13.2733995Z Version: 20250929.60.1
+2025-10-29T21:33:13.2734955Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250929.60/images/ubuntu/Ubuntu2404-Readme.md
+2025-10-29T21:33:13.2736747Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250929.60
+2025-10-29T21:33:13.2737851Z ##[endgroup]
+2025-10-29T21:33:13.2738885Z ##[group]GITHUB_TOKEN Permissions
+2025-10-29T21:33:13.2740984Z Contents: read
+2025-10-29T21:33:13.2741595Z Metadata: read
+2025-10-29T21:33:13.2742098Z ##[endgroup]
+2025-10-29T21:33:13.2744072Z Secret source: Actions
+2025-10-29T21:33:13.2744857Z Prepare workflow directory
+2025-10-29T21:33:13.3061423Z Prepare all required actions
+2025-10-29T21:33:13.3104747Z Getting action download info
+2025-10-29T21:33:13.7474484Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+2025-10-29T21:33:13.9394825Z Download action repository 'ruby/setup-ruby@v1' (SHA:d5126b9b3579e429dd52e51e68624dda2e05be25)
+2025-10-29T21:33:14.5295969Z Complete job name: i18n-tasks (chaves órfãs/ausentes)
+2025-10-29T21:33:14.6058689Z ##[group]Run actions/checkout@v4
+2025-10-29T21:33:14.6059557Z with:
+2025-10-29T21:33:14.6060011Z   repository: pedrohcrisanto/restaurant
+2025-10-29T21:33:14.6060723Z   token: ***
+2025-10-29T21:33:14.6061142Z   ssh-strict: true
+2025-10-29T21:33:14.6061577Z   ssh-user: git
+2025-10-29T21:33:14.6062001Z   persist-credentials: true
+2025-10-29T21:33:14.6062458Z   clean: true
+2025-10-29T21:33:14.6062874Z   sparse-checkout-cone-mode: true
+2025-10-29T21:33:14.6063369Z   fetch-depth: 1
+2025-10-29T21:33:14.6063777Z   fetch-tags: false
+2025-10-29T21:33:14.6064189Z   show-progress: true
+2025-10-29T21:33:14.6064626Z   lfs: false
+2025-10-29T21:33:14.6065021Z   submodules: false
+2025-10-29T21:33:14.6065458Z   set-safe-directory: true
+2025-10-29T21:33:14.6066141Z ##[endgroup]
+2025-10-29T21:33:14.7161380Z Syncing repository: pedrohcrisanto/restaurant
+2025-10-29T21:33:14.7164227Z ##[group]Getting Git version info
+2025-10-29T21:33:14.7165598Z Working directory is '/home/runner/work/restaurant/restaurant'
+2025-10-29T21:33:14.7167642Z [command]/usr/bin/git version
+2025-10-29T21:33:14.7236109Z git version 2.51.0
+2025-10-29T21:33:14.7264614Z ##[endgroup]
+2025-10-29T21:33:14.7280953Z Temporarily overriding HOME='/home/runner/work/_temp/64139467-d093-4c23-8e98-6a385566c7e7' before making global git config changes
+2025-10-29T21:33:14.7283507Z Adding repository directory to the temporary git global config as a safe directory
+2025-10-29T21:33:14.7295541Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/restaurant/restaurant
+2025-10-29T21:33:14.7333107Z Deleting the contents of '/home/runner/work/restaurant/restaurant'
+2025-10-29T21:33:14.7337090Z ##[group]Initializing the repository
+2025-10-29T21:33:14.7341867Z [command]/usr/bin/git init /home/runner/work/restaurant/restaurant
+2025-10-29T21:33:14.7450099Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-10-29T21:33:14.7451646Z hint: is subject to change. To configure the initial branch name to use in all
+2025-10-29T21:33:14.7452593Z hint: of your new repositories, which will suppress this warning, call:
+2025-10-29T21:33:14.7453373Z hint:
+2025-10-29T21:33:14.7453863Z hint: 	git config --global init.defaultBranch <name>
+2025-10-29T21:33:14.7454815Z hint:
+2025-10-29T21:33:14.7455845Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-10-29T21:33:14.7457164Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-10-29T21:33:14.7458501Z hint:
+2025-10-29T21:33:14.7459255Z hint: 	git branch -m <name>
+2025-10-29T21:33:14.7460132Z hint:
+2025-10-29T21:33:14.7461250Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-10-29T21:33:14.7463172Z Initialized empty Git repository in /home/runner/work/restaurant/restaurant/.git/
+2025-10-29T21:33:14.7469869Z [command]/usr/bin/git remote add origin https://github.com/pedrohcrisanto/restaurant
+2025-10-29T21:33:14.7505520Z ##[endgroup]
+2025-10-29T21:33:14.7507008Z ##[group]Disabling automatic garbage collection
+2025-10-29T21:33:14.7510563Z [command]/usr/bin/git config --local gc.auto 0
+2025-10-29T21:33:14.7538400Z ##[endgroup]
+2025-10-29T21:33:14.7539678Z ##[group]Setting up auth
+2025-10-29T21:33:14.7545739Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-10-29T21:33:14.7576304Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-10-29T21:33:14.7913354Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-10-29T21:33:14.7942709Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-10-29T21:33:14.8159423Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-10-29T21:33:14.8193195Z ##[endgroup]
+2025-10-29T21:33:14.8194084Z ##[group]Fetching the repository
+2025-10-29T21:33:14.8209976Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +b28b15214fb4196f4dfd93b5a04a5b0a7f7b8826:refs/remotes/origin/main
+2025-10-29T21:33:15.3537218Z From https://github.com/pedrohcrisanto/restaurant
+2025-10-29T21:33:15.3538894Z  * [new ref]         b28b15214fb4196f4dfd93b5a04a5b0a7f7b8826 -> origin/main
+2025-10-29T21:33:15.3573920Z ##[endgroup]
+2025-10-29T21:33:15.3575628Z ##[group]Determining the checkout info
+2025-10-29T21:33:15.3577739Z ##[endgroup]
+2025-10-29T21:33:15.3581748Z [command]/usr/bin/git sparse-checkout disable
+2025-10-29T21:33:15.3624460Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-10-29T21:33:15.3653907Z ##[group]Checking out the ref
+2025-10-29T21:33:15.3657065Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-10-29T21:33:15.3862362Z Switched to a new branch 'main'
+2025-10-29T21:33:15.3871307Z branch 'main' set up to track 'origin/main'.
+2025-10-29T21:33:15.3875653Z ##[endgroup]
+2025-10-29T21:33:15.3909379Z [command]/usr/bin/git log -1 --format=%H
+2025-10-29T21:33:15.3931177Z b28b15214fb4196f4dfd93b5a04a5b0a7f7b8826
+2025-10-29T21:33:15.4161435Z ##[group]Run ruby/setup-ruby@v1
+2025-10-29T21:33:15.4162328Z with:
+2025-10-29T21:33:15.4163025Z   ruby-version: +~> 3.3
+2025-10-29T21:33:15.4163791Z   bundler-cache: true
+2025-10-29T21:33:15.4164571Z ##[endgroup]
+2025-10-29T21:33:15.5730910Z ##[error]Error: Unknown engine +~> 3.3 on ubuntu-24.04
+    at validateRubyEngineAndVersion (/home/runner/work/_actions/ruby/setup-ruby/v1/dist/index.js:85403:11)
+    at setupRuby (/home/runner/work/_actions/ruby/setup-ruby/v1/dist/index.js:85317:15)
+    at run (/home/runner/work/_actions/ruby/setup-ruby/v1/dist/index.js:85276:11)
+    at /home/runner/work/_actions/ruby/setup-ruby/v1/dist/index.js:85477:40
+    at /home/runner/work/_actions/ruby/setup-ruby/v1/dist/index.js:85479:3
+    at Object.<anonymous> (/home/runner/work/_actions/ruby/setup-ruby/v1/dist/index.js:85482:12)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+2025-10-29T21:33:15.5880335Z Post job cleanup.
+2025-10-29T21:33:15.6854603Z [command]/usr/bin/git version
+2025-10-29T21:33:15.6907811Z git version 2.51.0
+2025-10-29T21:33:15.6972783Z Temporarily overriding HOME='/home/runner/work/_temp/d8ea1bf8-616a-40b7-a815-5bad3cd75b03' before making global git config changes
+2025-10-29T21:33:15.6974996Z Adding repository directory to the temporary git global config as a safe directory
+2025-10-29T21:33:15.6988782Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/restaurant/restaurant
+2025-10-29T21:33:15.7024350Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-10-29T21:33:15.7058779Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-10-29T21:33:15.7283709Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-10-29T21:33:15.7304029Z http.https://github.com/.extraheader
+2025-10-29T21:33:15.7315769Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-10-29T21:33:15.7345931Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-10-29T21:33:15.7674571Z Cleaning up orphan processes

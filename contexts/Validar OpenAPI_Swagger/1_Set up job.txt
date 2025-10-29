@@ -1,28 +1,28 @@
-﻿2025-10-29T20:54:50.5879138Z Current runner version: '2.328.0'
-2025-10-29T20:54:50.5918204Z ##[group]Runner Image Provisioner
-2025-10-29T20:54:50.5919621Z Hosted Compute Agent
-2025-10-29T20:54:50.5920543Z Version: 20250912.392
-2025-10-29T20:54:50.5921607Z Commit: d921fda672a98b64f4f82364647e2f10b2267d0b
-2025-10-29T20:54:50.5922804Z Build Date: 2025-09-12T15:23:14Z
-2025-10-29T20:54:50.5924136Z ##[endgroup]
-2025-10-29T20:54:50.5924985Z ##[group]Operating System
-2025-10-29T20:54:50.5926088Z Ubuntu
-2025-10-29T20:54:50.5926985Z 24.04.3
-2025-10-29T20:54:50.5927737Z LTS
-2025-10-29T20:54:50.5928606Z ##[endgroup]
-2025-10-29T20:54:50.5929452Z ##[group]Runner Image
-2025-10-29T20:54:50.5930367Z Image: ubuntu-24.04
-2025-10-29T20:54:50.5931222Z Version: 20250929.60.1
-2025-10-29T20:54:50.5933183Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250929.60/images/ubuntu/Ubuntu2404-Readme.md
-2025-10-29T20:54:50.5936494Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250929.60
-2025-10-29T20:54:50.5937936Z ##[endgroup]
-2025-10-29T20:54:50.5938928Z ##[group]GITHUB_TOKEN Permissions
-2025-10-29T20:54:50.5940839Z Contents: read
-2025-10-29T20:54:50.5941394Z Metadata: read
-2025-10-29T20:54:50.5941846Z ##[endgroup]
-2025-10-29T20:54:50.5944421Z Secret source: Actions
-2025-10-29T20:54:50.5945159Z Prepare workflow directory
-2025-10-29T20:54:50.6347742Z Prepare all required actions
-2025-10-29T20:54:50.6405095Z Getting action download info
-2025-10-29T20:54:50.9620624Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
-2025-10-29T20:54:51.2029739Z Complete job name: Validar OpenAPI/Swagger
+﻿2025-10-29T21:33:12.8841598Z Current runner version: '2.328.0'
+2025-10-29T21:33:12.8866121Z ##[group]Runner Image Provisioner
+2025-10-29T21:33:12.8866936Z Hosted Compute Agent
+2025-10-29T21:33:12.8867420Z Version: 20250912.392
+2025-10-29T21:33:12.8867964Z Commit: d921fda672a98b64f4f82364647e2f10b2267d0b
+2025-10-29T21:33:12.8868553Z Build Date: 2025-09-12T15:23:14Z
+2025-10-29T21:33:12.8869097Z ##[endgroup]
+2025-10-29T21:33:12.8869583Z ##[group]Operating System
+2025-10-29T21:33:12.8870086Z Ubuntu
+2025-10-29T21:33:12.8870525Z 24.04.3
+2025-10-29T21:33:12.8870922Z LTS
+2025-10-29T21:33:12.8871319Z ##[endgroup]
+2025-10-29T21:33:12.8871706Z ##[group]Runner Image
+2025-10-29T21:33:12.8872242Z Image: ubuntu-24.04
+2025-10-29T21:33:12.8872663Z Version: 20250929.60.1
+2025-10-29T21:33:12.8873574Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250929.60/images/ubuntu/Ubuntu2404-Readme.md
+2025-10-29T21:33:12.8875050Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250929.60
+2025-10-29T21:33:12.8876123Z ##[endgroup]
+2025-10-29T21:33:12.8877020Z ##[group]GITHUB_TOKEN Permissions
+2025-10-29T21:33:12.8879102Z Contents: read
+2025-10-29T21:33:12.8879654Z Metadata: read
+2025-10-29T21:33:12.8880080Z ##[endgroup]
+2025-10-29T21:33:12.8882143Z Secret source: Actions
+2025-10-29T21:33:12.8882829Z Prepare workflow directory
+2025-10-29T21:33:12.9210982Z Prepare all required actions
+2025-10-29T21:33:12.9251374Z Getting action download info
+2025-10-29T21:33:13.2789083Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+2025-10-29T21:33:13.5126577Z Complete job name: Validar OpenAPI/Swagger

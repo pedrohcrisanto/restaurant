@@ -228,9 +228,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libpq-dev
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "+~> 3.3"
+          ruby-version: "3.3"
           bundler-cache: true
       - run: |
           if bundle exec i18n-tasks health; then

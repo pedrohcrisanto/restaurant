@@ -1,9 +1,9 @@
-﻿2025-10-29T20:54:55.0689615Z ##[group]Run ruby/setup-ruby@v1
-2025-10-29T20:54:55.0690158Z with:
-2025-10-29T20:54:55.0690516Z   ruby-version: +~> 3.3
-2025-10-29T20:54:55.0690937Z   bundler-cache: true
-2025-10-29T20:54:55.0691333Z ##[endgroup]
-2025-10-29T20:54:55.2218566Z ##[error]Error: Unknown engine +~> 3.3 on ubuntu-24.04
+﻿2025-10-29T21:33:15.4161397Z ##[group]Run ruby/setup-ruby@v1
+2025-10-29T21:33:15.4162323Z with:
+2025-10-29T21:33:15.4163021Z   ruby-version: +~> 3.3
+2025-10-29T21:33:15.4163787Z   bundler-cache: true
+2025-10-29T21:33:15.4164566Z ##[endgroup]
+2025-10-29T21:33:15.5730710Z ##[error]Error: Unknown engine +~> 3.3 on ubuntu-24.04
     at validateRubyEngineAndVersion (/home/runner/work/_actions/ruby/setup-ruby/v1/dist/index.js:85403:11)
     at setupRuby (/home/runner/work/_actions/ruby/setup-ruby/v1/dist/index.js:85317:15)
     at run (/home/runner/work/_actions/ruby/setup-ruby/v1/dist/index.js:85276:11)
