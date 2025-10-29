@@ -1,127 +1,162 @@
-﻿2025-10-29T21:33:13.2702484Z Current runner version: '2.328.0'
-2025-10-29T21:33:13.2726093Z ##[group]Runner Image Provisioner
-2025-10-29T21:33:13.2727096Z Hosted Compute Agent
-2025-10-29T21:33:13.2727687Z Version: 20250912.392
-2025-10-29T21:33:13.2728314Z Commit: d921fda672a98b64f4f82364647e2f10b2267d0b
-2025-10-29T21:33:13.2728998Z Build Date: 2025-09-12T15:23:14Z
-2025-10-29T21:33:13.2729600Z ##[endgroup]
-2025-10-29T21:33:13.2730189Z ##[group]Operating System
-2025-10-29T21:33:13.2730718Z Ubuntu
-2025-10-29T21:33:13.2731234Z 24.04.3
-2025-10-29T21:33:13.2731698Z LTS
-2025-10-29T21:33:13.2732166Z ##[endgroup]
-2025-10-29T21:33:13.2732811Z ##[group]Runner Image
-2025-10-29T21:33:13.2733481Z Image: ubuntu-24.04
-2025-10-29T21:33:13.2733995Z Version: 20250929.60.1
-2025-10-29T21:33:13.2734955Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250929.60/images/ubuntu/Ubuntu2404-Readme.md
-2025-10-29T21:33:13.2736747Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250929.60
-2025-10-29T21:33:13.2737851Z ##[endgroup]
-2025-10-29T21:33:13.2738885Z ##[group]GITHUB_TOKEN Permissions
-2025-10-29T21:33:13.2740984Z Contents: read
-2025-10-29T21:33:13.2741595Z Metadata: read
-2025-10-29T21:33:13.2742098Z ##[endgroup]
-2025-10-29T21:33:13.2744072Z Secret source: Actions
-2025-10-29T21:33:13.2744857Z Prepare workflow directory
-2025-10-29T21:33:13.3061423Z Prepare all required actions
-2025-10-29T21:33:13.3104747Z Getting action download info
-2025-10-29T21:33:13.7474484Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
-2025-10-29T21:33:13.9394825Z Download action repository 'ruby/setup-ruby@v1' (SHA:d5126b9b3579e429dd52e51e68624dda2e05be25)
-2025-10-29T21:33:14.5295969Z Complete job name: i18n-tasks (chaves órfãs/ausentes)
-2025-10-29T21:33:14.6058689Z ##[group]Run actions/checkout@v4
-2025-10-29T21:33:14.6059557Z with:
-2025-10-29T21:33:14.6060011Z   repository: pedrohcrisanto/restaurant
-2025-10-29T21:33:14.6060723Z   token: ***
-2025-10-29T21:33:14.6061142Z   ssh-strict: true
-2025-10-29T21:33:14.6061577Z   ssh-user: git
-2025-10-29T21:33:14.6062001Z   persist-credentials: true
-2025-10-29T21:33:14.6062458Z   clean: true
-2025-10-29T21:33:14.6062874Z   sparse-checkout-cone-mode: true
-2025-10-29T21:33:14.6063369Z   fetch-depth: 1
-2025-10-29T21:33:14.6063777Z   fetch-tags: false
-2025-10-29T21:33:14.6064189Z   show-progress: true
-2025-10-29T21:33:14.6064626Z   lfs: false
-2025-10-29T21:33:14.6065021Z   submodules: false
-2025-10-29T21:33:14.6065458Z   set-safe-directory: true
-2025-10-29T21:33:14.6066141Z ##[endgroup]
-2025-10-29T21:33:14.7161380Z Syncing repository: pedrohcrisanto/restaurant
-2025-10-29T21:33:14.7164227Z ##[group]Getting Git version info
-2025-10-29T21:33:14.7165598Z Working directory is '/home/runner/work/restaurant/restaurant'
-2025-10-29T21:33:14.7167642Z [command]/usr/bin/git version
-2025-10-29T21:33:14.7236109Z git version 2.51.0
-2025-10-29T21:33:14.7264614Z ##[endgroup]
-2025-10-29T21:33:14.7280953Z Temporarily overriding HOME='/home/runner/work/_temp/64139467-d093-4c23-8e98-6a385566c7e7' before making global git config changes
-2025-10-29T21:33:14.7283507Z Adding repository directory to the temporary git global config as a safe directory
-2025-10-29T21:33:14.7295541Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/restaurant/restaurant
-2025-10-29T21:33:14.7333107Z Deleting the contents of '/home/runner/work/restaurant/restaurant'
-2025-10-29T21:33:14.7337090Z ##[group]Initializing the repository
-2025-10-29T21:33:14.7341867Z [command]/usr/bin/git init /home/runner/work/restaurant/restaurant
-2025-10-29T21:33:14.7450099Z hint: Using 'master' as the name for the initial branch. This default branch name
-2025-10-29T21:33:14.7451646Z hint: is subject to change. To configure the initial branch name to use in all
-2025-10-29T21:33:14.7452593Z hint: of your new repositories, which will suppress this warning, call:
-2025-10-29T21:33:14.7453373Z hint:
-2025-10-29T21:33:14.7453863Z hint: 	git config --global init.defaultBranch <name>
-2025-10-29T21:33:14.7454815Z hint:
-2025-10-29T21:33:14.7455845Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
-2025-10-29T21:33:14.7457164Z hint: 'development'. The just-created branch can be renamed via this command:
-2025-10-29T21:33:14.7458501Z hint:
-2025-10-29T21:33:14.7459255Z hint: 	git branch -m <name>
-2025-10-29T21:33:14.7460132Z hint:
-2025-10-29T21:33:14.7461250Z hint: Disable this message with "git config set advice.defaultBranchName false"
-2025-10-29T21:33:14.7463172Z Initialized empty Git repository in /home/runner/work/restaurant/restaurant/.git/
-2025-10-29T21:33:14.7469869Z [command]/usr/bin/git remote add origin https://github.com/pedrohcrisanto/restaurant
-2025-10-29T21:33:14.7505520Z ##[endgroup]
-2025-10-29T21:33:14.7507008Z ##[group]Disabling automatic garbage collection
-2025-10-29T21:33:14.7510563Z [command]/usr/bin/git config --local gc.auto 0
-2025-10-29T21:33:14.7538400Z ##[endgroup]
-2025-10-29T21:33:14.7539678Z ##[group]Setting up auth
-2025-10-29T21:33:14.7545739Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-2025-10-29T21:33:14.7576304Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-2025-10-29T21:33:14.7913354Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-2025-10-29T21:33:14.7942709Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-2025-10-29T21:33:14.8159423Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
-2025-10-29T21:33:14.8193195Z ##[endgroup]
-2025-10-29T21:33:14.8194084Z ##[group]Fetching the repository
-2025-10-29T21:33:14.8209976Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +b28b15214fb4196f4dfd93b5a04a5b0a7f7b8826:refs/remotes/origin/main
-2025-10-29T21:33:15.3537218Z From https://github.com/pedrohcrisanto/restaurant
-2025-10-29T21:33:15.3538894Z  * [new ref]         b28b15214fb4196f4dfd93b5a04a5b0a7f7b8826 -> origin/main
-2025-10-29T21:33:15.3573920Z ##[endgroup]
-2025-10-29T21:33:15.3575628Z ##[group]Determining the checkout info
-2025-10-29T21:33:15.3577739Z ##[endgroup]
-2025-10-29T21:33:15.3581748Z [command]/usr/bin/git sparse-checkout disable
-2025-10-29T21:33:15.3624460Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
-2025-10-29T21:33:15.3653907Z ##[group]Checking out the ref
-2025-10-29T21:33:15.3657065Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
-2025-10-29T21:33:15.3862362Z Switched to a new branch 'main'
-2025-10-29T21:33:15.3871307Z branch 'main' set up to track 'origin/main'.
-2025-10-29T21:33:15.3875653Z ##[endgroup]
-2025-10-29T21:33:15.3909379Z [command]/usr/bin/git log -1 --format=%H
-2025-10-29T21:33:15.3931177Z b28b15214fb4196f4dfd93b5a04a5b0a7f7b8826
-2025-10-29T21:33:15.4161435Z ##[group]Run ruby/setup-ruby@v1
-2025-10-29T21:33:15.4162328Z with:
-2025-10-29T21:33:15.4163025Z   ruby-version: +~> 3.3
-2025-10-29T21:33:15.4163791Z   bundler-cache: true
-2025-10-29T21:33:15.4164571Z ##[endgroup]
-2025-10-29T21:33:15.5730910Z ##[error]Error: Unknown engine +~> 3.3 on ubuntu-24.04
-    at validateRubyEngineAndVersion (/home/runner/work/_actions/ruby/setup-ruby/v1/dist/index.js:85403:11)
-    at setupRuby (/home/runner/work/_actions/ruby/setup-ruby/v1/dist/index.js:85317:15)
-    at run (/home/runner/work/_actions/ruby/setup-ruby/v1/dist/index.js:85276:11)
-    at /home/runner/work/_actions/ruby/setup-ruby/v1/dist/index.js:85477:40
-    at /home/runner/work/_actions/ruby/setup-ruby/v1/dist/index.js:85479:3
-    at Object.<anonymous> (/home/runner/work/_actions/ruby/setup-ruby/v1/dist/index.js:85482:12)
-    at Module._compile (node:internal/modules/cjs/loader:1529:14)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
-    at Module.load (node:internal/modules/cjs/loader:1275:32)
-    at Module._load (node:internal/modules/cjs/loader:1096:12)
-2025-10-29T21:33:15.5880335Z Post job cleanup.
-2025-10-29T21:33:15.6854603Z [command]/usr/bin/git version
-2025-10-29T21:33:15.6907811Z git version 2.51.0
-2025-10-29T21:33:15.6972783Z Temporarily overriding HOME='/home/runner/work/_temp/d8ea1bf8-616a-40b7-a815-5bad3cd75b03' before making global git config changes
-2025-10-29T21:33:15.6974996Z Adding repository directory to the temporary git global config as a safe directory
-2025-10-29T21:33:15.6988782Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/restaurant/restaurant
-2025-10-29T21:33:15.7024350Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-2025-10-29T21:33:15.7058779Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-2025-10-29T21:33:15.7283709Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-2025-10-29T21:33:15.7304029Z http.https://github.com/.extraheader
-2025-10-29T21:33:15.7315769Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
-2025-10-29T21:33:15.7345931Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-2025-10-29T21:33:15.7674571Z Cleaning up orphan processes
+﻿2025-10-29T21:47:46.1701457Z Current runner version: '2.328.0'
+2025-10-29T21:47:46.1732224Z ##[group]Runner Image Provisioner
+2025-10-29T21:47:46.1732983Z Hosted Compute Agent
+2025-10-29T21:47:46.1733595Z Version: 20250912.392
+2025-10-29T21:47:46.1734190Z Commit: d921fda672a98b64f4f82364647e2f10b2267d0b
+2025-10-29T21:47:46.1734852Z Build Date: 2025-09-12T15:23:14Z
+2025-10-29T21:47:46.1735508Z ##[endgroup]
+2025-10-29T21:47:46.1736031Z ##[group]Operating System
+2025-10-29T21:47:46.1736599Z Ubuntu
+2025-10-29T21:47:46.1737125Z 24.04.3
+2025-10-29T21:47:46.1737569Z LTS
+2025-10-29T21:47:46.1738102Z ##[endgroup]
+2025-10-29T21:47:46.1738587Z ##[group]Runner Image
+2025-10-29T21:47:46.1739170Z Image: ubuntu-24.04
+2025-10-29T21:47:46.1739644Z Version: 20250929.60.1
+2025-10-29T21:47:46.1740720Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250929.60/images/ubuntu/Ubuntu2404-Readme.md
+2025-10-29T21:47:46.1742530Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250929.60
+2025-10-29T21:47:46.1743627Z ##[endgroup]
+2025-10-29T21:47:46.1744596Z ##[group]GITHUB_TOKEN Permissions
+2025-10-29T21:47:46.1746570Z Contents: read
+2025-10-29T21:47:46.1747228Z Metadata: read
+2025-10-29T21:47:46.1747685Z ##[endgroup]
+2025-10-29T21:47:46.1749880Z Secret source: Actions
+2025-10-29T21:47:46.1750955Z Prepare workflow directory
+2025-10-29T21:47:46.2095362Z Prepare all required actions
+2025-10-29T21:47:46.2132427Z Getting action download info
+2025-10-29T21:47:46.5424654Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+2025-10-29T21:47:46.6717746Z Download action repository 'ruby/setup-ruby@v1' (SHA:d5126b9b3579e429dd52e51e68624dda2e05be25)
+2025-10-29T21:47:47.2444948Z Complete job name: i18n-tasks (chaves órfãs/ausentes)
+2025-10-29T21:47:47.3192172Z ##[group]Run actions/checkout@v4
+2025-10-29T21:47:47.3193339Z with:
+2025-10-29T21:47:47.3193957Z   repository: pedrohcrisanto/restaurant
+2025-10-29T21:47:47.3194944Z   token: ***
+2025-10-29T21:47:47.3195518Z   ssh-strict: true
+2025-10-29T21:47:47.3196258Z   ssh-user: git
+2025-10-29T21:47:47.3196942Z   persist-credentials: true
+2025-10-29T21:47:47.3197617Z   clean: true
+2025-10-29T21:47:47.3198233Z   sparse-checkout-cone-mode: true
+2025-10-29T21:47:47.3198969Z   fetch-depth: 1
+2025-10-29T21:47:47.3199551Z   fetch-tags: false
+2025-10-29T21:47:47.3200327Z   show-progress: true
+2025-10-29T21:47:47.3200942Z   lfs: false
+2025-10-29T21:47:47.3201791Z   submodules: false
+2025-10-29T21:47:47.3202417Z   set-safe-directory: true
+2025-10-29T21:47:47.3203608Z ##[endgroup]
+2025-10-29T21:47:47.4244472Z Syncing repository: pedrohcrisanto/restaurant
+2025-10-29T21:47:47.4246292Z ##[group]Getting Git version info
+2025-10-29T21:47:47.4247078Z Working directory is '/home/runner/work/restaurant/restaurant'
+2025-10-29T21:47:47.4248043Z [command]/usr/bin/git version
+2025-10-29T21:47:47.4341510Z git version 2.51.0
+2025-10-29T21:47:47.4367104Z ##[endgroup]
+2025-10-29T21:47:47.4380450Z Temporarily overriding HOME='/home/runner/work/_temp/c6744734-3427-492a-89e4-cf1766909715' before making global git config changes
+2025-10-29T21:47:47.4382085Z Adding repository directory to the temporary git global config as a safe directory
+2025-10-29T21:47:47.4392435Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/restaurant/restaurant
+2025-10-29T21:47:47.4426680Z Deleting the contents of '/home/runner/work/restaurant/restaurant'
+2025-10-29T21:47:47.4430098Z ##[group]Initializing the repository
+2025-10-29T21:47:47.4434168Z [command]/usr/bin/git init /home/runner/work/restaurant/restaurant
+2025-10-29T21:47:47.4590255Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-10-29T21:47:47.4591950Z hint: is subject to change. To configure the initial branch name to use in all
+2025-10-29T21:47:47.4593218Z hint: of your new repositories, which will suppress this warning, call:
+2025-10-29T21:47:47.4594405Z hint:
+2025-10-29T21:47:47.4595019Z hint: 	git config --global init.defaultBranch <name>
+2025-10-29T21:47:47.4596283Z hint:
+2025-10-29T21:47:47.4597304Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-10-29T21:47:47.4598907Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-10-29T21:47:47.4600198Z hint:
+2025-10-29T21:47:47.4600906Z hint: 	git branch -m <name>
+2025-10-29T21:47:47.4601941Z hint:
+2025-10-29T21:47:47.4602930Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-10-29T21:47:47.4604588Z Initialized empty Git repository in /home/runner/work/restaurant/restaurant/.git/
+2025-10-29T21:47:47.4608231Z [command]/usr/bin/git remote add origin https://github.com/pedrohcrisanto/restaurant
+2025-10-29T21:47:47.4645320Z ##[endgroup]
+2025-10-29T21:47:47.4646534Z ##[group]Disabling automatic garbage collection
+2025-10-29T21:47:47.4650194Z [command]/usr/bin/git config --local gc.auto 0
+2025-10-29T21:47:47.4678654Z ##[endgroup]
+2025-10-29T21:47:47.4679853Z ##[group]Setting up auth
+2025-10-29T21:47:47.4686195Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-10-29T21:47:47.4717020Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-10-29T21:47:47.5058278Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-10-29T21:47:47.5087673Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-10-29T21:47:47.5305233Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-10-29T21:47:47.5345411Z ##[endgroup]
+2025-10-29T21:47:47.5346632Z ##[group]Fetching the repository
+2025-10-29T21:47:47.5355642Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +1298146e85276d21dba56045b0e5f06988887dcd:refs/remotes/origin/main
+2025-10-29T21:47:47.8882100Z From https://github.com/pedrohcrisanto/restaurant
+2025-10-29T21:47:47.8884988Z  * [new ref]         1298146e85276d21dba56045b0e5f06988887dcd -> origin/main
+2025-10-29T21:47:47.8913986Z ##[endgroup]
+2025-10-29T21:47:47.8915207Z ##[group]Determining the checkout info
+2025-10-29T21:47:47.8916968Z ##[endgroup]
+2025-10-29T21:47:47.8920389Z [command]/usr/bin/git sparse-checkout disable
+2025-10-29T21:47:47.8960582Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-10-29T21:47:47.8988013Z ##[group]Checking out the ref
+2025-10-29T21:47:47.8992710Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-10-29T21:47:47.9210256Z Switched to a new branch 'main'
+2025-10-29T21:47:47.9212935Z branch 'main' set up to track 'origin/main'.
+2025-10-29T21:47:47.9220875Z ##[endgroup]
+2025-10-29T21:47:47.9252543Z [command]/usr/bin/git log -1 --format=%H
+2025-10-29T21:47:47.9273608Z 1298146e85276d21dba56045b0e5f06988887dcd
+2025-10-29T21:47:47.9486956Z ##[group]Run sudo apt-get update
+2025-10-29T21:47:47.9488171Z [36;1msudo apt-get update[0m
+2025-10-29T21:47:47.9489293Z [36;1msudo apt-get install -y libpq-dev[0m
+2025-10-29T21:47:47.9526779Z shell: /usr/bin/bash -e {0}
+2025-10-29T21:47:47.9527778Z ##[endgroup]
+2025-10-29T21:47:48.0969694Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2025-10-29T21:47:48.1633884Z Ign:6 https://packages.microsoft.com/repos/azure-cli noble InRelease
+2025-10-29T21:47:48.2420796Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2025-10-29T21:47:48.2433077Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2025-10-29T21:47:48.2466717Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2025-10-29T21:47:48.2469806Z Ign:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease
+2025-10-29T21:47:48.2502476Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2025-10-29T21:47:48.4135524Z Get:8 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1545 kB]
+2025-10-29T21:47:48.4393168Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [294 kB]
+2025-10-29T21:47:48.4421695Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [175 kB]
+2025-10-29T21:47:48.4440384Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 c-n-f Metadata [15.4 kB]
+2025-10-29T21:47:48.4454522Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1498 kB]
+2025-10-29T21:47:48.4542841Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [303 kB]
+2025-10-29T21:47:48.4576448Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [378 kB]
+2025-10-29T21:47:48.4604588Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 c-n-f Metadata [31.4 kB]
+2025-10-29T21:47:48.4614810Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [2175 kB]
+2025-10-29T21:47:48.4719671Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [490 kB]
+2025-10-29T21:47:48.5230498Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
+2025-10-29T21:47:48.5232306Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 c-n-f Metadata [516 B]
+2025-10-29T21:47:48.5233534Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [30.3 kB]
+2025-10-29T21:47:48.5235010Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [5564 B]
+2025-10-29T21:47:48.5238650Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+2025-10-29T21:47:48.5247513Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 c-n-f Metadata [484 B]
+2025-10-29T21:47:48.5255048Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7148 B]
+2025-10-29T21:47:48.5263841Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [11.0 kB]
+2025-10-29T21:47:48.5272604Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [216 B]
+2025-10-29T21:47:48.5280569Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
+2025-10-29T21:47:48.5291382Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1270 kB]
+2025-10-29T21:47:48.5350319Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [211 kB]
+2025-10-29T21:47:48.5383340Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [21.5 kB]
+2025-10-29T21:47:48.5393420Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 c-n-f Metadata [9008 B]
+2025-10-29T21:47:48.5872986Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [905 kB]
+2025-10-29T21:47:48.5920160Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [203 kB]
+2025-10-29T21:47:48.5936667Z Get:34 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [52.2 kB]
+2025-10-29T21:47:48.5948224Z Get:35 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 c-n-f Metadata [19.4 kB]
+2025-10-29T21:47:48.5960084Z Get:36 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2080 kB]
+2025-10-29T21:47:48.6063028Z Get:37 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [470 kB]
+2025-10-29T21:47:48.6114585Z Get:38 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Components [208 B]
+2025-10-29T21:47:48.6124478Z Get:39 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 c-n-f Metadata [500 B]
+2025-10-29T21:47:48.6134562Z Get:40 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [27.4 kB]
+2025-10-29T21:47:48.6144570Z Get:41 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse Translation-en [5708 B]
+2025-10-29T21:47:48.6154294Z Get:42 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
+2025-10-29T21:47:48.6163774Z Get:43 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 c-n-f Metadata [384 B]
+2025-10-29T21:47:49.2395053Z Ign:6 https://packages.microsoft.com/repos/azure-cli noble InRelease
+2025-10-29T21:47:49.4449147Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2025-10-29T22:03:19.6580606Z ##[error]The operation was canceled.
+2025-10-29T22:03:19.6723943Z Post job cleanup.
+2025-10-29T22:03:19.7640880Z [command]/usr/bin/git version
+2025-10-29T22:03:19.7641785Z git version 2.51.0
+2025-10-29T22:03:19.7668478Z Temporarily overriding HOME='/home/runner/work/_temp/f91e8e48-f788-4221-ad2c-17352aad907d' before making global git config changes
+2025-10-29T22:03:19.7669911Z Adding repository directory to the temporary git global config as a safe directory
+2025-10-29T22:03:19.7674223Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/restaurant/restaurant
+2025-10-29T22:03:19.7705971Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-10-29T22:03:19.7734513Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-10-29T22:03:19.7944403Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-10-29T22:03:19.7961478Z http.https://github.com/.extraheader
+2025-10-29T22:03:19.7972251Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-10-29T22:03:19.7999055Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-10-29T22:03:19.9455698Z Cleaning up orphan processes
