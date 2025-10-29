@@ -3,62 +3,59 @@
 module Api
   module V1
     class RestaurantsController < BaseController
-
       def index
-        result = Restaurants::List.call(repo: restaurants_repo)
-        relation = result[:relation]
-        records = paginate(relation)
-        render json: RestaurantBlueprint.render_as_hash(records)
+        result = Restaurants::List.call(repo: repository)
+        render_success(paginate(result[:relation]), RestaurantBlueprint)
       end
 
       def show
-        result = Restaurants::Find.call(repo: restaurants_repo, id: params[:id])
-        return render_error(I18n.t('errors.restaurants.not_found'), status: :not_found) if result.failure?
+        result = find_restaurant
+        return render_not_found("errors.restaurants.not_found") if result.failure?
 
-        render json: RestaurantBlueprint.render_as_hash(result[:restaurant])
+        render_success(result[:restaurant], RestaurantBlueprint)
       end
 
       def create
-        result = Restaurants::Create.call(repo: restaurants_repo, params: restaurant_params)
-        if result.success?
-          render json: RestaurantBlueprint.render_as_hash(result[:restaurant]), status: :created
-        else
-          render_error(I18n.t('errors.validation_failed'), status: :unprocessable_entity, details: result[:error])
-        end
+        result = Restaurants::Create.call(repo: repository, params: restaurant_params)
+        return render_created(result[:restaurant], RestaurantBlueprint) if result.success?
+
+        render_validation_error(result[:error])
       end
 
       def update
-        find = Restaurants::Find.call(repo: restaurants_repo, id: params[:id])
-        return render_error(I18n.t('errors.restaurants.not_found'), status: :not_found) if find.failure?
-
-        result = Restaurants::Update.call(repo: restaurants_repo, restaurant: find[:restaurant], params: restaurant_params)
-        if result.success?
-          render json: RestaurantBlueprint.render_as_hash(result[:restaurant])
-        else
-          render_error(I18n.t('errors.validation_failed'), status: :unprocessable_entity, details: result[:error])
-        end
+        execute_update(
+          find_restaurant,
+          Restaurants::Update,
+          :restaurant,
+          RestaurantBlueprint,
+          "errors.restaurants.not_found",
+          repo: repository,
+          params: restaurant_params
+        )
       end
 
       def destroy
-        find = Restaurants::Find.call(repo: restaurants_repo, id: params[:id])
-        return render_error(I18n.t('errors.restaurants.not_found'), status: :not_found) if find.failure?
-
-        Restaurants::Destroy.call(repo: restaurants_repo, restaurant: find[:restaurant])
-        head :no_content
+        execute_destroy(
+          find_restaurant,
+          Restaurants::Destroy,
+          :restaurant,
+          "errors.restaurants.not_found",
+          repo: repository
+        )
       end
 
       private
 
-      def restaurant_params
-        if params.key?(:restaurant) || params.key?("restaurant")
-          params.require(:restaurant).permit(:name)
-        else
-          params.permit(:name)
-        end
+      def find_restaurant
+        Restaurants::Find.call(repo: repository, id: params[:id])
       end
 
-      def restaurants_repo
-        @restaurants_repo ||= Repositories::ActiveRecord::RestaurantsRepository.new
+      def repository
+        @repository ||= repository_for(:restaurant)
+      end
+
+      def restaurant_params
+        params.fetch(:restaurant, params).permit(:name)
       end
     end
   end

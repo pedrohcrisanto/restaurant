@@ -2,14 +2,24 @@
 
 module Menus
   class Destroy < Micro::Case
+    include UseCaseHelpers
+
     attributes :menu, :repo
 
     def call!
-      return Failure(:not_found, result: { error: I18n.t('errors.menus.not_found') }) if menu.nil?
+      # Guard clause: validate menu presence
+      return failure_not_found(:menu) unless menu
 
-      repo ? repo.destroy(menu) : menu.destroy
+      destroy_menu
       Success result: { destroyed: true }
+    rescue StandardError => e
+      handle_error(e, "menus.destroy", menu_id: menu&.id)
+    end
+
+    private
+
+    def destroy_menu
+      destroy_with_repo(repo, menu)
     end
   end
 end
-

@@ -1,95 +1,185 @@
 # frozen_string_literal: true
 
-require 'swagger_helper'
+require "swagger_helper"
 
-RSpec.describe 'API V1 Menus', type: :request do
-  let!(:restaurant) { create(:restaurant) }
+RSpec.describe "Api::V1::Menus", type: :request do
+  let(:json) { JSON.parse(response.body) }
+  let(:restaurant) { create(:restaurant) }
 
-  path '/api/v1/restaurants/{restaurant_id}/menus' do
-    parameter name: :restaurant_id, in: :path, type: :string
+  path "/api/v1/restaurants/{restaurant_id}/menus" do
+    parameter name: :restaurant_id, in: :path, type: :integer, description: "Restaurant ID"
 
-    get 'List menus for restaurant' do
-      tags 'Menus'
-      produces 'application/json'
+    get "List menus for a restaurant" do
+      tags "Menus"
+      produces "application/json"
 
-      response '200', 'ok' do
+      response "200", "menus found" do
         let(:restaurant_id) { restaurant.id }
-        before { create_list(:menu, 2, restaurant:) }
-
-        # Pagination headers (when Pagy is available)
-        header 'Current-Page', schema: { type: :integer }
-        header 'Page-Items',   schema: { type: :integer }
-        header 'Total-Count',  schema: { type: :integer }
-        header 'Total-Pages',  schema: { type: :integer }
+        let!(:menus) { create_list(:menu, 2, restaurant: restaurant) }
 
         run_test! do |response|
-          json = JSON.parse(response.body)
-          expect(json).to be_a(Array)
-          expect(json.size).to be >= 2
+          expect(json["data"]).to be_an(Array)
+          expect(json["data"].size).to eq(2)
+        end
+      end
+
+      response "404", "restaurant not found" do
+        let(:restaurant_id) { 999_999 }
+
+        run_test! do |response|
+          expect(json["error"]).to be_present
         end
       end
     end
 
-    post 'Create menu' do
-      tags 'Menus'
-      consumes 'application/json'
+    post "Create a menu for a restaurant" do
+      tags "Menus"
+      consumes "application/json"
+      produces "application/json"
       parameter name: :menu, in: :body, schema: {
         type: :object,
-        properties: { name: { type: :string } },
-        required: %w[name]
+        properties: {
+          menu: {
+            type: :object,
+            properties: {
+              name: { type: :string }
+            },
+            required: %w[name]
+          }
+        }
       }
 
-      response '201', 'created' do
+      response "201", "menu created" do
         let(:restaurant_id) { restaurant.id }
-        let(:menu) { { name: 'Lunch' } }
-        run_test!
+        let(:menu) { { menu: { name: "Lunch Menu" } } }
+
+        run_test! do |response|
+          expect(json["data"]["name"]).to eq("Lunch Menu")
+          expect(json["data"]["id"]).to be_present
+        end
       end
 
-      response '422', 'invalid' do
+      response "422", "invalid request - blank name" do
         let(:restaurant_id) { restaurant.id }
-        let(:menu) { { name: '' } }
-        run_test!
+        let(:menu) { { menu: { name: "" } } }
+
+        run_test! do |response|
+          expect(json["error"]).to be_present
+        end
+      end
+
+      response "404", "restaurant not found" do
+        let(:restaurant_id) { 999_999 }
+        let(:menu) { { menu: { name: "Test" } } }
+
+        run_test! do |response|
+          expect(json["error"]).to be_present
+        end
       end
     end
   end
 
-  path '/api/v1/restaurants/{restaurant_id}/menus/{id}' do
-    parameter name: :restaurant_id, in: :path, type: :string
-    parameter name: :id, in: :path, type: :string
+  path "/api/v1/restaurants/{restaurant_id}/menus/{id}" do
+    parameter name: :restaurant_id, in: :path, type: :integer, description: "Restaurant ID"
+    parameter name: :id, in: :path, type: :integer, description: "Menu ID"
 
-    get 'Show menu' do
-      tags 'Menus'
-      response '200', 'ok' do
+    get "Show a menu" do
+      tags "Menus"
+      produces "application/json"
+
+      response "200", "menu found" do
         let(:restaurant_id) { restaurant.id }
-        let(:id) { create(:menu, restaurant:).id }
-        run_test!
+        let(:menu_record) { create(:menu, restaurant: restaurant) }
+        let(:id) { menu_record.id }
+
+        run_test! do |response|
+          expect(json["data"]["id"]).to eq(id)
+          expect(json["data"]["name"]).to be_present
+        end
+      end
+
+      response "404", "menu not found" do
+        let(:restaurant_id) { restaurant.id }
+        let(:id) { 999_999 }
+
+        run_test! do |response|
+          expect(json["error"]).to be_present
+        end
+      end
+
+      response "404", "menu belongs to another restaurant" do
+        let(:other_restaurant) { create(:restaurant) }
+        let(:other_menu) { create(:menu, restaurant: other_restaurant) }
+        let(:restaurant_id) { restaurant.id }
+        let(:id) { other_menu.id }
+
+        run_test! do |response|
+          expect(json["error"]).to be_present
+        end
       end
     end
 
-    patch 'Update menu' do
-      tags 'Menus'
-      consumes 'application/json'
+    put "Update a menu" do
+      tags "Menus"
+      consumes "application/json"
+      produces "application/json"
       parameter name: :menu, in: :body, schema: {
         type: :object,
-        properties: { name: { type: :string } }
+        properties: {
+          menu: {
+            type: :object,
+            properties: {
+              name: { type: :string }
+            }
+          }
+        }
       }
 
-      response '200', 'updated' do
+      response "200", "menu updated" do
         let(:restaurant_id) { restaurant.id }
-        let(:id) { create(:menu, restaurant:).id }
-        let(:menu) { { name: 'Dinner' } }
-        run_test!
+        let(:menu_record) { create(:menu, restaurant: restaurant, name: "Original") }
+        let(:id) { menu_record.id }
+        let(:menu) { { menu: { name: "Updated Menu" } } }
+
+        run_test! do |response|
+          expect(json["data"]["name"]).to eq("Updated Menu")
+        end
+      end
+
+      response "404", "menu not found" do
+        let(:restaurant_id) { restaurant.id }
+        let(:id) { 999_999 }
+        let(:menu) { { menu: { name: "Updated" } } }
+
+        run_test! do |response|
+          expect(json["error"]).to be_present
+        end
       end
     end
 
-    delete 'Delete menu' do
-      tags 'Menus'
-      response '204', 'deleted' do
+    delete "Delete a menu" do
+      tags "Menus"
+      produces "application/json"
+
+      response "204", "menu deleted" do
         let(:restaurant_id) { restaurant.id }
-        let(:id) { create(:menu, restaurant:).id }
-        run_test!
+        let(:menu_record) { create(:menu, restaurant: restaurant) }
+        let(:id) { menu_record.id }
+
+        run_test! do |response|
+          expect(response.body).to be_empty
+          expect(Menu.exists?(id)).to be false
+        end
+      end
+
+      response "404", "menu not found" do
+        let(:restaurant_id) { restaurant.id }
+        let(:id) { 999_999 }
+
+        run_test! do |response|
+          expect(json["error"]).to be_present
+        end
       end
     end
   end
 end
-

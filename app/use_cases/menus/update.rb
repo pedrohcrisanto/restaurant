@@ -2,17 +2,26 @@
 
 module Menus
   class Update < Micro::Case
+    include UseCaseHelpers
+
     attributes :menu, :params, :repo
 
     def call!
-      return Failure(:not_found, result: { error: I18n.t('errors.menus.not_found') }) if menu.nil?
+      # Guard clauses: validate inputs
+      return failure_not_found(:menu) unless menu
+      return failure_missing_params unless params
 
-      if (repo ? repo.update(menu, params) : menu.update(params))
-        Success result: { menu: menu }
-      else
-        Failure :invalid, result: { error: menu.errors.full_messages }
-      end
+      return failure_validation(menu) unless update_menu
+
+      Success result: { menu: menu }
+    rescue StandardError => e
+      handle_error(e, "menus.update", menu_id: menu&.id, params: params)
+    end
+
+    private
+
+    def update_menu
+      update_with_repo(repo, menu, params)
     end
   end
 end
-

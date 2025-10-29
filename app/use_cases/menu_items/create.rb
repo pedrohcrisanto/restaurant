@@ -2,20 +2,31 @@
 
 module MenuItems
   class Create < Micro::Case
+    include UseCaseHelpers
+
     attributes :params, :repo
 
     def call!
-      name = params[:name]
-      return Failure(:invalid, result: { error: [I18n.t('errors.validation.name_required')] }) if name.to_s.strip.empty?
+      # Guard clauses: validate inputs
+      return failure_missing_params unless params
+      return failure_missing_name unless valid_name?(params[:name])
 
-      menu_item = repo ? repo.build(name: name) : MenuItem.new(name: name)
+      menu_item = build_menu_item
+      return failure_validation(menu_item) unless save_menu_item(menu_item)
 
-      if (repo ? repo.save(menu_item) : menu_item.save)
-        Success result: { menu_item: menu_item }
-      else
-        Failure :invalid, result: { error: menu_item.errors.full_messages }
-      end
+      Success result: { menu_item: menu_item }
+    rescue StandardError => e
+      handle_error(e, "menu_items.create", params: params)
+    end
+
+    private
+
+    def build_menu_item
+      build_with_repo(repo, MenuItem, name: params[:name])
+    end
+
+    def save_menu_item(menu_item)
+      save_with_repo(repo, menu_item)
     end
   end
 end
-

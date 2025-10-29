@@ -6,4 +6,3 @@ class RestaurantBlueprint < Blueprinter::Base
 
   association :menus, blueprint: MenuBlueprint
 end
-

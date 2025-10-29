@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "boot"
 
 require "rails"
@@ -39,15 +41,16 @@ module RestaurantApp
     # Autoload custom directories
     config.eager_load_paths << Rails.root.join("app/blueprints")
     config.eager_load_paths << Rails.root.join("app/use_cases")
+    config.eager_load_paths << Rails.root.join("app/services")
 
-      config.eager_load_paths << Rails.root.join("app/repositories")
-      config.eager_load_paths << Rails.root.join("app/services")
+    # Configure autoload paths for repositories with nested modules
+    config.autoload_paths << Rails.root.join("app/repositories")
+    config.eager_load_paths << Rails.root.join("app/repositories")
 
-	    # I18n configuration
-	    config.i18n.available_locales = [:en]
-	    config.i18n.default_locale = :en
-	    config.i18n.fallbacks = true
-
+    # I18n configuration
+    config.i18n.available_locales = %i[en pt-BR]
+    config.i18n.default_locale = :en
+    config.i18n.fallbacks = true
 
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.

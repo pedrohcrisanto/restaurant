@@ -6,4 +6,3 @@ class MenuBlueprint < Blueprinter::Base
 
   association :menu_item_placements, blueprint: MenuItemPlacementBlueprint, name: :items
 end
-

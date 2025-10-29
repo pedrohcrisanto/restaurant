@@ -2,23 +2,31 @@
 
 module Menus
   class Create < Micro::Case
+    include UseCaseHelpers
+
     attributes :restaurant, :params, :repo
 
     def call!
-      return Failure(:invalid, result: { error: I18n.t('errors.restaurants.not_found') }) if restaurant.nil?
+      # Guard clauses: validate inputs
+      return failure_not_found(:restaurant) unless restaurant
+      return failure_missing_params unless params
 
-      menu = if repo
-                repo.build_for_restaurant(restaurant, params)
-              else
-                restaurant.menus.new(params)
-              end
+      menu = build_menu
+      return failure_validation(menu) unless save_menu(menu)
 
-      if (repo ? repo.save(menu) : menu.save)
-        Success result: { menu: menu }
-      else
-        Failure :invalid, result: { error: menu.errors.full_messages }
-      end
+      Success result: { menu: menu }
+    rescue StandardError => e
+      handle_error(e, "menus.create", restaurant_id: restaurant&.id, params: params)
+    end
+
+    private
+
+    def build_menu
+      repo ? repo.build_for(restaurant, params) : restaurant.menus.new(params)
+    end
+
+    def save_menu(menu)
+      save_with_repo(repo, menu)
     end
   end
 end
-

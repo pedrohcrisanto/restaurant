@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-require 'json'
 
+require "json"
 
 module Imports
   module RestaurantsJson
@@ -9,56 +9,7 @@ module Imports
 
       def call!
         data = parse_json(json)
-        logs = []
-
-        ActiveRecord::Base.transaction do
-          Array(data['restaurants']).each do |res|
-            restaurant_name = res['name'] || res[:name]
-            restaurant = Restaurant.where('LOWER(name) = ?', restaurant_name.to_s.downcase).first_or_create!(name: restaurant_name)
-            logs << log_entry(nil, :created_restaurant, restaurant: restaurant.name) if restaurant.previous_changes.present?
-
-            Array(res['menus'] || res[:menus]).each do |menu_hash|
-              menu_name = menu_hash['name'] || menu_hash[:name]
-              menu_result = Menus::EnsureExistsForRestaurant.call(restaurant:, name: menu_name)
-              if menu_result.failure?
-                logs << log_entry(nil, :menu_error, restaurant: restaurant.name, menu: menu_name, error: menu_result[:error])
-                next
-              end
-              menu = menu_result[:menu]
-              logs << log_entry(nil, :created_menu, restaurant: restaurant.name, menu: menu.name) if menu_result[:action] == :created_menu
-
-              items_array = Array(menu_hash['menu_items'] || menu_hash[:menu_items] || menu_hash['dishes'] || menu_hash[:dishes])
-              items_array.each do |item_hash|
-                item_name = item_hash['name'] || item_hash[:name]
-                price = item_hash['price'] || item_hash[:price]
-                upsert_result = MenuItems::EnsureExistsByName.call(name: item_name)
-                if upsert_result.failure?
-                  logs << log_entry(item_name, :item_error, restaurant: restaurant.name, menu: menu.name, error: upsert_result[:error])
-                  next
-                end
-
-                menu_item = upsert_result[:menu_item]
-                action = upsert_result[:action]
-
-                begin
-                  placement = MenuItemPlacement.find_or_initialize_by(menu:, menu_item:)
-                  link_action = placement.new_record? ? :linked_item : :existing_link
-                  # Set/Update price from payload when provided
-                  if !price.nil?
-                    placement.price = price
-                  end
-                  placement.save! if placement.changed?
-                rescue ActiveRecord::RecordInvalid => e
-                  logs << log_entry(menu_item.name, :link_error, restaurant: restaurant.name, menu: menu.name, error: e.record.errors.full_messages)
-                  next
-                end
-
-                logs << log_entry(menu_item.name, action, restaurant: restaurant.name, menu: menu.name, price: placement.price)
-                logs << log_entry(menu_item.name, link_action, restaurant: restaurant.name, menu: menu.name)
-              end
-            end
-          end
-        end
+        logs = import_restaurants(data)
 
         Success result: { success: true, logs: logs }
       rescue JSON::ParserError => e
@@ -67,13 +18,114 @@ module Imports
 
       private
 
-      def parse_json(content)
-        case content
-        when String
-          JSON.parse(content)
-        else
-          JSON.parse(content.to_s)
+      def import_restaurants(data)
+        logs = []
+
+        ActiveRecord::Base.transaction do
+          Array(data["restaurants"]).each do |restaurant_data|
+            logs.concat(process_restaurant(restaurant_data))
+          end
         end
+
+        logs
+      end
+
+      def process_restaurant(restaurant_data)
+        logs = []
+        restaurant = find_or_create_restaurant(extract_name(restaurant_data))
+        logs << log_created_restaurant(restaurant) if restaurant.previous_changes.present?
+
+        Array(restaurant_data["menus"] || restaurant_data[:menus]).each do |menu_data|
+          logs.concat(process_menu(restaurant, menu_data))
+        end
+
+        logs
+      end
+
+      def process_menu(restaurant, menu_data)
+        logs = []
+        menu_name = extract_name(menu_data)
+        menu_result = Menus::FindOrCreate.call(restaurant: restaurant, name: menu_name)
+
+        return logs << log_menu_error(restaurant, menu_name, menu_result[:error]) if menu_result.failure?
+
+        menu = menu_result[:menu]
+        logs << log_created_menu(restaurant, menu) if menu_result[:action] == :created
+
+        items_data = extract_menu_items(menu_data)
+        items_data.each { |item_data| logs.concat(process_menu_item(restaurant, menu, item_data)) }
+
+        logs
+      end
+
+      def process_menu_item(restaurant, menu, item_data)
+        logs = []
+        item_name = extract_name(item_data)
+        price = extract_price(item_data)
+
+        upsert_result = MenuItems::FindOrCreate.call(name: item_name)
+        return logs << log_item_error(restaurant, menu, item_name, upsert_result[:error]) if upsert_result.failure?
+
+        menu_item = upsert_result[:menu_item]
+        placement_result = link_menu_item(menu, menu_item, price)
+
+        return logs << log_link_error(restaurant, menu, menu_item, placement_result[:error]) if placement_result[:error]
+
+        logs << log_entry(menu_item.name, upsert_result[:action], restaurant: restaurant.name, menu: menu.name,
+                                                                  price: placement_result[:price])
+        logs << log_entry(menu_item.name, placement_result[:action], restaurant: restaurant.name, menu: menu.name)
+        logs
+      end
+
+      def find_or_create_restaurant(name)
+        Restaurant.where("LOWER(name) = ?", name.to_s.downcase).first_or_create!(name: name)
+      end
+
+      def link_menu_item(menu, menu_item, price)
+        placement = MenuItemPlacement.find_or_initialize_by(menu: menu, menu_item: menu_item)
+        action = placement.new_record? ? :linked : :found
+        placement.price = price unless price.nil?
+        placement.save! if placement.changed?
+
+        { action: action, price: placement.price, error: nil }
+      rescue ActiveRecord::RecordInvalid => e
+        { action: nil, price: nil, error: e.record.errors.full_messages }
+      end
+
+      def extract_name(data)
+        data.values_at("name", :name).compact.first
+      end
+
+      def extract_menu_items(menu_data)
+        menu_data.values_at("menu_items", :menu_items, "dishes", :dishes).compact.first || []
+      end
+
+      def extract_price(data)
+        data.values_at("price", :price).compact.first
+      end
+
+      def parse_json(content)
+        JSON.parse(content.is_a?(String) ? content : content.to_s)
+      end
+
+      def log_created_restaurant(restaurant)
+        log_entry(nil, :created_restaurant, restaurant: restaurant.name)
+      end
+
+      def log_created_menu(restaurant, menu)
+        log_entry(nil, :created_menu, restaurant: restaurant.name, menu: menu.name)
+      end
+
+      def log_menu_error(restaurant, menu_name, error)
+        log_entry(nil, :menu_error, restaurant: restaurant.name, menu: menu_name, error: error)
+      end
+
+      def log_item_error(restaurant, menu, item_name, error)
+        log_entry(item_name, :item_error, restaurant: restaurant.name, menu: menu.name, error: error)
+      end
+
+      def log_link_error(restaurant, menu, menu_item, error)
+        log_entry(menu_item.name, :link_error, restaurant: restaurant.name, menu: menu.name, error: error)
       end
 
       def log_entry(item_name, action, restaurant: nil, menu: nil, price: nil, error: nil)
@@ -83,10 +135,9 @@ module Imports
           item: item_name,
           action: action.to_s,
           price: price,
-          error: error
+          error: error,
         }.compact
       end
     end
   end
 end
-

@@ -11,8 +11,8 @@ class ErrorReporter
     @current ||= new
   end
 
-  def self.current=(instance)
-    @current = instance
+  class << self
+    attr_writer :current
   end
 
   def initialize(adapter: nil, logger: Rails.logger)
@@ -22,7 +22,7 @@ class ErrorReporter
 
   # Notify unexpected errors. Accepts Exception or message String.
   def notify(error, context: {})
-    if @adapter && @adapter.respond_to?(:notify)
+    if @adapter.respond_to?(:notify)
       @adapter.notify(error, context: context)
     else
       # Fallback: structured log for future monitoring systems
@@ -30,13 +30,12 @@ class ErrorReporter
         type: error.class.to_s,
         message: error.respond_to?(:message) ? error.message : error.to_s,
         backtrace: (error.backtrace if error.respond_to?(:backtrace)),
-        context: context
+        context: context,
       }
       @logger.error({ error_reporter: payload }.to_json)
     end
-  rescue => log_error
+  rescue StandardError => e
     # Ensure the reporter never raises
-    @logger.error({ error_reporter_failure: { message: log_error.message } }.to_json)
+    @logger.error({ error_reporter_failure: { message: e.message } }.to_json)
   end
 end
-

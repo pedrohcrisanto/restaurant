@@ -2,23 +2,25 @@
 
 module MenuItems
   class ListForRestaurant < Micro::Case
+    include UseCaseHelpers
+
     attributes :restaurant, :repo
 
     def call!
-      return Failure(:invalid, result: { error: I18n.t('errors.restaurants.not_found') }) if restaurant.nil?
+      # Guard clause: validate restaurant presence
+      return failure_not_found(:restaurant) unless restaurant
 
-      items = if repo
-                  repo.relation_for_restaurant(restaurant)
-                else
-                  MenuItem
-                    .joins(:menus)
-                    .where(menus: { restaurant_id: restaurant.id })
-                    .distinct
-                    .order(:id)
-                end
+      Success result: { items: fetch_items }
+    rescue StandardError => e
+      handle_error(e, "menu_items.list_for_restaurant", restaurant_id: restaurant&.id)
+    end
 
-      Success result: { items: items }
+    private
+
+    def fetch_items
+      return repo.for_restaurant(restaurant) if repo
+
+      MenuItem.for_restaurant(restaurant).ordered
     end
   end
 end
-

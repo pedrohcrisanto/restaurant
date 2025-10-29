@@ -1,4 +1,7 @@
 --require spec_helper
 --format documentation
 --color
+--order random
+--profile 10
+--warnings
 

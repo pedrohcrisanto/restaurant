@@ -1,6 +1,24 @@
-# Testing and Documentation Setup
+# 🧪 Testing Suite - Restaurant API
 
-Este projeto está configurado com as seguintes gems para testes e documentação:
+Este projeto possui uma suite de testes completa seguindo as melhores práticas da comunidade Ruby, RSpec e Rails.
+
+## 📊 Estatísticas
+
+- **Cobertura de Código**: >80% (configurado com SimpleCov)
+- **Total de Specs**: 30+ arquivos
+- **Shared Examples**: 4 arquivos reutilizáveis
+- **Custom Matchers**: 2 conjuntos (Use Cases e API)
+- **Contract Tests**: Validação de schemas de API
+- **Performance Tests**: Detecção de N+1 queries
+
+## 📚 Documentação
+
+- **[TESTING_GUIDE.md](TESTING_GUIDE.md)** - Guia completo de como executar e escrever testes
+- **[BEST_PRACTICES.md](BEST_PRACTICES.md)** - Melhores práticas Ruby/RSpec/Rails
+
+---
+
+## 🛠️ Stack de Testes
 
 ## Gems Instaladas
 
@@ -217,44 +235,222 @@ bundle exec rake rswag:specs:swaggerize
 # http://localhost:3000/api-docs
 ```
 
-## Estrutura de Diretórios
+## 📁 Estrutura de Diretórios
 
 ```
 spec/
-├── factories/          # FactoryBot factories
-├── models/            # Model specs
-├── requests/          # Request specs (API tests)
-├── support/           # Arquivos de suporte
-│   ├── factory_bot.rb
-│   └── shoulda_matchers.rb
-├── rails_helper.rb    # Configuração Rails para RSpec
-├── spec_helper.rb     # Configuração geral do RSpec
-└── swagger_helper.rb  # Configuração do Rswag
+├── blueprints/              # Blueprint serialization tests
+│   ├── restaurant_blueprint_spec.rb
+│   ├── menu_blueprint_spec.rb
+│   ├── menu_item_blueprint_spec.rb
+│   └── menu_item_placement_blueprint_spec.rb
+├── contracts/               # Contract/Schema validation tests
+│   ├── restaurant_contract_spec.rb
+│   └── menu_contract_spec.rb
+├── factories/               # FactoryBot factories with traits
+│   ├── restaurants.rb
+│   ├── menus.rb
+│   ├── menu_items.rb
+│   └── menu_item_placements.rb
+├── models/                  # Model specs (validations, associations, scopes)
+│   ├── restaurant_spec.rb
+│   ├── menu_spec.rb
+│   ├── menu_item_spec.rb
+│   └── menu_item_placement_spec.rb
+├── repositories/            # Repository pattern tests
+│   └── persistence/
+│       ├── restaurants_repository_spec.rb
+│       └── menus_repository_spec.rb
+├── requests/                # API integration tests with Rswag
+│   └── api/v1/
+│       ├── restaurants_spec.rb
+│       └── menus_spec.rb
+├── support/                 # Test support files
+│   ├── config/              # Configuration files
+│   │   ├── database_cleaner.rb
+│   │   ├── factory_bot.rb
+│   │   └── shoulda_matchers.rb
+│   ├── helpers/             # Test helpers
+│   │   ├── request_helpers.rb
+│   │   ├── factory_helpers.rb
+│   │   └── database_helpers.rb
+│   ├── matchers/            # Custom RSpec matchers
+│   │   ├── use_case_matchers.rb
+│   │   └── api_matchers.rb
+│   ├── shared_examples/     # Reusable test patterns
+│   │   ├── use_case_error_handling.rb
+│   │   ├── use_case_validations.rb
+│   │   ├── use_case_success_scenarios.rb
+│   │   └── use_case_failure_scenarios.rb
+│   └── query_counter.rb     # N+1 query detection
+├── use_cases/               # Use case tests
+│   ├── restaurants/
+│   │   ├── create_spec.rb
+│   │   ├── update_spec.rb
+│   │   ├── destroy_spec.rb
+│   │   ├── find_spec.rb
+│   │   └── list_spec.rb
+│   └── menus/
+│       ├── create_spec.rb
+│       ├── list_for_restaurant_spec.rb
+│       └── find_for_restaurant_spec.rb
+├── rails_helper.rb          # Rails-specific RSpec configuration
+├── spec_helper.rb           # General RSpec configuration
+├── swagger_helper.rb        # Rswag/OpenAPI configuration
+├── README.md                # This file
+├── TESTING_GUIDE.md         # Complete testing guide
+└── BEST_PRACTICES.md        # Ruby/RSpec best practices
 
 app/
-├── blueprints/        # Blueprinter serializers
-└── use_cases/         # U-Case use cases
+├── blueprints/              # Blueprinter serializers
+├── controllers/             # API controllers
+├── models/                  # ActiveRecord models
+├── repositories/            # Repository pattern
+└── use_cases/               # Business logic (U-Case)
 ```
 
-## Comandos Úteis
+## 🚀 Quick Start
 
 ```bash
-# Instalar dependências
-bundle install
-
-# Executar testes
+# Executar todos os testes
 bundle exec rspec
 
-# Executar Rubocop
-bundle exec rubocop
+# Executar com cobertura de código
+COVERAGE=true bundle exec rspec
+
+# Executar testes específicos
+bundle exec rspec spec/models/restaurant_spec.rb
 
 # Gerar documentação Swagger
 bundle exec rake rswag:specs:swaggerize
 
-# Executar servidor
-rails server
-
-# Acessar documentação da API
+# Ver documentação da API
 # http://localhost:3000/api-docs
 ```
+
+## 🎯 Recursos Principais
+
+### 1. Shared Examples (DRY)
+
+Reduz duplicação de código em ~60%:
+
+```ruby
+# Uso
+it_behaves_like "a successful create use case", :restaurant
+it_behaves_like "a use case with params validation"
+it_behaves_like "a use case with error handling", "restaurants.create"
+```
+
+### 2. Custom Matchers
+
+Melhora legibilidade dos testes:
+
+```ruby
+# Use Case Matchers
+expect(result).to be_a_success
+expect(result).to fail_with_type(:validation_error)
+expect(result).to succeed_with_data(restaurant: restaurant)
+
+# API Matchers
+expect(response).to have_http_status_ok
+expect(response).to return_json_with(%w[id name menus])
+expect(json_response).to match_json_schema(id: :integer, name: :string)
+```
+
+### 3. Factory Traits
+
+Criação flexível de dados de teste:
+
+```ruby
+# Traits disponíveis
+create(:restaurant, :with_menus)
+create(:restaurant, :with_full_menu)
+create(:menu, :with_items, items_count: 10)
+create(:menu_item_placement, :expensive)
+create(:menu_item_placement, :cheap)
+```
+
+### 4. Test Helpers
+
+Helpers para simplificar testes:
+
+```ruby
+# Request Helpers
+json_get "/api/v1/restaurants"
+json_post "/api/v1/restaurants", params: { name: "Test" }
+expect(json_response).to include("id" => 1)
+
+# Factory Helpers
+restaurant = create_full_restaurant(menus_count: 3, items_per_menu: 5)
+menu = create_menu_with_items(items_count: 10)
+
+# Database Helpers
+expect { action }.not_to exceed_query_limit(2)
+queries = capture_queries { Restaurant.all.to_a }
+```
+
+### 5. Contract Testing
+
+Valida schemas de API:
+
+```ruby
+# Garante que responses seguem o schema definido
+expect(json_response).to match_json_schema(
+  id: :integer,
+  name: :string,
+  menus: :array
+)
+```
+
+### 6. Performance Testing
+
+Detecta N+1 queries:
+
+```ruby
+it "eager loads associations to avoid N+1 queries" do
+  expect do
+    restaurants.each { |r| r.menus.to_a }
+  end.not_to exceed_query_limit(1)
+end
+```
+
+## 📈 Cobertura de Código
+
+Execute com SimpleCov:
+
+```bash
+COVERAGE=true bundle exec rspec
+open coverage/index.html
+```
+
+**Thresholds configurados:**
+- Cobertura geral: 80%
+- Por arquivo: 70%
+
+## 🔍 Debugging
+
+```bash
+# Com backtrace completo
+bundle exec rspec --backtrace
+
+# Com warnings
+bundle exec rspec --warnings
+
+# Profile dos 10 testes mais lentos
+bundle exec rspec --profile 10
+
+# Executar apenas testes com :focus
+bundle exec rspec --tag focus
+```
+
+## 📖 Mais Informações
+
+- **[TESTING_GUIDE.md](TESTING_GUIDE.md)** - Guia completo de testes
+- **[BEST_PRACTICES.md](BEST_PRACTICES.md)** - Melhores práticas
+- **[BetterSpecs](https://www.betterspecs.org/)** - RSpec best practices
+- **[RSpec Style Guide](https://rspec.rubystyle.guide/)** - Guia de estilo
+
+---
+
+**Desenvolvido seguindo as melhores práticas da comunidade Ruby, RSpec e Rails** 🚀
 

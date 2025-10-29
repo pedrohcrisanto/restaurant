@@ -28,10 +28,6 @@ default: &default
 development:
   <<: *default
   database: restaurant_development
-  host:
-  port:
-  username:
-  password:
 
 
   # The specified database role being used to connect to PostgreSQL.
@@ -67,10 +63,6 @@ development:
 test:
   <<: *default
   database: restaurant_test
-  host:
-  port:
-  username:
-  password:
 
 
 # As with config/credentials.yml, you never want to store sensitive information,
