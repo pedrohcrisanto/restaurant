@@ -165,9 +165,13 @@ jobs:
       BULLET: true
     steps:
       - uses: actions/checkout@v4
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libpq-dev
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "+~> 3.3"
+          ruby-version: "3.3"
           bundler-cache: true
       - run: bin/rails db:prepare
       - name: Rodar subset sensível a N+1 (requests + repositories)
@@ -189,9 +193,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libpq-dev
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "+~> 3.3"
+          ruby-version: "3.3"
           bundler-cache: true
       - run: bundle exec reek || true # inicialmente informativo
 
@@ -200,9 +208,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libpq-dev
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "+~> 3.3"
+          ruby-version: "3.3"
           bundler-cache: true
       - run: |
           if bundle exec license_finder approvals; then
