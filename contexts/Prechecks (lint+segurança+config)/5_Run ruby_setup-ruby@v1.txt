@@ -1,792 +1,491 @@
-﻿2025-10-29T21:48:11.9353044Z ##[group]Run ruby/setup-ruby@v1
-2025-10-29T21:48:11.9353296Z with:
-2025-10-29T21:48:11.9353457Z   ruby-version: 3.3
-2025-10-29T21:48:11.9353637Z   bundler-cache: true
-2025-10-29T21:48:11.9353815Z ##[endgroup]
-2025-10-29T21:48:12.0908169Z ##[group]Modifying PATH
-2025-10-29T21:48:12.0912894Z Entries added to PATH to use selected Ruby:
-2025-10-29T21:48:12.0916556Z   /opt/hostedtoolcache/Ruby/3.3.10/x64/bin
-2025-10-29T21:48:12.0927618Z ##[endgroup]
-2025-10-29T21:48:12.0945617Z ##[group]Downloading Ruby
-2025-10-29T21:48:12.0946934Z https://github.com/ruby/ruby-builder/releases/download/ruby-3.3.10/ruby-3.3.10-ubuntu-24.04-x64.tar.gz
-2025-10-29T21:48:12.4398440Z Took   0.35 seconds
-2025-10-29T21:48:12.4399217Z ##[endgroup]
-2025-10-29T21:48:12.4399946Z ##[group]Extracting  Ruby
-2025-10-29T21:48:12.4430214Z [command]/usr/bin/tar -xz -C /opt/hostedtoolcache/Ruby/3.3.10 -f /home/runner/work/_temp/0f5f1fa2-8b22-4763-8a32-51a0712ae2ff
-2025-10-29T21:48:12.8648336Z Took   0.42 seconds
-2025-10-29T21:48:12.8649058Z ##[endgroup]
-2025-10-29T21:48:12.8650003Z ##[group]Print Ruby version
-2025-10-29T21:48:12.8667239Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/ruby --version
-2025-10-29T21:48:12.8843286Z ruby 3.3.10 (2025-10-23 revision 343ea05002) [x86_64-linux]
-2025-10-29T21:48:12.8862802Z Took   0.02 seconds
-2025-10-29T21:48:12.8863518Z ##[endgroup]
-2025-10-29T21:48:12.8864620Z ##[group]Installing Bundler
-2025-10-29T21:48:12.8874222Z Using Bundler 2.6.9 from Gemfile.lock BUNDLED WITH 2.6.9
-2025-10-29T21:48:12.8879757Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/gem install bundler -v 2.6.9
-2025-10-29T21:48:13.2955506Z Successfully installed bundler-2.6.9
-2025-10-29T21:48:13.2955972Z 1 gem installed
-2025-10-29T21:48:13.3001566Z Took   0.41 seconds
-2025-10-29T21:48:13.3002191Z ##[endgroup]
-2025-10-29T21:48:13.3003418Z > bundle install
-2025-10-29T21:48:13.3022088Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/bundle config --local path /home/runner/work/restaurant/restaurant/vendor/bundle
-2025-10-29T21:48:13.4545589Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/bundle config --local deployment true
-2025-10-29T21:48:13.6064571Z ##[group]Print lockfile
-2025-10-29T21:48:13.6079178Z [command]/usr/bin/cat Gemfile.lock
-2025-10-29T21:48:13.6109738Z GEM
-2025-10-29T21:48:13.6110117Z   remote: https://rubygems.org/
-2025-10-29T21:48:13.6110498Z   specs:
-2025-10-29T21:48:13.6110783Z     actioncable (8.0.4)
-2025-10-29T21:48:13.6111112Z       actionpack (= 8.0.4)
-2025-10-29T21:48:13.6111473Z       activesupport (= 8.0.4)
-2025-10-29T21:48:13.6111805Z       nio4r (~> 2.0)
-2025-10-29T21:48:13.6112117Z       websocket-driver (>= 0.6.1)
-2025-10-29T21:48:13.6112472Z       zeitwerk (~> 2.6)
-2025-10-29T21:48:13.6112794Z     actionmailbox (8.0.4)
-2025-10-29T21:48:13.6113141Z       actionpack (= 8.0.4)
-2025-10-29T21:48:13.6113977Z       activejob (= 8.0.4)
-2025-10-29T21:48:13.6114311Z       activerecord (= 8.0.4)
-2025-10-29T21:48:13.6114534Z       activestorage (= 8.0.4)
-2025-10-29T21:48:13.6114768Z       activesupport (= 8.0.4)
-2025-10-29T21:48:13.6114989Z       mail (>= 2.8.0)
-2025-10-29T21:48:13.6115176Z     actionmailer (8.0.4)
-2025-10-29T21:48:13.6115366Z       actionpack (= 8.0.4)
-2025-10-29T21:48:13.6115558Z       actionview (= 8.0.4)
-2025-10-29T21:48:13.6115745Z       activejob (= 8.0.4)
-2025-10-29T21:48:13.6115942Z       activesupport (= 8.0.4)
-2025-10-29T21:48:13.6116132Z       mail (>= 2.8.0)
-2025-10-29T21:48:13.6116317Z       rails-dom-testing (~> 2.2)
-2025-10-29T21:48:13.6116526Z     actionpack (8.0.4)
-2025-10-29T21:48:13.6116698Z       actionview (= 8.0.4)
-2025-10-29T21:48:13.6116890Z       activesupport (= 8.0.4)
-2025-10-29T21:48:13.6117081Z       nokogiri (>= 1.8.5)
-2025-10-29T21:48:13.6117258Z       rack (>= 2.2.4)
-2025-10-29T21:48:13.6117434Z       rack-session (>= 1.0.1)
-2025-10-29T21:48:13.6117637Z       rack-test (>= 0.6.3)
-2025-10-29T21:48:13.6117832Z       rails-dom-testing (~> 2.2)
-2025-10-29T21:48:13.6118350Z       rails-html-sanitizer (~> 1.6)
-2025-10-29T21:48:13.6118573Z       useragent (~> 0.16)
-2025-10-29T21:48:13.6119004Z     actiontext (8.0.4)
-2025-10-29T21:48:13.6119183Z       actionpack (= 8.0.4)
-2025-10-29T21:48:13.6119444Z       activerecord (= 8.0.4)
-2025-10-29T21:48:13.6119646Z       activestorage (= 8.0.4)
-2025-10-29T21:48:13.6119842Z       activesupport (= 8.0.4)
-2025-10-29T21:48:13.6120038Z       globalid (>= 0.6.0)
-2025-10-29T21:48:13.6120216Z       nokogiri (>= 1.8.5)
-2025-10-29T21:48:13.6120408Z     actionview (8.0.4)
-2025-10-29T21:48:13.6120591Z       activesupport (= 8.0.4)
-2025-10-29T21:48:13.6120793Z       builder (~> 3.1)
-2025-10-29T21:48:13.6120966Z       erubi (~> 1.11)
-2025-10-29T21:48:13.6121153Z       rails-dom-testing (~> 2.2)
-2025-10-29T21:48:13.6121379Z       rails-html-sanitizer (~> 1.6)
-2025-10-29T21:48:13.6121593Z     activejob (8.0.4)
-2025-10-29T21:48:13.6121784Z       activesupport (= 8.0.4)
-2025-10-29T21:48:13.6121981Z       globalid (>= 0.3.6)
-2025-10-29T21:48:13.6122169Z     activemodel (8.0.4)
-2025-10-29T21:48:13.6122353Z       activesupport (= 8.0.4)
-2025-10-29T21:48:13.6122553Z     activerecord (8.0.4)
-2025-10-29T21:48:13.6122752Z       activemodel (= 8.0.4)
-2025-10-29T21:48:13.6122956Z       activesupport (= 8.0.4)
-2025-10-29T21:48:13.6123147Z       timeout (>= 0.4.0)
-2025-10-29T21:48:13.6123334Z     activestorage (8.0.4)
-2025-10-29T21:48:13.6123518Z       actionpack (= 8.0.4)
-2025-10-29T21:48:13.6123711Z       activejob (= 8.0.4)
-2025-10-29T21:48:13.6123901Z       activerecord (= 8.0.4)
-2025-10-29T21:48:13.6124100Z       activesupport (= 8.0.4)
-2025-10-29T21:48:13.6124297Z       marcel (~> 1.0)
-2025-10-29T21:48:13.6124584Z     activesupport (8.0.4)
-2025-10-29T21:48:13.6124895Z       base64
-2025-10-29T21:48:13.6125148Z       benchmark (>= 0.3)
-2025-10-29T21:48:13.6125334Z       bigdecimal
-2025-10-29T21:48:13.6125523Z       concurrent-ruby (~> 1.0, >= 1.3.1)
-2025-10-29T21:48:13.6125761Z       connection_pool (>= 2.2.5)
-2025-10-29T21:48:13.6125964Z       drb
-2025-10-29T21:48:13.6126112Z       i18n (>= 1.6, < 2)
-2025-10-29T21:48:13.6126292Z       logger (>= 1.4.2)
-2025-10-29T21:48:13.6126472Z       minitest (>= 5.1)
-2025-10-29T21:48:13.6126657Z       securerandom (>= 0.3)
-2025-10-29T21:48:13.6127088Z       tzinfo (~> 2.0, >= 2.0.5)
-2025-10-29T21:48:13.6127437Z       uri (>= 0.13.1)
-2025-10-29T21:48:13.6127761Z     addressable (2.8.7)
-2025-10-29T21:48:13.6128303Z       public_suffix (>= 2.0.2, < 7.0)
-2025-10-29T21:48:13.6128713Z     ast (2.4.3)
-2025-10-29T21:48:13.6128999Z     base64 (0.3.0)
-2025-10-29T21:48:13.6129313Z     benchmark (0.5.0)
-2025-10-29T21:48:13.6129492Z     bigdecimal (3.3.1)
-2025-10-29T21:48:13.6129675Z     blueprinter (1.2.1)
-2025-10-29T21:48:13.6129860Z     brakeman (6.2.2)
-2025-10-29T21:48:13.6130033Z       racc
-2025-10-29T21:48:13.6130185Z     builder (3.3.0)
-2025-10-29T21:48:13.6130370Z     bundler-audit (0.9.2)
-2025-10-29T21:48:13.6130798Z       bundler (>= 1.2.0, < 3)
-2025-10-29T21:48:13.6130995Z       thor (~> 1.0)
-2025-10-29T21:48:13.6131164Z     concurrent-ruby (1.3.5)
-2025-10-29T21:48:13.6131368Z     connection_pool (2.5.4)
-2025-10-29T21:48:13.6131557Z     crass (1.0.6)
-2025-10-29T21:48:13.6131790Z     csv (3.3.5)
-2025-10-29T21:48:13.6132084Z     date (3.4.1)
-2025-10-29T21:48:13.6132250Z     debug (1.11.0)
-2025-10-29T21:48:13.6132411Z       irb (~> 1.10)
-2025-10-29T21:48:13.6132571Z       reline (>= 0.3.8)
-2025-10-29T21:48:13.6132749Z     diff-lcs (1.6.2)
-2025-10-29T21:48:13.6132916Z     docile (1.4.1)
-2025-10-29T21:48:13.6133078Z     dotenv (3.1.8)
-2025-10-29T21:48:13.6133244Z     dotenv-rails (3.1.8)
-2025-10-29T21:48:13.6133430Z       dotenv (= 3.1.8)
-2025-10-29T21:48:13.6133599Z       railties (>= 6.1)
-2025-10-29T21:48:13.6133784Z     drb (2.2.3)
-2025-10-29T21:48:13.6133959Z     dry-configurable (1.3.0)
-2025-10-29T21:48:13.6134159Z       dry-core (~> 1.1)
-2025-10-29T21:48:13.6134330Z       zeitwerk (~> 2.6)
-2025-10-29T21:48:13.6134638Z     dry-core (1.1.0)
-2025-10-29T21:48:13.6134851Z       concurrent-ruby (~> 1.0)
-2025-10-29T21:48:13.6135049Z       logger
-2025-10-29T21:48:13.6135205Z       zeitwerk (~> 2.6)
-2025-10-29T21:48:13.6135389Z     dry-inflector (1.2.0)
-2025-10-29T21:48:13.6135746Z     dry-initializer (3.2.0)
-2025-10-29T21:48:13.6135943Z     dry-logic (1.6.0)
-2025-10-29T21:48:13.6136108Z       bigdecimal
-2025-10-29T21:48:13.6136279Z       concurrent-ruby (~> 1.0)
-2025-10-29T21:48:13.6136470Z       dry-core (~> 1.1)
-2025-10-29T21:48:13.6136645Z       zeitwerk (~> 2.6)
-2025-10-29T21:48:13.6136820Z     dry-schema (1.14.1)
-2025-10-29T21:48:13.6136994Z       concurrent-ruby (~> 1.0)
-2025-10-29T21:48:13.6137384Z       dry-configurable (~> 1.0, >= 1.0.1)
-2025-10-29T21:48:13.6137765Z       dry-core (~> 1.1)
-2025-10-29T21:48:13.6138247Z       dry-initializer (~> 3.2)
-2025-10-29T21:48:13.6138457Z       dry-logic (~> 1.5)
-2025-10-29T21:48:13.6138640Z       dry-types (~> 1.8)
-2025-10-29T21:48:13.6138814Z       zeitwerk (~> 2.6)
-2025-10-29T21:48:13.6138996Z     dry-types (1.8.3)
-2025-10-29T21:48:13.6139166Z       bigdecimal (~> 3.0)
-2025-10-29T21:48:13.6139355Z       concurrent-ruby (~> 1.0)
-2025-10-29T21:48:13.6139610Z       dry-core (~> 1.0)
-2025-10-29T21:48:13.6139915Z       dry-inflector (~> 1.0)
-2025-10-29T21:48:13.6140259Z       dry-logic (~> 1.4)
-2025-10-29T21:48:13.6140560Z       zeitwerk (~> 2.6)
-2025-10-29T21:48:13.6140743Z     erb (5.1.3)
-2025-10-29T21:48:13.6140900Z     erubi (1.13.1)
-2025-10-29T21:48:13.6141071Z     factory_bot (6.5.6)
-2025-10-29T21:48:13.6141251Z       activesupport (>= 6.1.0)
-2025-10-29T21:48:13.6141457Z     factory_bot_rails (6.5.1)
-2025-10-29T21:48:13.6141650Z       factory_bot (~> 6.5)
-2025-10-29T21:48:13.6141840Z       railties (>= 6.1.0)
-2025-10-29T21:48:13.6142011Z     faker (3.5.2)
-2025-10-29T21:48:13.6142180Z       i18n (>= 1.8.11, < 2)
-2025-10-29T21:48:13.6142366Z     globalid (1.3.0)
-2025-10-29T21:48:13.6142539Z       activesupport (>= 6.1)
-2025-10-29T21:48:13.6142855Z     highline (3.1.2)
-2025-10-29T21:48:13.6143139Z       reline
-2025-10-29T21:48:13.6143392Z     i18n (1.14.7)
-2025-10-29T21:48:13.6143676Z       concurrent-ruby (~> 1.0)
-2025-10-29T21:48:13.6143932Z     i18n-tasks (1.0.15)
-2025-10-29T21:48:13.6144106Z       activesupport (>= 4.0.2)
-2025-10-29T21:48:13.6144303Z       ast (>= 2.1.0)
-2025-10-29T21:48:13.6144457Z       erubi
-2025-10-29T21:48:13.6144613Z       highline (>= 2.0.0)
-2025-10-29T21:48:13.6144786Z       i18n
-2025-10-29T21:48:13.6144946Z       parser (>= 3.2.2.1)
-2025-10-29T21:48:13.6145131Z       rails-i18n
-2025-10-29T21:48:13.6145304Z       rainbow (>= 2.2.2, < 4.0)
-2025-10-29T21:48:13.6145520Z       ruby-progressbar (~> 1.8, >= 1.8.1)
-2025-10-29T21:48:13.6145765Z       terminal-table (>= 1.5.1)
-2025-10-29T21:48:13.6145981Z     io-console (0.8.1)
-2025-10-29T21:48:13.6146159Z     irb (1.15.2)
-2025-10-29T21:48:13.6146340Z       pp (>= 0.6.0)
-2025-10-29T21:48:13.6146509Z       rdoc (>= 4.0.0)
-2025-10-29T21:48:13.6146688Z       reline (>= 0.4.2)
-2025-10-29T21:48:13.6146859Z     json (2.15.2)
-2025-10-29T21:48:13.6147194Z     json-schema (5.2.2)
-2025-10-29T21:48:13.6147376Z       addressable (~> 2.8)
-2025-10-29T21:48:13.6147679Z       bigdecimal (~> 3.1)
-2025-10-29T21:48:13.6148128Z     kind (5.10.0)
-2025-10-29T21:48:13.6148447Z     language_server-protocol (3.17.0.5)
-2025-10-29T21:48:13.6148775Z     license_finder (7.2.1)
-2025-10-29T21:48:13.6148958Z       bundler
-2025-10-29T21:48:13.6149116Z       csv (~> 3.2)
-2025-10-29T21:48:13.6149280Z       rubyzip (>= 1, < 3)
-2025-10-29T21:48:13.6149461Z       thor (~> 1.2)
-2025-10-29T21:48:13.6149630Z       tomlrb (>= 1.3, < 2.1)
-2025-10-29T21:48:13.6149828Z       with_env (= 1.1.0)
-2025-10-29T21:48:13.6150012Z       xml-simple (~> 1.1.9)
-2025-10-29T21:48:13.6150209Z     lint_roller (1.1.0)
-2025-10-29T21:48:13.6150379Z     logger (1.7.0)
-2025-10-29T21:48:13.6150543Z     loofah (2.24.1)
-2025-10-29T21:48:13.6150709Z       crass (~> 1.0.2)
-2025-10-29T21:48:13.6151007Z       nokogiri (>= 1.12.0)
-2025-10-29T21:48:13.6151248Z     mail (2.9.0)
-2025-10-29T21:48:13.6151411Z       logger
-2025-10-29T21:48:13.6151657Z       mini_mime (>= 0.1.1)
-2025-10-29T21:48:13.6151921Z       net-imap
-2025-10-29T21:48:13.6152082Z       net-pop
-2025-10-29T21:48:13.6152231Z       net-smtp
-2025-10-29T21:48:13.6152555Z     marcel (1.1.0)
-2025-10-29T21:48:13.6152716Z     mini_mime (1.1.5)
-2025-10-29T21:48:13.6152895Z     minitest (5.26.0)
-2025-10-29T21:48:13.6153064Z     net-imap (0.5.12)
-2025-10-29T21:48:13.6153259Z       date
-2025-10-29T21:48:13.6153409Z       net-protocol
-2025-10-29T21:48:13.6153581Z     net-pop (0.1.2)
-2025-10-29T21:48:13.6153816Z       net-protocol
-2025-10-29T21:48:13.6154118Z     net-protocol (0.2.2)
-2025-10-29T21:48:13.6154298Z       timeout
-2025-10-29T21:48:13.6154473Z     net-smtp (0.5.1)
-2025-10-29T21:48:13.6154772Z       net-protocol
-2025-10-29T21:48:13.6154945Z     nio4r (2.7.4)
-2025-10-29T21:48:13.6155128Z     nokogiri (1.18.10-aarch64-linux-gnu)
-2025-10-29T21:48:13.6155362Z       racc (~> 1.4)
-2025-10-29T21:48:13.6155542Z     nokogiri (1.18.10-aarch64-linux-musl)
-2025-10-29T21:48:13.6155774Z       racc (~> 1.4)
-2025-10-29T21:48:13.6155951Z     nokogiri (1.18.10-arm-linux-gnu)
-2025-10-29T21:48:13.6156160Z       racc (~> 1.4)
-2025-10-29T21:48:13.6156343Z     nokogiri (1.18.10-arm-linux-musl)
-2025-10-29T21:48:13.6156605Z       racc (~> 1.4)
-2025-10-29T21:48:13.6156908Z     nokogiri (1.18.10-arm64-darwin)
-2025-10-29T21:48:13.6157149Z       racc (~> 1.4)
-2025-10-29T21:48:13.6157334Z     nokogiri (1.18.10-x86_64-darwin)
-2025-10-29T21:48:13.6157670Z       racc (~> 1.4)
-2025-10-29T21:48:13.6157851Z     nokogiri (1.18.10-x86_64-linux-gnu)
-2025-10-29T21:48:13.6158358Z       racc (~> 1.4)
-2025-10-29T21:48:13.6158546Z     nokogiri (1.18.10-x86_64-linux-musl)
-2025-10-29T21:48:13.6158766Z       racc (~> 1.4)
-2025-10-29T21:48:13.6158921Z     ostruct (0.6.3)
-2025-10-29T21:48:13.6159084Z     pagy (6.5.0)
-2025-10-29T21:48:13.6159244Z     parallel (1.27.0)
-2025-10-29T21:48:13.6159503Z     parser (3.3.10.0)
-2025-10-29T21:48:13.6159758Z       ast (~> 2.4.1)
-2025-10-29T21:48:13.6159930Z       racc
-2025-10-29T21:48:13.6160109Z     pg (1.6.2)
-2025-10-29T21:48:13.6160398Z     pg (1.6.2-aarch64-linux)
-2025-10-29T21:48:13.6160608Z     pg (1.6.2-aarch64-linux-musl)
-2025-10-29T21:48:13.6160823Z     pg (1.6.2-arm64-darwin)
-2025-10-29T21:48:13.6161018Z     pg (1.6.2-x86_64-darwin)
-2025-10-29T21:48:13.6161208Z     pg (1.6.2-x86_64-linux)
-2025-10-29T21:48:13.6161402Z     pg (1.6.2-x86_64-linux-musl)
-2025-10-29T21:48:13.6161595Z     pp (0.6.3)
-2025-10-29T21:48:13.6161757Z       prettyprint
-2025-10-29T21:48:13.6161925Z     prettyprint (0.2.0)
-2025-10-29T21:48:13.6162110Z     prism (1.6.0)
-2025-10-29T21:48:13.6162275Z     psych (5.2.6)
-2025-10-29T21:48:13.6162436Z       date
-2025-10-29T21:48:13.6162580Z       stringio
-2025-10-29T21:48:13.6162743Z     public_suffix (6.0.2)
-2025-10-29T21:48:13.6162931Z     puma (7.1.0)
-2025-10-29T21:48:13.6163098Z       nio4r (~> 2.0)
-2025-10-29T21:48:13.6163258Z     racc (1.8.1)
-2025-10-29T21:48:13.6163414Z     rack (3.2.3)
-2025-10-29T21:48:13.6163575Z     rack-session (2.1.1)
-2025-10-29T21:48:13.6163916Z       base64 (>= 0.1.0)
-2025-10-29T21:48:13.6164094Z       rack (>= 3.0.0)
-2025-10-29T21:48:13.6164262Z     rack-test (2.2.0)
-2025-10-29T21:48:13.6164435Z       rack (>= 1.3)
-2025-10-29T21:48:13.6164600Z     rackup (2.2.1)
-2025-10-29T21:48:13.6164762Z       rack (>= 3)
-2025-10-29T21:48:13.6164916Z     rails (8.0.4)
-2025-10-29T21:48:13.6165084Z       actioncable (= 8.0.4)
-2025-10-29T21:48:13.6165278Z       actionmailbox (= 8.0.4)
-2025-10-29T21:48:13.6165485Z       actionmailer (= 8.0.4)
-2025-10-29T21:48:13.6165679Z       actionpack (= 8.0.4)
-2025-10-29T21:48:13.6165873Z       actiontext (= 8.0.4)
-2025-10-29T21:48:13.6166061Z       actionview (= 8.0.4)
-2025-10-29T21:48:13.6166252Z       activejob (= 8.0.4)
-2025-10-29T21:48:13.6166441Z       activemodel (= 8.0.4)
-2025-10-29T21:48:13.6166630Z       activerecord (= 8.0.4)
-2025-10-29T21:48:13.6166827Z       activestorage (= 8.0.4)
-2025-10-29T21:48:13.6167021Z       activesupport (= 8.0.4)
-2025-10-29T21:48:13.6167218Z       bundler (>= 1.15.0)
-2025-10-29T21:48:13.6167399Z       railties (= 8.0.4)
-2025-10-29T21:48:13.6167593Z     rails-dom-testing (2.3.0)
-2025-10-29T21:48:13.6167791Z       activesupport (>= 5.0.0)
-2025-10-29T21:48:13.6168253Z       minitest
-2025-10-29T21:48:13.6168572Z       nokogiri (>= 1.6)
-2025-10-29T21:48:13.6168770Z     rails-html-sanitizer (1.6.2)
-2025-10-29T21:48:13.6168986Z       loofah (~> 2.21)
-2025-10-29T21:48:13.6169276Z       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
-2025-10-29T21:48:13.6169613Z     rails-i18n (8.0.2)
-2025-10-29T21:48:13.6169786Z       i18n (>= 0.7, < 2)
-2025-10-29T21:48:13.6169972Z       railties (>= 8.0.0, < 9)
-2025-10-29T21:48:13.6170157Z     railties (8.0.4)
-2025-10-29T21:48:13.6170333Z       actionpack (= 8.0.4)
-2025-10-29T21:48:13.6170523Z       activesupport (= 8.0.4)
-2025-10-29T21:48:13.6170715Z       irb (~> 1.13)
-2025-10-29T21:48:13.6170876Z       rackup (>= 1.0.0)
-2025-10-29T21:48:13.6171052Z       rake (>= 12.2)
-2025-10-29T21:48:13.6171219Z       thor (~> 1.0, >= 1.2.2)
-2025-10-29T21:48:13.6171397Z       tsort (>= 0.2)
-2025-10-29T21:48:13.6171566Z       zeitwerk (~> 2.6)
-2025-10-29T21:48:13.6171736Z     rainbow (3.1.1)
-2025-10-29T21:48:13.6171902Z     rake (13.3.0)
-2025-10-29T21:48:13.6172058Z     rdoc (6.15.0)
-2025-10-29T21:48:13.6172215Z       erb
-2025-10-29T21:48:13.6172366Z       psych (>= 4.0.0)
-2025-10-29T21:48:13.6172536Z       tsort
-2025-10-29T21:48:13.6172681Z     reek (6.5.0)
-2025-10-29T21:48:13.6172848Z       dry-schema (~> 1.13)
-2025-10-29T21:48:13.6173028Z       logger (~> 1.6)
-2025-10-29T21:48:13.6173210Z       parser (~> 3.3.0)
-2025-10-29T21:48:13.6173386Z       rainbow (>= 2.0, < 4.0)
-2025-10-29T21:48:13.6173568Z       rexml (~> 3.1)
-2025-10-29T21:48:13.6173742Z     regexp_parser (2.11.3)
-2025-10-29T21:48:13.6173925Z     reline (0.6.2)
-2025-10-29T21:48:13.6174097Z       io-console (~> 0.5)
-2025-10-29T21:48:13.6174273Z     rexml (3.4.4)
-2025-10-29T21:48:13.6174438Z     rspec-core (3.13.6)
-2025-10-29T21:48:13.6174627Z       rspec-support (~> 3.13.0)
-2025-10-29T21:48:13.6174844Z     rspec-expectations (3.13.5)
-2025-10-29T21:48:13.6175049Z       diff-lcs (>= 1.2.0, < 2.0)
-2025-10-29T21:48:13.6175257Z       rspec-support (~> 3.13.0)
-2025-10-29T21:48:13.6175474Z     rspec-mocks (3.13.6)
-2025-10-29T21:48:13.6175659Z       diff-lcs (>= 1.2.0, < 2.0)
-2025-10-29T21:48:13.6175865Z       rspec-support (~> 3.13.0)
-2025-10-29T21:48:13.6176058Z     rspec-rails (6.1.5)
-2025-10-29T21:48:13.6176249Z       actionpack (>= 6.1)
-2025-10-29T21:48:13.6176434Z       activesupport (>= 6.1)
-2025-10-29T21:48:13.6176636Z       railties (>= 6.1)
-2025-10-29T21:48:13.6176810Z       rspec-core (~> 3.13)
-2025-10-29T21:48:13.6177013Z       rspec-expectations (~> 3.13)
-2025-10-29T21:48:13.6177226Z       rspec-mocks (~> 3.13)
-2025-10-29T21:48:13.6177425Z       rspec-support (~> 3.13)
-2025-10-29T21:48:13.6177620Z     rspec-support (3.13.6)
-2025-10-29T21:48:13.6177820Z     rspec_junit_formatter (0.6.0)
-2025-10-29T21:48:13.6178295Z       rspec-core (>= 2, < 4, != 2.12.0)
-2025-10-29T21:48:13.6178514Z     rswag-api (2.16.0)
-2025-10-29T21:48:13.6178705Z       activesupport (>= 5.2, < 8.1)
-2025-10-29T21:48:13.6178915Z       railties (>= 5.2, < 8.1)
-2025-10-29T21:48:13.6179125Z     rswag-specs (2.16.0)
-2025-10-29T21:48:13.6179310Z       activesupport (>= 5.2, < 8.1)
-2025-10-29T21:48:13.6179520Z       json-schema (>= 2.2, < 6.0)
-2025-10-29T21:48:13.6179721Z       railties (>= 5.2, < 8.1)
-2025-10-29T21:48:13.6179913Z       rspec-core (>= 2.14)
-2025-10-29T21:48:13.6180095Z     rswag-ui (2.16.0)
-2025-10-29T21:48:13.6180276Z       actionpack (>= 5.2, < 8.1)
-2025-10-29T21:48:13.6180479Z       railties (>= 5.2, < 8.1)
-2025-10-29T21:48:13.6180667Z     rubocop (1.81.6)
-2025-10-29T21:48:13.6180835Z       json (~> 2.3)
-2025-10-29T21:48:13.6181022Z       language_server-protocol (~> 3.17.0.2)
-2025-10-29T21:48:13.6181264Z       lint_roller (~> 1.1.0)
-2025-10-29T21:48:13.6181453Z       parallel (~> 1.10)
-2025-10-29T21:48:13.6181635Z       parser (>= 3.3.0.2)
-2025-10-29T21:48:13.6181821Z       rainbow (>= 2.2.2, < 4.0)
-2025-10-29T21:48:13.6182027Z       regexp_parser (>= 2.9.3, < 3.0)
-2025-10-29T21:48:13.6182245Z       rubocop-ast (>= 1.47.1, < 2.0)
-2025-10-29T21:48:13.6182468Z       ruby-progressbar (~> 1.7)
-2025-10-29T21:48:13.6183146Z       unicode-display_width (>= 2.4.0, < 4.0)
-2025-10-29T21:48:13.6183567Z     rubocop-ast (1.47.1)
-2025-10-29T21:48:13.6183911Z       parser (>= 3.3.7.2)
-2025-10-29T21:48:13.6184229Z       prism (~> 1.4)
-2025-10-29T21:48:13.6184563Z     rubocop-capybara (2.22.1)
-2025-10-29T21:48:13.6184778Z       lint_roller (~> 1.1)
-2025-10-29T21:48:13.6184976Z       rubocop (~> 1.72, >= 1.72.1)
-2025-10-29T21:48:13.6185191Z     rubocop-factory_bot (2.27.1)
-2025-10-29T21:48:13.6185403Z       lint_roller (~> 1.1)
-2025-10-29T21:48:13.6185591Z       rubocop (~> 1.72, >= 1.72.1)
-2025-10-29T21:48:13.6185801Z     rubocop-rails (2.33.4)
-2025-10-29T21:48:13.6185998Z       activesupport (>= 4.2.0)
-2025-10-29T21:48:13.6186191Z       lint_roller (~> 1.1)
-2025-10-29T21:48:13.6186381Z       rack (>= 1.1)
-2025-10-29T21:48:13.6186546Z       rubocop (>= 1.75.0, < 2.0)
-2025-10-29T21:48:13.6186756Z       rubocop-ast (>= 1.44.0, < 2.0)
-2025-10-29T21:48:13.6186971Z     rubocop-rspec (2.31.0)
-2025-10-29T21:48:13.6187165Z       rubocop (~> 1.40)
-2025-10-29T21:48:13.6187358Z       rubocop-capybara (~> 2.17)
-2025-10-29T21:48:13.6187573Z       rubocop-factory_bot (~> 2.22)
-2025-10-29T21:48:13.6187792Z       rubocop-rspec_rails (~> 2.28)
-2025-10-29T21:48:13.6188169Z     rubocop-rspec_rails (2.29.1)
-2025-10-29T21:48:13.6188378Z       rubocop (~> 1.61)
-2025-10-29T21:48:13.6188558Z     ruby-progressbar (1.13.0)
-2025-10-29T21:48:13.6188759Z     rubyzip (2.4.1)
-2025-10-29T21:48:13.6188929Z     securerandom (0.4.1)
-2025-10-29T21:48:13.6189125Z     shoulda-matchers (6.5.0)
-2025-10-29T21:48:13.6189325Z       activesupport (>= 5.2.0)
-2025-10-29T21:48:13.6189519Z     simplecov (0.22.0)
-2025-10-29T21:48:13.6189691Z       docile (~> 1.1)
-2025-10-29T21:48:13.6189874Z       simplecov-html (~> 0.11)
-2025-10-29T21:48:13.6190084Z       simplecov_json_formatter (~> 0.1)
-2025-10-29T21:48:13.6190317Z     simplecov-html (0.13.2)
-2025-10-29T21:48:13.6190521Z     simplecov_json_formatter (0.1.4)
-2025-10-29T21:48:13.6190743Z     stringio (3.1.7)
-2025-10-29T21:48:13.6190921Z     terminal-table (4.0.0)
-2025-10-29T21:48:13.6191126Z       unicode-display_width (>= 1.1.1, < 4)
-2025-10-29T21:48:13.6191354Z     thor (1.4.0)
-2025-10-29T21:48:13.6191511Z     timeout (0.4.3)
-2025-10-29T21:48:13.6191676Z     tomlrb (2.0.3)
-2025-10-29T21:48:13.6191834Z     tsort (0.2.0)
-2025-10-29T21:48:13.6191999Z     tzinfo (2.0.6)
-2025-10-29T21:48:13.6192165Z       concurrent-ruby (~> 1.0)
-2025-10-29T21:48:13.6192368Z     u-attributes (2.8.0)
-2025-10-29T21:48:13.6192548Z       kind (>= 4.0, < 6.0)
-2025-10-29T21:48:13.6192727Z     u-case (4.5.2)
-2025-10-29T21:48:13.6192892Z       kind (>= 5.6, < 6.0)
-2025-10-29T21:48:13.6193074Z       u-attributes (>= 2.7, < 3.0)
-2025-10-29T21:48:13.6193295Z     unicode-display_width (3.2.0)
-2025-10-29T21:48:13.6193985Z       unicode-emoji (~> 4.1)
-2025-10-29T21:48:13.6194196Z     unicode-emoji (4.1.0)
-2025-10-29T21:48:13.6194377Z     uri (1.0.4)
-2025-10-29T21:48:13.6194547Z     useragent (0.16.11)
-2025-10-29T21:48:13.6194738Z     websocket-driver (0.8.0)
-2025-10-29T21:48:13.6194932Z       base64
-2025-10-29T21:48:13.6195108Z       websocket-extensions (>= 0.1.0)
-2025-10-29T21:48:13.6195349Z     websocket-extensions (0.1.5)
-2025-10-29T21:48:13.6195559Z     with_env (1.1.0)
-2025-10-29T21:48:13.6195740Z     xml-simple (1.1.9)
-2025-10-29T21:48:13.6195918Z       rexml
-2025-10-29T21:48:13.6196071Z     zeitwerk (2.7.3)
-2025-10-29T21:48:13.6196182Z 
-2025-10-29T21:48:13.6196262Z PLATFORMS
-2025-10-29T21:48:13.6196417Z   aarch64-linux
-2025-10-29T21:48:13.6196588Z   aarch64-linux-gnu
-2025-10-29T21:48:13.6196760Z   aarch64-linux-musl
-2025-10-29T21:48:13.6196938Z   arm-linux-gnu
-2025-10-29T21:48:13.6197099Z   arm-linux-musl
-2025-10-29T21:48:13.6197272Z   arm64-darwin
-2025-10-29T21:48:13.6197436Z   x86_64-darwin
-2025-10-29T21:48:13.6197594Z   x86_64-linux
-2025-10-29T21:48:13.6197747Z   x86_64-linux-gnu
-2025-10-29T21:48:13.6198092Z   x86_64-linux-musl
-2025-10-29T21:48:13.6198238Z 
-2025-10-29T21:48:13.6198312Z DEPENDENCIES
-2025-10-29T21:48:13.6198614Z   blueprinter (~> 1.0)
-2025-10-29T21:48:13.6198799Z   brakeman (~> 6.1)
-2025-10-29T21:48:13.6198969Z   bundler-audit (~> 0.9)
-2025-10-29T21:48:13.6199157Z   debug
-2025-10-29T21:48:13.6199301Z   dotenv-rails
-2025-10-29T21:48:13.6199473Z   factory_bot_rails (~> 6.4)
-2025-10-29T21:48:13.6199661Z   faker (~> 3.2)
-2025-10-29T21:48:13.6199824Z   i18n-tasks
-2025-10-29T21:48:13.6199973Z   license_finder
-2025-10-29T21:48:13.6200132Z   ostruct
-2025-10-29T21:48:13.6200276Z   pagy (~> 6.0)
-2025-10-29T21:48:13.6200442Z   pg (~> 1.1)
-2025-10-29T21:48:13.6200602Z   puma (>= 5.0)
-2025-10-29T21:48:13.6200754Z   rails (~> 8.0.2)
-2025-10-29T21:48:13.6200915Z   rails-i18n
-2025-10-29T21:48:13.6201061Z   reek
-2025-10-29T21:48:13.6201217Z   rspec-rails (~> 6.1)
-2025-10-29T21:48:13.6201411Z   rspec_junit_formatter (~> 0.6)
-2025-10-29T21:48:13.6201624Z   rswag-api (~> 2.13)
-2025-10-29T21:48:13.6201801Z   rswag-specs (~> 2.13)
-2025-10-29T21:48:13.6201995Z   rswag-ui (~> 2.13)
-2025-10-29T21:48:13.6202175Z   rubocop (~> 1.59)
-2025-10-29T21:48:13.6202356Z   rubocop-rails (~> 2.23)
-2025-10-29T21:48:13.6202547Z   rubocop-rspec (~> 2.26)
-2025-10-29T21:48:13.6202744Z   shoulda-matchers (~> 6.0)
-2025-10-29T21:48:13.6202948Z   simplecov (~> 0.22)
-2025-10-29T21:48:13.6203115Z   tzinfo-data
-2025-10-29T21:48:13.6203271Z   u-case (~> 4.5)
-2025-10-29T21:48:13.6203374Z 
-2025-10-29T21:48:13.6203438Z BUNDLED WITH
-2025-10-29T21:48:13.6203590Z    2.6.9
-2025-10-29T21:48:13.6204034Z ##[endgroup]
-2025-10-29T21:48:13.6204870Z Cache key: setup-ruby-bundler-cache-v6-ubuntu-24.04-x64-ruby-3.3.10-wd-/home/runner/work/restaurant/restaurant-with--without--only--Gemfile.lock-d55fc1d3465e457c9082700b0ff103cce4170f5a7a5755fdbc99aa04b04c6fe6
-2025-10-29T21:48:13.8589912Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/bundle install --jobs 4
-2025-10-29T21:48:15.9004975Z Fetching gem metadata from https://rubygems.org/.........
-2025-10-29T21:48:15.9109411Z Fetching rake 13.3.0
-2025-10-29T21:48:15.9694192Z Installing rake 13.3.0
-2025-10-29T21:48:15.9831869Z Fetching base64 0.3.0
-2025-10-29T21:48:15.9834550Z Fetching benchmark 0.5.0
-2025-10-29T21:48:15.9834946Z Fetching bigdecimal 3.3.1
-2025-10-29T21:48:15.9835322Z Fetching concurrent-ruby 1.3.5
-2025-10-29T21:48:15.9889099Z Installing base64 0.3.0
-2025-10-29T21:48:15.9934961Z Fetching connection_pool 2.5.4
-2025-10-29T21:48:15.9941347Z Installing benchmark 0.5.0
-2025-10-29T21:48:16.0072005Z Installing connection_pool 2.5.4
-2025-10-29T21:48:16.0096522Z Installing bigdecimal 3.3.1 with native extensions
-2025-10-29T21:48:16.0119892Z Fetching drb 2.2.3
-2025-10-29T21:48:16.0198764Z Fetching logger 1.7.0
-2025-10-29T21:48:16.0228531Z Installing drb 2.2.3
-2025-10-29T21:48:16.0296416Z Installing logger 1.7.0
-2025-10-29T21:48:16.0454473Z Fetching minitest 5.26.0
-2025-10-29T21:48:16.0459058Z Installing concurrent-ruby 1.3.5
-2025-10-29T21:48:16.0488659Z Fetching securerandom 0.4.1
-2025-10-29T21:48:16.1011469Z Installing securerandom 0.4.1
-2025-10-29T21:48:16.1081569Z Fetching uri 1.0.4
-2025-10-29T21:48:16.1107640Z Installing minitest 5.26.0
-2025-10-29T21:48:16.1188955Z Installing uri 1.0.4
-2025-10-29T21:48:16.1453986Z Fetching builder 3.3.0
-2025-10-29T21:48:16.1555701Z Fetching erubi 1.13.1
-2025-10-29T21:48:16.1569067Z Installing builder 3.3.0
-2025-10-29T21:48:16.1653521Z Installing erubi 1.13.1
-2025-10-29T21:48:16.1747428Z Fetching racc 1.8.1
-2025-10-29T21:48:16.1805340Z Fetching crass 1.0.6
-2025-10-29T21:48:16.1868270Z Installing racc 1.8.1 with native extensions
-2025-10-29T21:48:16.1917290Z Installing crass 1.0.6
-2025-10-29T21:48:16.2078990Z Fetching rack 3.2.3
-2025-10-29T21:48:16.2263803Z Installing rack 3.2.3
-2025-10-29T21:48:16.2340227Z Fetching useragent 0.16.11
-2025-10-29T21:48:16.2447289Z Fetching nio4r 2.7.4
-2025-10-29T21:48:16.2624646Z Installing useragent 0.16.11
-2025-10-29T21:48:16.2761769Z Installing nio4r 2.7.4 with native extensions
-2025-10-29T21:48:16.2782050Z Fetching websocket-extensions 0.1.5
-2025-10-29T21:48:16.2858262Z Installing websocket-extensions 0.1.5
-2025-10-29T21:48:16.2913575Z Fetching zeitwerk 2.7.3
-2025-10-29T21:48:16.3118275Z Installing zeitwerk 2.7.3
-2025-10-29T21:48:16.3362582Z Fetching timeout 0.4.3
-2025-10-29T21:48:16.3538551Z Installing timeout 0.4.3
-2025-10-29T21:48:16.3723085Z Fetching marcel 1.1.0
-2025-10-29T21:48:16.4102264Z Installing marcel 1.1.0
-2025-10-29T21:48:16.4279066Z Fetching mini_mime 1.1.5
-2025-10-29T21:48:16.4447105Z Installing mini_mime 1.1.5
-2025-10-29T21:48:16.4503881Z Fetching date 3.4.1
-2025-10-29T21:48:16.4618296Z Installing date 3.4.1 with native extensions
-2025-10-29T21:48:18.3500240Z Fetching public_suffix 6.0.2
-2025-10-29T21:48:18.3618415Z Installing public_suffix 6.0.2
-2025-10-29T21:48:18.3685894Z Fetching ast 2.4.3
-2025-10-29T21:48:18.3762942Z Installing ast 2.4.3
-2025-10-29T21:48:18.3806842Z Fetching blueprinter 1.2.1
-2025-10-29T21:48:18.3877521Z Installing blueprinter 1.2.1
-2025-10-29T21:48:18.4000653Z Fetching thor 1.4.0
-2025-10-29T21:48:18.4104188Z Installing thor 1.4.0
-2025-10-29T21:48:18.4246180Z Fetching csv 3.3.5
-2025-10-29T21:48:18.4332346Z Installing csv 3.3.5
-2025-10-29T21:48:18.4482644Z Fetching prettyprint 0.2.0
-2025-10-29T21:48:18.4569480Z Installing prettyprint 0.2.0
-2025-10-29T21:48:18.4609223Z Fetching erb 5.1.3
-2025-10-29T21:48:18.4675942Z Installing erb 5.1.3 with native extensions
-2025-10-29T21:48:19.2689880Z Fetching stringio 3.1.7
-2025-10-29T21:48:19.2812671Z Installing stringio 3.1.7 with native extensions
-2025-10-29T21:48:20.8360161Z Fetching tsort 0.2.0
-2025-10-29T21:48:20.8429376Z Installing tsort 0.2.0
-2025-10-29T21:48:20.8479368Z Fetching io-console 0.8.1
-2025-10-29T21:48:20.8545057Z Installing io-console 0.8.1 with native extensions
-2025-10-29T21:48:23.1519006Z Fetching diff-lcs 1.6.2
-2025-10-29T21:48:23.1648442Z Installing diff-lcs 1.6.2
-2025-10-29T21:48:23.1922251Z Fetching docile 1.4.1
-2025-10-29T21:48:23.1989469Z Installing docile 1.4.1
-2025-10-29T21:48:23.2043863Z Fetching dotenv 3.1.8
-2025-10-29T21:48:23.2089638Z Installing dotenv 3.1.8
-2025-10-29T21:48:23.2162509Z Fetching dry-inflector 1.2.0
-2025-10-29T21:48:23.2205747Z Installing dry-inflector 1.2.0
-2025-10-29T21:48:23.2251510Z Fetching dry-initializer 3.2.0
-2025-10-29T21:48:23.2329607Z Installing dry-initializer 3.2.0
-2025-10-29T21:48:23.2400612Z Fetching rainbow 3.1.1
-2025-10-29T21:48:23.2447022Z Installing rainbow 3.1.1
-2025-10-29T21:48:23.2506568Z Fetching ruby-progressbar 1.13.0
-2025-10-29T21:48:23.2559928Z Installing ruby-progressbar 1.13.0
-2025-10-29T21:48:23.2651063Z Fetching unicode-emoji 4.1.0
-2025-10-29T21:48:23.2752590Z Installing unicode-emoji 4.1.0
-2025-10-29T21:48:23.2982091Z Fetching json 2.15.2
-2025-10-29T21:48:23.3053055Z Installing json 2.15.2 with native extensions
-2025-10-29T21:48:25.0224192Z Fetching kind 5.10.0
-2025-10-29T21:48:25.0321119Z Installing kind 5.10.0
-2025-10-29T21:48:25.0608397Z Fetching language_server-protocol 3.17.0.5
-2025-10-29T21:48:25.0733376Z Installing language_server-protocol 3.17.0.5
-2025-10-29T21:48:25.1587601Z Fetching rubyzip 2.4.1
-2025-10-29T21:48:25.1677377Z Installing rubyzip 2.4.1
-2025-10-29T21:48:25.1830521Z Fetching tomlrb 2.0.3
-2025-10-29T21:48:25.1889212Z Installing tomlrb 2.0.3
-2025-10-29T21:48:25.1947809Z Fetching with_env 1.1.0
-2025-10-29T21:48:25.2014251Z Installing with_env 1.1.0
-2025-10-29T21:48:25.2068649Z Fetching rexml 3.4.4
-2025-10-29T21:48:25.2163913Z Installing rexml 3.4.4
-2025-10-29T21:48:25.2377253Z Fetching lint_roller 1.1.0
-2025-10-29T21:48:25.2425595Z Installing lint_roller 1.1.0
-2025-10-29T21:48:25.2486440Z Fetching ostruct 0.6.3
-2025-10-29T21:48:25.2558746Z Installing ostruct 0.6.3
-2025-10-29T21:48:25.2597835Z Fetching pagy 6.5.0
-2025-10-29T21:48:25.2684061Z Installing pagy 6.5.0
-2025-10-29T21:48:25.2979068Z Fetching parallel 1.27.0
-2025-10-29T21:48:25.3037734Z Installing parallel 1.27.0
-2025-10-29T21:48:25.3085754Z Fetching pg 1.6.2 (x86_64-linux)
-2025-10-29T21:48:25.5044301Z Installing pg 1.6.2 (x86_64-linux)
-2025-10-29T21:48:25.7567392Z Fetching prism 1.6.0
-2025-10-29T21:48:26.0445039Z Installing prism 1.6.0 with native extensions
-2025-10-29T21:48:28.3763297Z Fetching regexp_parser 2.11.3
-2025-10-29T21:48:28.4281008Z Installing regexp_parser 2.11.3
-2025-10-29T21:48:28.4644204Z Fetching rspec-support 3.13.6
-2025-10-29T21:48:28.4731661Z Installing rspec-support 3.13.6
-2025-10-29T21:48:28.4906646Z Fetching simplecov-html 0.13.2
-2025-10-29T21:48:28.5090481Z Installing simplecov-html 0.13.2
-2025-10-29T21:48:28.5251446Z Fetching simplecov_json_formatter 0.1.4
-2025-10-29T21:48:28.5320405Z Installing simplecov_json_formatter 0.1.4
-2025-10-29T21:48:28.5440457Z Fetching i18n 1.14.7
-2025-10-29T21:48:28.5517580Z Installing i18n 1.14.7
-2025-10-29T21:48:28.5710804Z Fetching tzinfo 2.0.6
-2025-10-29T21:48:28.5828858Z Installing tzinfo 2.0.6
-2025-10-29T21:48:28.6054008Z Fetching rack-session 2.1.1
-2025-10-29T21:48:28.6130340Z Installing rack-session 2.1.1
-2025-10-29T21:48:28.6171731Z Fetching rack-test 2.2.0
-2025-10-29T21:48:28.6235291Z Installing rack-test 2.2.0
-2025-10-29T21:48:28.6285638Z Fetching rackup 2.2.1
-2025-10-29T21:48:28.6346189Z Installing rackup 2.2.1
-2025-10-29T21:48:28.6406932Z Fetching websocket-driver 0.8.0
-2025-10-29T21:48:28.6472016Z Installing websocket-driver 0.8.0 with native extensions
-2025-10-29T21:48:29.0350366Z Fetching dry-core 1.1.0
-2025-10-29T21:48:29.0482090Z Installing dry-core 1.1.0
-2025-10-29T21:48:29.0566281Z Fetching net-protocol 0.2.2
-2025-10-29T21:48:29.0620988Z Installing net-protocol 0.2.2
-2025-10-29T21:48:29.0710076Z Fetching nokogiri 1.18.10 (x86_64-linux-gnu)
-2025-10-29T21:48:29.2329546Z Installing nokogiri 1.18.10 (x86_64-linux-gnu)
-2025-10-29T21:48:29.4590516Z Fetching brakeman 6.2.2
-2025-10-29T21:48:29.6133187Z Installing brakeman 6.2.2
-2025-10-29T21:48:29.8116191Z Fetching addressable 2.8.7
-2025-10-29T21:48:29.8271036Z Installing addressable 2.8.7
-2025-10-29T21:48:29.8390616Z Fetching parser 3.3.10.0
-2025-10-29T21:48:29.8900434Z Installing parser 3.3.10.0
-2025-10-29T21:48:29.9799695Z Fetching bundler-audit 0.9.2
-2025-10-29T21:48:30.0126767Z Installing bundler-audit 0.9.2
-2025-10-29T21:48:30.0357427Z Fetching pp 0.6.3
-2025-10-29T21:48:30.0434097Z Installing pp 0.6.3
-2025-10-29T21:48:30.0503874Z Fetching puma 7.1.0
-2025-10-29T21:48:30.0707212Z Installing puma 7.1.0 with native extensions
-2025-10-29T21:48:30.2772594Z Fetching unicode-display_width 3.2.0
-2025-10-29T21:48:30.2905113Z Installing unicode-display_width 3.2.0
-2025-10-29T21:48:30.3005514Z Fetching reline 0.6.2
-2025-10-29T21:48:30.3149103Z Installing reline 0.6.2
-2025-10-29T21:48:30.3347791Z Fetching u-attributes 2.8.0
-2025-10-29T21:48:30.3780385Z Installing u-attributes 2.8.0
-2025-10-29T21:48:30.4075782Z Fetching xml-simple 1.1.9
-2025-10-29T21:48:30.4252354Z Installing xml-simple 1.1.9
-2025-10-29T21:48:30.4410920Z Fetching psych 5.2.6
-2025-10-29T21:48:30.4581929Z Installing psych 5.2.6 with native extensions
-2025-10-29T21:48:31.9915704Z Fetching rspec-core 3.13.6
-2025-10-29T21:48:32.0049123Z Installing rspec-core 3.13.6
-2025-10-29T21:48:32.0305739Z Fetching rspec-expectations 3.13.5
-2025-10-29T21:48:32.0391876Z Installing rspec-expectations 3.13.5
-2025-10-29T21:48:32.0559840Z Fetching rspec-mocks 3.13.6
-2025-10-29T21:48:32.0652721Z Installing rspec-mocks 3.13.6
-2025-10-29T21:48:32.0806255Z Fetching simplecov 0.22.0
-2025-10-29T21:48:32.0898367Z Installing simplecov 0.22.0
-2025-10-29T21:48:32.1047036Z Fetching faker 3.5.2
-2025-10-29T21:48:32.1808803Z Installing faker 3.5.2
-2025-10-29T21:48:32.3771879Z Fetching dry-configurable 1.3.0
-2025-10-29T21:48:32.3828890Z Installing dry-configurable 1.3.0
-2025-10-29T21:48:32.3895436Z Fetching net-imap 0.5.12
-2025-10-29T21:48:32.4021297Z Installing net-imap 0.5.12
-2025-10-29T21:48:32.4253303Z Fetching net-pop 0.1.2
-2025-10-29T21:48:32.4316851Z Installing net-pop 0.1.2
-2025-10-29T21:48:32.4363868Z Fetching net-smtp 0.5.1
-2025-10-29T21:48:32.4420354Z Installing net-smtp 0.5.1
-2025-10-29T21:48:32.4478190Z Fetching loofah 2.24.1
-2025-10-29T21:48:32.4570112Z Installing loofah 2.24.1
-2025-10-29T21:48:32.4664445Z Fetching activesupport 8.0.4
-2025-10-29T21:48:32.4898545Z Installing activesupport 8.0.4
-2025-10-29T21:48:32.5561642Z Fetching dry-logic 1.6.0
-2025-10-29T21:48:32.5662496Z Installing dry-logic 1.6.0
-2025-10-29T21:48:32.5872174Z Fetching json-schema 5.2.2
-2025-10-29T21:48:32.5933389Z Fetching terminal-table 4.0.0
-2025-10-29T21:48:32.6015418Z Installing json-schema 5.2.2
-2025-10-29T21:48:32.6041522Z Installing terminal-table 4.0.0
-2025-10-29T21:48:32.6264596Z Fetching highline 3.1.2
-2025-10-29T21:48:32.6371836Z Fetching u-case 4.5.2
-2025-10-29T21:48:32.6646252Z Installing u-case 4.5.2
-2025-10-29T21:48:32.6728390Z Installing highline 3.1.2
-2025-10-29T21:48:32.6968563Z Fetching license_finder 7.2.1
-2025-10-29T21:48:32.7268327Z Installing license_finder 7.2.1
-2025-10-29T21:48:32.7335581Z Fetching rspec_junit_formatter 0.6.0
-2025-10-29T21:48:32.7424459Z Installing rspec_junit_formatter 0.6.0
-2025-10-29T21:48:32.7504458Z Fetching mail 2.9.0
-2025-10-29T21:48:32.7913056Z Installing mail 2.9.0
-2025-10-29T21:48:32.8544181Z Fetching rails-html-sanitizer 1.6.2
-2025-10-29T21:48:32.8622727Z Installing rails-html-sanitizer 1.6.2
-2025-10-29T21:48:32.8724999Z Fetching rdoc 6.15.0
-2025-10-29T21:48:32.8966911Z Fetching dry-types 1.8.3
-2025-10-29T21:48:32.9100838Z Installing dry-types 1.8.3
-2025-10-29T21:48:32.9223162Z Installing rdoc 6.15.0
-2025-10-29T21:48:32.9544838Z Fetching rails-dom-testing 2.3.0
-2025-10-29T21:48:32.9624810Z Installing rails-dom-testing 2.3.0
-2025-10-29T21:48:32.9750155Z Fetching globalid 1.3.0
-2025-10-29T21:48:32.9831645Z Installing globalid 1.3.0
-2025-10-29T21:48:32.9941237Z Fetching activemodel 8.0.4
-2025-10-29T21:48:33.0083134Z Installing activemodel 8.0.4
-2025-10-29T21:48:33.0605167Z Fetching factory_bot 6.5.6
-2025-10-29T21:48:33.0754774Z Installing factory_bot 6.5.6
-2025-10-29T21:48:33.0889452Z Fetching shoulda-matchers 6.5.0
-2025-10-29T21:48:33.1110442Z Installing shoulda-matchers 6.5.0
-2025-10-29T21:48:33.1124395Z Fetching dry-schema 1.14.1
-2025-10-29T21:48:33.1360045Z Installing dry-schema 1.14.1
-2025-10-29T21:48:33.1877026Z Fetching actionview 8.0.4
-2025-10-29T21:48:33.1914053Z Fetching activejob 8.0.4
-2025-10-29T21:48:33.2849321Z Installing activejob 8.0.4
-2025-10-29T21:48:33.2946419Z Installing actionview 8.0.4
-2025-10-29T21:48:33.3188990Z Fetching activerecord 8.0.4
-2025-10-29T21:48:33.3508748Z Fetching irb 1.15.2
-2025-10-29T21:48:33.3605432Z Installing activerecord 8.0.4
-2025-10-29T21:48:33.3698592Z Installing irb 1.15.2
-2025-10-29T21:48:33.4190146Z Fetching reek 6.5.0
-2025-10-29T21:48:33.4406247Z Installing reek 6.5.0
-2025-10-29T21:48:33.5338805Z Fetching actionpack 8.0.4
-2025-10-29T21:48:33.5690362Z Installing actionpack 8.0.4
-2025-10-29T21:48:33.5814701Z Fetching debug 1.11.0
-2025-10-29T21:48:33.5985966Z Installing debug 1.11.0 with native extensions
-2025-10-29T21:48:33.6501249Z Fetching actioncable 8.0.4
-2025-10-29T21:48:33.6610666Z Installing actioncable 8.0.4
-2025-10-29T21:48:33.6790067Z Fetching activestorage 8.0.4
-2025-10-29T21:48:33.6918673Z Installing activestorage 8.0.4
-2025-10-29T21:48:33.7260304Z Fetching actionmailer 8.0.4
-2025-10-29T21:48:33.7461651Z Installing actionmailer 8.0.4
-2025-10-29T21:48:33.7568315Z Fetching railties 8.0.4
-2025-10-29T21:48:33.7819736Z Installing railties 8.0.4
-2025-10-29T21:48:33.8852312Z Fetching actionmailbox 8.0.4
-2025-10-29T21:48:33.8940000Z Installing actionmailbox 8.0.4
-2025-10-29T21:48:33.9154711Z Fetching actiontext 8.0.4
-2025-10-29T21:48:33.9321566Z Installing actiontext 8.0.4
-2025-10-29T21:48:33.9543062Z Fetching dotenv-rails 3.1.8
-2025-10-29T21:48:33.9711450Z Installing dotenv-rails 3.1.8
-2025-10-29T21:48:33.9742408Z Fetching factory_bot_rails 6.5.1
-2025-10-29T21:48:33.9975343Z Installing factory_bot_rails 6.5.1
-2025-10-29T21:48:34.0055753Z Fetching rails-i18n 8.0.2
-2025-10-29T21:48:34.0273125Z Installing rails-i18n 8.0.2
-2025-10-29T21:48:34.0945852Z Fetching rspec-rails 6.1.5
-2025-10-29T21:48:34.1371454Z Installing rspec-rails 6.1.5
-2025-10-29T21:48:34.1649891Z Fetching rswag-api 2.16.0
-2025-10-29T21:48:34.1719236Z Installing rswag-api 2.16.0
-2025-10-29T21:48:34.1771142Z Fetching rswag-specs 2.16.0
-2025-10-29T21:48:34.1834488Z Installing rswag-specs 2.16.0
-2025-10-29T21:48:34.1906098Z Fetching rswag-ui 2.16.0
-2025-10-29T21:48:34.2942860Z Fetching rails 8.0.4
-2025-10-29T21:48:34.3020116Z Installing rswag-ui 2.16.0
-2025-10-29T21:48:34.3029261Z Installing rails 8.0.4
-2025-10-29T21:48:34.3074712Z Fetching i18n-tasks 1.0.15
-2025-10-29T21:48:34.3204782Z Installing i18n-tasks 1.0.15
-2025-10-29T21:48:48.6608164Z Fetching rubocop-ast 1.47.1
-2025-10-29T21:48:48.6714172Z Installing rubocop-ast 1.47.1
-2025-10-29T21:48:48.6926759Z Fetching rubocop 1.81.6
-2025-10-29T21:48:48.7275321Z Installing rubocop 1.81.6
-2025-10-29T21:48:48.9687180Z Fetching rubocop-capybara 2.22.1
-2025-10-29T21:48:48.9688652Z Fetching rubocop-factory_bot 2.27.1
-2025-10-29T21:48:48.9690015Z Fetching rubocop-rails 2.33.4
-2025-10-29T21:48:48.9690671Z Fetching rubocop-rspec_rails 2.29.1
-2025-10-29T21:48:48.9808946Z Installing rubocop-capybara 2.22.1
-2025-10-29T21:48:48.9848228Z Installing rubocop-factory_bot 2.27.1
-2025-10-29T21:48:48.9893042Z Installing rubocop-rspec_rails 2.29.1
-2025-10-29T21:48:49.0001684Z Installing rubocop-rails 2.33.4
-2025-10-29T21:48:49.0195766Z Fetching rubocop-rspec 2.31.0
-2025-10-29T21:48:49.0300726Z Installing rubocop-rspec 2.31.0
-2025-10-29T21:48:49.0880453Z Bundle complete! 28 Gemfile dependencies, 137 gems now installed.
-2025-10-29T21:48:49.0881150Z Bundled gems are installed into `./vendor/bundle`
-2025-10-29T21:48:49.0881637Z Post-install message from i18n-tasks:
-2025-10-29T21:48:49.0882320Z # Install default configuration:
-2025-10-29T21:48:49.0882867Z cp $(bundle exec i18n-tasks gem-path)/templates/config/i18n-tasks.yml config/
-2025-10-29T21:48:49.0883466Z # Add an RSpec for missing and unused keys:
-2025-10-29T21:48:49.0884065Z cp $(bundle exec i18n-tasks gem-path)/templates/rspec/i18n_spec.rb spec/
-2025-10-29T21:48:49.0884440Z # Or for minitest:
-2025-10-29T21:48:49.0884791Z cp $(bundle exec i18n-tasks gem-path)/templates/minitest/i18n_test.rb test/
-2025-10-29T21:48:49.0885415Z Post-install message from rubyzip:
-2025-10-29T21:48:49.0885797Z RubyZip 3.0 is coming!
-2025-10-29T21:48:49.0886094Z **********************
-2025-10-29T21:48:49.0886261Z 
-2025-10-29T21:48:49.0886445Z The public API of some Rubyzip classes has been modernized to use named
-2025-10-29T21:48:49.0887140Z parameters for optional arguments. Please check your usage of the
-2025-10-29T21:48:49.0887679Z following classes:
-2025-10-29T21:48:49.0892682Z   * `Zip::File`
-2025-10-29T21:48:49.0892989Z   * `Zip::Entry`
-2025-10-29T21:48:49.0893257Z   * `Zip::InputStream`
-2025-10-29T21:48:49.0893550Z   * `Zip::OutputStream`
-2025-10-29T21:48:49.0893831Z   * `Zip::DOSTime`
-2025-10-29T21:48:49.0893997Z 
-2025-10-29T21:48:49.0894214Z Run your test suite with the `RUBYZIP_V3_API_WARN` environment
-2025-10-29T21:48:49.0894799Z variable set to see warnings about usage of the old API. This will
-2025-10-29T21:48:49.0895403Z help you to identify any changes that you need to make to your code.
-2025-10-29T21:48:49.0896393Z See https://github.com/rubyzip/rubyzip/wiki/Updating-to-version-3.x for
-2025-10-29T21:48:49.0896931Z more information.
-2025-10-29T21:48:49.0897099Z 
-2025-10-29T21:48:49.0897373Z Please ensure that your Gemfiles and .gemspecs are suitably restrictive
-2025-10-29T21:48:49.0898239Z to avoid an unexpected breakage when 3.0 is released (e.g. ~> 2.3.0).
-2025-10-29T21:48:49.0898892Z See https://github.com/rubyzip/rubyzip for details. The Changelog also
-2025-10-29T21:48:49.0899573Z lists other enhancements and bugfixes that have been implemented since
-2025-10-29T21:48:49.0900107Z version 2.3.0.
-2025-10-29T21:48:49.0900509Z 1 installed gem you directly depend on is looking for funding.
-2025-10-29T21:48:49.0900982Z   Run `bundle fund` for details
-2025-10-29T21:48:49.1600864Z Saving cache
-2025-10-29T21:48:49.1722933Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/restaurant/restaurant --files-from manifest.txt --use-compress-program zstdmt
-2025-10-29T21:48:49.9138685Z Failed to save: Unable to reserve cache with key setup-ruby-bundler-cache-v6-ubuntu-24.04-x64-ruby-3.3.10-wd-/home/runner/work/restaurant/restaurant-with--without--only--Gemfile.lock-d55fc1d3465e457c9082700b0ff103cce4170f5a7a5755fdbc99aa04b04c6fe6, another job may be creating this cache.
-2025-10-29T21:48:49.9262929Z Took  36.63 seconds
+﻿2025-10-29T22:22:16.4988239Z ##[group]Run ruby/setup-ruby@v1
+2025-10-29T22:22:16.4988469Z with:
+2025-10-29T22:22:16.4988624Z   ruby-version: 3.3
+2025-10-29T22:22:16.4988801Z   bundler-cache: true
+2025-10-29T22:22:16.4988971Z ##[endgroup]
+2025-10-29T22:22:16.6515804Z ##[group]Modifying PATH
+2025-10-29T22:22:16.6519508Z Entries added to PATH to use selected Ruby:
+2025-10-29T22:22:16.6522495Z   /opt/hostedtoolcache/Ruby/3.3.10/x64/bin
+2025-10-29T22:22:16.6532328Z ##[endgroup]
+2025-10-29T22:22:16.6550047Z ##[group]Downloading Ruby
+2025-10-29T22:22:16.6551365Z https://github.com/ruby/ruby-builder/releases/download/ruby-3.3.10/ruby-3.3.10-ubuntu-24.04-x64.tar.gz
+2025-10-29T22:22:16.9342427Z Took   0.28 seconds
+2025-10-29T22:22:16.9343308Z ##[endgroup]
+2025-10-29T22:22:16.9343835Z ##[group]Extracting  Ruby
+2025-10-29T22:22:16.9373189Z [command]/usr/bin/tar -xz -C /opt/hostedtoolcache/Ruby/3.3.10 -f /home/runner/work/_temp/beb51de4-8f3b-4706-8e59-b240ec5f2454
+2025-10-29T22:22:17.3487497Z Took   0.41 seconds
+2025-10-29T22:22:17.3488804Z ##[endgroup]
+2025-10-29T22:22:17.3489579Z ##[group]Print Ruby version
+2025-10-29T22:22:17.3502015Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/ruby --version
+2025-10-29T22:22:17.3622975Z ruby 3.3.10 (2025-10-23 revision 343ea05002) [x86_64-linux]
+2025-10-29T22:22:17.3635549Z Took   0.01 seconds
+2025-10-29T22:22:17.3636474Z ##[endgroup]
+2025-10-29T22:22:17.3637128Z ##[group]Installing Bundler
+2025-10-29T22:22:17.3643100Z Using Bundler 2.6.9 from Gemfile.lock BUNDLED WITH 2.6.9
+2025-10-29T22:22:17.3647568Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/gem install bundler -v 2.6.9
+2025-10-29T22:22:17.7221743Z Successfully installed bundler-2.6.9
+2025-10-29T22:22:17.7222220Z 1 gem installed
+2025-10-29T22:22:17.7254893Z Took   0.36 seconds
+2025-10-29T22:22:17.7255729Z ##[endgroup]
+2025-10-29T22:22:17.7256707Z > bundle install
+2025-10-29T22:22:17.7274206Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/bundle config --local path /home/runner/work/restaurant/restaurant/vendor/bundle
+2025-10-29T22:22:17.8602009Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/bundle config --local deployment true
+2025-10-29T22:22:17.9910126Z ##[group]Print lockfile
+2025-10-29T22:22:17.9923080Z [command]/usr/bin/cat Gemfile.lock
+2025-10-29T22:22:17.9947967Z GEM
+2025-10-29T22:22:17.9948415Z   remote: https://rubygems.org/
+2025-10-29T22:22:17.9948886Z   specs:
+2025-10-29T22:22:17.9949186Z     actioncable (8.0.4)
+2025-10-29T22:22:17.9949558Z       actionpack (= 8.0.4)
+2025-10-29T22:22:17.9949902Z       activesupport (= 8.0.4)
+2025-10-29T22:22:17.9950207Z       nio4r (~> 2.0)
+2025-10-29T22:22:17.9950492Z       websocket-driver (>= 0.6.1)
+2025-10-29T22:22:17.9950819Z       zeitwerk (~> 2.6)
+2025-10-29T22:22:17.9951119Z     actionmailbox (8.0.4)
+2025-10-29T22:22:17.9951428Z       actionpack (= 8.0.4)
+2025-10-29T22:22:17.9952046Z       activejob (= 8.0.4)
+2025-10-29T22:22:17.9952353Z       activerecord (= 8.0.4)
+2025-10-29T22:22:17.9952807Z       activestorage (= 8.0.4)
+2025-10-29T22:22:17.9953146Z       activesupport (= 8.0.4)
+2025-10-29T22:22:17.9953478Z       mail (>= 2.8.0)
+2025-10-29T22:22:17.9953751Z     actionmailer (8.0.4)
+2025-10-29T22:22:17.9954031Z       actionpack (= 8.0.4)
+2025-10-29T22:22:17.9954333Z       actionview (= 8.0.4)
+2025-10-29T22:22:17.9954624Z       activejob (= 8.0.4)
+2025-10-29T22:22:17.9954928Z       activesupport (= 8.0.4)
+2025-10-29T22:22:17.9955270Z       mail (>= 2.8.0)
+2025-10-29T22:22:17.9955577Z       rails-dom-testing (~> 2.2)
+2025-10-29T22:22:17.9955921Z     actionpack (8.0.4)
+2025-10-29T22:22:17.9956219Z       actionview (= 8.0.4)
+2025-10-29T22:22:17.9956551Z       activesupport (= 8.0.4)
+2025-10-29T22:22:17.9956892Z       nokogiri (>= 1.8.5)
+2025-10-29T22:22:17.9957193Z       rack (>= 2.2.4)
+2025-10-29T22:22:17.9957482Z       rack-session (>= 1.0.1)
+2025-10-29T22:22:17.9957821Z       rack-test (>= 0.6.3)
+2025-10-29T22:22:17.9958120Z       rails-dom-testing (~> 2.2)
+2025-10-29T22:22:17.9958445Z       rails-html-sanitizer (~> 1.6)
+2025-10-29T22:22:17.9958793Z       useragent (~> 0.16)
+2025-10-29T22:22:17.9959408Z     actiontext (8.0.4)
+2025-10-29T22:22:17.9959738Z       actionpack (= 8.0.4)
+2025-10-29T22:22:17.9960055Z       activerecord (= 8.0.4)
+2025-10-29T22:22:17.9960395Z       activestorage (= 8.0.4)
+2025-10-29T22:22:17.9960730Z       activesupport (= 8.0.4)
+2025-10-29T22:22:17.9961045Z       globalid (>= 0.6.0)
+2025-10-29T22:22:17.9961355Z       nokogiri (>= 1.8.5)
+2025-10-29T22:22:17.9961655Z     actionview (8.0.4)
+2025-10-29T22:22:17.9961979Z       activesupport (= 8.0.4)
+2025-10-29T22:22:17.9962294Z       builder (~> 3.1)
+2025-10-29T22:22:17.9962577Z       erubi (~> 1.11)
+2025-10-29T22:22:17.9963035Z       rails-dom-testing (~> 2.2)
+2025-10-29T22:22:17.9963409Z       rails-html-sanitizer (~> 1.6)
+2025-10-29T22:22:17.9963767Z     activejob (8.0.4)
+2025-10-29T22:22:17.9964098Z       activesupport (= 8.0.4)
+2025-10-29T22:22:17.9964433Z       globalid (>= 0.3.6)
+2025-10-29T22:22:17.9964749Z     activemodel (8.0.4)
+2025-10-29T22:22:17.9965052Z       activesupport (= 8.0.4)
+2025-10-29T22:22:17.9965382Z     activerecord (8.0.4)
+2025-10-29T22:22:17.9965713Z       activemodel (= 8.0.4)
+2025-10-29T22:22:17.9966059Z       activesupport (= 8.0.4)
+2025-10-29T22:22:17.9966393Z       timeout (>= 0.4.0)
+2025-10-29T22:22:17.9966657Z     activestorage (8.0.4)
+2025-10-29T22:22:17.9966960Z       actionpack (= 8.0.4)
+2025-10-29T22:22:17.9967251Z       activejob (= 8.0.4)
+2025-10-29T22:22:17.9967563Z       activerecord (= 8.0.4)
+2025-10-29T22:22:17.9967900Z       activesupport (= 8.0.4)
+2025-10-29T22:22:17.9968224Z       marcel (~> 1.0)
+2025-10-29T22:22:17.9968520Z     activesupport (8.0.4)
+2025-10-29T22:22:17.9968953Z       base64
+2025-10-29T22:22:17.9969281Z       benchmark (>= 0.3)
+2025-10-29T22:22:17.9969584Z       bigdecimal
+2025-10-29T22:22:17.9969889Z       concurrent-ruby (~> 1.0, >= 1.3.1)
+2025-10-29T22:22:17.9970329Z       connection_pool (>= 2.2.5)
+2025-10-29T22:22:17.9970614Z       drb
+2025-10-29T22:22:17.9970836Z       i18n (>= 1.6, < 2)
+2025-10-29T22:22:17.9971150Z       logger (>= 1.4.2)
+2025-10-29T22:22:17.9971465Z       minitest (>= 5.1)
+2025-10-29T22:22:17.9971761Z       securerandom (>= 0.3)
+2025-10-29T22:22:17.9972108Z       tzinfo (~> 2.0, >= 2.0.5)
+2025-10-29T22:22:17.9972439Z       uri (>= 0.13.1)
+2025-10-29T22:22:17.9972896Z     addressable (2.8.7)
+2025-10-29T22:22:17.9973214Z       public_suffix (>= 2.0.2, < 7.0)
+2025-10-29T22:22:17.9973694Z     ast (2.4.3)
+2025-10-29T22:22:17.9974093Z     base64 (0.3.0)
+2025-10-29T22:22:17.9974389Z     benchmark (0.5.0)
+2025-10-29T22:22:17.9974710Z     bigdecimal (3.3.1)
+2025-10-29T22:22:17.9975013Z     blueprinter (1.2.1)
+2025-10-29T22:22:17.9975305Z     brakeman (6.2.2)
+2025-10-29T22:22:17.9975551Z       racc
+2025-10-29T22:22:17.9975774Z     builder (3.3.0)
+2025-10-29T22:22:17.9976043Z     bundler-audit (0.9.2)
+2025-10-29T22:22:17.9976553Z       bundler (>= 1.2.0, < 3)
+2025-10-29T22:22:17.9976870Z       thor (~> 1.0)
+2025-10-29T22:22:17.9977161Z     concurrent-ruby (1.3.5)
+2025-10-29T22:22:17.9977483Z     connection_pool (2.5.4)
+2025-10-29T22:22:17.9977790Z     crass (1.0.6)
+2025-10-29T22:22:17.9978075Z     csv (3.3.5)
+2025-10-29T22:22:17.9978343Z     date (3.4.1)
+2025-10-29T22:22:17.9978623Z     debug (1.11.0)
+2025-10-29T22:22:17.9978886Z       irb (~> 1.10)
+2025-10-29T22:22:17.9979136Z       reline (>= 0.3.8)
+2025-10-29T22:22:17.9979411Z     diff-lcs (1.6.2)
+2025-10-29T22:22:17.9979674Z     docile (1.4.1)
+2025-10-29T22:22:17.9979943Z     dotenv (3.1.8)
+2025-10-29T22:22:17.9980227Z     dotenv-rails (3.1.8)
+2025-10-29T22:22:17.9980539Z       dotenv (= 3.1.8)
+2025-10-29T22:22:17.9980848Z       railties (>= 6.1)
+2025-10-29T22:22:17.9981133Z     drb (2.2.3)
+2025-10-29T22:22:17.9981417Z     dry-configurable (1.3.0)
+2025-10-29T22:22:17.9981730Z       dry-core (~> 1.1)
+2025-10-29T22:22:17.9981999Z       zeitwerk (~> 2.6)
+2025-10-29T22:22:17.9982308Z     dry-core (1.1.0)
+2025-10-29T22:22:17.9982756Z       concurrent-ruby (~> 1.0)
+2025-10-29T22:22:17.9983092Z       logger
+2025-10-29T22:22:17.9983351Z       zeitwerk (~> 2.6)
+2025-10-29T22:22:17.9983653Z     dry-inflector (1.2.0)
+2025-10-29T22:22:17.9984202Z     dry-initializer (3.2.0)
+2025-10-29T22:22:17.9984485Z     dry-logic (1.6.0)
+2025-10-29T22:22:17.9984744Z       bigdecimal
+2025-10-29T22:22:17.9985023Z       concurrent-ruby (~> 1.0)
+2025-10-29T22:22:17.9985352Z       dry-core (~> 1.1)
+2025-10-29T22:22:17.9985641Z       zeitwerk (~> 2.6)
+2025-10-29T22:22:17.9985961Z     dry-schema (1.14.1)
+2025-10-29T22:22:17.9986264Z       concurrent-ruby (~> 1.0)
+2025-10-29T22:22:17.9986629Z       dry-configurable (~> 1.0, >= 1.0.1)
+2025-10-29T22:22:17.9987016Z       dry-core (~> 1.1)
+2025-10-29T22:22:17.9987352Z       dry-initializer (~> 3.2)
+2025-10-29T22:22:17.9987662Z       dry-logic (~> 1.5)
+2025-10-29T22:22:17.9987958Z       dry-types (~> 1.8)
+2025-10-29T22:22:17.9988256Z       zeitwerk (~> 2.6)
+2025-10-29T22:22:17.9988588Z     dry-types (1.8.3)
+2025-10-29T22:22:17.9988881Z       bigdecimal (~> 3.0)
+2025-10-29T22:22:17.9989178Z       concurrent-ruby (~> 1.0)
+2025-10-29T22:22:17.9989496Z       dry-core (~> 1.0)
+2025-10-29T22:22:17.9989776Z       dry-inflector (~> 1.0)
+2025-10-29T22:22:17.9990202Z       dry-logic (~> 1.4)
+2025-10-29T22:22:17.9990484Z       zeitwerk (~> 2.6)
+2025-10-29T22:22:17.9990770Z     erb (5.1.3)
+2025-10-29T22:22:17.9991035Z     erubi (1.13.1)
+2025-10-29T22:22:17.9991328Z     factory_bot (6.5.6)
+2025-10-29T22:22:17.9991630Z       activesupport (>= 6.1.0)
+2025-10-29T22:22:17.9991982Z     factory_bot_rails (6.5.1)
+2025-10-29T22:22:17.9992309Z       factory_bot (~> 6.5)
+2025-10-29T22:22:17.9992774Z       railties (>= 6.1.0)
+2025-10-29T22:22:17.9993088Z     faker (3.5.2)
+2025-10-29T22:22:17.9993366Z       i18n (>= 1.8.11, < 2)
+2025-10-29T22:22:17.9993694Z     globalid (1.3.0)
+2025-10-29T22:22:17.9994003Z       activesupport (>= 6.1)
+2025-10-29T22:22:17.9994336Z     highline (3.1.2)
+2025-10-29T22:22:17.9994636Z       reline
+2025-10-29T22:22:17.9994900Z     i18n (1.14.7)
+2025-10-29T22:22:17.9995168Z       concurrent-ruby (~> 1.0)
+2025-10-29T22:22:17.9995477Z     i18n-tasks (1.0.15)
+2025-10-29T22:22:17.9995758Z       activesupport (>= 4.0.2)
+2025-10-29T22:22:17.9996094Z       ast (>= 2.1.0)
+2025-10-29T22:22:17.9996356Z       erubi
+2025-10-29T22:22:17.9996588Z       highline (>= 2.0.0)
+2025-10-29T22:22:17.9996875Z       i18n
+2025-10-29T22:22:17.9997131Z       parser (>= 3.2.2.1)
+2025-10-29T22:22:17.9997445Z       rails-i18n
+2025-10-29T22:22:17.9997687Z       rainbow (>= 2.2.2, < 4.0)
+2025-10-29T22:22:17.9998018Z       ruby-progressbar (~> 1.8, >= 1.8.1)
+2025-10-29T22:22:17.9998384Z       terminal-table (>= 1.5.1)
+2025-10-29T22:22:17.9998699Z     io-console (0.8.1)
+2025-10-29T22:22:17.9998983Z     irb (1.15.2)
+2025-10-29T22:22:17.9999257Z       pp (>= 0.6.0)
+2025-10-29T22:22:17.9999521Z       rdoc (>= 4.0.0)
+2025-10-29T22:22:17.9999801Z       reline (>= 0.4.2)
+2025-10-29T22:22:18.0000091Z     json (2.15.2)
+2025-10-29T22:22:18.0000613Z     json-schema (5.2.2)
+2025-10-29T22:22:18.0000898Z       addressable (~> 2.8)
+2025-10-29T22:22:18.0001220Z       bigdecimal (~> 3.1)
+2025-10-29T22:22:18.0001584Z     kind (5.10.0)
+2025-10-29T22:22:18.0001900Z     language_server-protocol (3.17.0.5)
+2025-10-29T22:22:18.0002279Z     license_finder (7.2.1)
+2025-10-29T22:22:18.0002580Z       bundler
+2025-10-29T22:22:18.0003006Z       csv (~> 3.2)
+2025-10-29T22:22:18.0003279Z       rubyzip (>= 1, < 3)
+2025-10-29T22:22:18.0003579Z       thor (~> 1.2)
+2025-10-29T22:22:18.0003851Z       tomlrb (>= 1.3, < 2.1)
+2025-10-29T22:22:18.0004153Z       with_env (= 1.1.0)
+2025-10-29T22:22:18.0004455Z       xml-simple (~> 1.1.9)
+2025-10-29T22:22:18.0005000Z     lint_roller (1.1.0)
+2025-10-29T22:22:18.0005317Z     logger (1.7.0)
+2025-10-29T22:22:18.0005576Z     loofah (2.24.1)
+2025-10-29T22:22:18.0005855Z       crass (~> 1.0.2)
+2025-10-29T22:22:18.0006139Z       nokogiri (>= 1.12.0)
+2025-10-29T22:22:18.0006442Z     mail (2.9.0)
+2025-10-29T22:22:18.0006716Z       logger
+2025-10-29T22:22:18.0006987Z       mini_mime (>= 0.1.1)
+2025-10-29T22:22:18.0007282Z       net-imap
+2025-10-29T22:22:18.0007539Z       net-pop
+2025-10-29T22:22:18.0007778Z       net-smtp
+2025-10-29T22:22:18.0008240Z     marcel (1.1.0)
+2025-10-29T22:22:18.0008517Z     mini_mime (1.1.5)
+2025-10-29T22:22:18.0008848Z     minitest (5.26.0)
+2025-10-29T22:22:18.0009202Z     net-imap (0.5.12)
+2025-10-29T22:22:18.0009501Z       date
+2025-10-29T22:22:18.0009760Z       net-protocol
+2025-10-29T22:22:18.0010050Z     net-pop (0.1.2)
+2025-10-29T22:22:18.0010338Z       net-protocol
+2025-10-29T22:22:18.0010653Z     net-protocol (0.2.2)
+2025-10-29T22:22:18.0010969Z       timeout
+2025-10-29T22:22:18.0011305Z     net-smtp (0.5.1)
+2025-10-29T22:22:18.0011626Z       net-protocol
+2025-10-29T22:22:18.0011895Z     nio4r (2.7.4)
+2025-10-29T22:22:18.0012188Z     nokogiri (1.18.10-aarch64-linux-gnu)
+2025-10-29T22:22:18.0012783Z       racc (~> 1.4)
+2025-10-29T22:22:18.0013096Z     nokogiri (1.18.10-aarch64-linux-musl)
+2025-10-29T22:22:18.0013463Z       racc (~> 1.4)
+2025-10-29T22:22:18.0013745Z     nokogiri (1.18.10-arm-linux-gnu)
+2025-10-29T22:22:18.0014072Z       racc (~> 1.4)
+2025-10-29T22:22:18.0014358Z     nokogiri (1.18.10-arm-linux-musl)
+2025-10-29T22:22:18.0014716Z       racc (~> 1.4)
+2025-10-29T22:22:18.0015009Z     nokogiri (1.18.10-arm64-darwin)
+2025-10-29T22:22:18.0015352Z       racc (~> 1.4)
+2025-10-29T22:22:18.0015632Z     nokogiri (1.18.10-x86_64-darwin)
+2025-10-29T22:22:18.0015951Z       racc (~> 1.4)
+2025-10-29T22:22:18.0016234Z     nokogiri (1.18.10-x86_64-linux-gnu)
+2025-10-29T22:22:18.0016592Z       racc (~> 1.4)
+2025-10-29T22:22:18.0016858Z     nokogiri (1.18.10-x86_64-linux-musl)
+2025-10-29T22:22:18.0017204Z       racc (~> 1.4)
+2025-10-29T22:22:18.0017455Z     ostruct (0.6.3)
+2025-10-29T22:22:18.0017736Z     pagy (6.5.0)
+2025-10-29T22:22:18.0018010Z     parallel (1.27.0)
+2025-10-29T22:22:18.0018303Z     parser (3.3.10.0)
+2025-10-29T22:22:18.0018571Z       ast (~> 2.4.1)
+2025-10-29T22:22:18.0018857Z       racc
+2025-10-29T22:22:18.0019112Z     pg (1.6.2)
+2025-10-29T22:22:18.0019401Z     pg (1.6.2-aarch64-linux)
+2025-10-29T22:22:18.0019719Z     pg (1.6.2-aarch64-linux-musl)
+2025-10-29T22:22:18.0020056Z     pg (1.6.2-arm64-darwin)
+2025-10-29T22:22:18.0020389Z     pg (1.6.2-x86_64-darwin)
+2025-10-29T22:22:18.0020720Z     pg (1.6.2-x86_64-linux)
+2025-10-29T22:22:18.0021033Z     pg (1.6.2-x86_64-linux-musl)
+2025-10-29T22:22:18.0021341Z     pp (0.6.3)
+2025-10-29T22:22:18.0021579Z       prettyprint
+2025-10-29T22:22:18.0021851Z     prettyprint (0.2.0)
+2025-10-29T22:22:18.0022146Z     prism (1.6.0)
+2025-10-29T22:22:18.0022394Z     psych (5.2.6)
+2025-10-29T22:22:18.0022562Z       date
+2025-10-29T22:22:18.0022876Z       stringio
+2025-10-29T22:22:18.0023049Z     public_suffix (6.0.2)
+2025-10-29T22:22:18.0023230Z     puma (7.1.0)
+2025-10-29T22:22:18.0023396Z       nio4r (~> 2.0)
+2025-10-29T22:22:18.0023555Z     racc (1.8.1)
+2025-10-29T22:22:18.0023721Z     rack (3.2.3)
+2025-10-29T22:22:18.0023887Z     rack-session (2.1.1)
+2025-10-29T22:22:18.0024218Z       base64 (>= 0.1.0)
+2025-10-29T22:22:18.0024395Z       rack (>= 3.0.0)
+2025-10-29T22:22:18.0024561Z     rack-test (2.2.0)
+2025-10-29T22:22:18.0024739Z       rack (>= 1.3)
+2025-10-29T22:22:18.0024907Z     rackup (2.2.1)
+2025-10-29T22:22:18.0025081Z       rack (>= 3)
+2025-10-29T22:22:18.0025241Z     rails (8.0.4)
+2025-10-29T22:22:18.0025417Z       actioncable (= 8.0.4)
+2025-10-29T22:22:18.0025607Z       actionmailbox (= 8.0.4)
+2025-10-29T22:22:18.0025811Z       actionmailer (= 8.0.4)
+2025-10-29T22:22:18.0026000Z       actionpack (= 8.0.4)
+2025-10-29T22:22:18.0026193Z       actiontext (= 8.0.4)
+2025-10-29T22:22:18.0026375Z       actionview (= 8.0.4)
+2025-10-29T22:22:18.0026558Z       activejob (= 8.0.4)
+2025-10-29T22:22:18.0026744Z       activemodel (= 8.0.4)
+2025-10-29T22:22:18.0026929Z       activerecord (= 8.0.4)
+2025-10-29T22:22:18.0027125Z       activestorage (= 8.0.4)
+2025-10-29T22:22:18.0027316Z       activesupport (= 8.0.4)
+2025-10-29T22:22:18.0027509Z       bundler (>= 1.15.0)
+2025-10-29T22:22:18.0027688Z       railties (= 8.0.4)
+2025-10-29T22:22:18.0027879Z     rails-dom-testing (2.3.0)
+2025-10-29T22:22:18.0028076Z       activesupport (>= 5.0.0)
+2025-10-29T22:22:18.0028265Z       minitest
+2025-10-29T22:22:18.0028513Z       nokogiri (>= 1.6)
+2025-10-29T22:22:18.0028699Z     rails-html-sanitizer (1.6.2)
+2025-10-29T22:22:18.0028901Z       loofah (~> 2.21)
+2025-10-29T22:22:18.0029185Z       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
+2025-10-29T22:22:18.0029498Z     rails-i18n (8.0.2)
+2025-10-29T22:22:18.0029668Z       i18n (>= 0.7, < 2)
+2025-10-29T22:22:18.0029853Z       railties (>= 8.0.0, < 9)
+2025-10-29T22:22:18.0030037Z     railties (8.0.4)
+2025-10-29T22:22:18.0030218Z       actionpack (= 8.0.4)
+2025-10-29T22:22:18.0030406Z       activesupport (= 8.0.4)
+2025-10-29T22:22:18.0030595Z       irb (~> 1.13)
+2025-10-29T22:22:18.0030756Z       rackup (>= 1.0.0)
+2025-10-29T22:22:18.0030921Z       rake (>= 12.2)
+2025-10-29T22:22:18.0031094Z       thor (~> 1.0, >= 1.2.2)
+2025-10-29T22:22:18.0031268Z       tsort (>= 0.2)
+2025-10-29T22:22:18.0031439Z       zeitwerk (~> 2.6)
+2025-10-29T22:22:18.0031605Z     rainbow (3.1.1)
+2025-10-29T22:22:18.0031772Z     rake (13.3.0)
+2025-10-29T22:22:18.0031924Z     rdoc (6.15.0)
+2025-10-29T22:22:18.0032083Z       erb
+2025-10-29T22:22:18.0032225Z       psych (>= 4.0.0)
+2025-10-29T22:22:18.0032391Z       tsort
+2025-10-29T22:22:18.0032532Z     reek (6.5.0)
+2025-10-29T22:22:18.0032843Z       dry-schema (~> 1.13)
+2025-10-29T22:22:18.0033029Z       logger (~> 1.6)
+2025-10-29T22:22:18.0033198Z       parser (~> 3.3.0)
+2025-10-29T22:22:18.0033380Z       rainbow (>= 2.0, < 4.0)
+2025-10-29T22:22:18.0033561Z       rexml (~> 3.1)
+2025-10-29T22:22:18.0033736Z     regexp_parser (2.11.3)
+2025-10-29T22:22:18.0033912Z     reline (0.6.2)
+2025-10-29T22:22:18.0034082Z       io-console (~> 0.5)
+2025-10-29T22:22:18.0034252Z     rexml (3.4.4)
+2025-10-29T22:22:18.0034420Z     rspec-core (3.13.6)
+2025-10-29T22:22:18.0034628Z       rspec-support (~> 3.13.0)
+2025-10-29T22:22:18.0034875Z     rspec-expectations (3.13.5)
+2025-10-29T22:22:18.0035084Z       diff-lcs (>= 1.2.0, < 2.0)
+2025-10-29T22:22:18.0035279Z       rspec-support (~> 3.13.0)
+2025-10-29T22:22:18.0035481Z     rspec-mocks (3.13.6)
+2025-10-29T22:22:18.0035663Z       diff-lcs (>= 1.2.0, < 2.0)
+2025-10-29T22:22:18.0035863Z       rspec-support (~> 3.13.0)
+2025-10-29T22:22:18.0036048Z     rspec-rails (6.1.5)
+2025-10-29T22:22:18.0036228Z       actionpack (>= 6.1)
+2025-10-29T22:22:18.0036412Z       activesupport (>= 6.1)
+2025-10-29T22:22:18.0036606Z       railties (>= 6.1)
+2025-10-29T22:22:18.0036782Z       rspec-core (~> 3.13)
+2025-10-29T22:22:18.0036986Z       rspec-expectations (~> 3.13)
+2025-10-29T22:22:18.0037192Z       rspec-mocks (~> 3.13)
+2025-10-29T22:22:18.0037385Z       rspec-support (~> 3.13)
+2025-10-29T22:22:18.0037589Z     rspec-support (3.13.6)
+2025-10-29T22:22:18.0037780Z     rspec_junit_formatter (0.6.0)
+2025-10-29T22:22:18.0038074Z       rspec-core (>= 2, < 4, != 2.12.0)
+2025-10-29T22:22:18.0038278Z     rswag-api (2.16.0)
+2025-10-29T22:22:18.0038462Z       activesupport (>= 5.2, < 8.1)
+2025-10-29T22:22:18.0038668Z       railties (>= 5.2, < 8.1)
+2025-10-29T22:22:18.0038869Z     rswag-specs (2.16.0)
+2025-10-29T22:22:18.0039056Z       activesupport (>= 5.2, < 8.1)
+2025-10-29T22:22:18.0039271Z       json-schema (>= 2.2, < 6.0)
+2025-10-29T22:22:18.0039468Z       railties (>= 5.2, < 8.1)
+2025-10-29T22:22:18.0039663Z       rspec-core (>= 2.14)
+2025-10-29T22:22:18.0039850Z     rswag-ui (2.16.0)
+2025-10-29T22:22:18.0040022Z       actionpack (>= 5.2, < 8.1)
+2025-10-29T22:22:18.0040221Z       railties (>= 5.2, < 8.1)
+2025-10-29T22:22:18.0040408Z     rubocop (1.81.6)
+2025-10-29T22:22:18.0040579Z       json (~> 2.3)
+2025-10-29T22:22:18.0040762Z       language_server-protocol (~> 3.17.0.2)
+2025-10-29T22:22:18.0040996Z       lint_roller (~> 1.1.0)
+2025-10-29T22:22:18.0041182Z       parallel (~> 1.10)
+2025-10-29T22:22:18.0041368Z       parser (>= 3.3.0.2)
+2025-10-29T22:22:18.0041549Z       rainbow (>= 2.2.2, < 4.0)
+2025-10-29T22:22:18.0041751Z       regexp_parser (>= 2.9.3, < 3.0)
+2025-10-29T22:22:18.0041973Z       rubocop-ast (>= 1.47.1, < 2.0)
+2025-10-29T22:22:18.0042186Z       ruby-progressbar (~> 1.7)
+2025-10-29T22:22:18.0042690Z       unicode-display_width (>= 2.4.0, < 4.0)
+2025-10-29T22:22:18.0042993Z     rubocop-ast (1.47.1)
+2025-10-29T22:22:18.0043182Z       parser (>= 3.3.7.2)
+2025-10-29T22:22:18.0043361Z       prism (~> 1.4)
+2025-10-29T22:22:18.0043543Z     rubocop-capybara (2.22.1)
+2025-10-29T22:22:18.0043744Z       lint_roller (~> 1.1)
+2025-10-29T22:22:18.0043939Z       rubocop (~> 1.72, >= 1.72.1)
+2025-10-29T22:22:18.0044151Z     rubocop-factory_bot (2.27.1)
+2025-10-29T22:22:18.0044379Z       lint_roller (~> 1.1)
+2025-10-29T22:22:18.0044568Z       rubocop (~> 1.72, >= 1.72.1)
+2025-10-29T22:22:18.0044768Z     rubocop-rails (2.33.4)
+2025-10-29T22:22:18.0044969Z       activesupport (>= 4.2.0)
+2025-10-29T22:22:18.0045160Z       lint_roller (~> 1.1)
+2025-10-29T22:22:18.0045346Z       rack (>= 1.1)
+2025-10-29T22:22:18.0045511Z       rubocop (>= 1.75.0, < 2.0)
+2025-10-29T22:22:18.0045720Z       rubocop-ast (>= 1.44.0, < 2.0)
+2025-10-29T22:22:18.0045929Z     rubocop-rspec (2.31.0)
+2025-10-29T22:22:18.0046123Z       rubocop (~> 1.40)
+2025-10-29T22:22:18.0046300Z       rubocop-capybara (~> 2.17)
+2025-10-29T22:22:18.0046519Z       rubocop-factory_bot (~> 2.22)
+2025-10-29T22:22:18.0046847Z       rubocop-rspec_rails (~> 2.28)
+2025-10-29T22:22:18.0047121Z     rubocop-rspec_rails (2.29.1)
+2025-10-29T22:22:18.0047392Z       rubocop (~> 1.61)
+2025-10-29T22:22:18.0047579Z     ruby-progressbar (1.13.0)
+2025-10-29T22:22:18.0047786Z     rubyzip (2.4.1)
+2025-10-29T22:22:18.0047952Z     securerandom (0.4.1)
+2025-10-29T22:22:18.0048141Z     shoulda-matchers (6.5.0)
+2025-10-29T22:22:18.0048381Z       activesupport (>= 5.2.0)
+2025-10-29T22:22:18.0048578Z     simplecov (0.22.0)
+2025-10-29T22:22:18.0048744Z       docile (~> 1.1)
+2025-10-29T22:22:18.0048934Z       simplecov-html (~> 0.11)
+2025-10-29T22:22:18.0049141Z       simplecov_json_formatter (~> 0.1)
+2025-10-29T22:22:18.0049364Z     simplecov-html (0.13.2)
+2025-10-29T22:22:18.0049568Z     simplecov_json_formatter (0.1.4)
+2025-10-29T22:22:18.0049780Z     stringio (3.1.7)
+2025-10-29T22:22:18.0049958Z     terminal-table (4.0.0)
+2025-10-29T22:22:18.0050150Z       unicode-display_width (>= 1.1.1, < 4)
+2025-10-29T22:22:18.0050367Z     thor (1.4.0)
+2025-10-29T22:22:18.0050522Z     timeout (0.4.3)
+2025-10-29T22:22:18.0050684Z     tomlrb (2.0.3)
+2025-10-29T22:22:18.0050836Z     tsort (0.2.0)
+2025-10-29T22:22:18.0051019Z     tzinfo (2.0.6)
+2025-10-29T22:22:18.0051184Z       concurrent-ruby (~> 1.0)
+2025-10-29T22:22:18.0051381Z     u-attributes (2.8.0)
+2025-10-29T22:22:18.0051562Z       kind (>= 4.0, < 6.0)
+2025-10-29T22:22:18.0051732Z     u-case (4.5.2)
+2025-10-29T22:22:18.0051897Z       kind (>= 5.6, < 6.0)
+2025-10-29T22:22:18.0052079Z       u-attributes (>= 2.7, < 3.0)
+2025-10-29T22:22:18.0052297Z     unicode-display_width (3.2.0)
+2025-10-29T22:22:18.0052976Z       unicode-emoji (~> 4.1)
+2025-10-29T22:22:18.0053224Z     unicode-emoji (4.1.0)
+2025-10-29T22:22:18.0053400Z     uri (1.0.4)
+2025-10-29T22:22:18.0053565Z     useragent (0.16.11)
+2025-10-29T22:22:18.0053745Z     websocket-driver (0.8.0)
+2025-10-29T22:22:18.0053934Z       base64
+2025-10-29T22:22:18.0054107Z       websocket-extensions (>= 0.1.0)
+2025-10-29T22:22:18.0054339Z     websocket-extensions (0.1.5)
+2025-10-29T22:22:18.0054543Z     with_env (1.1.0)
+2025-10-29T22:22:18.0054711Z     xml-simple (1.1.9)
+2025-10-29T22:22:18.0054882Z       rexml
+2025-10-29T22:22:18.0055030Z     zeitwerk (2.7.3)
+2025-10-29T22:22:18.0055147Z 
+2025-10-29T22:22:18.0055238Z PLATFORMS
+2025-10-29T22:22:18.0055385Z   aarch64-linux
+2025-10-29T22:22:18.0055595Z   aarch64-linux-gnu
+2025-10-29T22:22:18.0055790Z   aarch64-linux-musl
+2025-10-29T22:22:18.0055981Z   arm-linux-gnu
+2025-10-29T22:22:18.0056152Z   arm-linux-musl
+2025-10-29T22:22:18.0056321Z   arm64-darwin
+2025-10-29T22:22:18.0056485Z   x86_64-darwin
+2025-10-29T22:22:18.0056706Z   x86_64-linux
+2025-10-29T22:22:18.0056864Z   x86_64-linux-gnu
+2025-10-29T22:22:18.0057022Z   x86_64-linux-musl
+2025-10-29T22:22:18.0057118Z 
+2025-10-29T22:22:18.0057186Z DEPENDENCIES
+2025-10-29T22:22:18.0057426Z   blueprinter (~> 1.0)
+2025-10-29T22:22:18.0057599Z   brakeman (~> 6.1)
+2025-10-29T22:22:18.0057761Z   bundler-audit (~> 0.9)
+2025-10-29T22:22:18.0057944Z   debug
+2025-10-29T22:22:18.0058084Z   dotenv-rails
+2025-10-29T22:22:18.0058255Z   factory_bot_rails (~> 6.4)
+2025-10-29T22:22:18.0058436Z   faker (~> 3.2)
+2025-10-29T22:22:18.0058603Z   i18n-tasks
+2025-10-29T22:22:18.0058749Z   license_finder
+2025-10-29T22:22:18.0058932Z   ostruct
+2025-10-29T22:22:18.0059078Z   pagy (~> 6.0)
+2025-10-29T22:22:18.0059228Z   pg (~> 1.1)
+2025-10-29T22:22:18.0059380Z   puma (>= 5.0)
+2025-10-29T22:22:18.0059528Z   rails (~> 8.0.2)
+2025-10-29T22:22:18.0059688Z   rails-i18n
+2025-10-29T22:22:18.0059828Z   reek
+2025-10-29T22:22:18.0059980Z   rspec-rails (~> 6.1)
+2025-10-29T22:22:18.0060167Z   rspec_junit_formatter (~> 0.6)
+2025-10-29T22:22:18.0060370Z   rswag-api (~> 2.13)
+2025-10-29T22:22:18.0060537Z   rswag-specs (~> 2.13)
+2025-10-29T22:22:18.0060717Z   rswag-ui (~> 2.13)
+2025-10-29T22:22:18.0060878Z   rubocop (~> 1.59)
+2025-10-29T22:22:18.0061052Z   rubocop-rails (~> 2.23)
+2025-10-29T22:22:18.0061237Z   rubocop-rspec (~> 2.26)
+2025-10-29T22:22:18.0061435Z   shoulda-matchers (~> 6.0)
+2025-10-29T22:22:18.0061627Z   simplecov (~> 0.22)
+2025-10-29T22:22:18.0061793Z   tzinfo-data
+2025-10-29T22:22:18.0061949Z   u-case (~> 4.5)
+2025-10-29T22:22:18.0062046Z 
+2025-10-29T22:22:18.0062109Z BUNDLED WITH
+2025-10-29T22:22:18.0062260Z    2.6.9
+2025-10-29T22:22:18.0062841Z ##[endgroup]
+2025-10-29T22:22:18.0063696Z Cache key: setup-ruby-bundler-cache-v6-ubuntu-24.04-x64-ruby-3.3.10-wd-/home/runner/work/restaurant/restaurant-with--without--only--Gemfile.lock-d55fc1d3465e457c9082700b0ff103cce4170f5a7a5755fdbc99aa04b04c6fe6
+2025-10-29T22:22:18.1113399Z Cache hit for: setup-ruby-bundler-cache-v6-ubuntu-24.04-x64-ruby-3.3.10-wd-/home/runner/work/restaurant/restaurant-with--without--only--Gemfile.lock-d55fc1d3465e457c9082700b0ff103cce4170f5a7a5755fdbc99aa04b04c6fe6
+2025-10-29T22:22:19.0156709Z Received 58822349 of 58822349 (100.0%), 76.0 MBs/sec
+2025-10-29T22:22:19.0159046Z Cache Size: ~56 MB (58822349 B)
+2025-10-29T22:22:19.0265567Z [command]/usr/bin/tar -xf /home/runner/work/_temp/02f285cd-c91d-4f6a-aefd-2a8e6a1d7169/cache.tzst -P -C /home/runner/work/restaurant/restaurant --use-compress-program unzstd
+2025-10-29T22:22:19.3476345Z Cache restored successfully
+2025-10-29T22:22:19.3553570Z Found cache for key: setup-ruby-bundler-cache-v6-ubuntu-24.04-x64-ruby-3.3.10-wd-/home/runner/work/restaurant/restaurant-with--without--only--Gemfile.lock-d55fc1d3465e457c9082700b0ff103cce4170f5a7a5755fdbc99aa04b04c6fe6
+2025-10-29T22:22:19.3567583Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/bundle install --jobs 4
+2025-10-29T22:22:19.6710310Z Bundle complete! 28 Gemfile dependencies, 137 gems now installed.
+2025-10-29T22:22:19.6711308Z Bundled gems are installed into `./vendor/bundle`
+2025-10-29T22:22:19.6714607Z 1 installed gem you directly depend on is looking for funding.
+2025-10-29T22:22:19.6715189Z   Run `bundle fund` for details
+2025-10-29T22:22:19.6834815Z Took   1.96 seconds

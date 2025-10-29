@@ -1,0 +1,682 @@
+﻿2025-10-29T22:21:52.1904975Z Current runner version: '2.328.0'
+2025-10-29T22:21:52.1940621Z ##[group]Runner Image Provisioner
+2025-10-29T22:21:52.1941995Z Hosted Compute Agent
+2025-10-29T22:21:52.1942941Z Version: 20250912.392
+2025-10-29T22:21:52.1943952Z Commit: d921fda672a98b64f4f82364647e2f10b2267d0b
+2025-10-29T22:21:52.1945343Z Build Date: 2025-09-12T15:23:14Z
+2025-10-29T22:21:52.1946285Z ##[endgroup]
+2025-10-29T22:21:52.1947167Z ##[group]Operating System
+2025-10-29T22:21:52.1948456Z Ubuntu
+2025-10-29T22:21:52.1949336Z 24.04.3
+2025-10-29T22:21:52.1950093Z LTS
+2025-10-29T22:21:52.1951028Z ##[endgroup]
+2025-10-29T22:21:52.1951840Z ##[group]Runner Image
+2025-10-29T22:21:52.1952833Z Image: ubuntu-24.04
+2025-10-29T22:21:52.1953773Z Version: 20250929.60.1
+2025-10-29T22:21:52.1955567Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250929.60/images/ubuntu/Ubuntu2404-Readme.md
+2025-10-29T22:21:52.1958807Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250929.60
+2025-10-29T22:21:52.1960587Z ##[endgroup]
+2025-10-29T22:21:52.1962333Z ##[group]GITHUB_TOKEN Permissions
+2025-10-29T22:21:52.1965296Z Contents: read
+2025-10-29T22:21:52.1966109Z Metadata: read
+2025-10-29T22:21:52.1967057Z ##[endgroup]
+2025-10-29T22:21:52.1970260Z Secret source: Actions
+2025-10-29T22:21:52.1971765Z Prepare workflow directory
+2025-10-29T22:21:52.2445503Z Prepare all required actions
+2025-10-29T22:21:52.2504001Z Getting action download info
+2025-10-29T22:21:52.5335641Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+2025-10-29T22:21:52.9552835Z Download action repository 'ruby/setup-ruby@v1' (SHA:d5126b9b3579e429dd52e51e68624dda2e05be25)
+2025-10-29T22:21:53.3882763Z Complete job name: Verificação de licenças
+2025-10-29T22:21:53.4655182Z ##[group]Run actions/checkout@v4
+2025-10-29T22:21:53.4656056Z with:
+2025-10-29T22:21:53.4656478Z   repository: pedrohcrisanto/restaurant
+2025-10-29T22:21:53.4657205Z   token: ***
+2025-10-29T22:21:53.4657592Z   ssh-strict: true
+2025-10-29T22:21:53.4658032Z   ssh-user: git
+2025-10-29T22:21:53.4658650Z   persist-credentials: true
+2025-10-29T22:21:53.4659145Z   clean: true
+2025-10-29T22:21:53.4659554Z   sparse-checkout-cone-mode: true
+2025-10-29T22:21:53.4660052Z   fetch-depth: 1
+2025-10-29T22:21:53.4660446Z   fetch-tags: false
+2025-10-29T22:21:53.4660854Z   show-progress: true
+2025-10-29T22:21:53.4661296Z   lfs: false
+2025-10-29T22:21:53.4661681Z   submodules: false
+2025-10-29T22:21:53.4662098Z   set-safe-directory: true
+2025-10-29T22:21:53.4662796Z ##[endgroup]
+2025-10-29T22:21:53.5719783Z Syncing repository: pedrohcrisanto/restaurant
+2025-10-29T22:21:53.5721597Z ##[group]Getting Git version info
+2025-10-29T22:21:53.5722428Z Working directory is '/home/runner/work/restaurant/restaurant'
+2025-10-29T22:21:53.5723428Z [command]/usr/bin/git version
+2025-10-29T22:21:53.5783305Z git version 2.51.0
+2025-10-29T22:21:53.5809532Z ##[endgroup]
+2025-10-29T22:21:53.5823903Z Temporarily overriding HOME='/home/runner/work/_temp/20fff1e2-4cd1-4607-854c-bd516a7efbb9' before making global git config changes
+2025-10-29T22:21:53.5825424Z Adding repository directory to the temporary git global config as a safe directory
+2025-10-29T22:21:53.5835925Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/restaurant/restaurant
+2025-10-29T22:21:53.5871208Z Deleting the contents of '/home/runner/work/restaurant/restaurant'
+2025-10-29T22:21:53.5874843Z ##[group]Initializing the repository
+2025-10-29T22:21:53.5878833Z [command]/usr/bin/git init /home/runner/work/restaurant/restaurant
+2025-10-29T22:21:53.5976597Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-10-29T22:21:53.5978559Z hint: is subject to change. To configure the initial branch name to use in all
+2025-10-29T22:21:53.5979543Z hint: of your new repositories, which will suppress this warning, call:
+2025-10-29T22:21:53.5980510Z hint:
+2025-10-29T22:21:53.5981274Z hint: 	git config --global init.defaultBranch <name>
+2025-10-29T22:21:53.5982396Z hint:
+2025-10-29T22:21:53.5983653Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-10-29T22:21:53.5984631Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-10-29T22:21:53.5985422Z hint:
+2025-10-29T22:21:53.5986119Z hint: 	git branch -m <name>
+2025-10-29T22:21:53.5986833Z hint:
+2025-10-29T22:21:53.5987469Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-10-29T22:21:53.5988876Z Initialized empty Git repository in /home/runner/work/restaurant/restaurant/.git/
+2025-10-29T22:21:53.5992214Z [command]/usr/bin/git remote add origin https://github.com/pedrohcrisanto/restaurant
+2025-10-29T22:21:53.6026190Z ##[endgroup]
+2025-10-29T22:21:53.6026938Z ##[group]Disabling automatic garbage collection
+2025-10-29T22:21:53.6031937Z [command]/usr/bin/git config --local gc.auto 0
+2025-10-29T22:21:53.6060741Z ##[endgroup]
+2025-10-29T22:21:53.6061989Z ##[group]Setting up auth
+2025-10-29T22:21:53.6068429Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-10-29T22:21:53.6099730Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-10-29T22:21:53.6464235Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-10-29T22:21:53.6496187Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-10-29T22:21:53.6719625Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-10-29T22:21:53.6762452Z ##[endgroup]
+2025-10-29T22:21:53.6770169Z ##[group]Fetching the repository
+2025-10-29T22:21:53.6771613Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +2d7194bd3dd809ffee55a9058880749a3b7349bf:refs/remotes/origin/main
+2025-10-29T22:21:54.0453880Z From https://github.com/pedrohcrisanto/restaurant
+2025-10-29T22:21:54.0456168Z  * [new ref]         2d7194bd3dd809ffee55a9058880749a3b7349bf -> origin/main
+2025-10-29T22:21:54.0484012Z ##[endgroup]
+2025-10-29T22:21:54.0485877Z ##[group]Determining the checkout info
+2025-10-29T22:21:54.0487913Z ##[endgroup]
+2025-10-29T22:21:54.0492517Z [command]/usr/bin/git sparse-checkout disable
+2025-10-29T22:21:54.0532972Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-10-29T22:21:54.0560518Z ##[group]Checking out the ref
+2025-10-29T22:21:54.0563850Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-10-29T22:21:54.0827663Z Switched to a new branch 'main'
+2025-10-29T22:21:54.0829669Z branch 'main' set up to track 'origin/main'.
+2025-10-29T22:21:54.0839005Z ##[endgroup]
+2025-10-29T22:21:54.0875912Z [command]/usr/bin/git log -1 --format=%H
+2025-10-29T22:21:54.0898330Z 2d7194bd3dd809ffee55a9058880749a3b7349bf
+2025-10-29T22:21:54.1114382Z ##[group]Run sudo apt-get update
+2025-10-29T22:21:54.1115765Z [36;1msudo apt-get update[0m
+2025-10-29T22:21:54.1117035Z [36;1msudo apt-get install -y libpq-dev[0m
+2025-10-29T22:21:54.1156344Z shell: /usr/bin/bash -e {0}
+2025-10-29T22:21:54.1157457Z ##[endgroup]
+2025-10-29T22:21:54.2761547Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2025-10-29T22:21:54.3247879Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2025-10-29T22:21:54.3264495Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2025-10-29T22:21:54.3360229Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2025-10-29T22:21:54.3417644Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2025-10-29T22:21:54.5771410Z Get:6 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1545 kB]
+2025-10-29T22:21:54.6032996Z Get:7 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [294 kB]
+2025-10-29T22:21:54.6069706Z Get:8 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [175 kB]
+2025-10-29T22:21:54.6096341Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 c-n-f Metadata [15.4 kB]
+2025-10-29T22:21:54.6123128Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1498 kB]
+2025-10-29T22:21:54.6218467Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [303 kB]
+2025-10-29T22:21:54.6246548Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [378 kB]
+2025-10-29T22:21:54.6287533Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 c-n-f Metadata [31.4 kB]
+2025-10-29T22:21:54.6303766Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [2175 kB]
+2025-10-29T22:21:54.6439714Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [490 kB]
+2025-10-29T22:21:54.6944004Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
+2025-10-29T22:21:54.6949282Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 c-n-f Metadata [516 B]
+2025-10-29T22:21:54.6953949Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [30.3 kB]
+2025-10-29T22:21:54.6957852Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [5564 B]
+2025-10-29T22:21:54.6967078Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+2025-10-29T22:21:54.6982677Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 c-n-f Metadata [484 B]
+2025-10-29T22:21:54.6996883Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7148 B]
+2025-10-29T22:21:54.7036980Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [11.0 kB]
+2025-10-29T22:21:54.7053809Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [216 B]
+2025-10-29T22:21:54.7071331Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
+2025-10-29T22:21:54.7089464Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1270 kB]
+2025-10-29T22:21:54.7163429Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [211 kB]
+2025-10-29T22:21:54.7189135Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [21.5 kB]
+2025-10-29T22:21:54.7221365Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 c-n-f Metadata [9008 B]
+2025-10-29T22:21:54.7676661Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [905 kB]
+2025-10-29T22:21:54.7745084Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [203 kB]
+2025-10-29T22:21:54.7766790Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [52.2 kB]
+2025-10-29T22:21:54.7782100Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 c-n-f Metadata [19.4 kB]
+2025-10-29T22:21:54.7797408Z Get:34 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2080 kB]
+2025-10-29T22:21:54.7932954Z Get:35 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [470 kB]
+2025-10-29T22:21:54.7967770Z Get:36 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Components [208 B]
+2025-10-29T22:21:54.7992017Z Get:37 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 c-n-f Metadata [500 B]
+2025-10-29T22:21:54.8006361Z Get:38 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [27.4 kB]
+2025-10-29T22:21:54.8020275Z Get:39 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse Translation-en [5708 B]
+2025-10-29T22:21:54.8033122Z Get:40 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
+2025-10-29T22:21:54.8050686Z Get:41 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 c-n-f Metadata [384 B]
+2025-10-29T22:22:28.4194935Z Get:42 https://packages.microsoft.com/repos/azure-cli noble InRelease [3564 B]
+2025-10-29T22:22:28.5236430Z Get:43 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2025-10-29T22:22:28.7597820Z Get:44 https://packages.microsoft.com/repos/azure-cli noble/main amd64 Packages [1629 B]
+2025-10-29T22:22:28.9519752Z Get:45 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [11.0 kB]
+2025-10-29T22:22:29.0854947Z Get:46 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [48.3 kB]
+2025-10-29T22:22:29.3505173Z Get:47 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [66.0 kB]
+2025-10-29T22:22:40.0033337Z Fetched 12.7 MB in 35s (362 kB/s)
+2025-10-29T22:22:40.7869599Z Reading package lists...
+2025-10-29T22:22:40.8191820Z Reading package lists...
+2025-10-29T22:22:40.9960905Z Building dependency tree...
+2025-10-29T22:22:40.9968615Z Reading state information...
+2025-10-29T22:22:41.1935883Z libpq-dev is already the newest version (18.0-1.pgdg24.04+3).
+2025-10-29T22:22:41.1936389Z 0 upgraded, 0 newly installed, 0 to remove and 43 not upgraded.
+2025-10-29T22:22:41.2015308Z ##[group]Run ruby/setup-ruby@v1
+2025-10-29T22:22:41.2015576Z with:
+2025-10-29T22:22:41.2015770Z   ruby-version: 3.3
+2025-10-29T22:22:41.2015958Z   bundler-cache: true
+2025-10-29T22:22:41.2016160Z ##[endgroup]
+2025-10-29T22:22:41.3623533Z ##[group]Modifying PATH
+2025-10-29T22:22:41.3628648Z Entries added to PATH to use selected Ruby:
+2025-10-29T22:22:41.3632041Z   /opt/hostedtoolcache/Ruby/3.3.10/x64/bin
+2025-10-29T22:22:41.3642758Z ##[endgroup]
+2025-10-29T22:22:41.3660796Z ##[group]Downloading Ruby
+2025-10-29T22:22:41.3661863Z https://github.com/ruby/ruby-builder/releases/download/ruby-3.3.10/ruby-3.3.10-ubuntu-24.04-x64.tar.gz
+2025-10-29T22:22:41.7202879Z Took   0.35 seconds
+2025-10-29T22:22:41.7203395Z ##[endgroup]
+2025-10-29T22:22:41.7203774Z ##[group]Extracting  Ruby
+2025-10-29T22:22:41.7234324Z [command]/usr/bin/tar -xz -C /opt/hostedtoolcache/Ruby/3.3.10 -f /home/runner/work/_temp/39b21179-7ac4-46db-a3ea-8c14e5f593cb
+2025-10-29T22:22:42.1795202Z Took   0.46 seconds
+2025-10-29T22:22:42.1796897Z ##[endgroup]
+2025-10-29T22:22:42.1799781Z ##[group]Print Ruby version
+2025-10-29T22:22:42.1815555Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/ruby --version
+2025-10-29T22:22:42.1986181Z ruby 3.3.10 (2025-10-23 revision 343ea05002) [x86_64-linux]
+2025-10-29T22:22:42.2004931Z Took   0.02 seconds
+2025-10-29T22:22:42.2005879Z ##[endgroup]
+2025-10-29T22:22:42.2007781Z ##[group]Installing Bundler
+2025-10-29T22:22:42.2013703Z Using Bundler 2.6.9 from Gemfile.lock BUNDLED WITH 2.6.9
+2025-10-29T22:22:42.2018517Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/gem install bundler -v 2.6.9
+2025-10-29T22:22:42.6168545Z Successfully installed bundler-2.6.9
+2025-10-29T22:22:42.6168940Z 1 gem installed
+2025-10-29T22:22:42.6214794Z Took   0.42 seconds
+2025-10-29T22:22:42.6217119Z ##[endgroup]
+2025-10-29T22:22:42.6217368Z > bundle install
+2025-10-29T22:22:42.6238045Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/bundle config --local path /home/runner/work/restaurant/restaurant/vendor/bundle
+2025-10-29T22:22:42.7757022Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/bundle config --local deployment true
+2025-10-29T22:22:42.9260780Z ##[group]Print lockfile
+2025-10-29T22:22:42.9275885Z [command]/usr/bin/cat Gemfile.lock
+2025-10-29T22:22:42.9306009Z GEM
+2025-10-29T22:22:42.9306803Z   remote: https://rubygems.org/
+2025-10-29T22:22:42.9307205Z   specs:
+2025-10-29T22:22:42.9307478Z     actioncable (8.0.4)
+2025-10-29T22:22:42.9307827Z       actionpack (= 8.0.4)
+2025-10-29T22:22:42.9308378Z       activesupport (= 8.0.4)
+2025-10-29T22:22:42.9308765Z       nio4r (~> 2.0)
+2025-10-29T22:22:42.9309117Z       websocket-driver (>= 0.6.1)
+2025-10-29T22:22:42.9309513Z       zeitwerk (~> 2.6)
+2025-10-29T22:22:42.9310262Z     actionmailbox (8.0.4)
+2025-10-29T22:22:42.9310627Z       actionpack (= 8.0.4)
+2025-10-29T22:22:42.9310983Z       activejob (= 8.0.4)
+2025-10-29T22:22:42.9311322Z       activerecord (= 8.0.4)
+2025-10-29T22:22:42.9311664Z       activestorage (= 8.0.4)
+2025-10-29T22:22:42.9312042Z       activesupport (= 8.0.4)
+2025-10-29T22:22:42.9312401Z       mail (>= 2.8.0)
+2025-10-29T22:22:42.9312724Z     actionmailer (8.0.4)
+2025-10-29T22:22:42.9313078Z       actionpack (= 8.0.4)
+2025-10-29T22:22:42.9313423Z       actionview (= 8.0.4)
+2025-10-29T22:22:42.9313766Z       activejob (= 8.0.4)
+2025-10-29T22:22:42.9314117Z       activesupport (= 8.0.4)
+2025-10-29T22:22:42.9314464Z       mail (>= 2.8.0)
+2025-10-29T22:22:42.9314808Z       rails-dom-testing (~> 2.2)
+2025-10-29T22:22:42.9315174Z     actionpack (8.0.4)
+2025-10-29T22:22:42.9315485Z       actionview (= 8.0.4)
+2025-10-29T22:22:42.9315806Z       activesupport (= 8.0.4)
+2025-10-29T22:22:42.9316150Z       nokogiri (>= 1.8.5)
+2025-10-29T22:22:42.9316494Z       rack (>= 2.2.4)
+2025-10-29T22:22:42.9316830Z       rack-session (>= 1.0.1)
+2025-10-29T22:22:42.9317183Z       rack-test (>= 0.6.3)
+2025-10-29T22:22:42.9317555Z       rails-dom-testing (~> 2.2)
+2025-10-29T22:22:42.9317967Z       rails-html-sanitizer (~> 1.6)
+2025-10-29T22:22:42.9318926Z       useragent (~> 0.16)
+2025-10-29T22:22:42.9319322Z     actiontext (8.0.4)
+2025-10-29T22:22:42.9319666Z       actionpack (= 8.0.4)
+2025-10-29T22:22:42.9320042Z       activerecord (= 8.0.4)
+2025-10-29T22:22:42.9320412Z       activestorage (= 8.0.4)
+2025-10-29T22:22:42.9320786Z       activesupport (= 8.0.4)
+2025-10-29T22:22:42.9321145Z       globalid (>= 0.6.0)
+2025-10-29T22:22:42.9321492Z       nokogiri (>= 1.8.5)
+2025-10-29T22:22:42.9321836Z     actionview (8.0.4)
+2025-10-29T22:22:42.9322188Z       activesupport (= 8.0.4)
+2025-10-29T22:22:42.9322560Z       builder (~> 3.1)
+2025-10-29T22:22:42.9322881Z       erubi (~> 1.11)
+2025-10-29T22:22:42.9323234Z       rails-dom-testing (~> 2.2)
+2025-10-29T22:22:42.9323655Z       rails-html-sanitizer (~> 1.6)
+2025-10-29T22:22:42.9324070Z     activejob (8.0.4)
+2025-10-29T22:22:42.9324412Z       activesupport (= 8.0.4)
+2025-10-29T22:22:42.9324794Z       globalid (>= 0.3.6)
+2025-10-29T22:22:42.9325148Z     activemodel (8.0.4)
+2025-10-29T22:22:42.9325510Z       activesupport (= 8.0.4)
+2025-10-29T22:22:42.9325918Z     activerecord (8.0.4)
+2025-10-29T22:22:42.9326276Z       activemodel (= 8.0.4)
+2025-10-29T22:22:42.9326633Z       activesupport (= 8.0.4)
+2025-10-29T22:22:42.9326995Z       timeout (>= 0.4.0)
+2025-10-29T22:22:42.9327349Z     activestorage (8.0.4)
+2025-10-29T22:22:42.9327700Z       actionpack (= 8.0.4)
+2025-10-29T22:22:42.9328052Z       activejob (= 8.0.4)
+2025-10-29T22:22:42.9328688Z       activerecord (= 8.0.4)
+2025-10-29T22:22:42.9329089Z       activesupport (= 8.0.4)
+2025-10-29T22:22:42.9329452Z       marcel (~> 1.0)
+2025-10-29T22:22:42.9329794Z     activesupport (8.0.4)
+2025-10-29T22:22:42.9330145Z       base64
+2025-10-29T22:22:42.9330538Z       benchmark (>= 0.3)
+2025-10-29T22:22:42.9330884Z       bigdecimal
+2025-10-29T22:22:42.9331215Z       concurrent-ruby (~> 1.0, >= 1.3.1)
+2025-10-29T22:22:42.9331651Z       connection_pool (>= 2.2.5)
+2025-10-29T22:22:42.9332015Z       drb
+2025-10-29T22:22:42.9332277Z       i18n (>= 1.6, < 2)
+2025-10-29T22:22:42.9332615Z       logger (>= 1.4.2)
+2025-10-29T22:22:42.9332954Z       minitest (>= 5.1)
+2025-10-29T22:22:42.9333293Z       securerandom (>= 0.3)
+2025-10-29T22:22:42.9333668Z       tzinfo (~> 2.0, >= 2.0.5)
+2025-10-29T22:22:42.9334004Z       uri (>= 0.13.1)
+2025-10-29T22:22:42.9334317Z     addressable (2.8.7)
+2025-10-29T22:22:42.9334677Z       public_suffix (>= 2.0.2, < 7.0)
+2025-10-29T22:22:42.9335072Z     ast (2.4.3)
+2025-10-29T22:22:42.9335393Z     base64 (0.3.0)
+2025-10-29T22:22:42.9335702Z     benchmark (0.5.0)
+2025-10-29T22:22:42.9336038Z     bigdecimal (3.3.1)
+2025-10-29T22:22:42.9336375Z     blueprinter (1.2.1)
+2025-10-29T22:22:42.9336725Z     brakeman (6.2.2)
+2025-10-29T22:22:42.9337102Z       racc
+2025-10-29T22:22:42.9337627Z     builder (3.3.0)
+2025-10-29T22:22:42.9337947Z     bundler-audit (0.9.2)
+2025-10-29T22:22:42.9338513Z       bundler (>= 1.2.0, < 3)
+2025-10-29T22:22:42.9338874Z       thor (~> 1.0)
+2025-10-29T22:22:42.9339194Z     concurrent-ruby (1.3.5)
+2025-10-29T22:22:42.9339569Z     connection_pool (2.5.4)
+2025-10-29T22:22:42.9339924Z     crass (1.0.6)
+2025-10-29T22:22:42.9340240Z     csv (3.3.5)
+2025-10-29T22:22:42.9340530Z     date (3.4.1)
+2025-10-29T22:22:42.9340834Z     debug (1.11.0)
+2025-10-29T22:22:42.9341119Z       irb (~> 1.10)
+2025-10-29T22:22:42.9341425Z       reline (>= 0.3.8)
+2025-10-29T22:22:42.9341744Z     diff-lcs (1.6.2)
+2025-10-29T22:22:42.9342058Z     docile (1.4.1)
+2025-10-29T22:22:42.9342352Z     dotenv (3.1.8)
+2025-10-29T22:22:42.9342693Z     dotenv-rails (3.1.8)
+2025-10-29T22:22:42.9343047Z       dotenv (= 3.1.8)
+2025-10-29T22:22:42.9343370Z       railties (>= 6.1)
+2025-10-29T22:22:42.9343695Z     drb (2.2.3)
+2025-10-29T22:22:42.9343984Z     dry-configurable (1.3.0)
+2025-10-29T22:22:42.9344370Z       dry-core (~> 1.1)
+2025-10-29T22:22:42.9344692Z       zeitwerk (~> 2.6)
+2025-10-29T22:22:42.9345014Z     dry-core (1.1.0)
+2025-10-29T22:22:42.9345350Z       concurrent-ruby (~> 1.0)
+2025-10-29T22:22:42.9345719Z       logger
+2025-10-29T22:22:42.9346005Z       zeitwerk (~> 2.6)
+2025-10-29T22:22:42.9346616Z     dry-inflector (1.2.0)
+2025-10-29T22:22:42.9347017Z     dry-initializer (3.2.0)
+2025-10-29T22:22:42.9347387Z     dry-logic (1.6.0)
+2025-10-29T22:22:42.9347675Z       bigdecimal
+2025-10-29T22:22:42.9348070Z       concurrent-ruby (~> 1.0)
+2025-10-29T22:22:42.9348760Z       dry-core (~> 1.1)
+2025-10-29T22:22:42.9349088Z       zeitwerk (~> 2.6)
+2025-10-29T22:22:42.9349428Z     dry-schema (1.14.1)
+2025-10-29T22:22:42.9349766Z       concurrent-ruby (~> 1.0)
+2025-10-29T22:22:42.9350171Z       dry-configurable (~> 1.0, >= 1.0.1)
+2025-10-29T22:22:42.9350588Z       dry-core (~> 1.1)
+2025-10-29T22:22:42.9350941Z       dry-initializer (~> 3.2)
+2025-10-29T22:22:42.9351320Z       dry-logic (~> 1.5)
+2025-10-29T22:22:42.9351695Z       dry-types (~> 1.8)
+2025-10-29T22:22:42.9352046Z       zeitwerk (~> 2.6)
+2025-10-29T22:22:42.9352373Z     dry-types (1.8.3)
+2025-10-29T22:22:42.9352723Z       bigdecimal (~> 3.0)
+2025-10-29T22:22:42.9353095Z       concurrent-ruby (~> 1.0)
+2025-10-29T22:22:42.9353482Z       dry-core (~> 1.0)
+2025-10-29T22:22:42.9353844Z       dry-inflector (~> 1.0)
+2025-10-29T22:22:42.9354230Z       dry-logic (~> 1.4)
+2025-10-29T22:22:42.9354579Z       zeitwerk (~> 2.6)
+2025-10-29T22:22:42.9354921Z     erb (5.1.3)
+2025-10-29T22:22:42.9355226Z     erubi (1.13.1)
+2025-10-29T22:22:42.9355551Z     factory_bot (6.5.6)
+2025-10-29T22:22:42.9432727Z       activesupport (>= 6.1.0)
+2025-10-29T22:22:42.9433176Z     factory_bot_rails (6.5.1)
+2025-10-29T22:22:42.9433603Z       factory_bot (~> 6.5)
+2025-10-29T22:22:42.9433970Z       railties (>= 6.1.0)
+2025-10-29T22:22:42.9434370Z     faker (3.5.2)
+2025-10-29T22:22:42.9434716Z       i18n (>= 1.8.11, < 2)
+2025-10-29T22:22:42.9435121Z     globalid (1.3.0)
+2025-10-29T22:22:42.9435472Z       activesupport (>= 6.1)
+2025-10-29T22:22:42.9435803Z     highline (3.1.2)
+2025-10-29T22:22:42.9436092Z       reline
+2025-10-29T22:22:42.9436348Z     i18n (1.14.7)
+2025-10-29T22:22:42.9436626Z       concurrent-ruby (~> 1.0)
+2025-10-29T22:22:42.9436936Z     i18n-tasks (1.0.15)
+2025-10-29T22:22:42.9437253Z       activesupport (>= 4.0.2)
+2025-10-29T22:22:42.9437593Z       ast (>= 2.1.0)
+2025-10-29T22:22:42.9437877Z       erubi
+2025-10-29T22:22:42.9438345Z       highline (>= 2.0.0)
+2025-10-29T22:22:42.9438686Z       i18n
+2025-10-29T22:22:42.9438942Z       parser (>= 3.2.2.1)
+2025-10-29T22:22:42.9439243Z       rails-i18n
+2025-10-29T22:22:42.9439527Z       rainbow (>= 2.2.2, < 4.0)
+2025-10-29T22:22:42.9439911Z       ruby-progressbar (~> 1.8, >= 1.8.1)
+2025-10-29T22:22:42.9440317Z       terminal-table (>= 1.5.1)
+2025-10-29T22:22:42.9440678Z     io-console (0.8.1)
+2025-10-29T22:22:42.9440972Z     irb (1.15.2)
+2025-10-29T22:22:42.9441260Z       pp (>= 0.6.0)
+2025-10-29T22:22:42.9441930Z       rdoc (>= 4.0.0)
+2025-10-29T22:22:42.9442232Z       reline (>= 0.4.2)
+2025-10-29T22:22:42.9442553Z     json (2.15.2)
+2025-10-29T22:22:42.9442845Z     json-schema (5.2.2)
+2025-10-29T22:22:42.9443184Z       addressable (~> 2.8)
+2025-10-29T22:22:42.9443530Z       bigdecimal (~> 3.1)
+2025-10-29T22:22:42.9443875Z     kind (5.10.0)
+2025-10-29T22:22:42.9444212Z     language_server-protocol (3.17.0.5)
+2025-10-29T22:22:42.9444645Z     license_finder (7.2.1)
+2025-10-29T22:22:42.9444994Z       bundler
+2025-10-29T22:22:42.9445281Z       csv (~> 3.2)
+2025-10-29T22:22:42.9445580Z       rubyzip (>= 1, < 3)
+2025-10-29T22:22:42.9445907Z       thor (~> 1.2)
+2025-10-29T22:22:42.9446219Z       tomlrb (>= 1.3, < 2.1)
+2025-10-29T22:22:42.9446615Z       with_env (= 1.1.0)
+2025-10-29T22:22:42.9446962Z       xml-simple (~> 1.1.9)
+2025-10-29T22:22:42.9447340Z     lint_roller (1.1.0)
+2025-10-29T22:22:42.9447684Z     logger (1.7.0)
+2025-10-29T22:22:42.9447975Z     loofah (2.24.1)
+2025-10-29T22:22:42.9448477Z       crass (~> 1.0.2)
+2025-10-29T22:22:42.9448833Z       nokogiri (>= 1.12.0)
+2025-10-29T22:22:42.9449180Z     mail (2.9.0)
+2025-10-29T22:22:42.9449462Z       logger
+2025-10-29T22:22:42.9449762Z       mini_mime (>= 0.1.1)
+2025-10-29T22:22:42.9450092Z       net-imap
+2025-10-29T22:22:42.9450384Z       net-pop
+2025-10-29T22:22:42.9450972Z       net-smtp
+2025-10-29T22:22:42.9451302Z     marcel (1.1.0)
+2025-10-29T22:22:42.9451486Z     mini_mime (1.1.5)
+2025-10-29T22:22:42.9451679Z     minitest (5.26.0)
+2025-10-29T22:22:42.9451911Z     net-imap (0.5.12)
+2025-10-29T22:22:42.9452088Z       date
+2025-10-29T22:22:42.9452247Z       net-protocol
+2025-10-29T22:22:42.9452423Z     net-pop (0.1.2)
+2025-10-29T22:22:42.9452596Z       net-protocol
+2025-10-29T22:22:42.9452774Z     net-protocol (0.2.2)
+2025-10-29T22:22:42.9452956Z       timeout
+2025-10-29T22:22:42.9453118Z     net-smtp (0.5.1)
+2025-10-29T22:22:42.9453289Z       net-protocol
+2025-10-29T22:22:42.9453454Z     nio4r (2.7.4)
+2025-10-29T22:22:42.9453640Z     nokogiri (1.18.10-aarch64-linux-gnu)
+2025-10-29T22:22:42.9453869Z       racc (~> 1.4)
+2025-10-29T22:22:42.9454052Z     nokogiri (1.18.10-aarch64-linux-musl)
+2025-10-29T22:22:42.9454268Z       racc (~> 1.4)
+2025-10-29T22:22:42.9454443Z     nokogiri (1.18.10-arm-linux-gnu)
+2025-10-29T22:22:42.9454648Z       racc (~> 1.4)
+2025-10-29T22:22:42.9454830Z     nokogiri (1.18.10-arm-linux-musl)
+2025-10-29T22:22:42.9455038Z       racc (~> 1.4)
+2025-10-29T22:22:42.9455218Z     nokogiri (1.18.10-arm64-darwin)
+2025-10-29T22:22:42.9455430Z       racc (~> 1.4)
+2025-10-29T22:22:42.9455602Z     nokogiri (1.18.10-x86_64-darwin)
+2025-10-29T22:22:42.9455802Z       racc (~> 1.4)
+2025-10-29T22:22:42.9455973Z     nokogiri (1.18.10-x86_64-linux-gnu)
+2025-10-29T22:22:42.9456186Z       racc (~> 1.4)
+2025-10-29T22:22:42.9456358Z     nokogiri (1.18.10-x86_64-linux-musl)
+2025-10-29T22:22:42.9456575Z       racc (~> 1.4)
+2025-10-29T22:22:42.9456733Z     ostruct (0.6.3)
+2025-10-29T22:22:42.9456898Z     pagy (6.5.0)
+2025-10-29T22:22:42.9457065Z     parallel (1.27.0)
+2025-10-29T22:22:42.9457249Z     parser (3.3.10.0)
+2025-10-29T22:22:42.9457418Z       ast (~> 2.4.1)
+2025-10-29T22:22:42.9457587Z       racc
+2025-10-29T22:22:42.9457737Z     pg (1.6.2)
+2025-10-29T22:22:42.9457914Z     pg (1.6.2-aarch64-linux)
+2025-10-29T22:22:42.9458341Z     pg (1.6.2-aarch64-linux-musl)
+2025-10-29T22:22:42.9458617Z     pg (1.6.2-arm64-darwin)
+2025-10-29T22:22:42.9458816Z     pg (1.6.2-x86_64-darwin)
+2025-10-29T22:22:42.9459005Z     pg (1.6.2-x86_64-linux)
+2025-10-29T22:22:42.9459201Z     pg (1.6.2-x86_64-linux-musl)
+2025-10-29T22:22:42.9459398Z     pp (0.6.3)
+2025-10-29T22:22:42.9459564Z       prettyprint
+2025-10-29T22:22:42.9459736Z     prettyprint (0.2.0)
+2025-10-29T22:22:42.9459921Z     prism (1.6.0)
+2025-10-29T22:22:42.9460085Z     psych (5.2.6)
+2025-10-29T22:22:42.9460247Z       date
+2025-10-29T22:22:42.9460395Z       stringio
+2025-10-29T22:22:42.9460563Z     public_suffix (6.0.2)
+2025-10-29T22:22:42.9460754Z     puma (7.1.0)
+2025-10-29T22:22:42.9460915Z       nio4r (~> 2.0)
+2025-10-29T22:22:42.9461234Z     racc (1.8.1)
+2025-10-29T22:22:42.9461389Z     rack (3.2.3)
+2025-10-29T22:22:42.9461559Z     rack-session (2.1.1)
+2025-10-29T22:22:42.9461741Z       base64 (>= 0.1.0)
+2025-10-29T22:22:42.9461915Z       rack (>= 3.0.0)
+2025-10-29T22:22:42.9462087Z     rack-test (2.2.0)
+2025-10-29T22:22:42.9462263Z       rack (>= 1.3)
+2025-10-29T22:22:42.9462424Z     rackup (2.2.1)
+2025-10-29T22:22:42.9462593Z       rack (>= 3)
+2025-10-29T22:22:42.9462750Z     rails (8.0.4)
+2025-10-29T22:22:42.9462917Z       actioncable (= 8.0.4)
+2025-10-29T22:22:42.9463119Z       actionmailbox (= 8.0.4)
+2025-10-29T22:22:42.9463322Z       actionmailer (= 8.0.4)
+2025-10-29T22:22:42.9463522Z       actionpack (= 8.0.4)
+2025-10-29T22:22:42.9463712Z       actiontext (= 8.0.4)
+2025-10-29T22:22:42.9463904Z       actionview (= 8.0.4)
+2025-10-29T22:22:42.9464093Z       activejob (= 8.0.4)
+2025-10-29T22:22:42.9464285Z       activemodel (= 8.0.4)
+2025-10-29T22:22:42.9464476Z       activerecord (= 8.0.4)
+2025-10-29T22:22:42.9464697Z       activestorage (= 8.0.4)
+2025-10-29T22:22:42.9464900Z       activesupport (= 8.0.4)
+2025-10-29T22:22:42.9465101Z       bundler (>= 1.15.0)
+2025-10-29T22:22:42.9465286Z       railties (= 8.0.4)
+2025-10-29T22:22:42.9465484Z     rails-dom-testing (2.3.0)
+2025-10-29T22:22:42.9465694Z       activesupport (>= 5.0.0)
+2025-10-29T22:22:42.9466011Z       minitest
+2025-10-29T22:22:42.9466185Z       nokogiri (>= 1.6)
+2025-10-29T22:22:42.9466379Z     rails-html-sanitizer (1.6.2)
+2025-10-29T22:22:42.9466594Z       loofah (~> 2.21)
+2025-10-29T22:22:42.9466894Z       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
+2025-10-29T22:22:42.9467236Z     rails-i18n (8.0.2)
+2025-10-29T22:22:42.9467410Z       i18n (>= 0.7, < 2)
+2025-10-29T22:22:42.9467597Z       railties (>= 8.0.0, < 9)
+2025-10-29T22:22:42.9467792Z     railties (8.0.4)
+2025-10-29T22:22:42.9467968Z       actionpack (= 8.0.4)
+2025-10-29T22:22:42.9468370Z       activesupport (= 8.0.4)
+2025-10-29T22:22:42.9468599Z       irb (~> 1.13)
+2025-10-29T22:22:42.9468768Z       rackup (>= 1.0.0)
+2025-10-29T22:22:42.9468939Z       rake (>= 12.2)
+2025-10-29T22:22:42.9469110Z       thor (~> 1.0, >= 1.2.2)
+2025-10-29T22:22:42.9469292Z       tsort (>= 0.2)
+2025-10-29T22:22:42.9469464Z       zeitwerk (~> 2.6)
+2025-10-29T22:22:42.9469641Z     rainbow (3.1.1)
+2025-10-29T22:22:42.9469819Z     rake (13.3.0)
+2025-10-29T22:22:42.9469984Z     rdoc (6.15.0)
+2025-10-29T22:22:42.9470150Z       erb
+2025-10-29T22:22:42.9470311Z       psych (>= 4.0.0)
+2025-10-29T22:22:42.9470483Z       tsort
+2025-10-29T22:22:42.9470638Z     reek (6.5.0)
+2025-10-29T22:22:42.9470805Z       dry-schema (~> 1.13)
+2025-10-29T22:22:42.9470998Z       logger (~> 1.6)
+2025-10-29T22:22:42.9471172Z       parser (~> 3.3.0)
+2025-10-29T22:22:42.9471353Z       rainbow (>= 2.0, < 4.0)
+2025-10-29T22:22:42.9471538Z       rexml (~> 3.1)
+2025-10-29T22:22:42.9471970Z     regexp_parser (2.11.3)
+2025-10-29T22:22:42.9472159Z     reline (0.6.2)
+2025-10-29T22:22:42.9472341Z       io-console (~> 0.5)
+2025-10-29T22:22:42.9472520Z     rexml (3.4.4)
+2025-10-29T22:22:42.9472690Z     rspec-core (3.13.6)
+2025-10-29T22:22:42.9472881Z       rspec-support (~> 3.13.0)
+2025-10-29T22:22:42.9473090Z     rspec-expectations (3.13.5)
+2025-10-29T22:22:42.9473299Z       diff-lcs (>= 1.2.0, < 2.0)
+2025-10-29T22:22:42.9473512Z       rspec-support (~> 3.13.0)
+2025-10-29T22:22:42.9473716Z     rspec-mocks (3.13.6)
+2025-10-29T22:22:42.9473904Z       diff-lcs (>= 1.2.0, < 2.0)
+2025-10-29T22:22:42.9474270Z       rspec-support (~> 3.13.0)
+2025-10-29T22:22:42.9474635Z     rspec-rails (6.1.5)
+2025-10-29T22:22:42.9474971Z       actionpack (>= 6.1)
+2025-10-29T22:22:42.9475294Z       activesupport (>= 6.1)
+2025-10-29T22:22:42.9475608Z       railties (>= 6.1)
+2025-10-29T22:22:42.9475839Z       rspec-core (~> 3.13)
+2025-10-29T22:22:42.9476049Z       rspec-expectations (~> 3.13)
+2025-10-29T22:22:42.9476272Z       rspec-mocks (~> 3.13)
+2025-10-29T22:22:42.9476469Z       rspec-support (~> 3.13)
+2025-10-29T22:22:42.9476855Z     rspec-support (3.13.6)
+2025-10-29T22:22:42.9477065Z     rspec_junit_formatter (0.6.0)
+2025-10-29T22:22:42.9477292Z       rspec-core (>= 2, < 4, != 2.12.0)
+2025-10-29T22:22:42.9477595Z     rswag-api (2.16.0)
+2025-10-29T22:22:42.9477797Z       activesupport (>= 5.2, < 8.1)
+2025-10-29T22:22:42.9478022Z       railties (>= 5.2, < 8.1)
+2025-10-29T22:22:42.9478454Z     rswag-specs (2.16.0)
+2025-10-29T22:22:42.9478650Z       activesupport (>= 5.2, < 8.1)
+2025-10-29T22:22:42.9478870Z       json-schema (>= 2.2, < 6.0)
+2025-10-29T22:22:42.9479078Z       railties (>= 5.2, < 8.1)
+2025-10-29T22:22:42.9479278Z       rspec-core (>= 2.14)
+2025-10-29T22:22:42.9479471Z     rswag-ui (2.16.0)
+2025-10-29T22:22:42.9479650Z       actionpack (>= 5.2, < 8.1)
+2025-10-29T22:22:42.9479857Z       railties (>= 5.2, < 8.1)
+2025-10-29T22:22:42.9480048Z     rubocop (1.81.6)
+2025-10-29T22:22:42.9480223Z       json (~> 2.3)
+2025-10-29T22:22:42.9480413Z       language_server-protocol (~> 3.17.0.2)
+2025-10-29T22:22:42.9480673Z       lint_roller (~> 1.1.0)
+2025-10-29T22:22:42.9480868Z       parallel (~> 1.10)
+2025-10-29T22:22:42.9481060Z       parser (>= 3.3.0.2)
+2025-10-29T22:22:42.9481253Z       rainbow (>= 2.2.2, < 4.0)
+2025-10-29T22:22:42.9481459Z       regexp_parser (>= 2.9.3, < 3.0)
+2025-10-29T22:22:42.9481689Z       rubocop-ast (>= 1.47.1, < 2.0)
+2025-10-29T22:22:42.9482031Z       ruby-progressbar (~> 1.7)
+2025-10-29T22:22:42.9482264Z       unicode-display_width (>= 2.4.0, < 4.0)
+2025-10-29T22:22:42.9482497Z     rubocop-ast (1.47.1)
+2025-10-29T22:22:42.9482683Z       parser (>= 3.3.7.2)
+2025-10-29T22:22:42.9482861Z       prism (~> 1.4)
+2025-10-29T22:22:42.9483046Z     rubocop-capybara (2.22.1)
+2025-10-29T22:22:42.9483251Z       lint_roller (~> 1.1)
+2025-10-29T22:22:42.9483442Z       rubocop (~> 1.72, >= 1.72.1)
+2025-10-29T22:22:42.9483666Z     rubocop-factory_bot (2.27.1)
+2025-10-29T22:22:42.9483872Z       lint_roller (~> 1.1)
+2025-10-29T22:22:42.9484065Z       rubocop (~> 1.72, >= 1.72.1)
+2025-10-29T22:22:42.9484269Z     rubocop-rails (2.33.4)
+2025-10-29T22:22:42.9484474Z       activesupport (>= 4.2.0)
+2025-10-29T22:22:42.9484674Z       lint_roller (~> 1.1)
+2025-10-29T22:22:42.9484863Z       rack (>= 1.1)
+2025-10-29T22:22:42.9485032Z       rubocop (>= 1.75.0, < 2.0)
+2025-10-29T22:22:42.9485238Z       rubocop-ast (>= 1.44.0, < 2.0)
+2025-10-29T22:22:42.9485461Z     rubocop-rspec (2.31.0)
+2025-10-29T22:22:42.9485647Z       rubocop (~> 1.40)
+2025-10-29T22:22:42.9485840Z       rubocop-capybara (~> 2.17)
+2025-10-29T22:22:42.9486050Z       rubocop-factory_bot (~> 2.22)
+2025-10-29T22:22:42.9486279Z       rubocop-rspec_rails (~> 2.28)
+2025-10-29T22:22:42.9486494Z     rubocop-rspec_rails (2.29.1)
+2025-10-29T22:22:42.9486698Z       rubocop (~> 1.61)
+2025-10-29T22:22:42.9486888Z     ruby-progressbar (1.13.0)
+2025-10-29T22:22:42.9487092Z     rubyzip (2.4.1)
+2025-10-29T22:22:42.9487262Z     securerandom (0.4.1)
+2025-10-29T22:22:42.9487458Z     shoulda-matchers (6.5.0)
+2025-10-29T22:22:42.9487662Z       activesupport (>= 5.2.0)
+2025-10-29T22:22:42.9487871Z     simplecov (0.22.0)
+2025-10-29T22:22:42.9488052Z       docile (~> 1.1)
+2025-10-29T22:22:42.9488513Z       simplecov-html (~> 0.11)
+2025-10-29T22:22:42.9488732Z       simplecov_json_formatter (~> 0.1)
+2025-10-29T22:22:42.9488961Z     simplecov-html (0.13.2)
+2025-10-29T22:22:42.9489176Z     simplecov_json_formatter (0.1.4)
+2025-10-29T22:22:42.9489387Z     stringio (3.1.7)
+2025-10-29T22:22:42.9489565Z     terminal-table (4.0.0)
+2025-10-29T22:22:42.9489766Z       unicode-display_width (>= 1.1.1, < 4)
+2025-10-29T22:22:42.9489992Z     thor (1.4.0)
+2025-10-29T22:22:42.9490151Z     timeout (0.4.3)
+2025-10-29T22:22:42.9490319Z     tomlrb (2.0.3)
+2025-10-29T22:22:42.9490486Z     tsort (0.2.0)
+2025-10-29T22:22:42.9490646Z     tzinfo (2.0.6)
+2025-10-29T22:22:42.9490816Z       concurrent-ruby (~> 1.0)
+2025-10-29T22:22:42.9491015Z     u-attributes (2.8.0)
+2025-10-29T22:22:42.9491202Z       kind (>= 4.0, < 6.0)
+2025-10-29T22:22:42.9491379Z     u-case (4.5.2)
+2025-10-29T22:22:42.9491545Z       kind (>= 5.6, < 6.0)
+2025-10-29T22:22:42.9491859Z       u-attributes (>= 2.7, < 3.0)
+2025-10-29T22:22:42.9492077Z     unicode-display_width (3.2.0)
+2025-10-29T22:22:42.9492288Z       unicode-emoji (~> 4.1)
+2025-10-29T22:22:42.9492486Z     unicode-emoji (4.1.0)
+2025-10-29T22:22:42.9492663Z     uri (1.0.4)
+2025-10-29T22:22:42.9492838Z     useragent (0.16.11)
+2025-10-29T22:22:42.9493023Z     websocket-driver (0.8.0)
+2025-10-29T22:22:42.9493209Z       base64
+2025-10-29T22:22:42.9493388Z       websocket-extensions (>= 0.1.0)
+2025-10-29T22:22:42.9493621Z     websocket-extensions (0.1.5)
+2025-10-29T22:22:42.9493828Z     with_env (1.1.0)
+2025-10-29T22:22:42.9494002Z     xml-simple (1.1.9)
+2025-10-29T22:22:42.9494178Z       rexml
+2025-10-29T22:22:42.9494328Z     zeitwerk (2.7.3)
+2025-10-29T22:22:42.9494442Z 
+2025-10-29T22:22:42.9494512Z PLATFORMS
+2025-10-29T22:22:42.9494665Z   aarch64-linux
+2025-10-29T22:22:42.9494836Z   aarch64-linux-gnu
+2025-10-29T22:22:42.9495013Z   aarch64-linux-musl
+2025-10-29T22:22:42.9495178Z   arm-linux-gnu
+2025-10-29T22:22:42.9495346Z   arm-linux-musl
+2025-10-29T22:22:42.9495509Z   arm64-darwin
+2025-10-29T22:22:42.9495669Z   x86_64-darwin
+2025-10-29T22:22:42.9495820Z   x86_64-linux
+2025-10-29T22:22:42.9495980Z   x86_64-linux-gnu
+2025-10-29T22:22:42.9496144Z   x86_64-linux-musl
+2025-10-29T22:22:42.9496254Z 
+2025-10-29T22:22:42.9496432Z DEPENDENCIES
+2025-10-29T22:22:42.9496601Z   blueprinter (~> 1.0)
+2025-10-29T22:22:42.9496783Z   brakeman (~> 6.1)
+2025-10-29T22:22:42.9496957Z   bundler-audit (~> 0.9)
+2025-10-29T22:22:42.9497143Z   debug
+2025-10-29T22:22:42.9497294Z   dotenv-rails
+2025-10-29T22:22:42.9497463Z   factory_bot_rails (~> 6.4)
+2025-10-29T22:22:42.9497663Z   faker (~> 3.2)
+2025-10-29T22:22:42.9497822Z   i18n-tasks
+2025-10-29T22:22:42.9497979Z   license_finder
+2025-10-29T22:22:42.9498770Z   ostruct
+2025-10-29T22:22:42.9498948Z   pagy (~> 6.0)
+2025-10-29T22:22:42.9499111Z   pg (~> 1.1)
+2025-10-29T22:22:42.9499270Z   puma (>= 5.0)
+2025-10-29T22:22:42.9499425Z   rails (~> 8.0.2)
+2025-10-29T22:22:42.9499605Z   rails-i18n
+2025-10-29T22:22:42.9499753Z   reek
+2025-10-29T22:22:42.9499910Z   rspec-rails (~> 6.1)
+2025-10-29T22:22:42.9500103Z   rspec_junit_formatter (~> 0.6)
+2025-10-29T22:22:42.9500318Z   rswag-api (~> 2.13)
+2025-10-29T22:22:42.9500504Z   rswag-specs (~> 2.13)
+2025-10-29T22:22:42.9500682Z   rswag-ui (~> 2.13)
+2025-10-29T22:22:42.9500864Z   rubocop (~> 1.59)
+2025-10-29T22:22:42.9501123Z   rubocop-rails (~> 2.23)
+2025-10-29T22:22:42.9501466Z   rubocop-rspec (~> 2.26)
+2025-10-29T22:22:42.9501810Z   shoulda-matchers (~> 6.0)
+2025-10-29T22:22:42.9502153Z   simplecov (~> 0.22)
+2025-10-29T22:22:42.9502430Z   tzinfo-data
+2025-10-29T22:22:42.9502597Z   u-case (~> 4.5)
+2025-10-29T22:22:42.9502701Z 
+2025-10-29T22:22:42.9502764Z BUNDLED WITH
+2025-10-29T22:22:42.9502922Z    2.6.9
+2025-10-29T22:22:42.9503391Z ##[endgroup]
+2025-10-29T22:22:42.9504197Z Cache key: setup-ruby-bundler-cache-v6-ubuntu-24.04-x64-ruby-3.3.10-wd-/home/runner/work/restaurant/restaurant-with--without--only--Gemfile.lock-d55fc1d3465e457c9082700b0ff103cce4170f5a7a5755fdbc99aa04b04c6fe6
+2025-10-29T22:22:43.0519032Z Cache hit for: setup-ruby-bundler-cache-v6-ubuntu-24.04-x64-ruby-3.3.10-wd-/home/runner/work/restaurant/restaurant-with--without--only--Gemfile.lock-d55fc1d3465e457c9082700b0ff103cce4170f5a7a5755fdbc99aa04b04c6fe6
+2025-10-29T22:22:43.9507126Z Received 58822349 of 58822349 (100.0%), 72.9 MBs/sec
+2025-10-29T22:22:43.9510089Z Cache Size: ~56 MB (58822349 B)
+2025-10-29T22:22:43.9546090Z [command]/usr/bin/tar -xf /home/runner/work/_temp/adcae3a1-3336-4acb-9266-a75156808a07/cache.tzst -P -C /home/runner/work/restaurant/restaurant --use-compress-program unzstd
+2025-10-29T22:22:44.5232084Z Cache restored successfully
+2025-10-29T22:22:44.5350339Z Found cache for key: setup-ruby-bundler-cache-v6-ubuntu-24.04-x64-ruby-3.3.10-wd-/home/runner/work/restaurant/restaurant-with--without--only--Gemfile.lock-d55fc1d3465e457c9082700b0ff103cce4170f5a7a5755fdbc99aa04b04c6fe6
+2025-10-29T22:22:44.5366834Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/bundle install --jobs 4
+2025-10-29T22:22:44.8782224Z Bundle complete! 28 Gemfile dependencies, 137 gems now installed.
+2025-10-29T22:22:44.8784045Z Bundled gems are installed into `./vendor/bundle`
+2025-10-29T22:22:44.8784638Z 1 installed gem you directly depend on is looking for funding.
+2025-10-29T22:22:44.8785196Z   Run `bundle fund` for details
+2025-10-29T22:22:44.8921966Z Took   2.27 seconds
+2025-10-29T22:22:44.9031265Z ##[group]Run if bundle exec license_finder approvals; then
+2025-10-29T22:22:44.9031677Z [36;1mif bundle exec license_finder approvals; then[0m
+2025-10-29T22:22:44.9031984Z [36;1m  echo "Licenças OK"[0m
+2025-10-29T22:22:44.9032204Z [36;1melse[0m
+2025-10-29T22:22:44.9032421Z [36;1m  echo "Reprovar por licenças" && exit 1[0m
+2025-10-29T22:22:44.9032684Z [36;1mfi[0m
+2025-10-29T22:22:44.9068024Z shell: /usr/bin/bash -e {0}
+2025-10-29T22:22:44.9068520Z ##[endgroup]
+2025-10-29T22:22:45.4720771Z Commands:
+2025-10-29T22:22:45.4849300Z   license_finder approvals add DEPENDENCY...  # Approve one or more dependenc...
+2025-10-29T22:22:45.4850263Z   license_finder approvals help [COMMAND]     # Describe subcommands or one s...
+2025-10-29T22:22:45.4851145Z   license_finder approvals remove DEPENDENCY  # Unapprove a dependency
+2025-10-29T22:22:45.4851698Z 
+2025-10-29T22:22:45.4851831Z Options:
+2025-10-29T22:22:45.4852427Z   [--project-path=PROJECT_PATH]               # Path to the project. Defaults to current working directory.
+2025-10-29T22:22:45.4853413Z   [--decisions-file=DECISIONS_FILE]           # Where decisions are saved. Defaults to doc/dependency_decisions.yml.
+2025-10-29T22:22:45.4854501Z   [--log-directory=LOG_DIRECTORY]             # Where logs are saved. Defaults to ./lf_logs/$PROJECT/prepare_$PACKAGE_MANAGER.log
+2025-10-29T22:22:45.4855720Z   [--enabled-package-managers=one two three]  # List of package managers to be enabled. Defaults to all supported package managers.
+2025-10-29T22:22:45.4857692Z                                               # Possible values: gomodules, godep, goworkspace, go15vendorexperiment, glide, gvt, govendor, trash, bundler, npm, pnpm, pip, yarn, bower, maven, gradle, cocoapods, rebar, erlangmk, nuget, carthage, mix, conan, sbt, cargo, dotnet, composer, pipenv, conda, spm, pub
+2025-10-29T22:22:45.4859261Z 
+2025-10-29T22:22:45.4923039Z Licenças OK
+2025-10-29T22:22:45.5004255Z Post job cleanup.
+2025-10-29T22:22:45.5949647Z [command]/usr/bin/git version
+2025-10-29T22:22:45.5986467Z git version 2.51.0
+2025-10-29T22:22:45.6031647Z Temporarily overriding HOME='/home/runner/work/_temp/f6c71a98-6199-4df0-99e7-b3d00ef733dd' before making global git config changes
+2025-10-29T22:22:45.6032969Z Adding repository directory to the temporary git global config as a safe directory
+2025-10-29T22:22:45.6038419Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/restaurant/restaurant
+2025-10-29T22:22:45.6073655Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-10-29T22:22:45.6106744Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-10-29T22:22:45.6332878Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-10-29T22:22:45.6353609Z http.https://github.com/.extraheader
+2025-10-29T22:22:45.6366711Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-10-29T22:22:45.6397654Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-10-29T22:22:45.6725909Z Cleaning up orphan processes
