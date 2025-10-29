@@ -3,244 +3,392 @@ openapi: 3.0.1
 info:
   title: Restaurant API V1
   version: v1
-  description: API documentation for Restaurant application
+  description: |
+    # Restaurant Management API
+
+    This API provides endpoints for managing restaurants, menus, and menu items.
+
+    ## Features
+    - CRUD operations for restaurants
+    - Menu management per restaurant
+    - Menu items with pricing
+    - Nested resource support
+
+    ## Authentication
+    Currently, the API does not require authentication. Future versions will include JWT-based authentication.
+
+    ## Rate Limiting
+    No rate limiting is currently enforced.
+
+    ## Versioning
+    This is version 1 of the API. The version is included in the URL path.
+  contact:
+    name: API Support
+    email: support@example.com
+    url: https://example.com/support
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+security: []
 paths:
   "/api/v1/imports/restaurants_json":
     post:
-      summary: Import restaurants/menus/items from JSON file
+      summary: Import restaurants via JSON file
       tags:
       - Imports
       parameters: []
       responses:
         '200':
-          description: imported
+          description: import processed
         '422':
-          description: invalid
+          description: invalid JSON
       requestBody:
         content:
           multipart/form-data:
             schema:
-              type: file
+              type: string
+              format: binary
         required: true
   "/api/v1/restaurants/{restaurant_id}/menu_items":
     parameters:
     - name: restaurant_id
       in: path
+      description: Restaurant ID
       required: true
       schema:
-        type: string
+        type: integer
     get:
-      summary: List menu_items for restaurant
+      summary: List menu items for a restaurant
       tags:
       - MenuItems
       responses:
         '200':
-          description: ok
+          description: menu items found
+          headers:
+            X-Current-Page:
+              schema:
+                type: string
+            X-Per-Page:
+              schema:
+                type: string
+            X-Total:
+              schema:
+                type: string
+            X-Total-Pages:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/menu_item_list"
+        '404':
+          description: restaurant not found
     post:
-      summary: Create menu_item
+      summary: Create a menu item
       tags:
       - MenuItems
       parameters: []
       responses:
         '201':
-          description: created
+          description: menu item created
         '422':
-          description: invalid
+          description: invalid request - blank name
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties:
-                name:
-                  type: string
+                menu_item:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                  required:
+                  - name
               required:
-              - name
+              - menu_item
   "/api/v1/restaurants/{restaurant_id}/menu_items/{id}":
     parameters:
     - name: restaurant_id
       in: path
+      description: Restaurant ID
       required: true
       schema:
-        type: string
+        type: integer
     - name: id
       in: path
+      description: Menu Item ID
       required: true
       schema:
-        type: string
+        type: integer
     get:
-      summary: Show menu_item
+      summary: Show a menu item
       tags:
       - MenuItems
       responses:
         '200':
-          description: ok
-    patch:
-      summary: Update menu_item
+          description: menu item found
+        '404':
+          description: menu item not found for restaurant
+    put:
+      summary: Update a menu item
       tags:
       - MenuItems
       parameters: []
       responses:
         '200':
-          description: updated
+          description: menu item updated
+        '404':
+          description: menu item not found
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties:
-                name:
-                  type: string
+                menu_item:
+                  type: object
+                  properties:
+                    name:
+                      type: string
     delete:
-      summary: Delete menu_item
+      summary: Delete a menu item
       tags:
       - MenuItems
       responses:
         '204':
-          description: deleted
+          description: menu item deleted
+        '404':
+          description: menu item not found
   "/api/v1/restaurants/{restaurant_id}/menus":
     parameters:
     - name: restaurant_id
       in: path
+      description: Restaurant ID
       required: true
       schema:
-        type: string
+        type: integer
     get:
-      summary: List menus for restaurant
+      summary: List menus for a restaurant
       tags:
       - Menus
       responses:
         '200':
-          description: ok
+          description: menus found
+          headers:
+            X-Current-Page:
+              schema:
+                type: string
+            X-Per-Page:
+              schema:
+                type: string
+            X-Total:
+              schema:
+                type: string
+            X-Total-Pages:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/menu_list"
+        '404':
+          description: restaurant not found
     post:
-      summary: Create menu
+      summary: Create a menu for a restaurant
       tags:
       - Menus
       parameters: []
       responses:
         '201':
-          description: created
+          description: menu created
         '422':
-          description: invalid
+          description: invalid request - blank name
+        '404':
+          description: restaurant not found
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties:
-                name:
-                  type: string
-              required:
-              - name
+                menu:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                  required:
+                  - name
   "/api/v1/restaurants/{restaurant_id}/menus/{id}":
     parameters:
     - name: restaurant_id
       in: path
+      description: Restaurant ID
       required: true
       schema:
-        type: string
+        type: integer
     - name: id
       in: path
+      description: Menu ID
       required: true
       schema:
-        type: string
+        type: integer
     get:
-      summary: Show menu
+      summary: Show a menu
       tags:
       - Menus
       responses:
         '200':
-          description: ok
-    patch:
-      summary: Update menu
+          description: menu found
+        '404':
+          description: menu belongs to another restaurant
+    put:
+      summary: Update a menu
       tags:
       - Menus
       parameters: []
       responses:
         '200':
-          description: updated
+          description: menu updated
+        '404':
+          description: menu not found
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties:
-                name:
-                  type: string
+                menu:
+                  type: object
+                  properties:
+                    name:
+                      type: string
     delete:
-      summary: Delete menu
+      summary: Delete a menu
       tags:
       - Menus
       responses:
         '204':
-          description: deleted
+          description: menu deleted
+        '404':
+          description: menu not found
   "/api/v1/restaurants":
     get:
-      summary: List restaurants
+      summary: List all restaurants
       tags:
       - Restaurants
+      parameters:
+      - name: page
+        in: query
+        required: false
+        description: Page number
+        schema:
+          type: integer
+      - name: per_page
+        in: query
+        required: false
+        description: Items per page
+        schema:
+          type: integer
       responses:
         '200':
-          description: ok
+          description: empty list when no restaurants
+          headers:
+            X-Current-Page:
+              schema:
+                type: string
+            X-Per-Page:
+              schema:
+                type: string
+            X-Total:
+              schema:
+                type: string
+            X-Total-Pages:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/restaurant_list"
     post:
-      summary: Create restaurant
+      summary: Create a restaurant
       tags:
       - Restaurants
       parameters: []
       responses:
         '201':
-          description: created
+          description: restaurant created
         '422':
-          description: invalid
+          description: invalid request - duplicate name
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties:
-                name:
-                  type: string
+                restaurant:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                  required:
+                  - name
               required:
-              - name
+              - restaurant
   "/api/v1/restaurants/{id}":
     parameters:
     - name: id
       in: path
+      description: Restaurant ID
       required: true
       schema:
-        type: string
+        type: integer
     get:
-      summary: Show restaurant
+      summary: Show a restaurant
       tags:
       - Restaurants
       responses:
         '200':
-          description: ok
+          description: restaurant found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/restaurant"
         '404':
-          description: not found
-    patch:
-      summary: Update restaurant
+          description: restaurant not found
+    put:
+      summary: Update a restaurant
       tags:
       - Restaurants
       parameters: []
       responses:
         '200':
-          description: updated
+          description: restaurant updated
+        '404':
+          description: restaurant not found
+        '422':
+          description: invalid request - blank name
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties:
-                name:
-                  type: string
+                restaurant:
+                  type: object
+                  properties:
+                    name:
+                      type: string
     delete:
-      summary: Delete restaurant
+      summary: Delete a restaurant
       tags:
       - Restaurants
       responses:
         '204':
-          description: deleted
+          description: restaurant deleted
+        '404':
+          description: restaurant not found
 servers:
 - url: http://localhost:3000
   description: Development server
@@ -248,8 +396,116 @@ servers:
   description: Staging server
 - url: https://api.example.com
   description: Production server
+tags:
+- name: Restaurants
+  description: Restaurant management endpoints
+- name: Menus
+  description: Menu management endpoints (nested under restaurants)
+- name: MenuItems
+  description: Menu item endpoints (nested under restaurants)
+- name: Imports
+  description: Data import endpoints
 components:
   schemas:
+    restaurant:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: The Gourmet Kitchen
+        menus:
+          type: array
+          items:
+            "$ref": "#/components/schemas/menu"
+      required:
+      - id
+      - name
+    restaurant_input:
+      type: object
+      properties:
+        name:
+          type: string
+          example: The Gourmet Kitchen
+          minLength: 1
+      required:
+      - name
+    restaurant_list:
+      type: array
+      items:
+        "$ref": "#/components/schemas/restaurant"
+    menu:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Dinner Menu
+        items:
+          type: array
+          items:
+            "$ref": "#/components/schemas/menu_item_placement"
+      required:
+      - id
+      - name
+    menu_input:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Dinner Menu
+          minLength: 1
+      required:
+      - name
+    menu_list:
+      type: array
+      items:
+        "$ref": "#/components/schemas/menu"
+    menu_item:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Grilled Salmon
+      required:
+      - id
+      - name
+    menu_item_input:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Grilled Salmon
+          minLength: 1
+      required:
+      - name
+    menu_item_list:
+      type: array
+      items:
+        "$ref": "#/components/schemas/menu_item"
+    menu_item_placement:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Grilled Salmon
+        price:
+          type: string
+          example: '24.99'
+      required:
+      - id
+      - name
+      - price
     error:
       type: object
       properties:
@@ -258,13 +514,87 @@ components:
           properties:
             message:
               type: string
+              example: Resource not found
             details:
               type: array
               items:
                 type: string
+              example:
+              - Restaurant with id 999 not found
+      required:
+      - error
+    validation_error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+              example: Validation failed
+            details:
+              type: array
+              items:
+                type: string
+              example:
+              - Name can't be blank
+              - Name has already been taken
+      required:
+      - error
+    import_log_entry:
+      type: object
+      properties:
+        restaurant:
+          type: string
+          nullable: true
+        menu:
+          type: string
+          nullable: true
+        item:
+          type: string
+          nullable: true
+        action:
+          type: string
+          example: created_menu
+        price:
+          type: string
+          nullable: true
+        error:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+          nullable: true
+    import_result:
+      type: object
+      properties:
+        success:
+          type: boolean
+        logs:
+          type: array
+          items:
+            "$ref": "#/components/schemas/import_log_entry"
+      required:
+      - success
+      - logs
+  requestBodies:
+    ImportRestaurantsJson:
+      description: Multipart JSON file upload
+      required: true
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              file:
+                type: string
+                format: binary
+            required:
+            - file
   securitySchemes:
     Bearer:
       type: http
       scheme: bearer
       bearerFormat: JWT
-      description: JWT token for authentication
+      description: JWT token for authentication (not currently required)

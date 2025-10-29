@@ -50,6 +50,7 @@ RSpec.configure do |config|
           url: "https://opensource.org/licenses/MIT",
         },
       },
+      security: [],
       paths: {},
       servers: [
         {
@@ -231,6 +232,23 @@ RSpec.configure do |config|
               },
             },
             required: %w[success logs],
+          },
+        },
+        requestBodies: {
+          ImportRestaurantsJson: {
+            description: "Multipart JSON file upload",
+            required: true,
+            content: {
+              "multipart/form-data": {
+                schema: {
+                  type: :object,
+                  properties: {
+                    file: { type: :string, format: :binary },
+                  },
+                  required: [:file],
+                },
+              },
+            },
           },
         },
         securitySchemes: {
