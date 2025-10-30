@@ -1,0 +1,20 @@
+extends: default
+
+ignore: 
+  - "swagger/**/*.yaml"
+  - "public/**/*.yaml"
+  - "tmp/**/*.yaml"
+  - "vendor/**/*.yaml"
+
+rules:
+  document-start: disable
+  truthy: disable
+  brackets: disable
+  empty-lines: disable
+  line-length:
+    max: 120
+    allow-non-breakable-words: true
+    allow-non-breakable-words-in-comments: true
+    level: warning
+  indentation:
+    indent-sequences: consistent
