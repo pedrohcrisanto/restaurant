@@ -1,10 +1,14 @@
 extends: default
 
-ignore: 
+ignore:
   - "swagger/**/*.yaml"
   - "public/**/*.yaml"
   - "tmp/**/*.yaml"
   - "vendor/**/*.yaml"
+  - "swagger/**/*.yml"
+  - "public/**/*.yml"
+  - "tmp/**/*.yml"
+  - "vendor/**/*.yml"
 
 rules:
   document-start: disable
