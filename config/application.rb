@@ -38,14 +38,9 @@ module RestaurantApp
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    # Autoload custom directories
-    config.eager_load_paths << Rails.root.join("app/blueprints")
-    config.eager_load_paths << Rails.root.join("app/use_cases")
-    config.eager_load_paths << Rails.root.join("app/services")
-
-    # Configure autoload paths for repositories with nested modules
-    config.autoload_paths << Rails.root.join("app/repositories")
-    config.eager_load_paths << Rails.root.join("app/repositories")
+    # Autoload and eager load are handled automatically for folders under app/ by Rails 8
+    # Avoid mutating autoload_paths directly to prevent FrozenError during initialization.
+    # If you need to add non-standard paths outside app/, use config.paths.add with eager_load: true.
 
     # I18n configuration
     config.i18n.available_locales = %i[en pt-BR]

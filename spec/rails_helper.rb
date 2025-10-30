@@ -9,12 +9,6 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require "rspec/rails"
 # Add additional requires below this line. Rails is not loaded until this point!
 
-# Explicitly load repositories
-require_relative "../app/repositories"
-require_relative "../app/repositories/persistence"
-require_relative "../app/repositories/persistence/restaurants_repository"
-require_relative "../app/repositories/persistence/menus_repository"
-require_relative "../app/repositories/persistence/menu_items_repository"
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are

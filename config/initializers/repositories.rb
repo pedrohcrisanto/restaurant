@@ -1,5 +1,3 @@
 # frozen_string_literal: true
 
-# Load repositories module
-require Rails.root.join("app/repositories")
-require Rails.root.join("app/repositories/persistence")
+# Repositories are autoloaded by Zeitwerk from app/repositories. No manual requires needed.
