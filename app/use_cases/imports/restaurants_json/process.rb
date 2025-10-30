@@ -60,22 +60,24 @@ module Imports
       end
 
       def process_menu_item(restaurant, menu, item_data)
-        logs = []
         item_name = extract_name(item_data)
         price = extract_price(item_data)
 
         upsert_result = MenuItems::FindOrCreate.call(name: item_name)
-        return logs << log_item_error(restaurant, menu, item_name, upsert_result[:error]) if upsert_result.failure?
+        return [log_item_error(restaurant, menu, item_name, upsert_result[:error])] if upsert_result.failure?
 
         menu_item = upsert_result[:menu_item]
         placement_result = link_menu_item(menu, menu_item, price)
+        return [log_link_error(restaurant, menu, menu_item, placement_result[:error])] if placement_result[:error]
 
-        return logs << log_link_error(restaurant, menu, menu_item, placement_result[:error]) if placement_result[:error]
+        build_success_logs(restaurant, menu, menu_item, upsert_result[:action], placement_result[:action], placement_result[:price])
+      end
 
-        logs << log_entry(menu_item.name, upsert_result[:action], restaurant: restaurant.name, menu: menu.name,
-                                                                  price: placement_result[:price])
-        logs << log_entry(menu_item.name, placement_result[:action], restaurant: restaurant.name, menu: menu.name)
-        logs
+      def build_success_logs(restaurant, menu, menu_item, create_action, link_action, price)
+        [
+          log_entry(menu_item.name, create_action, restaurant: restaurant.name, menu: menu.name, price: price),
+          log_entry(menu_item.name, link_action, restaurant: restaurant.name, menu: menu.name)
+        ]
       end
 
       def find_or_create_restaurant(name)
