@@ -12,7 +12,7 @@ RSpec.describe Menus::ListForRestaurant do
     it_behaves_like "a use case with resource validation", :restaurant
     it_behaves_like "a use case with error handling", "menus.list_for_restaurant",
                     error_method: :for_restaurant,
-                    context: { restaurant_id: restaurant.id }
+                    context: { restaurant_id: -> { restaurant.id } }
 
     context "when successful" do
       it "returns menus for a restaurant" do

@@ -13,7 +13,7 @@ RSpec.describe Menus::Create do
     it_behaves_like "a use case with resource validation", :restaurant
     it_behaves_like "a use case with error handling", "menus.create",
                     error_method: :save,
-                    context: { restaurant_id: restaurant.id, params: { name: "Test" } }
+                    context: { restaurant_id: -> { restaurant.id }, params: { name: "Test" } }
 
     context "when successful" do
       it "creates a menu with valid params" do

@@ -15,7 +15,7 @@ RSpec.describe Restaurants::Update do
     it_behaves_like "a use case with resource validation", :restaurant
     it_behaves_like "a use case with error handling", "restaurants.update",
                     error_method: :update,
-                    context: { restaurant_id: restaurant.id, params: { name: "Test" } }
+                    context: { restaurant_id: -> { restaurant.id }, params: { name: "Test" } }
 
     context "when validation fails" do
       it "fails with blank name" do

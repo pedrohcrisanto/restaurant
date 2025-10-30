@@ -15,7 +15,7 @@ RSpec.describe Restaurants::Find do
     it_behaves_like "a use case with not found error", :restaurant
     it_behaves_like "a use case with error handling", "restaurants.find",
                     error_method: :find,
-                    context: { id: 1 }
+                    context: { id: -> { call_params[:id] } }
 
     context "when successful" do
       it "includes eager loaded associations" do

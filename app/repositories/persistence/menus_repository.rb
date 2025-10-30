@@ -11,7 +11,9 @@ module Repositories
       end
 
       def find_by_restaurant(restaurant, id)
-        restaurant.menus.with_items.find_by(id: id)
+        # Use `find` scoped through the association to ensure it belongs to the restaurant
+        # and to raise ActiveRecord::RecordNotFound when id is nil or not found.
+        restaurant.menus.with_items.find(id)
       end
 
       def build_for(restaurant, attrs = {})

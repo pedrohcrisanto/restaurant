@@ -1,0 +1,58 @@
+name: RSpec
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        ports:
+          - "5432:5432"
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: restaurant_test
+        options: >-
+          --health-cmd "pg_isready -U postgres -d postgres" \
+          --health-interval 10s \
+          --health-timeout 5s \
+          --health-retries 5
+
+    env:
+      RAILS_ENV: test
+      DB_HOST: 127.0.0.1
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      # The app uses default db name for test via config/database.yml; override if needed
+      # DB_NAME: restaurant_test
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Set up Node (for any JS dependencies required by gems)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Prepare DB
+        run: |
+          mkdir -p log tmp
+          chmod -R u+rwX,g+rwX log tmp
+          bin/rails db:prepare RAILS_ENV=test
+
+      - name: Run RSpec
+        run: |
+          bundle exec rspec --format progress

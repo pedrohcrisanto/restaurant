@@ -12,6 +12,6 @@ class Menu < ApplicationRecord
 
   # Scopes
   scope :ordered, -> { order(:id) }
-  scope :with_items, -> { includes(menu_item_placements: :menu_item) }
+  scope :with_items, -> { eager_load(menu_item_placements: :menu_item) }
   scope :by_name_ci, ->(name) { where("LOWER(name) = ?", name.to_s.downcase) }
 end

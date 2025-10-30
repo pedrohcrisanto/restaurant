@@ -14,7 +14,7 @@ RSpec.describe Restaurants::Destroy do
     it_behaves_like "a use case with resource validation", :restaurant
     it_behaves_like "a use case with error handling", "restaurants.destroy",
                     error_method: :destroy,
-                    context: { restaurant_id: restaurant.id }
+                    context: { restaurant_id: -> { restaurant.id } }
 
     context "when successful" do
       it "destroys associated menus" do

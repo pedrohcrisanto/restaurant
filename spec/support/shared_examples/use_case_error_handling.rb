@@ -22,7 +22,9 @@ RSpec.shared_examples "a use case with error handling" do |use_case_name, option
     it "notifies error reporter with context" do
       allow(repo_double).to receive(error_method).and_raise(StandardError, "Database error")
       
-      expected_context = { use_case: use_case_name }.merge(options[:context] || {})
+      raw_context = options[:context] || {}
+      evaluated_context = raw_context.transform_values { |v| v.respond_to?(:call) ? v.call : v }
+      expected_context = { use_case: use_case_name }.merge(evaluated_context)
       
       expect(ErrorReporter.current).to receive(:notify).with(
         instance_of(StandardError),
