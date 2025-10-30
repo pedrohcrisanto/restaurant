@@ -23,7 +23,7 @@ RSpec.describe "Api::V1::Imports", type: :request do
       end
 
       response "422", "invalid JSON" do
-        let(:file) { fixture_file_upload(Rails.root.join("spec/fixtures/files/invalid.json"), "application/json") }
+        let(:file) { fixture_file_upload(Rails.root.join("spec/fixtures/files/invalid.txt"), "application/json") }
 
         run_test! do |response|
           expect(response).to have_http_status(:unprocessable_entity)
