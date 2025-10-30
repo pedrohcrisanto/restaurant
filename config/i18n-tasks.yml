@@ -1,0 +1,54 @@
+# i18n-tasks configuration
+# This configuration tunes the i18n-tasks scanner for this project so that
+# CI does not fail on framework-provided keys and keys that are resolved
+# dynamically at runtime.
+
+base_locale: en
+locales:
+  - en
+  - pt-BR
+
+# Where to look for keys and usages
+search:
+  paths:
+    - app
+    - lib
+    - config
+  exclude:
+    - vendor
+    - node_modules
+    - tmp
+    - log
+
+# Keys that should not be reported as unused. Use globs/regexes.
+# We ignore:
+# - Rails/ActiveRecord built-in keys (models, attributes, date, time, etc.)
+# - Our app error namespaces that are often referenced dynamically
+#   (e.g., "errors.#{resource}.not_found").
+ignore_unused:
+  # Rails / ActiveRecord defaults
+  - 'activerecord.*'
+  - 'date.*'
+  - 'datetime.*'
+  - 'errors.messages.*'
+  # App-specific error namespaces (some are built dynamically)
+  - 'errors.not_found'
+  - 'errors.unexpected_error'
+  - 'errors.validation_failed'
+  - 'errors.validation.*'
+  - 'errors.restaurants.*'
+  - 'errors.menus.*'
+  - 'errors.menu_items.*'
+
+# Optionally, you can configure how missing keys are detected.
+# We keep defaults but declare patterns we know are dynamic so missing won't be raised for them either.
+ignore_missing:
+  - 'errors.restaurants.*'
+  - 'errors.menus.*'
+  - 'errors.menu_items.*'
+  - 'errors.validation.*'
+
+# Normalize settings keep YAML tidy when running `i18n-tasks normalize`.
+normalize:
+  # Split into multiple files is fine; we keep project defaults.
+  format: ruby_yaml
