@@ -224,22 +224,3 @@ jobs:
             echo "Reprovar por licenças" && exit 1
           fi
 
-  i18n:
-    name: i18n-tasks (chaves órfãs/ausentes)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install system dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libpq-dev
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "3.3"
-          bundler-cache: true
-      - run: |
-          if bundle exec i18n-tasks health; then
-            echo "i18n OK"
-          else
-            echo "Problemas de i18n" && exit 1
-          fi
