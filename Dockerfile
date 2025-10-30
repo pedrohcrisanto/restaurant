@@ -8,6 +8,7 @@ ENV BUNDLE_JOBS=4 \
     APP_HOME=/app
 
 # Sistema e libs nativas necessárias para gems (pg etc.)
+# hadolint ignore=DL3008
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
        build-essential \
