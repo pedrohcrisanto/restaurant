@@ -4,6 +4,7 @@ require "json"
 
 module Imports
   module RestaurantsJson
+    # rubocop:disable Metrics/ClassLength
     class Process < Micro::Case
       attribute :json
 
@@ -128,6 +129,7 @@ module Imports
         log_entry(menu_item.name, :link_error, restaurant: restaurant.name, menu: menu.name, error: error)
       end
 
+      # rubocop:disable Metrics/ParameterLists
       def log_entry(item_name, action, restaurant: nil, menu: nil, price: nil, error: nil)
         {
           restaurant: restaurant,
@@ -135,9 +137,11 @@ module Imports
           item: item_name,
           action: action.to_s,
           price: price,
-          error: error,
+          error: error
         }.compact
       end
+      # rubocop:enable Metrics/ParameterLists
     end
+    # rubocop:enable Metrics/ClassLength
   end
 end

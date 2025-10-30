@@ -63,7 +63,12 @@ module Api
       end
 
       def handle_parameter_missing(exception)
-        render json: { error: { message: I18n.t("errors.validation_failed"), details: [exception.message] } }, status: :unprocessable_entity
+        render json: {
+          error: {
+            message: I18n.t("errors.validation_failed"),
+            details: [exception.message]
+          }
+        }, status: :unprocessable_entity
       end
 
       def handle_unexpected_error(exception)
@@ -79,7 +84,7 @@ module Api
         {
           controller: self.class.name,
           action: action_name,
-          params: request.filtered_parameters,
+          params: request.filtered_parameters
         }
       end
     end

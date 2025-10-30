@@ -21,6 +21,7 @@ class ErrorReporter
   end
 
   # Notify unexpected errors. Accepts Exception or message String.
+  # rubocop:disable Metrics/MethodLength
   def notify(error, context: {})
     if @adapter.respond_to?(:notify)
       @adapter.notify(error, context: context)
@@ -30,7 +31,7 @@ class ErrorReporter
         type: error.class.to_s,
         message: error.respond_to?(:message) ? error.message : error.to_s,
         backtrace: (error.backtrace if error.respond_to?(:backtrace)),
-        context: context,
+        context: context
       }
       @logger.error({ error_reporter: payload }.to_json)
     end
@@ -38,4 +39,5 @@ class ErrorReporter
     # Ensure the reporter never raises
     @logger.error({ error_reporter_failure: { message: e.message } }.to_json)
   end
+  # rubocop:enable Metrics/MethodLength
 end

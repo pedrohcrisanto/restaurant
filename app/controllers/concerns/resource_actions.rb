@@ -16,7 +16,11 @@ module ResourceActions
   # Example:
   #   def update
   #     with_resource(find_restaurant, "errors.restaurants.not_found") do |find_result|
-  #       result = Restaurants::Update.call(restaurant: find_result[:restaurant], params: resource_params, repo: repository)
+  #       result = Restaurants::Update.call(
+  #         restaurant: find_result[:restaurant],
+  #         params: resource_params,
+  #         repo: repository
+  #       )
   #       return render_success(result[:restaurant], RestaurantBlueprint) if result.success?
   #       render_validation_error(result[:error])
   #     end

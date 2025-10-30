@@ -37,7 +37,9 @@ module Repositories
         options = { returning: %i[id name] }
         options[:unique_by] = unique_by if unique_by
 
+        # rubocop:disable Rails/SkipsModelValidations
         ::Restaurant.insert_all(records_attrs, **options)
+        # rubocop:enable Rails/SkipsModelValidations
       end
 
       def bulk_update(records_data)
@@ -47,7 +49,9 @@ module Repositories
         records_data.each_slice(BATCH_SIZE) do |batch|
           batch.each do |data|
             id = data.delete(:id)
+            # rubocop:disable Rails/SkipsModelValidations
             ::Restaurant.where(id: id).update_all(data)
+            # rubocop:enable Rails/SkipsModelValidations
             updated_count += 1
           end
         end
