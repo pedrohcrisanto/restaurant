@@ -14,7 +14,7 @@ RSpec.describe Menus::FindForRestaurant do
     it_behaves_like "a use case with id validation"
     it_behaves_like "a use case with error handling", "menus.find_for_restaurant",
                     error_method: :find_by_restaurant,
-                    context: { restaurant_id: -> { restaurant.id }, menu_id: 1 }
+                    context: { restaurant_id: -> { restaurant.id }, menu_id: -> { call_params[:id] } }
 
     context "when successful" do
       it "finds a menu for a restaurant" do

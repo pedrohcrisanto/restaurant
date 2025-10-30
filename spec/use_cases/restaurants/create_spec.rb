@@ -13,7 +13,7 @@ RSpec.describe Restaurants::Create do
     it_behaves_like "a use case with params validation"
     it_behaves_like "a use case with error handling", "restaurants.create",
                     error_method: :save,
-                    context: { params: { name: "Test" } }
+                    context: { params: -> { call_params[:params] } }
 
     context "when validation fails" do
       it "fails with blank name" do

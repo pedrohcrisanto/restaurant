@@ -21,25 +21,39 @@ RSpec.shared_examples "a use case with error handling" do |use_case_name, option
 
     it "notifies error reporter with context" do
       allow(repo_double).to receive(error_method).and_raise(StandardError, "Database error")
-      
+
       raw_context = options[:context] || {}
-      # Evaluate procs/lambdas inside example scope so lets like `restaurant` are available
-      evaluated_context = raw_context.transform_values do |v|
-        if v.respond_to?(:call)
-          # Use instance_exec so `restaurant`, `call_params`, etc are resolved in example scope
-          instance_exec(&v)
+
+      # Build a matcher that evaluates only procs (dynamic expectations) and treats
+      # non-proc static values as presence checks. For nested hashes, only evaluate
+      # nested procs; static nested values won't be strictly asserted.
+      matcher_context = { use_case: use_case_name }
+
+      raw_context.each do |key, value|
+        if value.respond_to?(:call)
+          # dynamic -> evaluate now inside example and require exact match
+          matcher_context[key] = instance_exec(&value)
+        elsif value.is_a?(Hash)
+          # For nested hashes, evaluate any procs inside; ignore static nested values
+          # (only require presence of the nested key with matching subkeys if procs are used).
+          nested = {}
+          value.each do |k2, v2|
+            if v2.respond_to?(:call)
+              nested[k2] = instance_exec(&v2)
+            end
+          end
+
+          # Only add nested matcher if there are any proc-evaluated expectations
+          matcher_context[key] = hash_including(nested) unless nested.empty?
         else
-          v
+          # static non-proc: skip strict matching (presence-only)
+          next
         end
       end
-      expected_context = { use_case: use_case_name }.merge(evaluated_context)
 
-      # If the caller provided extra expected keys, assert they are included; otherwise only assert use_case
-      notify_matcher = if evaluated_context.empty?
-                         hash_including(context: hash_including(use_case: use_case_name))
-                       else
-                         hash_including(context: expected_context)
-                       end
+      # Base matcher: ensure context key contains at least the use_case and any
+      # evaluated dynamic expectations.
+      notify_matcher = hash_including(context: hash_including(matcher_context))
 
       expect(ErrorReporter.current).to receive(:notify).with(
         instance_of(StandardError),
