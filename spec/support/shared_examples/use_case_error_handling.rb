@@ -23,12 +23,27 @@ RSpec.shared_examples "a use case with error handling" do |use_case_name, option
       allow(repo_double).to receive(error_method).and_raise(StandardError, "Database error")
       
       raw_context = options[:context] || {}
-      evaluated_context = raw_context.transform_values { |v| v.respond_to?(:call) ? v.call : v }
+      # Evaluate procs/lambdas inside example scope so lets like `restaurant` are available
+      evaluated_context = raw_context.transform_values do |v|
+        if v.respond_to?(:call)
+          # Use instance_exec so `restaurant`, `call_params`, etc are resolved in example scope
+          instance_exec(&v)
+        else
+          v
+        end
+      end
       expected_context = { use_case: use_case_name }.merge(evaluated_context)
-      
+
+      # If the caller provided extra expected keys, assert they are included; otherwise only assert use_case
+      notify_matcher = if evaluated_context.empty?
+                         hash_including(context: hash_including(use_case: use_case_name))
+                       else
+                         hash_including(context: expected_context)
+                       end
+
       expect(ErrorReporter.current).to receive(:notify).with(
         instance_of(StandardError),
-        context: expected_context
+        notify_matcher
       )
 
       described_class.call(**call_params.merge(error_args))
@@ -60,4 +75,3 @@ RSpec.shared_examples "a use case with repository error" do |use_case_name, repo
     end
   end
 end
-

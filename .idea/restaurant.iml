@@ -48,9 +48,11 @@
     <orderEntry type="library" scope="PROVIDED" name="brakeman (v6.2.2, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v3.3.0, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v2.6.9, mise: 3.4.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bundler-audit (v0.9.2, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="concurrent-ruby (v1.3.5, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="connection_pool (v2.5.4, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.6, mise: 3.4.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="csv (v3.3.5, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="date (v3.4.1, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="debug (v1.11.0, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="diff-lcs (v1.6.2, mise: 3.4.4) [gem]" level="application" />
@@ -58,19 +60,29 @@
     <orderEntry type="library" scope="PROVIDED" name="dotenv (v3.1.8, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="dotenv-rails (v3.1.8, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="drb (v2.2.3, mise: 3.4.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="dry-configurable (v1.3.0, mise: 3.4.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="dry-core (v1.1.0, mise: 3.4.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="dry-inflector (v1.2.0, mise: 3.4.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="dry-initializer (v3.2.0, mise: 3.4.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="dry-logic (v1.6.0, mise: 3.4.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="dry-schema (v1.14.1, mise: 3.4.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="dry-types (v1.8.3, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erb (v5.1.3, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.13.1, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="factory_bot (v6.5.6, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="factory_bot_rails (v6.5.1, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="faker (v3.5.2, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v1.3.0, mise: 3.4.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="highline (v3.1.2, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.14.7, mise: 3.4.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="i18n-tasks (v1.0.15, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="io-console (v0.8.1, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="irb (v1.15.2, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="json (v2.15.2, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="json-schema (v5.2.2, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="kind (v5.10.0, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="language_server-protocol (v3.17.0.5, mise: 3.4.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="license_finder (v7.2.1, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="lint_roller (v1.1.0, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="logger (v1.7.0, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="loofah (v2.24.1, mise: 3.4.4) [gem]" level="application" />
@@ -108,13 +120,16 @@
     <orderEntry type="library" scope="PROVIDED" name="rainbow (v3.1.1, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v13.3.0, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rdoc (v6.15.0, mise: 3.4.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="reek (v6.5.0, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="regexp_parser (v2.11.3, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="reline (v0.6.2, mise: 3.4.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rexml (v3.4.4, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-core (v3.13.6, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-expectations (v3.13.5, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-mocks (v3.13.6, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-rails (v6.1.5, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-support (v3.13.6, mise: 3.4.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec_junit_formatter (v0.6.0, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rswag-api (v2.16.0, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rswag-specs (v2.16.0, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rswag-ui (v2.16.0, mise: 3.4.4) [gem]" level="application" />
@@ -126,14 +141,17 @@
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rspec (v2.31.0, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rspec_rails (v2.29.1, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby-progressbar (v1.13.0, mise: 3.4.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rubyzip (v2.4.1, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="securerandom (v0.4.1, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="shoulda-matchers (v6.5.0, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="simplecov (v0.22.0, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="simplecov-html (v0.13.2, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="simplecov_json_formatter (v0.1.4, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="stringio (v3.1.7, mise: 3.4.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="terminal-table (v4.0.0, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thor (v1.4.0, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="timeout (v0.4.3, mise: 3.4.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="tomlrb (v2.0.3, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tsort (v0.2.0, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v2.0.6, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="u-attributes (v2.8.0, mise: 3.4.4) [gem]" level="application" />
@@ -144,6 +162,8 @@
     <orderEntry type="library" scope="PROVIDED" name="useragent (v0.16.11, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="websocket-driver (v0.8.0, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="websocket-extensions (v0.1.5, mise: 3.4.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="with_env (v1.1.0, mise: 3.4.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="xml-simple (v1.1.9, mise: 3.4.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="zeitwerk (v2.7.3, mise: 3.4.4) [gem]" level="application" />
   </component>
   <component name="RModuleSettingsStorage">
