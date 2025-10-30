@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe Menus::Create do
-  let(:repo) { Repositories::Persistence::MenusRepository.new }
+  let(:repo) { ::Repositories::Persistence::MenusRepository.new }
   let(:restaurant) { create(:restaurant) }
   let(:call_params) { { restaurant: restaurant, params: { name: "Lunch Menu" }, repo: repo } }
 

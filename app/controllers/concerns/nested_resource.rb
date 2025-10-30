@@ -10,6 +10,10 @@ module NestedResource
   private
 
   def load_parent_restaurant
-    @restaurant = Restaurant.find(params[:restaurant_id])
+    @restaurant = Restaurant.find_by(id: params[:restaurant_id])
+    return if @restaurant
+
+    # Render a 404 with the standard i18n error when parent restaurant isn't found
+    render_not_found("errors.restaurants.not_found")
   end
 end

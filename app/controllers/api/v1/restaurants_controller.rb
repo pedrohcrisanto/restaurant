@@ -55,7 +55,13 @@ module Api
       end
 
       def restaurant_params
-        params.expect(restaurant: [:name])
+        if params.key?(:restaurant)
+          # nested form: { restaurant: { name: '...' } }
+          params.require(:restaurant).permit(:name).to_h
+        else
+          # top-level form: { name: '...' }
+          { name: params[:name] }
+        end
       end
     end
   end

@@ -448,7 +448,7 @@ RSpec.describe Restaurants::Create do
     described_class.call(repo: repo, params: params)
   end
   
-  let(:repo) { Repositories::Persistence::RestaurantsRepository.new }
+  let(:repo) { ::Repositories::Persistence::RestaurantsRepository.new }
   let(:params) { { name: "Test Restaurant" } }
   
   it_behaves_like "a successful create use case", :restaurant

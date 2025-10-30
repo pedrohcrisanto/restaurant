@@ -1,24 +1,26 @@
 # frozen_string_literal: true
 
+require 'securerandom'
+
 FactoryBot.define do
   factory :menu_item do
     sequence(:name) { |n| "#{Faker::Food.dish} #{n}" }
 
     # Traits for different item types
     trait :appetizer do
-      name { "#{Faker::Food.dish} (Appetizer)" }
+      name { "#{Faker::Food.dish} (Appetizer) #{SecureRandom.hex(3)}" }
     end
 
     trait :main_course do
-      name { "#{Faker::Food.dish} (Main Course)" }
+      name { "#{Faker::Food.dish} (Main Course) #{SecureRandom.hex(3)}" }
     end
 
     trait :dessert do
-      name { "#{Faker::Food.dish} (Dessert)" }
+      name { "#{Faker::Food.dish} (Dessert) #{SecureRandom.hex(3)}" }
     end
 
     trait :beverage do
-      name { "#{Faker::Food.dish} (Beverage)" }
+      name { "#{Faker::Food.dish} (Beverage) #{SecureRandom.hex(3)}" }
     end
 
     trait :expensive do

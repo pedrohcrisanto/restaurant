@@ -7,8 +7,13 @@ class MenuItemBlueprint < Blueprinter::Base
   class << self
     def render_as_json(object, **options)
       if respond_to?(:render)
-        json = call_render_safely(object, options)
-        return json.is_a?(String) ? json : JSON.generate(json)
+        begin
+          json = call_render_safely(object, options)
+          return json.is_a?(String) ? json : JSON.generate(json)
+        rescue StandardError => e
+          ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+          return JSON.generate(safe_render_fallback(object))
+        end
       end
 
       JSON.generate(render_as_hash(object))
@@ -16,8 +21,13 @@ class MenuItemBlueprint < Blueprinter::Base
 
     def render_as_hash(object, **options)
       if respond_to?(:render)
-        raw = call_render_safely(object, options)
-        parsed = raw.is_a?(String) ? JSON.parse(raw) : raw
+        begin
+          raw = call_render_safely(object, options)
+          parsed = raw.is_a?(String) ? JSON.parse(raw) : raw
+        rescue StandardError => e
+          ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+          return safe_render_fallback(object)
+        end
       else
         parsed = super if defined?(super)
       end
@@ -34,20 +44,28 @@ class MenuItemBlueprint < Blueprinter::Base
     # Try calling render with different argument combinations to be compatible
     # with different Blueprinter versions/signatures.
     def call_render_safely(object, options)
-      r = method(:render)
-      params = r.parameters.map(&:first)
-
-      if params.any? { |p| [:key, :keyreq, :keyrest].include?(p) }
-        return r.call(object, **options)
+      begin
+        return render(object, **options)
+      rescue ArgumentError, TypeError
+        begin
+          return render(object)
+        rescue ArgumentError, TypeError
+          return render
+        end
       end
+    end
 
-      if params.any? { |p| [:req, :opt].include?(p) }
-        return r.call(object)
+    def safe_render_fallback(object)
+      object.respond_to?(:to_ary) || object.is_a?(Enumerable) ? [] : {}
+    end
+
+    def safe_object_preview(object)
+      begin
+        sample = object.respond_to?(:to_ary) ? object.first : object
+        sample.inspect[0..500]
+      rescue StandardError
+        object.class.name
       end
-
-      return r.call if params.empty?
-
-      r.call(object, **options)
     end
 
     def deep_symbolize_keys(obj)

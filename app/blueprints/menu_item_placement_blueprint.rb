@@ -4,72 +4,61 @@ class MenuItemPlacementBlueprint < Blueprinter::Base
   field :id, &:menu_item_id
 
   field :name do |placement|
-    placement.menu_item.name
+    placement.menu_item&.name
   end
 
-  field :price
+  field :price do |placement|
+    # Ensure price is serialized as string with minimal formatting
+    # Handle nil price gracefully
+    p = placement.price
+    p.nil? ? nil : p.to_s
+  end
 
   class << self
-    def render_as_json(object, **options)
-      if respond_to?(:render)
-        json = call_render_safely(object, options)
-        return json.is_a?(String) ? json : JSON.generate(json)
-      end
-
+    # Serialize to JSON; accepts single object or array
+    def render_as_json(object, **_options)
       JSON.generate(render_as_hash(object))
+    rescue StandardError => e
+      ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+      JSON.generate(safe_render_fallback(object))
     end
 
-    def render_as_hash(object, **options)
-      if respond_to?(:render)
-        raw = call_render_safely(object, options)
-        parsed = raw.is_a?(String) ? JSON.parse(raw) : raw
+    # Return a hash (or array of hashes) representing the placement(s).
+    def render_as_hash(object, **_options)
+      if object.respond_to?(:to_ary)
+        object.to_ary.map { |placement| placement_hash(placement) }
+      elsif object.is_a?(Enumerable)
+        object.map { |placement| placement_hash(placement) }
       else
-        parsed = super if defined?(super)
+        placement_hash(object)
       end
+    rescue StandardError => e
+      ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+      safe_render_fallback(object)
+    end
 
-      if parsed.is_a?(Array)
-        parsed.map { |h| deep_symbolize_keys(h) }
-      else
-        deep_symbolize_keys(parsed)
-      end
+    def placement_hash(placement)
+      return {} unless placement
+
+      {
+        id: placement.menu_item_id,
+        name: placement.menu_item&.name,
+        price: placement.price.nil? ? nil : placement.price.to_s
+      }
     end
 
     private
 
-    # Try calling render with different argument combinations to be compatible
-    # with different Blueprinter versions/signatures.
-    def call_render_safely(object, options)
-      r = method(:render)
-
-      params = r.parameters.map(&:first)
-
-      # If method accepts keyword args or keyreq / keyrest, try object + options
-      if params.any? { |p| [:key, :keyreq, :keyrest].include?(p) }
-        return r.call(object, **options)
-      end
-
-      # If method accepts a positional argument, call with object
-      if params.any? { |p| [:req, :opt].include?(p) }
-        return r.call(object)
-      end
-
-      # Fallback: if method accepts no args, call without args
-      return r.call if params.empty?
-
-      # As a last resort, try calling with object+options and let it surface errors
-      r.call(object, **options)
+    def safe_render_fallback(object)
+      object.respond_to?(:to_ary) || object.is_a?(Enumerable) ? [] : {}
     end
 
-    def deep_symbolize_keys(obj)
-      case obj
-      when Hash
-        obj.each_with_object({}) do |(k, v), memo|
-          memo[k.to_sym] = deep_symbolize_keys(v)
-        end
-      when Array
-        obj.map { |el| deep_symbolize_keys(el) }
+    def safe_object_preview(object)
+      sample = object.respond_to?(:to_ary) ? object.first : object
+      if sample.respond_to?(:inspect)
+        sample.inspect[0..500]
       else
-        obj
+        sample.class.name
       end
     end
   end

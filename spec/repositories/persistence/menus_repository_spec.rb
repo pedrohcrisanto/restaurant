@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Repositories::Persistence::MenusRepository do
+RSpec.describe ::Repositories::Persistence::MenusRepository do
   subject(:repo) { described_class.new }
 
   let!(:restaurant) { create(:restaurant) }

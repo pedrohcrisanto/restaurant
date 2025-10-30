@@ -7,10 +7,15 @@ module Repositories
 
       # Returns an AR::Relation optimized for listing with eager loading
       def relation_for_index
-        ::Restaurant.eager_load(menus: { menu_item_placements: :menu_item }).ordered
+        # Force loading so that iterating the relation won't trigger extra queries
+        # Use the model scope that already defines the includes for full associations.
+        ::Restaurant.with_full_associations.ordered.tap { |r| r.to_a }
       end
 
       def find(id)
+        # Explicitly raise when id is nil to match expectations in specs
+        raise ActiveRecord::RecordNotFound if id.nil?
+
         ::Restaurant.with_full_associations.find(id)
       end
 
@@ -28,7 +33,12 @@ module Repositories
 
       def destroy(record)
         # Ensure we raise RecordNotFound if the record does not exist
-        found = ::Restaurant.find(record.id)
+        id = record&.id
+        raise ActiveRecord::RecordNotFound if id.nil?
+
+        found = ::Restaurant.find_by(id: id)
+        raise ActiveRecord::RecordNotFound if found.nil?
+
         found.destroy
       end
 

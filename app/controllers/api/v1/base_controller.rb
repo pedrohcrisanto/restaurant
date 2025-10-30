@@ -9,7 +9,7 @@ module Api
       include ResourceActions
       include RepositoryInjection
 
-      rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
+      rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
       rescue_from ActionController::ParameterMissing, with: :handle_parameter_missing
       rescue_from StandardError, with: :handle_unexpected_error
 
@@ -58,9 +58,6 @@ module Api
         )
       end
 
-      def handle_not_found
-        render json: { error: { message: I18n.t("errors.not_found") } }, status: :not_found
-      end
 
       def handle_parameter_missing(exception)
         render json: {

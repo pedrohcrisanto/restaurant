@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'securerandom'
+
 FactoryBot.define do
   factory :menu do
     association :restaurant
@@ -7,15 +9,15 @@ FactoryBot.define do
 
     # Traits for different menu types
     trait :breakfast do
-      name { "Breakfast Menu" }
+      name { "Breakfast Menu #{SecureRandom.hex(4)}" }
     end
 
     trait :lunch do
-      name { "Lunch Menu" }
+      name { "Lunch Menu #{SecureRandom.hex(4)}" }
     end
 
     trait :dinner do
-      name { "Dinner Menu" }
+      name { "Dinner Menu #{SecureRandom.hex(4)}" }
     end
 
     trait :with_items do

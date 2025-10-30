@@ -21,9 +21,11 @@ services:
       DB_HOST: db
       DB_USER: postgres
       DB_PASSWORD: postgres
-      RAILS_ENV: development
-      # Rails em modo API na porta 3000 caso queira subir o servidor
-      # PORT: 3000
+      # Name of the test database used when RAILS_ENV=test
+      DB_NAME_TEST: restaurant_test
+      # Do not hardcode RAILS_ENV here so tests can be run with RAILS_ENV=test
+      # Set RAILS_ENV when running containers, e.g. `docker compose run --profile test -e RAILS_ENV=test app ...`
+
     volumes:
       - .:/app:cached
       - bundle:/usr/local/bundle
@@ -44,6 +46,7 @@ services:
       DB_HOST: db
       DB_USER: postgres
       DB_PASSWORD: postgres
+      DB_NAME_TEST: restaurant_test
       RAILS_ENV: development
       PORT: 3000
       RAILS_LOG_TO_STDOUT: "1"
@@ -60,4 +63,3 @@ services:
 volumes:
   db-data:
   bundle:
-

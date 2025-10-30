@@ -74,7 +74,7 @@ module RepositoryInjection
   private
 
   def repository_for(resource_name)
-    repository_class = "Repositories::Persistence::#{resource_name.to_s.camelize.pluralize}Repository".constantize
+    repository_class = "::Repositories::Persistence::#{resource_name.to_s.camelize.pluralize}Repository".constantize
     repository_class.new
   end
 end
@@ -113,7 +113,7 @@ def set_restaurant
 end
 
 def menus_repo
-  @menus_repo ||= Repositories::Persistence::MenusRepository.new
+  @menus_repo ||= ::Repositories::Persistence::MenusRepository.new
 end
 
 def menu_params

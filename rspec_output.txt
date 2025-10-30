@@ -1,0 +1,295 @@
+
+An error occurred while loading ./spec/blueprints/menu_blueprint_spec.rb.[31m - Did you mean?
+                    rspec ./spec/blueprints/menu_item_blueprint_spec.rb
+                    rspec ./spec/blueprints/restaurant_blueprint_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/blueprints/menu_blueprint_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/blueprints/menu_item_blueprint_spec.rb.[31m - Did you mean?
+                    rspec ./spec/blueprints/menu_blueprint_spec.rb
+                    rspec ./spec/blueprints/menu_item_placement_blueprint_spec.rb
+                    rspec ./spec/blueprints/restaurant_blueprint_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/blueprints/menu_item_blueprint_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/blueprints/menu_item_placement_blueprint_spec.rb.[31m - Did you mean?
+                    rspec ./spec/blueprints/menu_item_blueprint_spec.rb
+                    rspec ./spec/blueprints/restaurant_blueprint_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/blueprints/menu_item_placement_blueprint_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/blueprints/restaurant_blueprint_spec.rb.[31m - Did you mean?
+                    rspec ./spec/blueprints/menu_blueprint_spec.rb
+                    rspec ./spec/blueprints/menu_item_blueprint_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/blueprints/restaurant_blueprint_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/contracts/menu_contract_spec.rb.[31m - Did you mean?
+                    rspec ./spec/contracts/restaurant_contract_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/contracts/menu_contract_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/contracts/restaurant_contract_spec.rb.[31m - Did you mean?
+                    rspec ./spec/contracts/menu_contract_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/contracts/restaurant_contract_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/models/menu_item_placement_spec.rb.[31m - Did you mean?
+                    rspec ./spec/models/menu_item_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/models/menu_item_placement_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/models/menu_item_spec.rb.[31m - Did you mean?
+                    rspec ./spec/models/menu_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/models/menu_item_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/models/menu_spec.rb.[31m - Did you mean?
+                    rspec ./spec/models/menu_item_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/models/menu_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/models/restaurant_spec.rb.[31m - Did you mean?
+                    rspec ./spec/models/menu_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/models/restaurant_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/repositories/persistence/menu_items_repository_spec.rb.[31m - Did you mean?
+                    rspec ./spec/repositories/persistence/menus_repository_spec.rb
+                    rspec ./spec/repositories/persistence/restaurants_repository_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/repositories/persistence/menu_items_repository_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/repositories/persistence/menus_repository_spec.rb.[31m - Did you mean?
+                    rspec ./spec/repositories/persistence/menu_items_repository_spec.rb
+                    rspec ./spec/repositories/persistence/restaurants_repository_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/repositories/persistence/menus_repository_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/repositories/persistence/restaurants_repository_spec.rb.[31m - Did you mean?
+                    rspec ./spec/repositories/persistence/menus_repository_spec.rb
+                    rspec ./spec/repositories/persistence/menu_items_repository_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/repositories/persistence/restaurants_repository_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/requests/api/v1/imports_spec.rb.[31m - Did you mean?
+                    rspec ./spec/requests/api/v1/menus_spec.rb
+                    rspec ./spec/requests/api/v1/menu_items_spec.rb
+                    rspec ./spec/requests/api/v1/restaurants_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/swagger_helper.rb:3:in '<top (required)>'[0m
+[36m# ./spec/requests/api/v1/imports_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/requests/api/v1/menu_items_spec.rb.[31m - Did you mean?
+                    rspec ./spec/requests/api/v1/menus_spec.rb
+                    rspec ./spec/requests/api/v1/imports_spec.rb
+                    rspec ./spec/requests/api/v1/restaurants_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/swagger_helper.rb:3:in '<top (required)>'[0m
+[36m# ./spec/requests/api/v1/menu_items_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/requests/api/v1/menus_spec.rb.[31m - Did you mean?
+                    rspec ./spec/requests/api/v1/menu_items_spec.rb
+                    rspec ./spec/requests/api/v1/restaurants_spec.rb
+                    rspec ./spec/requests/api/v1/imports_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/swagger_helper.rb:3:in '<top (required)>'[0m
+[36m# ./spec/requests/api/v1/menus_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/requests/api/v1/restaurants_pagination_spec.rb.[31m - Did you mean?
+                    rspec ./spec/requests/api/v1/restaurants_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/requests/api/v1/restaurants_pagination_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/requests/api/v1/restaurants_spec.rb.[31m - Did you mean?
+                    rspec ./spec/requests/api/v1/menus_spec.rb
+                    rspec ./spec/requests/api/v1/menu_items_spec.rb
+                    rspec ./spec/requests/api/v1/imports_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/swagger_helper.rb:3:in '<top (required)>'[0m
+[36m# ./spec/requests/api/v1/restaurants_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/use_cases/menus/create_spec.rb.[31m - Did you mean?
+                    rspec ./spec/use_cases/restaurants/create_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/use_cases/menus/create_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/use_cases/menus/find_for_restaurant_spec.rb.[31m - Did you mean?
+                    rspec ./spec/use_cases/menus/list_for_restaurant_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/use_cases/menus/find_for_restaurant_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/use_cases/menus/list_for_restaurant_spec.rb.[31m - Did you mean?
+                    rspec ./spec/use_cases/menus/find_for_restaurant_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/use_cases/menus/list_for_restaurant_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/use_cases/restaurants/create_spec.rb.[31m - Did you mean?
+                    rspec ./spec/use_cases/restaurants/destroy_spec.rb
+                    rspec ./spec/use_cases/restaurants/update_spec.rb
+                    rspec ./spec/use_cases/restaurants/list_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/use_cases/restaurants/create_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/use_cases/restaurants/destroy_spec.rb.[31m - Did you mean?
+                    rspec ./spec/use_cases/restaurants/create_spec.rb
+                    rspec ./spec/use_cases/restaurants/list_spec.rb
+                    rspec ./spec/use_cases/restaurants/update_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/use_cases/restaurants/destroy_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/use_cases/restaurants/find_spec.rb.[31m - Did you mean?
+                    rspec ./spec/use_cases/restaurants/list_spec.rb
+                    rspec ./spec/use_cases/restaurants/update_spec.rb
+                    rspec ./spec/use_cases/restaurants/destroy_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/use_cases/restaurants/find_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/use_cases/restaurants/list_spec.rb.[31m - Did you mean?
+                    rspec ./spec/use_cases/restaurants/find_spec.rb
+                    rspec ./spec/use_cases/restaurants/update_spec.rb
+                    rspec ./spec/use_cases/restaurants/destroy_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/use_cases/restaurants/list_spec.rb:3:in '<top (required)>'[0m
+
+An error occurred while loading ./spec/use_cases/restaurants/update_spec.rb.[31m - Did you mean?
+                    rspec ./spec/use_cases/restaurants/list_spec.rb
+                    rspec ./spec/use_cases/restaurants/find_spec.rb
+                    rspec ./spec/use_cases/restaurants/create_spec.rb
+[0m
+[31mFailure/Error: require Rails.root.join("app", "repositories")[0m
+[31m[0m
+[31mLoadError:[0m
+[31m  cannot load such file -- /home/pedro/projetos/restaurant/app/repositories[0m
+[36m# ./spec/rails_helper.rb:8:in '<top (required)>'[0m
+[36m# ./spec/use_cases/restaurants/update_spec.rb:3:in '<top (required)>'[0m
+No examples found.
+
+Finished in 0.00044 seconds (files took 3.17 seconds to load)
+[31m0 examples, 0 failures, 26 errors occurred outside of examples[0m
+

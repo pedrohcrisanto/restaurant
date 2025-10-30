@@ -4,6 +4,10 @@
 require "spec_helper"
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
+# Load all repository files under app/repositories so the top-level Repositories
+# module and its classes are available to specs. Requiring a directory raises a
+# LoadError, so require each ruby file explicitly.
+Dir[Rails.root.join("app", "repositories", "**", "*.rb")].sort.each { |f| require f }
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require "rspec/rails"

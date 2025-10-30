@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'securerandom'
+
 FactoryBot.define do
   factory :restaurant do
     sequence(:name) { |n| "#{Faker::Restaurant.name} #{n}" }
@@ -17,17 +19,17 @@ FactoryBot.define do
 
     trait :with_full_menu do
       after(:create) do |restaurant|
-        menu = create(:menu, :with_items, restaurant: restaurant)
+        create(:menu, :with_items, restaurant: restaurant)
         restaurant.reload
       end
     end
 
     trait :popular do
-      name { "#{Faker::Restaurant.name} - Popular" }
+      name { "#{Faker::Restaurant.name} - Popular #{SecureRandom.hex(3)}" }
     end
 
     trait :new_restaurant do
-      name { "New #{Faker::Restaurant.name}" }
+      name { "New #{Faker::Restaurant.name} #{SecureRandom.hex(3)}" }
     end
 
     # Factory variations

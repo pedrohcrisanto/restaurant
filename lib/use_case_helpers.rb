@@ -10,6 +10,15 @@ module UseCaseHelpers
   # @param context [String] The use case context (e.g., 'restaurants.create')
   # @param extra_context [Hash] Additional context to include in error report
   def handle_error(exception, context, **extra_context)
+    # Treat RecordNotFound specially: return a not_found failure so controllers
+    # and specs get a 404 response instead of an unexpected error (500).
+    if exception.is_a?(ActiveRecord::RecordNotFound)
+      # Try to infer the resource type from the use case context (e.g. "restaurants.find")
+      resource_name = context.to_s.split('.').first
+      resource_sym = resource_name ? resource_name.singularize.to_sym : :resource
+      return failure_not_found(resource_sym)
+    end
+
     ErrorReporter.current.notify(exception, context: { use_case: context, **extra_context })
     Failure(:error, result: { error: I18n.t("errors.unexpected_error") })
   end

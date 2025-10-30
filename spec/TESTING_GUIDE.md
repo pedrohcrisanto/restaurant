@@ -44,7 +44,7 @@ Located in `spec/support/shared_examples/`, these provide reusable test patterns
 Usage example:
 ```ruby
 RSpec.describe Restaurants::Create do
-  let(:repo) { Repositories::Persistence::RestaurantsRepository.new }
+  let(:repo) { ::Repositories::Persistence::RestaurantsRepository.new }
   let(:call_params) { { repo: repo, params: { name: "Test" } } }
 
   it_behaves_like "a successful create use case", :restaurant

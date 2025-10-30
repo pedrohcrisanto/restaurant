@@ -69,3 +69,9 @@ group :development do
   gem "rswag-api", "~> 2.13"
   gem "rswag-ui", "~> 2.13"
 end
+
+group :test do
+  # Tests use PostgreSQL in this project (the `pg` gem is declared globally above).
+  # If you need a local lightweight DB for quick experiments, uncomment sqlite3 below.
+  # gem "sqlite3", "~> 2.1"
+end

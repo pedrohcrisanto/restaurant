@@ -21,7 +21,7 @@ default: &default
   host: <%= ENV.fetch("DB_HOST", "localhost") %>
   port: <%= ENV.fetch("DB_PORT", 5432) %>
   username: <%= ENV.fetch("DB_USER", "postgres") %>
-  password: <%= ENV["DB_PASSWORD"] %>
+  password: <%= ENV["DB_PASSWORD"] || 'postgres' %>
 
 
 
@@ -62,7 +62,10 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: restaurant_test
+  database: <%= ENV.fetch("DB_NAME_TEST", "restaurant_test") %>
+  # Use a separate role for CI if needed, otherwise fall back to DB_USER
+  username: <%= ENV.fetch("DB_USER", "postgres") %>
+  password: <%= ENV["DB_PASSWORD"] || 'postgres' %>
 
 
 # As with config/credentials.yml, you never want to store sensitive information,
