@@ -34,16 +34,20 @@ class MenuItemBlueprint < Blueprinter::Base
     # Try calling render with different argument combinations to be compatible
     # with different Blueprinter versions/signatures.
     def call_render_safely(object, options)
-      begin
-        # Prefer calling with both object and options (keyword args)
-        return render(object, **options)
-      rescue ArgumentError, TypeError
-        begin
-          return render(object)
-        rescue ArgumentError, TypeError
-          return render
-        end
+      r = method(:render)
+      params = r.parameters.map(&:first)
+
+      if params.any? { |p| [:key, :keyreq, :keyrest].include?(p) }
+        return r.call(object, **options)
       end
+
+      if params.any? { |p| [:req, :opt].include?(p) }
+        return r.call(object)
+      end
+
+      return r.call if params.empty?
+
+      r.call(object, **options)
     end
 
     def deep_symbolize_keys(obj)

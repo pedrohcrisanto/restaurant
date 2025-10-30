@@ -7,11 +7,11 @@ module Repositories
 
       # Returns an AR::Relation optimized for listing with eager loading
       def relation_for_index
-        ::Restaurant.with_full_associations.ordered
+        ::Restaurant.eager_load(menus: { menu_item_placements: :menu_item }).ordered
       end
 
       def find(id)
-        ::Restaurant.with_full_associations.find_by(id: id)
+        ::Restaurant.with_full_associations.find(id)
       end
 
       def build(attrs = {})
@@ -27,7 +27,9 @@ module Repositories
       end
 
       def destroy(record)
-        record.destroy
+        # Ensure we raise RecordNotFound if the record does not exist
+        found = ::Restaurant.find(record.id)
+        found.destroy
       end
 
       # Bulk operations for performance with large datasets

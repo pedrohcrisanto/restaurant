@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :menu do
     association :restaurant
-    sequence(:name) { |n| "#{%w[Lunch Dinner Breakfast Brunch].sample} Menu #{n}" }
+    sequence(:name) { |n| "Menu #{n}" }
 
     # Traits for different menu types
     trait :breakfast do

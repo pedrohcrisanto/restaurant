@@ -39,16 +39,25 @@ class MenuItemPlacementBlueprint < Blueprinter::Base
     # Try calling render with different argument combinations to be compatible
     # with different Blueprinter versions/signatures.
     def call_render_safely(object, options)
-      begin
-        # Prefer calling with both object and options (keyword args)
-        return render(object, **options)
-      rescue ArgumentError, TypeError
-        begin
-          return render(object)
-        rescue ArgumentError, TypeError
-          return render
-        end
+      r = method(:render)
+
+      params = r.parameters.map(&:first)
+
+      # If method accepts keyword args or keyreq / keyrest, try object + options
+      if params.any? { |p| [:key, :keyreq, :keyrest].include?(p) }
+        return r.call(object, **options)
       end
+
+      # If method accepts a positional argument, call with object
+      if params.any? { |p| [:req, :opt].include?(p) }
+        return r.call(object)
+      end
+
+      # Fallback: if method accepts no args, call without args
+      return r.call if params.empty?
+
+      # As a last resort, try calling with object+options and let it surface errors
+      r.call(object, **options)
     end
 
     def deep_symbolize_keys(obj)
