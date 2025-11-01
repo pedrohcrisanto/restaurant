@@ -6,6 +6,13 @@ RSpec.describe "Api::V1::Restaurants", type: :request do
   let(:json) { JSON.parse(response.body) }
 
   path "/api/v1/restaurants" do
+    # Ensure a clean slate for each example in this path to avoid cross-spec contamination (e.g., imports pagination)
+    before do
+      MenuItemPlacement.delete_all
+      Menu.delete_all
+      Restaurant.delete_all
+    end
+
     get "List all restaurants" do
       tags "Restaurants"
       produces "application/json"

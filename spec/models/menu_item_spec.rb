@@ -13,6 +13,11 @@ RSpec.describe MenuItem do
 
   describe "callbacks" do
     describe "normalizes :name" do
+      before do
+        # Ensure no pre-existing literal that could collide after normalization
+        MenuItem.where(name: ["Burger", "Delicious Burger"]).delete_all
+      end
+
       it "strips leading and trailing whitespace" do
         item = create(:menu_item, name: "  Burger  ")
         expect(item.name).to eq("Burger")

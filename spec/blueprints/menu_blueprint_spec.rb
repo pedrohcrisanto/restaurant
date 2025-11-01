@@ -28,6 +28,11 @@ RSpec.describe MenuBlueprint do
     end
 
     context "with menu_item_placements association" do
+      before do
+        # Ensure no pre-existing items with these literal names interfere with uniqueness validations
+        MenuItem.where(name: ["Burger", "Salad"]).delete_all
+      end
+
       let(:menu_item1) { create(:menu_item, name: "Burger") }
       let(:menu_item2) { create(:menu_item, name: "Salad") }
       let!(:placement1) { create(:menu_item_placement, menu: menu, menu_item: menu_item1, price: 10.50) }
