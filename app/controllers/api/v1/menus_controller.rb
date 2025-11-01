@@ -57,7 +57,12 @@ module Api
       end
 
       def menu_params
-        params.expect(menu: [:name])
+        # Accept both nested params { menu: { name: ... } } and root-level { name: ... }
+        if params[:menu].is_a?(ActionController::Parameters)
+          params.require(:menu).permit(:name)
+        else
+          params.permit(:name)
+        end
       end
     end
   end

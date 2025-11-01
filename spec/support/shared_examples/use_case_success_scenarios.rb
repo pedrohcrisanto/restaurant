@@ -51,8 +51,11 @@ end
 RSpec.shared_examples "a successful destroy use case" do |resource_name, model_class|
   context "when successful" do
     it "destroys the #{resource_name}" do
+      # Force evaluation of lazy lets (e.g., record creation) before measuring count changes
+      params = call_params
+
       expect do
-        result = described_class.call(**call_params)
+        result = described_class.call(**params)
         expect(result).to be_success
         expect(result[:destroyed]).to be true
       end.to change(model_class, :count).by(-1)

@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 class MenuItemPlacementBlueprint < Blueprinter::Base
-  field :id, &:menu_item_id
+  field :id do |placement, _options|
+    placement.menu_item_id
+  end
 
-  field :name do |placement|
+  field :name do |placement, _options|
     placement.menu_item&.name
   end
 
-  field :price do |placement|
+  field :price do |placement, _options|
     # Ensure price is serialized as string with minimal formatting
     # Handle nil price gracefully
     p = placement.price

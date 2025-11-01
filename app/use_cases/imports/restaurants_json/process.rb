@@ -22,8 +22,17 @@ module Imports
       def import_restaurants(data)
         logs = []
 
+        # Support both formats:
+        # 1) An array of restaurants: [{ name: ..., menus: [...] }, ...]
+        # 2) An object with a "restaurants" key: { restaurants: [ ... ] }
+        restaurants = if data.is_a?(Array)
+                        data
+                      else
+                        Array(data["restaurants"] || data[:restaurants])
+                      end
+
         ActiveRecord::Base.transaction do
-          Array(data["restaurants"]).each do |restaurant_data|
+          restaurants.each do |restaurant_data|
             logs.concat(process_restaurant(restaurant_data))
           end
         end
