@@ -1,69 +1,69 @@
-﻿2025-11-01T00:57:41.7950945Z ##[group]Run actions/checkout@v4
-2025-11-01T00:57:41.7951883Z with:
-2025-11-01T00:57:41.7952365Z   repository: pedrohcrisanto/restaurant
-2025-11-01T00:57:41.7953145Z   token: ***
-2025-11-01T00:57:41.7953571Z   ssh-strict: true
-2025-11-01T00:57:41.7954020Z   ssh-user: git
-2025-11-01T00:57:41.7954459Z   persist-credentials: true
-2025-11-01T00:57:41.7954942Z   clean: true
-2025-11-01T00:57:41.7955378Z   sparse-checkout-cone-mode: true
-2025-11-01T00:57:41.7955887Z   fetch-depth: 1
-2025-11-01T00:57:41.7956303Z   fetch-tags: false
-2025-11-01T00:57:41.7956733Z   show-progress: true
-2025-11-01T00:57:41.7957174Z   lfs: false
-2025-11-01T00:57:41.7957578Z   submodules: false
-2025-11-01T00:57:41.7958046Z   set-safe-directory: true
-2025-11-01T00:57:41.7958829Z ##[endgroup]
-2025-11-01T00:57:41.9024434Z Syncing repository: pedrohcrisanto/restaurant
-2025-11-01T00:57:41.9026396Z ##[group]Getting Git version info
-2025-11-01T00:57:41.9027186Z Working directory is '/home/runner/work/restaurant/restaurant'
-2025-11-01T00:57:41.9028491Z [command]/usr/bin/git version
-2025-11-01T00:57:41.9114126Z git version 2.51.2
-2025-11-01T00:57:41.9139785Z ##[endgroup]
-2025-11-01T00:57:41.9153891Z Temporarily overriding HOME='/home/runner/work/_temp/fa0ae730-2540-46d6-bc5f-a60a87340780' before making global git config changes
-2025-11-01T00:57:41.9156211Z Adding repository directory to the temporary git global config as a safe directory
-2025-11-01T00:57:41.9165630Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/restaurant/restaurant
-2025-11-01T00:57:41.9202001Z Deleting the contents of '/home/runner/work/restaurant/restaurant'
-2025-11-01T00:57:41.9205520Z ##[group]Initializing the repository
-2025-11-01T00:57:41.9209274Z [command]/usr/bin/git init /home/runner/work/restaurant/restaurant
-2025-11-01T00:57:41.9322460Z hint: Using 'master' as the name for the initial branch. This default branch name
-2025-11-01T00:57:41.9323896Z hint: is subject to change. To configure the initial branch name to use in all
-2025-11-01T00:57:41.9325704Z hint: of your new repositories, which will suppress this warning, call:
-2025-11-01T00:57:41.9327092Z hint:
-2025-11-01T00:57:41.9328019Z hint: 	git config --global init.defaultBranch <name>
-2025-11-01T00:57:41.9329145Z hint:
-2025-11-01T00:57:41.9330433Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
-2025-11-01T00:57:41.9331563Z hint: 'development'. The just-created branch can be renamed via this command:
-2025-11-01T00:57:41.9332429Z hint:
-2025-11-01T00:57:41.9332879Z hint: 	git branch -m <name>
-2025-11-01T00:57:41.9333599Z hint:
-2025-11-01T00:57:41.9334625Z hint: Disable this message with "git config set advice.defaultBranchName false"
-2025-11-01T00:57:41.9335880Z Initialized empty Git repository in /home/runner/work/restaurant/restaurant/.git/
-2025-11-01T00:57:41.9339162Z [command]/usr/bin/git remote add origin https://github.com/pedrohcrisanto/restaurant
-2025-11-01T00:57:41.9374292Z ##[endgroup]
-2025-11-01T00:57:41.9375609Z ##[group]Disabling automatic garbage collection
-2025-11-01T00:57:41.9377414Z [command]/usr/bin/git config --local gc.auto 0
-2025-11-01T00:57:41.9405246Z ##[endgroup]
-2025-11-01T00:57:41.9406395Z ##[group]Setting up auth
-2025-11-01T00:57:41.9411235Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-2025-11-01T00:57:41.9439753Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-2025-11-01T00:57:41.9814819Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-2025-11-01T00:57:41.9844269Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-2025-11-01T00:57:42.0058997Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
-2025-11-01T00:57:42.0091888Z ##[endgroup]
-2025-11-01T00:57:42.0092861Z ##[group]Fetching the repository
-2025-11-01T00:57:42.0108461Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +9d3ecb13ad25356f8c3d524d6fdcfa0140af7474:refs/remotes/origin/main
-2025-11-01T00:57:42.4812802Z From https://github.com/pedrohcrisanto/restaurant
-2025-11-01T00:57:42.4815240Z  * [new ref]         9d3ecb13ad25356f8c3d524d6fdcfa0140af7474 -> origin/main
-2025-11-01T00:57:42.4847507Z ##[endgroup]
-2025-11-01T00:57:42.4849154Z ##[group]Determining the checkout info
-2025-11-01T00:57:42.4851174Z ##[endgroup]
-2025-11-01T00:57:42.4853993Z [command]/usr/bin/git sparse-checkout disable
-2025-11-01T00:57:42.4894222Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
-2025-11-01T00:57:42.4921194Z ##[group]Checking out the ref
-2025-11-01T00:57:42.4924347Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
-2025-11-01T00:57:42.5105300Z Switched to a new branch 'main'
-2025-11-01T00:57:42.5108493Z branch 'main' set up to track 'origin/main'.
-2025-11-01T00:57:42.5116651Z ##[endgroup]
-2025-11-01T00:57:42.5160533Z [command]/usr/bin/git log -1 --format=%H
-2025-11-01T00:57:42.5184484Z 9d3ecb13ad25356f8c3d524d6fdcfa0140af7474
+﻿2025-11-01T02:50:26.3643228Z ##[group]Run actions/checkout@v4
+2025-11-01T02:50:26.3644053Z with:
+2025-11-01T02:50:26.3644470Z   repository: pedrohcrisanto/restaurant
+2025-11-01T02:50:26.3645303Z   token: ***
+2025-11-01T02:50:26.3645686Z   ssh-strict: true
+2025-11-01T02:50:26.3646092Z   ssh-user: git
+2025-11-01T02:50:26.3646499Z   persist-credentials: true
+2025-11-01T02:50:26.3646937Z   clean: true
+2025-11-01T02:50:26.3647343Z   sparse-checkout-cone-mode: true
+2025-11-01T02:50:26.3647810Z   fetch-depth: 1
+2025-11-01T02:50:26.3648194Z   fetch-tags: false
+2025-11-01T02:50:26.3648598Z   show-progress: true
+2025-11-01T02:50:26.3649006Z   lfs: false
+2025-11-01T02:50:26.3649369Z   submodules: false
+2025-11-01T02:50:26.3649766Z   set-safe-directory: true
+2025-11-01T02:50:26.3650531Z ##[endgroup]
+2025-11-01T02:50:26.4735549Z Syncing repository: pedrohcrisanto/restaurant
+2025-11-01T02:50:26.4737299Z ##[group]Getting Git version info
+2025-11-01T02:50:26.4738034Z Working directory is '/home/runner/work/restaurant/restaurant'
+2025-11-01T02:50:26.4739085Z [command]/usr/bin/git version
+2025-11-01T02:50:26.4848383Z git version 2.51.2
+2025-11-01T02:50:26.4874681Z ##[endgroup]
+2025-11-01T02:50:26.4890030Z Temporarily overriding HOME='/home/runner/work/_temp/14fe9f7b-456f-4dad-8c10-efa7bd254a8c' before making global git config changes
+2025-11-01T02:50:26.4892446Z Adding repository directory to the temporary git global config as a safe directory
+2025-11-01T02:50:26.4903586Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/restaurant/restaurant
+2025-11-01T02:50:26.4939041Z Deleting the contents of '/home/runner/work/restaurant/restaurant'
+2025-11-01T02:50:26.4942867Z ##[group]Initializing the repository
+2025-11-01T02:50:26.4947692Z [command]/usr/bin/git init /home/runner/work/restaurant/restaurant
+2025-11-01T02:50:26.5101135Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-11-01T02:50:26.5102245Z hint: is subject to change. To configure the initial branch name to use in all
+2025-11-01T02:50:26.5103366Z hint: of your new repositories, which will suppress this warning, call:
+2025-11-01T02:50:26.5104527Z hint:
+2025-11-01T02:50:26.5105768Z hint: 	git config --global init.defaultBranch <name>
+2025-11-01T02:50:26.5106726Z hint:
+2025-11-01T02:50:26.5107991Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-11-01T02:50:26.5109022Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-11-01T02:50:26.5109709Z hint:
+2025-11-01T02:50:26.5110087Z hint: 	git branch -m <name>
+2025-11-01T02:50:26.5110515Z hint:
+2025-11-01T02:50:26.5111082Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-11-01T02:50:26.5112108Z Initialized empty Git repository in /home/runner/work/restaurant/restaurant/.git/
+2025-11-01T02:50:26.5118275Z [command]/usr/bin/git remote add origin https://github.com/pedrohcrisanto/restaurant
+2025-11-01T02:50:26.5154033Z ##[endgroup]
+2025-11-01T02:50:26.5154766Z ##[group]Disabling automatic garbage collection
+2025-11-01T02:50:26.5158280Z [command]/usr/bin/git config --local gc.auto 0
+2025-11-01T02:50:26.5185150Z ##[endgroup]
+2025-11-01T02:50:26.5185817Z ##[group]Setting up auth
+2025-11-01T02:50:26.5191672Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-11-01T02:50:26.5224284Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-11-01T02:50:26.5634058Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-11-01T02:50:26.5665034Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-11-01T02:50:26.5901464Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-11-01T02:50:26.5937667Z ##[endgroup]
+2025-11-01T02:50:26.5953659Z ##[group]Fetching the repository
+2025-11-01T02:50:26.5955909Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +43a6e1a84b44fc6325e2d623e42aa581f3f90c17:refs/remotes/origin/main
+2025-11-01T02:50:26.8364052Z From https://github.com/pedrohcrisanto/restaurant
+2025-11-01T02:50:26.8365436Z  * [new ref]         43a6e1a84b44fc6325e2d623e42aa581f3f90c17 -> origin/main
+2025-11-01T02:50:26.8396113Z ##[endgroup]
+2025-11-01T02:50:26.8396902Z ##[group]Determining the checkout info
+2025-11-01T02:50:26.8398251Z ##[endgroup]
+2025-11-01T02:50:26.8403120Z [command]/usr/bin/git sparse-checkout disable
+2025-11-01T02:50:26.8445248Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-11-01T02:50:26.8472169Z ##[group]Checking out the ref
+2025-11-01T02:50:26.8476784Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-11-01T02:50:26.8726023Z Switched to a new branch 'main'
+2025-11-01T02:50:26.8729239Z branch 'main' set up to track 'origin/main'.
+2025-11-01T02:50:26.8736687Z ##[endgroup]
+2025-11-01T02:50:26.8772294Z [command]/usr/bin/git log -1 --format=%H
+2025-11-01T02:50:26.8794062Z 43a6e1a84b44fc6325e2d623e42aa581f3f90c17

@@ -1,8 +1,8 @@
-﻿2025-11-01T00:59:23.5901372Z ##[group]Run bin/rails db:prepare
-2025-11-01T00:59:23.5901706Z [36;1mbin/rails db:prepare[0m
-2025-11-01T00:59:23.5935369Z shell: /usr/bin/bash -e {0}
-2025-11-01T00:59:23.5935601Z env:
-2025-11-01T00:59:23.5935764Z   RAILS_ENV: test
-2025-11-01T00:59:23.5936203Z   DATABASE_URL: ***localhost:5432/test
-2025-11-01T00:59:23.5936450Z ##[endgroup]
-2025-11-01T00:59:47.2158275Z Created database 'test'
+﻿2025-11-01T02:53:43.4661551Z ##[group]Run bin/rails db:prepare
+2025-11-01T02:53:43.4661854Z [36;1mbin/rails db:prepare[0m
+2025-11-01T02:53:43.4696404Z shell: /usr/bin/bash -e {0}
+2025-11-01T02:53:43.4696633Z env:
+2025-11-01T02:53:43.4696801Z   RAILS_ENV: test
+2025-11-01T02:53:43.4697236Z   DATABASE_URL: ***localhost:5432/test
+2025-11-01T02:53:43.4697480Z ##[endgroup]
+2025-11-01T02:54:07.0062533Z Created database 'test'

@@ -1,47 +1,47 @@
-﻿2025-11-01T00:57:42.5479787Z ##[group]Run sudo apt-get update
-2025-11-01T00:57:42.5482033Z [36;1msudo apt-get update[0m
-2025-11-01T00:57:42.5483993Z [36;1msudo apt-get install -y libpq-dev[0m
-2025-11-01T00:57:42.5542545Z shell: /usr/bin/bash -e {0}
-2025-11-01T00:57:42.5544348Z ##[endgroup]
-2025-11-01T00:57:42.7106091Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
-2025-11-01T00:57:42.7486264Z Hit:6 https://packages.microsoft.com/repos/azure-cli noble InRelease
-2025-11-01T00:57:42.7505149Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
-2025-11-01T00:57:42.7509532Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
-2025-11-01T00:57:42.7544708Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
-2025-11-01T00:57:42.7632665Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
-2025-11-01T00:57:42.7699729Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
-2025-11-01T00:57:42.9740316Z Get:8 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [11.1 kB]
-2025-11-01T00:57:42.9917684Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [48.8 kB]
-2025-11-01T00:57:42.9954903Z Get:10 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [66.2 kB]
-2025-11-01T00:57:43.0228714Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1573 kB]
-2025-11-01T00:57:43.0389260Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [297 kB]
-2025-11-01T00:57:43.0424747Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [175 kB]
-2025-11-01T00:57:43.0464488Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 c-n-f Metadata [15.4 kB]
-2025-11-01T00:57:43.0484293Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1498 kB]
-2025-11-01T00:57:43.0599388Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [303 kB]
-2025-11-01T00:57:43.0637116Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [378 kB]
-2025-11-01T00:57:43.0682034Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 c-n-f Metadata [31.4 kB]
-2025-11-01T00:57:43.0742890Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [2226 kB]
-2025-11-01T00:57:43.0933509Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [505 kB]
-2025-11-01T00:57:43.1418847Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
-2025-11-01T00:57:43.1432909Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
-2025-11-01T00:57:43.1444211Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7144 B]
-2025-11-01T00:57:43.1455951Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [11.0 kB]
-2025-11-01T00:57:43.1467332Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [216 B]
-2025-11-01T00:57:43.1479244Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
-2025-11-01T00:57:43.1499448Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1270 kB]
-2025-11-01T00:57:43.1576103Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [21.5 kB]
-2025-11-01T00:57:43.1590263Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 c-n-f Metadata [9008 B]
-2025-11-01T00:57:43.1601968Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [906 kB]
-2025-11-01T00:57:43.1660331Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [203 kB]
-2025-11-01T00:57:43.1682099Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [52.3 kB]
-2025-11-01T00:57:43.1698922Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 c-n-f Metadata [19.4 kB]
-2025-11-01T00:57:43.1711328Z Get:34 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
-2025-11-01T00:57:43.2215632Z Get:35 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
-2025-11-01T00:57:54.6417773Z Fetched 10.0 MB in 1s (7419 kB/s)
-2025-11-01T00:57:55.3915549Z Reading package lists...
-2025-11-01T00:57:55.4245473Z Reading package lists...
-2025-11-01T00:57:55.6197359Z Building dependency tree...
-2025-11-01T00:57:55.6205318Z Reading state information...
-2025-11-01T00:57:55.8307801Z libpq-dev is already the newest version (18.0-1.pgdg24.04+3).
-2025-11-01T00:57:55.8308682Z 0 upgraded, 0 newly installed, 0 to remove and 36 not upgraded.
+﻿2025-11-01T02:50:26.8988815Z ##[group]Run sudo apt-get update
+2025-11-01T02:50:26.8989541Z [36;1msudo apt-get update[0m
+2025-11-01T02:50:26.8990193Z [36;1msudo apt-get install -y libpq-dev[0m
+2025-11-01T02:50:26.9027069Z shell: /usr/bin/bash -e {0}
+2025-11-01T02:50:26.9027655Z ##[endgroup]
+2025-11-01T02:50:27.0587777Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2025-11-01T02:50:27.1034338Z Hit:6 https://packages.microsoft.com/repos/azure-cli noble InRelease
+2025-11-01T02:50:27.1038474Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2025-11-01T02:50:27.1041519Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2025-11-01T02:50:27.1107291Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2025-11-01T02:50:27.1209169Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2025-11-01T02:50:27.1289102Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2025-11-01T02:50:27.3444334Z Get:8 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [11.1 kB]
+2025-11-01T02:50:27.3627705Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [66.2 kB]
+2025-11-01T02:50:27.3668889Z Get:10 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [48.8 kB]
+2025-11-01T02:50:27.3892900Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1573 kB]
+2025-11-01T02:50:27.4015312Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [297 kB]
+2025-11-01T02:50:27.4045824Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [175 kB]
+2025-11-01T02:50:27.4066476Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 c-n-f Metadata [15.4 kB]
+2025-11-01T02:50:27.4076700Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1498 kB]
+2025-11-01T02:50:27.4159488Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [303 kB]
+2025-11-01T02:50:27.4186689Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [378 kB]
+2025-11-01T02:50:27.4225878Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 c-n-f Metadata [31.4 kB]
+2025-11-01T02:50:27.4238969Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [2226 kB]
+2025-11-01T02:50:27.4362305Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [505 kB]
+2025-11-01T02:50:27.4847593Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
+2025-11-01T02:50:27.4857185Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+2025-11-01T02:50:27.4871305Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7144 B]
+2025-11-01T02:50:27.4882386Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [11.0 kB]
+2025-11-01T02:50:27.4894118Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [216 B]
+2025-11-01T02:50:27.4913612Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
+2025-11-01T02:50:27.4978688Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1270 kB]
+2025-11-01T02:50:27.5060130Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [21.5 kB]
+2025-11-01T02:50:27.5069230Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 c-n-f Metadata [9008 B]
+2025-11-01T02:50:27.5081054Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [906 kB]
+2025-11-01T02:50:27.5132357Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [203 kB]
+2025-11-01T02:50:27.5158272Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [52.3 kB]
+2025-11-01T02:50:27.5169746Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 c-n-f Metadata [19.4 kB]
+2025-11-01T02:50:27.5179418Z Get:34 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
+2025-11-01T02:50:27.5600192Z Get:35 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
+2025-11-01T02:50:39.3569283Z Fetched 10.0 MB in 1s (7477 kB/s)
+2025-11-01T02:50:40.0697516Z Reading package lists...
+2025-11-01T02:50:40.1015697Z Reading package lists...
+2025-11-01T02:50:40.2588267Z Building dependency tree...
+2025-11-01T02:50:40.2595402Z Reading state information...
+2025-11-01T02:50:40.4472112Z libpq-dev is already the newest version (18.0-1.pgdg24.04+3).
+2025-11-01T02:50:40.4472927Z 0 upgraded, 0 newly installed, 0 to remove and 36 not upgraded.

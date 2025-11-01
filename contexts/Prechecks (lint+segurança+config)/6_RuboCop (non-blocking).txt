@@ -1,264 +1,447 @@
-﻿2025-11-01T00:58:04.5957515Z ##[group]Run bundle exec rubocop
-2025-11-01T00:58:04.5957822Z [36;1mbundle exec rubocop[0m
-2025-11-01T00:58:04.5991868Z shell: /usr/bin/bash -e {0}
-2025-11-01T00:58:04.5992110Z ##[endgroup]
-2025-11-01T00:58:07.0162686Z Warning: Using `RSpec/Capybara/CurrentPathExpectation` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/CurrentPathExpectation`.
-2025-11-01T00:58:07.0164825Z Warning: Using `RSpec/Capybara/MatchStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/MatchStyle`.
-2025-11-01T00:58:07.0166434Z Warning: Using `RSpec/Capybara/NegationMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/NegationMatcher`.
-2025-11-01T00:58:07.0168027Z Warning: Using `RSpec/Capybara/SpecificActions` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificActions`.
-2025-11-01T00:58:07.0169653Z Warning: Using `RSpec/Capybara/SpecificFinders` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificFinders`.
-2025-11-01T00:58:07.0171258Z Warning: Using `RSpec/Capybara/SpecificMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificMatcher`.
-2025-11-01T00:58:07.0173005Z Warning: Using `RSpec/Capybara/VisibilityMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/VisibilityMatcher`.
-2025-11-01T00:58:07.0175543Z Warning: Using `RSpec/FactoryBot/AttributeDefinedStatically` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/AttributeDefinedStatically`.
-2025-11-01T00:58:07.0178027Z Warning: Using `RSpec/FactoryBot/ConsistentParenthesesStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/ConsistentParenthesesStyle`.
-2025-11-01T00:58:07.0179969Z Warning: Using `RSpec/FactoryBot/CreateList` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/CreateList`.
-2025-11-01T00:58:07.0182037Z Warning: Using `RSpec/FactoryBot/FactoryClassName` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/FactoryClassName`.
-2025-11-01T00:58:07.0183970Z Warning: Using `RSpec/FactoryBot/FactoryNameStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/FactoryNameStyle`.
-2025-11-01T00:58:07.0196100Z Warning: Using `RSpec/FactoryBot/SyntaxMethods` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/SyntaxMethods`.
-2025-11-01T00:58:07.0197669Z Warning: Using `RSpec/Rails/AvoidSetupHook` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/AvoidSetupHook`.
-2025-11-01T00:58:07.0199453Z Warning: Using `RSpec/Rails/HaveHttpStatus` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/HaveHttpStatus`.
-2025-11-01T00:58:07.0201360Z Warning: Using `RSpec/Rails/HttpStatus` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/HttpStatus`.
-2025-11-01T00:58:07.0203288Z Warning: Using `RSpec/Rails/InferredSpecType` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/InferredSpecType`.
-2025-11-01T00:58:07.0205315Z Warning: Using `RSpec/Rails/MinitestAssertions` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/MinitestAssertions`.
-2025-11-01T00:58:07.0207024Z Warning: Using `RSpec/Rails/NegationBeValid` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/NegationBeValid`.
-2025-11-01T00:58:07.0208539Z Warning: Using `RSpec/Rails/TravelAround` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/TravelAround`.
-2025-11-01T00:58:07.0351533Z Warning: Using `RSpec/Capybara/CurrentPathExpectation` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/CurrentPathExpectation`.
-2025-11-01T00:58:07.0353353Z Warning: Using `RSpec/Capybara/MatchStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/MatchStyle`.
-2025-11-01T00:58:07.0355837Z Warning: Using `RSpec/Capybara/NegationMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/NegationMatcher`.
-2025-11-01T00:58:07.0357814Z Warning: Using `RSpec/Capybara/SpecificActions` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificActions`.
-2025-11-01T00:58:07.0359533Z Warning: Using `RSpec/Capybara/SpecificFinders` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificFinders`.
-2025-11-01T00:58:07.0361239Z Warning: Using `RSpec/Capybara/SpecificMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificMatcher`.
-2025-11-01T00:58:07.0362979Z Warning: Using `RSpec/Capybara/VisibilityMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/VisibilityMatcher`.
-2025-11-01T00:58:07.0381567Z Warning: Using `RSpec/FactoryBot/AttributeDefinedStatically` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/AttributeDefinedStatically`.
-2025-11-01T00:58:07.0383765Z Warning: Using `RSpec/FactoryBot/ConsistentParenthesesStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/ConsistentParenthesesStyle`.
-2025-11-01T00:58:07.0385802Z Warning: Using `RSpec/FactoryBot/CreateList` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/CreateList`.
-2025-11-01T00:58:07.0387905Z Warning: Using `RSpec/FactoryBot/FactoryClassName` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/FactoryClassName`.
-2025-11-01T00:58:07.0390762Z Warning: Using `RSpec/FactoryBot/FactoryNameStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/FactoryNameStyle`.
-2025-11-01T00:58:07.0392956Z Warning: Using `RSpec/FactoryBot/SyntaxMethods` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/SyntaxMethods`.
-2025-11-01T00:58:07.0395303Z Warning: Using `RSpec/Rails/AvoidSetupHook` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/AvoidSetupHook`.
-2025-11-01T00:58:07.0405683Z Warning: Using `RSpec/Rails/HaveHttpStatus` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/HaveHttpStatus`.
-2025-11-01T00:58:07.0407479Z Warning: Using `RSpec/Rails/HttpStatus` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/HttpStatus`.
-2025-11-01T00:58:07.0409460Z Warning: Using `RSpec/Rails/InferredSpecType` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/InferredSpecType`.
-2025-11-01T00:58:07.0412406Z Warning: Using `RSpec/Rails/MinitestAssertions` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/MinitestAssertions`.
-2025-11-01T00:58:07.0436254Z Warning: Using `RSpec/Rails/NegationBeValid` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/NegationBeValid`.
-2025-11-01T00:58:07.0437983Z Warning: Using `RSpec/Rails/TravelAround` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/TravelAround`.
-2025-11-01T00:58:07.0468067Z Warning: Using `RSpec/Capybara/CurrentPathExpectation` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/CurrentPathExpectation`.
-2025-11-01T00:58:07.0480042Z Warning: Using `RSpec/Capybara/MatchStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/MatchStyle`.
-2025-11-01T00:58:07.0482957Z Warning: Using `RSpec/Capybara/NegationMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/NegationMatcher`.
-2025-11-01T00:58:07.0492784Z Warning: Using `RSpec/Capybara/SpecificActions` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificActions`.
-2025-11-01T00:58:07.0495208Z Warning: Using `RSpec/Capybara/SpecificFinders` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificFinders`.
-2025-11-01T00:58:07.0497636Z Warning: Using `RSpec/Capybara/SpecificMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificMatcher`.
-2025-11-01T00:58:07.0524217Z Warning: Using `RSpec/Capybara/VisibilityMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/VisibilityMatcher`.
-2025-11-01T00:58:07.0526388Z Warning: Using `RSpec/FactoryBot/AttributeDefinedStatically` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/AttributeDefinedStatically`.
-2025-11-01T00:58:07.0528541Z Warning: Using `RSpec/FactoryBot/ConsistentParenthesesStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/ConsistentParenthesesStyle`.
-2025-11-01T00:58:07.0530469Z Warning: Using `RSpec/FactoryBot/CreateList` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/CreateList`.
-2025-11-01T00:58:07.0532239Z Warning: Using `RSpec/FactoryBot/FactoryClassName` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/FactoryClassName`.
-2025-11-01T00:58:07.0534155Z Warning: Using `RSpec/FactoryBot/FactoryNameStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/FactoryNameStyle`.
-2025-11-01T00:58:07.0536109Z Warning: Using `RSpec/FactoryBot/SyntaxMethods` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/SyntaxMethods`.
-2025-11-01T00:58:07.0537927Z Warning: Using `RSpec/Rails/AvoidSetupHook` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/AvoidSetupHook`.
-2025-11-01T00:58:07.0539605Z Warning: Using `RSpec/Rails/HaveHttpStatus` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/HaveHttpStatus`.
-2025-11-01T00:58:07.0541696Z Warning: Using `RSpec/Rails/HttpStatus` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/HttpStatus`.
-2025-11-01T00:58:07.0543539Z Warning: Using `RSpec/Rails/InferredSpecType` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/InferredSpecType`.
-2025-11-01T00:58:07.0555669Z Warning: Using `RSpec/Rails/MinitestAssertions` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/MinitestAssertions`.
-2025-11-01T00:58:07.0557810Z Warning: Using `RSpec/Rails/NegationBeValid` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/NegationBeValid`.
-2025-11-01T00:58:07.0560483Z Warning: Using `RSpec/Rails/TravelAround` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/TravelAround`.
-2025-11-01T00:58:07.0563291Z Warning: Using `RSpec/Capybara/CurrentPathExpectation` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/CurrentPathExpectation`.
-2025-11-01T00:58:07.0565489Z Warning: Using `RSpec/Capybara/MatchStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/MatchStyle`.
-2025-11-01T00:58:07.0567205Z Warning: Using `RSpec/Capybara/NegationMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/NegationMatcher`.
-2025-11-01T00:58:07.0568738Z Warning: Using `RSpec/Capybara/SpecificActions` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificActions`.
-2025-11-01T00:58:07.0570251Z Warning: Using `RSpec/Capybara/SpecificFinders` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificFinders`.
-2025-11-01T00:58:07.0571757Z Warning: Using `RSpec/Capybara/SpecificMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificMatcher`.
-2025-11-01T00:58:07.0573342Z Warning: Using `RSpec/Capybara/VisibilityMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/VisibilityMatcher`.
-2025-11-01T00:58:07.0575670Z Warning: Using `RSpec/FactoryBot/AttributeDefinedStatically` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/AttributeDefinedStatically`.
-2025-11-01T00:58:07.0606482Z Warning: Using `RSpec/FactoryBot/ConsistentParenthesesStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/ConsistentParenthesesStyle`.
-2025-11-01T00:58:07.0609564Z Warning: Using `RSpec/FactoryBot/CreateList` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/CreateList`.
-2025-11-01T00:58:07.0611442Z Warning: Using `RSpec/FactoryBot/FactoryClassName` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/FactoryClassName`.
-2025-11-01T00:58:07.0613176Z Warning: Using `RSpec/FactoryBot/FactoryNameStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/FactoryNameStyle`.
-2025-11-01T00:58:07.0614945Z Warning: Using `RSpec/FactoryBot/SyntaxMethods` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/SyntaxMethods`.
-2025-11-01T00:58:07.0616452Z Warning: Using `RSpec/Rails/AvoidSetupHook` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/AvoidSetupHook`.
-2025-11-01T00:58:07.0617922Z Warning: Using `RSpec/Rails/HaveHttpStatus` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/HaveHttpStatus`.
-2025-11-01T00:58:07.0619342Z Warning: Using `RSpec/Rails/HttpStatus` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/HttpStatus`.
-2025-11-01T00:58:07.0620999Z Warning: Using `RSpec/Rails/InferredSpecType` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/InferredSpecType`.
-2025-11-01T00:58:07.0622871Z Warning: Using `RSpec/Rails/MinitestAssertions` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/MinitestAssertions`.
-2025-11-01T00:58:07.0625166Z Warning: Using `RSpec/Rails/NegationBeValid` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/NegationBeValid`.
-2025-11-01T00:58:07.0626944Z Warning: Using `RSpec/Rails/TravelAround` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/TravelAround`.
-2025-11-01T00:58:07.7790133Z Inspecting 61 files
-2025-11-01T00:58:07.7790855Z ..CCCCC..CC............C.C..................................C
-2025-11-01T00:58:07.7791191Z 
-2025-11-01T00:58:07.7791289Z Offenses:
-2025-11-01T00:58:07.7791424Z 
-2025-11-01T00:58:07.7791818Z app/blueprints/menu_blueprint.rb:16:65: C: [Correctable] Style/RedundantSelf: Redundant self detected.
-2025-11-01T00:58:07.7792834Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
-2025-11-01T00:58:07.7793605Z                                                                 ^^^^
-2025-11-01T00:58:07.7794832Z app/blueprints/menu_blueprint.rb:16:84: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
-2025-11-01T00:58:07.7796075Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
-2025-11-01T00:58:07.7796690Z                                                                                    ^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7797203Z app/blueprints/menu_blueprint.rb:16:121: C: [Correctable] Layout/LineLength: Line is too long. [139/120]
-2025-11-01T00:58:07.7798010Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
-2025-11-01T00:58:07.7798630Z                                                                                                                         ^^^^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7799305Z app/blueprints/menu_blueprint.rb:24:5: C: Metrics/AbcSize: Assignment Branch Condition size for render_as_hash is too high. [<6, 16, 11> 20.32/17]
-2025-11-01T00:58:07.7800232Z     def render_as_hash(object, **options) ...
-2025-11-01T00:58:07.7800519Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7801128Z app/blueprints/menu_blueprint.rb:24:5: C: Metrics/CyclomaticComplexity: Cyclomatic complexity for render_as_hash is too high. [10/7]
-2025-11-01T00:58:07.7801761Z     def render_as_hash(object, **options) ...
-2025-11-01T00:58:07.7802028Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7802483Z app/blueprints/menu_blueprint.rb:24:5: C: Metrics/MethodLength: Method has too many lines. [22/10]
-2025-11-01T00:58:07.7802973Z     def render_as_hash(object, **options) ...
-2025-11-01T00:58:07.7803240Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7803838Z app/blueprints/menu_blueprint.rb:24:5: C: Metrics/PerceivedComplexity: Perceived complexity for render_as_hash is too high. [12/8]
-2025-11-01T00:58:07.7804585Z     def render_as_hash(object, **options) ...
-2025-11-01T00:58:07.7804856Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7805324Z app/blueprints/menu_blueprint.rb:30:74: C: [Correctable] Style/RedundantSelf: Redundant self detected.
-2025-11-01T00:58:07.7806122Z                    ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
-2025-11-01T00:58:07.7806642Z                                                                          ^^^^
-2025-11-01T00:58:07.7807312Z app/blueprints/menu_blueprint.rb:30:93: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
-2025-11-01T00:58:07.7808237Z                    ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
-2025-11-01T00:58:07.7808905Z                                                                                             ^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7809373Z app/blueprints/menu_blueprint.rb:30:121: C: [Correctable] Layout/LineLength: Line is too long. [148/120]
-2025-11-01T00:58:07.7810064Z                    ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
-2025-11-01T00:58:07.7810596Z                                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7811029Z app/blueprints/menu_blueprint.rb:35:16: C: [Correctable] Style/EmptyElse: Redundant else-clause.
-2025-11-01T00:58:07.7811414Z                else
-2025-11-01T00:58:07.7811579Z                ^^^^
-2025-11-01T00:58:07.7812083Z app/blueprints/menu_blueprint.rb:47:29: C: [Correctable] Style/SoleNestedConditional: Consider merging nested conditions into outer if conditions.
-2025-11-01T00:58:07.7812707Z         result[:items] = [] unless result.key?(:items)
-2025-11-01T00:58:07.7812983Z                             ^^^^^^
-2025-11-01T00:58:07.7813411Z app/blueprints/menu_blueprint.rb:58:7: C: [Correctable] Style/RedundantBegin: Redundant begin block detected.
-2025-11-01T00:58:07.7813847Z       begin
-2025-11-01T00:58:07.7814002Z       ^^^^^
-2025-11-01T00:58:07.7814460Z app/blueprints/menu_item_blueprint.rb:14:65: C: [Correctable] Style/RedundantSelf: Redundant self detected.
-2025-11-01T00:58:07.7815152Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
-2025-11-01T00:58:07.7815677Z                                                                 ^^^^
-2025-11-01T00:58:07.7816362Z app/blueprints/menu_item_blueprint.rb:14:84: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
-2025-11-01T00:58:07.7817292Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
-2025-11-01T00:58:07.7817930Z                                                                                    ^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7818389Z app/blueprints/menu_item_blueprint.rb:14:121: C: [Correctable] Layout/LineLength: Line is too long. [139/120]
-2025-11-01T00:58:07.7819080Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
-2025-11-01T00:58:07.7819600Z                                                                                                                         ^^^^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7820050Z app/blueprints/menu_item_blueprint.rb:22:5: C: Metrics/MethodLength: Method has too many lines. [16/10]
-2025-11-01T00:58:07.7820491Z     def render_as_hash(object, **options) ...
-2025-11-01T00:58:07.7820738Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7821258Z app/blueprints/menu_item_blueprint.rb:22:5: C: Metrics/PerceivedComplexity: Perceived complexity for render_as_hash is too high. [9/8]
-2025-11-01T00:58:07.7821804Z     def render_as_hash(object, **options) ...
-2025-11-01T00:58:07.7822045Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7822454Z app/blueprints/menu_item_blueprint.rb:28:65: C: [Correctable] Style/RedundantSelf: Redundant self detected.
-2025-11-01T00:58:07.7823137Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
-2025-11-01T00:58:07.7823649Z                                                                 ^^^^
-2025-11-01T00:58:07.7824418Z app/blueprints/menu_item_blueprint.rb:28:84: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
-2025-11-01T00:58:07.7825347Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
-2025-11-01T00:58:07.7826017Z                                                                                    ^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7826486Z app/blueprints/menu_item_blueprint.rb:28:121: C: [Correctable] Layout/LineLength: Line is too long. [139/120]
-2025-11-01T00:58:07.7827173Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
-2025-11-01T00:58:07.7827686Z                                                                                                                         ^^^^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7828190Z app/blueprints/menu_item_blueprint.rb:32:24: C: [Correctable] Style/IfInsideElse: Convert if nested inside else to elsif.
-2025-11-01T00:58:07.7828678Z         parsed = super if defined?(super)
-2025-11-01T00:58:07.7845700Z                        ^^
-2025-11-01T00:58:07.7846642Z app/blueprints/menu_item_blueprint.rb:47:7: C: [Correctable] Style/RedundantBegin: Redundant begin block detected.
-2025-11-01T00:58:07.7847378Z       begin
-2025-11-01T00:58:07.7847635Z       ^^^^^
-2025-11-01T00:58:07.7848241Z app/blueprints/menu_item_blueprint.rb:48:9: C: [Correctable] Style/RedundantReturn: Redundant return detected.
-2025-11-01T00:58:07.7849018Z         return render(object, **options)
-2025-11-01T00:58:07.7849427Z         ^^^^^^
-2025-11-01T00:58:07.7850084Z app/blueprints/menu_item_blueprint.rb:51:11: C: [Correctable] Style/RedundantReturn: Redundant return detected.
-2025-11-01T00:58:07.7850842Z           return render(object)
-2025-11-01T00:58:07.7851193Z           ^^^^^^
-2025-11-01T00:58:07.7851875Z app/blueprints/menu_item_blueprint.rb:53:11: C: [Correctable] Style/RedundantReturn: Redundant return detected.
-2025-11-01T00:58:07.7852695Z           return render
-2025-11-01T00:58:07.7852978Z           ^^^^^^
-2025-11-01T00:58:07.7853407Z app/blueprints/menu_item_blueprint.rb:63:7: C: [Correctable] Style/RedundantBegin: Redundant begin block detected.
-2025-11-01T00:58:07.7853909Z       begin
-2025-11-01T00:58:07.7854063Z       ^^^^^
-2025-11-01T00:58:07.7855151Z app/blueprints/menu_item_placement_blueprint.rb:16:5: C: [Correctable] Style/SafeNavigation: Use safe navigation (&.) instead of checking if an object exists before calling the method.
-2025-11-01T00:58:07.7855836Z     p.nil? ? nil : p.to_s
-2025-11-01T00:58:07.7856036Z     ^^^^^^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7856466Z app/blueprints/menu_item_placement_blueprint.rb:24:61: C: [Correctable] Style/RedundantSelf: Redundant self detected.
-2025-11-01T00:58:07.7857197Z       ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
-2025-11-01T00:58:07.7857707Z                                                             ^^^^
-2025-11-01T00:58:07.7858423Z app/blueprints/menu_item_placement_blueprint.rb:24:80: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
-2025-11-01T00:58:07.7859387Z       ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
-2025-11-01T00:58:07.7859909Z                                                                                ^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7860393Z app/blueprints/menu_item_placement_blueprint.rb:24:121: C: [Correctable] Layout/LineLength: Line is too long. [135/120]
-2025-11-01T00:58:07.7861119Z       ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
-2025-11-01T00:58:07.7861636Z                                                                                                                         ^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7862122Z app/blueprints/menu_item_placement_blueprint.rb:38:61: C: [Correctable] Style/RedundantSelf: Redundant self detected.
-2025-11-01T00:58:07.7862830Z       ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
-2025-11-01T00:58:07.7863465Z                                                             ^^^^
-2025-11-01T00:58:07.7864176Z app/blueprints/menu_item_placement_blueprint.rb:38:80: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
-2025-11-01T00:58:07.7865328Z       ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
-2025-11-01T00:58:07.7865831Z                                                                                ^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7866311Z app/blueprints/menu_item_placement_blueprint.rb:38:121: C: [Correctable] Layout/LineLength: Line is too long. [135/120]
-2025-11-01T00:58:07.7867023Z       ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
-2025-11-01T00:58:07.7867545Z                                                                                                                         ^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7868227Z app/blueprints/menu_item_placement_blueprint.rb:48:16: C: [Correctable] Style/SafeNavigation: Use safe navigation (&.) instead of checking if an object exists before calling the method.
-2025-11-01T00:58:07.7868951Z         price: placement.price.nil? ? nil : placement.price.to_s
-2025-11-01T00:58:07.7869259Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7869711Z app/blueprints/restaurant_blueprint.rb:16:65: C: [Correctable] Style/RedundantSelf: Redundant self detected.
-2025-11-01T00:58:07.7870413Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
-2025-11-01T00:58:07.7870926Z                                                                 ^^^^
-2025-11-01T00:58:07.7871617Z app/blueprints/restaurant_blueprint.rb:16:84: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
-2025-11-01T00:58:07.7872696Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
-2025-11-01T00:58:07.7873205Z                                                                                    ^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7873670Z app/blueprints/restaurant_blueprint.rb:16:121: C: [Correctable] Layout/LineLength: Line is too long. [139/120]
-2025-11-01T00:58:07.7874550Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
-2025-11-01T00:58:07.7875073Z                                                                                                                         ^^^^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7875523Z app/blueprints/restaurant_blueprint.rb:24:5: C: Metrics/MethodLength: Method has too many lines. [16/10]
-2025-11-01T00:58:07.7875974Z     def render_as_hash(object, **options) ...
-2025-11-01T00:58:07.7876222Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7876747Z app/blueprints/restaurant_blueprint.rb:24:5: C: Metrics/PerceivedComplexity: Perceived complexity for render_as_hash is too high. [9/8]
-2025-11-01T00:58:07.7877307Z     def render_as_hash(object, **options) ...
-2025-11-01T00:58:07.7877542Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7877968Z app/blueprints/restaurant_blueprint.rb:30:65: C: [Correctable] Style/RedundantSelf: Redundant self detected.
-2025-11-01T00:58:07.7878658Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
-2025-11-01T00:58:07.7879162Z                                                                 ^^^^
-2025-11-01T00:58:07.7879851Z app/blueprints/restaurant_blueprint.rb:30:84: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
-2025-11-01T00:58:07.7880916Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
-2025-11-01T00:58:07.7881420Z                                                                                    ^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7881889Z app/blueprints/restaurant_blueprint.rb:30:121: C: [Correctable] Layout/LineLength: Line is too long. [139/120]
-2025-11-01T00:58:07.7882582Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
-2025-11-01T00:58:07.7883097Z                                                                                                                         ^^^^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7883602Z app/blueprints/restaurant_blueprint.rb:34:24: C: [Correctable] Style/IfInsideElse: Convert if nested inside else to elsif.
-2025-11-01T00:58:07.7884098Z         parsed = super if defined?(super)
-2025-11-01T00:58:07.7884517Z                        ^^
-2025-11-01T00:58:07.7884959Z app/blueprints/restaurant_blueprint.rb:52:7: C: [Correctable] Style/RedundantBegin: Redundant begin block detected.
-2025-11-01T00:58:07.7885402Z       begin
-2025-11-01T00:58:07.7885555Z       ^^^^^
-2025-11-01T00:58:07.7885932Z app/blueprints/restaurant_blueprint.rb:53:9: C: [Correctable] Style/RedundantReturn: Redundant return detected.
-2025-11-01T00:58:07.7886406Z         return render(object, **options)
-2025-11-01T00:58:07.7886631Z         ^^^^^^
-2025-11-01T00:58:07.7887024Z app/blueprints/restaurant_blueprint.rb:56:11: C: [Correctable] Style/RedundantReturn: Redundant return detected.
-2025-11-01T00:58:07.7887466Z           return render(object)
-2025-11-01T00:58:07.7887668Z           ^^^^^^
-2025-11-01T00:58:07.7888052Z app/blueprints/restaurant_blueprint.rb:58:11: C: [Correctable] Style/RedundantReturn: Redundant return detected.
-2025-11-01T00:58:07.7888496Z           return render
-2025-11-01T00:58:07.7888672Z           ^^^^^^
-2025-11-01T00:58:07.7889074Z app/blueprints/restaurant_blueprint.rb:68:7: C: [Correctable] Style/RedundantBegin: Redundant begin block detected.
-2025-11-01T00:58:07.7889672Z       begin
-2025-11-01T00:58:07.7889815Z       ^^^^^
-2025-11-01T00:58:07.7890186Z app/controllers/api/v1/base_controller.rb:61:1: C: [Correctable] Layout/EmptyLines: Extra blank line detected.
-2025-11-01T00:58:07.7890970Z app/controllers/api/v1/base_controller.rb:62:7: C: [Correctable] Layout/EmptyLineBetweenDefs: Expected 1 empty line between method definitions; found 2.
-2025-11-01T00:58:07.7891576Z       def handle_parameter_missing(exception)
-2025-11-01T00:58:07.7891812Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7892315Z app/controllers/api/v1/menus_controller.rb:62:18: C: [Correctable] Rails/StrongParametersExpect: Use expect(menu: [:name]) instead.
-2025-11-01T00:58:07.7892852Z           params.require(:menu).permit(:name)
-2025-11-01T00:58:07.7893089Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7893648Z app/controllers/api/v1/restaurants_controller.rb:60:18: C: [Correctable] Rails/StrongParametersExpect: Use expect(restaurant: [:name]) instead.
-2025-11-01T00:58:07.7894484Z           params.require(:restaurant).permit(:name).to_h
-2025-11-01T00:58:07.7894821Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7895412Z app/repositories/persistence/restaurants_repository.rb:12:57: C: [Correctable] Style/SymbolProc: Pass &:to_a as an argument to tap instead of a block.
-2025-11-01T00:58:07.7899535Z         ::Restaurant.with_full_associations.ordered.tap { |r| r.to_a }
-2025-11-01T00:58:07.7899924Z                                                         ^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7900427Z app/use_cases/imports/restaurants_json/process.rb:22:7: C: Metrics/MethodLength: Method has too many lines. [12/10]
-2025-11-01T00:58:07.7900922Z       def import_restaurants(data) ...
-2025-11-01T00:58:07.7901328Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7901793Z app/use_cases/imports/restaurants_json/process.rb:82:121: C: [Correctable] Layout/LineLength: Line is too long. [132/120]
-2025-11-01T00:58:07.7902519Z         build_success_logs(restaurant, menu, menu_item, upsert_result[:action], placement_result[:action], placement_result[:price])
-2025-11-01T00:58:07.7903033Z                                                                                                                         ^^^^^^^^^^^^
-2025-11-01T00:58:07.7903606Z app/use_cases/imports/restaurants_json/process.rb:85:29: C: Metrics/ParameterLists: Avoid parameter lists longer than 5 parameters. [6/5]
-2025-11-01T00:58:07.7904475Z       def build_success_logs(restaurant, menu, menu_item, create_action, link_action, price)
-2025-11-01T00:58:07.7904876Z                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2025-11-01T00:58:07.7905507Z lib/use_case_helpers.rb:17:42: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
-2025-11-01T00:58:07.7906161Z       resource_name = context.to_s.split('.').first
-2025-11-01T00:58:07.7906428Z                                          ^^^
-2025-11-01T00:58:07.7906580Z 
-2025-11-01T00:58:07.7906744Z 61 files inspected, 58 offenses detected, 48 offenses autocorrectable
-2025-11-01T00:58:07.7959762Z ##[error]Process completed with exit code 1.
+﻿2025-11-01T02:50:58.0355383Z ##[group]Run bundle exec rubocop
+2025-11-01T02:50:58.0356114Z [36;1mbundle exec rubocop[0m
+2025-11-01T02:50:58.0390422Z shell: /usr/bin/bash -e {0}
+2025-11-01T02:50:58.0390667Z ##[endgroup]
+2025-11-01T02:51:00.5187801Z Warning: Using `RSpec/Capybara/CurrentPathExpectation` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/CurrentPathExpectation`.
+2025-11-01T02:51:00.5189703Z Warning: Using `RSpec/Capybara/MatchStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/MatchStyle`.
+2025-11-01T02:51:00.5191479Z Warning: Using `RSpec/Capybara/NegationMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/NegationMatcher`.
+2025-11-01T02:51:00.5193278Z Warning: Using `RSpec/Capybara/SpecificActions` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificActions`.
+2025-11-01T02:51:00.5195093Z Warning: Using `RSpec/Capybara/SpecificFinders` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificFinders`.
+2025-11-01T02:51:00.5197250Z Warning: Using `RSpec/Capybara/SpecificMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificMatcher`.
+2025-11-01T02:51:00.5199102Z Warning: Using `RSpec/Capybara/VisibilityMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/VisibilityMatcher`.
+2025-11-01T02:51:00.5201577Z Warning: Using `RSpec/FactoryBot/AttributeDefinedStatically` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/AttributeDefinedStatically`.
+2025-11-01T02:51:00.5203800Z Warning: Using `RSpec/FactoryBot/ConsistentParenthesesStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/ConsistentParenthesesStyle`.
+2025-11-01T02:51:00.5205894Z Warning: Using `RSpec/FactoryBot/CreateList` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/CreateList`.
+2025-11-01T02:51:00.5207741Z Warning: Using `RSpec/FactoryBot/FactoryClassName` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/FactoryClassName`.
+2025-11-01T02:51:00.5209612Z Warning: Using `RSpec/FactoryBot/FactoryNameStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/FactoryNameStyle`.
+2025-11-01T02:51:00.5211440Z Warning: Using `RSpec/FactoryBot/SyntaxMethods` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/SyntaxMethods`.
+2025-11-01T02:51:00.5213216Z Warning: Using `RSpec/Rails/AvoidSetupHook` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/AvoidSetupHook`.
+2025-11-01T02:51:00.5214950Z Warning: Using `RSpec/Rails/HaveHttpStatus` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/HaveHttpStatus`.
+2025-11-01T02:51:00.5226891Z Warning: Using `RSpec/Rails/HttpStatus` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/HttpStatus`.
+2025-11-01T02:51:00.5228658Z Warning: Using `RSpec/Rails/InferredSpecType` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/InferredSpecType`.
+2025-11-01T02:51:00.5230505Z Warning: Using `RSpec/Rails/MinitestAssertions` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/MinitestAssertions`.
+2025-11-01T02:51:00.5232349Z Warning: Using `RSpec/Rails/NegationBeValid` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/NegationBeValid`.
+2025-11-01T02:51:00.5234109Z Warning: Using `RSpec/Rails/TravelAround` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/TravelAround`.
+2025-11-01T02:51:00.5266902Z Warning: Using `RSpec/Capybara/CurrentPathExpectation` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/CurrentPathExpectation`.
+2025-11-01T02:51:00.5268806Z Warning: Using `RSpec/Capybara/MatchStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/MatchStyle`.
+2025-11-01T02:51:00.5270976Z Warning: Using `RSpec/Capybara/NegationMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/NegationMatcher`.
+2025-11-01T02:51:00.5272794Z Warning: Using `RSpec/Capybara/SpecificActions` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificActions`.
+2025-11-01T02:51:00.5274604Z Warning: Using `RSpec/Capybara/SpecificFinders` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificFinders`.
+2025-11-01T02:51:00.5276554Z Warning: Using `RSpec/Capybara/SpecificMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificMatcher`.
+2025-11-01T02:51:00.5278396Z Warning: Using `RSpec/Capybara/VisibilityMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/VisibilityMatcher`.
+2025-11-01T02:51:00.5280421Z Warning: Using `RSpec/FactoryBot/AttributeDefinedStatically` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/AttributeDefinedStatically`.
+2025-11-01T02:51:00.5282616Z Warning: Using `RSpec/FactoryBot/ConsistentParenthesesStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/ConsistentParenthesesStyle`.
+2025-11-01T02:51:00.5284575Z Warning: Using `RSpec/FactoryBot/CreateList` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/CreateList`.
+2025-11-01T02:51:00.5286858Z Warning: Using `RSpec/Capybara/CurrentPathExpectation` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/CurrentPathExpectation`.
+2025-11-01T02:51:00.5293238Z Warning: Using `RSpec/FactoryBot/FactoryClassName` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/FactoryClassName`.
+2025-11-01T02:51:00.5295145Z Warning: Using `RSpec/FactoryBot/FactoryNameStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/FactoryNameStyle`.
+2025-11-01T02:51:00.5297219Z Warning: Using `RSpec/FactoryBot/SyntaxMethods` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/SyntaxMethods`.
+2025-11-01T02:51:00.5298974Z Warning: Using `RSpec/Rails/AvoidSetupHook` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/AvoidSetupHook`.
+2025-11-01T02:51:00.5300742Z Warning: Using `RSpec/Rails/HaveHttpStatus` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/HaveHttpStatus`.
+2025-11-01T02:51:00.5302446Z Warning: Using `RSpec/Rails/HttpStatus` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/HttpStatus`.
+2025-11-01T02:51:00.5304070Z Warning: Using `RSpec/Capybara/MatchStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/MatchStyle`.
+2025-11-01T02:51:00.5316242Z Warning: Using `RSpec/Rails/InferredSpecType` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/InferredSpecType`.
+2025-11-01T02:51:00.5318179Z Warning: Using `RSpec/Rails/MinitestAssertions` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/MinitestAssertions`.
+2025-11-01T02:51:00.5319984Z Warning: Using `RSpec/Rails/NegationBeValid` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/NegationBeValid`.
+2025-11-01T02:51:00.5321796Z Warning: Using `RSpec/Capybara/NegationMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/NegationMatcher`.
+2025-11-01T02:51:00.5323531Z Warning: Using `RSpec/Rails/TravelAround` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/TravelAround`.
+2025-11-01T02:51:00.5325318Z Warning: Using `RSpec/Capybara/SpecificActions` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificActions`.
+2025-11-01T02:51:00.5327567Z Warning: Using `RSpec/Capybara/SpecificFinders` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificFinders`.
+2025-11-01T02:51:00.5329371Z Warning: Using `RSpec/Capybara/SpecificMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificMatcher`.
+2025-11-01T02:51:00.5331183Z Warning: Using `RSpec/Capybara/VisibilityMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/VisibilityMatcher`.
+2025-11-01T02:51:00.5333201Z Warning: Using `RSpec/FactoryBot/AttributeDefinedStatically` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/AttributeDefinedStatically`.
+2025-11-01T02:51:00.5335379Z Warning: Using `RSpec/FactoryBot/ConsistentParenthesesStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/ConsistentParenthesesStyle`.
+2025-11-01T02:51:00.5337640Z Warning: Using `RSpec/Capybara/CurrentPathExpectation` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/CurrentPathExpectation`.
+2025-11-01T02:51:00.5339508Z Warning: Using `RSpec/FactoryBot/CreateList` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/CreateList`.
+2025-11-01T02:51:00.5386813Z Warning: Using `RSpec/FactoryBot/FactoryClassName` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/FactoryClassName`.
+2025-11-01T02:51:00.5388946Z Warning: Using `RSpec/FactoryBot/FactoryNameStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/FactoryNameStyle`.
+2025-11-01T02:51:00.5390760Z Warning: Using `RSpec/FactoryBot/SyntaxMethods` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/SyntaxMethods`.
+2025-11-01T02:51:00.5392551Z Warning: Using `RSpec/Rails/AvoidSetupHook` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/AvoidSetupHook`.
+2025-11-01T02:51:00.5394266Z Warning: Using `RSpec/Rails/HaveHttpStatus` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/HaveHttpStatus`.
+2025-11-01T02:51:00.5396118Z Warning: Using `RSpec/Rails/HttpStatus` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/HttpStatus`.
+2025-11-01T02:51:00.5397835Z Warning: Using `RSpec/Rails/InferredSpecType` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/InferredSpecType`.
+2025-11-01T02:51:00.5399656Z Warning: Using `RSpec/Rails/MinitestAssertions` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/MinitestAssertions`.
+2025-11-01T02:51:00.5401476Z Warning: Using `RSpec/Rails/NegationBeValid` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/NegationBeValid`.
+2025-11-01T02:51:00.5403179Z Warning: Using `RSpec/Rails/TravelAround` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/TravelAround`.
+2025-11-01T02:51:00.5404849Z Warning: Using `RSpec/Capybara/MatchStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/MatchStyle`.
+2025-11-01T02:51:00.5406727Z Warning: Using `RSpec/Capybara/NegationMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/NegationMatcher`.
+2025-11-01T02:51:00.5408503Z Warning: Using `RSpec/Capybara/SpecificActions` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificActions`.
+2025-11-01T02:51:00.5410305Z Warning: Using `RSpec/Capybara/SpecificFinders` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificFinders`.
+2025-11-01T02:51:00.5412079Z Warning: Using `RSpec/Capybara/SpecificMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificMatcher`.
+2025-11-01T02:51:00.5413905Z Warning: Using `RSpec/Capybara/VisibilityMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/VisibilityMatcher`.
+2025-11-01T02:51:00.5416282Z Warning: Using `RSpec/FactoryBot/AttributeDefinedStatically` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/AttributeDefinedStatically`.
+2025-11-01T02:51:00.5418455Z Warning: Using `RSpec/FactoryBot/ConsistentParenthesesStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/ConsistentParenthesesStyle`.
+2025-11-01T02:51:00.5420293Z Warning: Using `RSpec/FactoryBot/CreateList` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/CreateList`.
+2025-11-01T02:51:00.5421860Z Warning: Using `RSpec/FactoryBot/FactoryClassName` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/FactoryClassName`.
+2025-11-01T02:51:00.5423499Z Warning: Using `RSpec/FactoryBot/FactoryNameStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/FactoryNameStyle`.
+2025-11-01T02:51:00.5425155Z Warning: Using `RSpec/FactoryBot/SyntaxMethods` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/SyntaxMethods`.
+2025-11-01T02:51:00.5426850Z Warning: Using `RSpec/Rails/AvoidSetupHook` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/AvoidSetupHook`.
+2025-11-01T02:51:00.5428356Z Warning: Using `RSpec/Rails/HaveHttpStatus` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/HaveHttpStatus`.
+2025-11-01T02:51:00.5430041Z Warning: Using `RSpec/Rails/HttpStatus` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/HttpStatus`.
+2025-11-01T02:51:00.5431561Z Warning: Using `RSpec/Rails/InferredSpecType` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/InferredSpecType`.
+2025-11-01T02:51:00.5433200Z Warning: Using `RSpec/Rails/MinitestAssertions` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/MinitestAssertions`.
+2025-11-01T02:51:00.5434719Z Warning: Using `RSpec/Rails/NegationBeValid` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/NegationBeValid`.
+2025-11-01T02:51:00.5486592Z Warning: Using `RSpec/Rails/TravelAround` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/TravelAround`.
+2025-11-01T02:51:01.2552570Z Inspecting 61 files
+2025-11-01T02:51:01.2553184Z ..CCCCC..CC..........WWW.C..................................C
+2025-11-01T02:51:01.2553634Z 
+2025-11-01T02:51:01.2553758Z Offenses:
+2025-11-01T02:51:01.2553923Z 
+2025-11-01T02:51:01.2554414Z app/blueprints/menu_blueprint.rb:16:65: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+2025-11-01T02:51:01.2555919Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2556864Z                                                                 ^^^^
+2025-11-01T02:51:01.2558116Z app/blueprints/menu_blueprint.rb:16:84: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
+2025-11-01T02:51:01.2559869Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2560817Z                                                                                    ^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2561645Z app/blueprints/menu_blueprint.rb:16:121: C: [Correctable] Layout/LineLength: Line is too long. [139/120]
+2025-11-01T02:51:01.2562901Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2563847Z                                                                                                                         ^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2564885Z app/blueprints/menu_blueprint.rb:24:5: C: Metrics/AbcSize: Assignment Branch Condition size for render_as_hash is too high. [<6, 16, 11> 20.32/17]
+2025-11-01T02:51:01.2566448Z     def render_as_hash(object, **options) ...
+2025-11-01T02:51:01.2566906Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2567860Z app/blueprints/menu_blueprint.rb:24:5: C: Metrics/CyclomaticComplexity: Cyclomatic complexity for render_as_hash is too high. [10/7]
+2025-11-01T02:51:01.2568849Z     def render_as_hash(object, **options) ...
+2025-11-01T02:51:01.2569306Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2570026Z app/blueprints/menu_blueprint.rb:24:5: C: Metrics/MethodLength: Method has too many lines. [22/10]
+2025-11-01T02:51:01.2570809Z     def render_as_hash(object, **options) ...
+2025-11-01T02:51:01.2571249Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2572180Z app/blueprints/menu_blueprint.rb:24:5: C: Metrics/PerceivedComplexity: Perceived complexity for render_as_hash is too high. [12/8]
+2025-11-01T02:51:01.2573169Z     def render_as_hash(object, **options) ...
+2025-11-01T02:51:01.2573607Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2574348Z app/blueprints/menu_blueprint.rb:30:74: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+2025-11-01T02:51:01.2575756Z                    ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2576973Z                                                                          ^^^^
+2025-11-01T02:51:01.2578203Z app/blueprints/menu_blueprint.rb:30:93: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
+2025-11-01T02:51:01.2579853Z                    ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2580797Z                                                                                             ^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2581612Z app/blueprints/menu_blueprint.rb:30:121: C: [Correctable] Layout/LineLength: Line is too long. [148/120]
+2025-11-01T02:51:01.2582830Z                    ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2583807Z                                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2584592Z app/blueprints/menu_blueprint.rb:35:16: C: [Correctable] Style/EmptyElse: Redundant else-clause.
+2025-11-01T02:51:01.2585324Z                else
+2025-11-01T02:51:01.2585803Z                ^^^^
+2025-11-01T02:51:01.2586723Z app/blueprints/menu_blueprint.rb:47:29: C: [Correctable] Style/SoleNestedConditional: Consider merging nested conditions into outer if conditions.
+2025-11-01T02:51:01.2587812Z         result[:items] = [] unless result.key?(:items)
+2025-11-01T02:51:01.2588312Z                             ^^^^^^
+2025-11-01T02:51:01.2589046Z app/blueprints/menu_blueprint.rb:58:7: C: [Correctable] Style/RedundantBegin: Redundant begin block detected.
+2025-11-01T02:51:01.2589841Z       begin
+2025-11-01T02:51:01.2590120Z       ^^^^^
+2025-11-01T02:51:01.2590756Z app/blueprints/menu_item_blueprint.rb:14:65: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+2025-11-01T02:51:01.2592020Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2592911Z                                                                 ^^^^
+2025-11-01T02:51:01.2594052Z app/blueprints/menu_item_blueprint.rb:14:84: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
+2025-11-01T02:51:01.2595805Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2596924Z                                                                                    ^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2597779Z app/blueprints/menu_item_blueprint.rb:14:121: C: [Correctable] Layout/LineLength: Line is too long. [139/120]
+2025-11-01T02:51:01.2598946Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2599823Z                                                                                                                         ^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2600582Z app/blueprints/menu_item_blueprint.rb:22:5: C: Metrics/MethodLength: Method has too many lines. [16/10]
+2025-11-01T02:51:01.2601353Z     def render_as_hash(object, **options) ...
+2025-11-01T02:51:01.2601795Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2602708Z app/blueprints/menu_item_blueprint.rb:22:5: C: Metrics/PerceivedComplexity: Perceived complexity for render_as_hash is too high. [9/8]
+2025-11-01T02:51:01.2603664Z     def render_as_hash(object, **options) ...
+2025-11-01T02:51:01.2604072Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2604789Z app/blueprints/menu_item_blueprint.rb:28:65: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+2025-11-01T02:51:01.2606133Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2607179Z                                                                 ^^^^
+2025-11-01T02:51:01.2631101Z app/blueprints/menu_item_blueprint.rb:28:84: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
+2025-11-01T02:51:01.2632789Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2633676Z                                                                                    ^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2634479Z app/blueprints/menu_item_blueprint.rb:28:121: C: [Correctable] Layout/LineLength: Line is too long. [139/120]
+2025-11-01T02:51:01.2635842Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2636743Z                                                                                                                         ^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2637628Z app/blueprints/menu_item_blueprint.rb:32:24: C: [Correctable] Style/IfInsideElse: Convert if nested inside else to elsif.
+2025-11-01T02:51:01.2638465Z         parsed = super if defined?(super)
+2025-11-01T02:51:01.2638876Z                        ^^
+2025-11-01T02:51:01.2639574Z app/blueprints/menu_item_blueprint.rb:47:7: C: [Correctable] Style/RedundantBegin: Redundant begin block detected.
+2025-11-01T02:51:01.2640306Z       begin
+2025-11-01T02:51:01.2640573Z       ^^^^^
+2025-11-01T02:51:01.2641188Z app/blueprints/menu_item_blueprint.rb:48:9: C: [Correctable] Style/RedundantReturn: Redundant return detected.
+2025-11-01T02:51:01.2641928Z         return render(object, **options)
+2025-11-01T02:51:01.2642294Z         ^^^^^^
+2025-11-01T02:51:01.2642925Z app/blueprints/menu_item_blueprint.rb:51:11: C: [Correctable] Style/RedundantReturn: Redundant return detected.
+2025-11-01T02:51:01.2643660Z           return render(object)
+2025-11-01T02:51:01.2643998Z           ^^^^^^
+2025-11-01T02:51:01.2644623Z app/blueprints/menu_item_blueprint.rb:53:11: C: [Correctable] Style/RedundantReturn: Redundant return detected.
+2025-11-01T02:51:01.2645365Z           return render
+2025-11-01T02:51:01.2645853Z           ^^^^^^
+2025-11-01T02:51:01.2646520Z app/blueprints/menu_item_blueprint.rb:63:7: C: [Correctable] Style/RedundantBegin: Redundant begin block detected.
+2025-11-01T02:51:01.2647281Z       begin
+2025-11-01T02:51:01.2647538Z       ^^^^^
+2025-11-01T02:51:01.2648731Z app/blueprints/menu_item_placement_blueprint.rb:16:5: C: [Correctable] Style/SafeNavigation: Use safe navigation (&.) instead of checking if an object exists before calling the method.
+2025-11-01T02:51:01.2649732Z     p.nil? ? nil : p.to_s
+2025-11-01T02:51:01.2650037Z     ^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2650688Z app/blueprints/menu_item_placement_blueprint.rb:24:61: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+2025-11-01T02:51:01.2651956Z       ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2652827Z                                                             ^^^^
+2025-11-01T02:51:01.2654052Z app/blueprints/menu_item_placement_blueprint.rb:24:80: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
+2025-11-01T02:51:01.2655905Z       ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2656855Z                                                                                ^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2657749Z app/blueprints/menu_item_placement_blueprint.rb:24:121: C: [Correctable] Layout/LineLength: Line is too long. [135/120]
+2025-11-01T02:51:01.2659116Z       ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2660288Z                                                                                                                         ^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2661189Z app/blueprints/menu_item_placement_blueprint.rb:38:61: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+2025-11-01T02:51:01.2662507Z       ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2663425Z                                                             ^^^^
+2025-11-01T02:51:01.2664714Z app/blueprints/menu_item_placement_blueprint.rb:38:80: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
+2025-11-01T02:51:01.2666648Z       ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2667576Z                                                                                ^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2668440Z app/blueprints/menu_item_placement_blueprint.rb:38:121: C: [Correctable] Layout/LineLength: Line is too long. [135/120]
+2025-11-01T02:51:01.2669750Z       ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2670677Z                                                                                                                         ^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2671919Z app/blueprints/menu_item_placement_blueprint.rb:48:16: C: [Correctable] Style/SafeNavigation: Use safe navigation (&.) instead of checking if an object exists before calling the method.
+2025-11-01T02:51:01.2673218Z         price: placement.price.nil? ? nil : placement.price.to_s
+2025-11-01T02:51:01.2673760Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2674557Z app/blueprints/restaurant_blueprint.rb:16:65: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+2025-11-01T02:51:01.2675963Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2676876Z                                                                 ^^^^
+2025-11-01T02:51:01.2678102Z app/blueprints/restaurant_blueprint.rb:16:84: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
+2025-11-01T02:51:01.2679954Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2680871Z                                                                                    ^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2681700Z app/blueprints/restaurant_blueprint.rb:16:121: C: [Correctable] Layout/LineLength: Line is too long. [139/120]
+2025-11-01T02:51:01.2682962Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2683881Z                                                                                                                         ^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2684699Z app/blueprints/restaurant_blueprint.rb:24:5: C: Metrics/MethodLength: Method has too many lines. [16/10]
+2025-11-01T02:51:01.2685629Z     def render_as_hash(object, **options) ...
+2025-11-01T02:51:01.2686074Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2687012Z app/blueprints/restaurant_blueprint.rb:24:5: C: Metrics/PerceivedComplexity: Perceived complexity for render_as_hash is too high. [9/8]
+2025-11-01T02:51:01.2688003Z     def render_as_hash(object, **options) ...
+2025-11-01T02:51:01.2688426Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2689176Z app/blueprints/restaurant_blueprint.rb:30:65: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+2025-11-01T02:51:01.2690651Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2691538Z                                                                 ^^^^
+2025-11-01T02:51:01.2692768Z app/blueprints/restaurant_blueprint.rb:30:84: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
+2025-11-01T02:51:01.2694444Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2695356Z                                                                                    ^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2696327Z app/blueprints/restaurant_blueprint.rb:30:121: C: [Correctable] Layout/LineLength: Line is too long. [139/120]
+2025-11-01T02:51:01.2697588Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2698530Z                                                                                                                         ^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2699455Z app/blueprints/restaurant_blueprint.rb:34:24: C: [Correctable] Style/IfInsideElse: Convert if nested inside else to elsif.
+2025-11-01T02:51:01.2700349Z         parsed = super if defined?(super)
+2025-11-01T02:51:01.2700767Z                        ^^
+2025-11-01T02:51:01.2701531Z app/blueprints/restaurant_blueprint.rb:52:7: C: [Correctable] Style/RedundantBegin: Redundant begin block detected.
+2025-11-01T02:51:01.2702348Z       begin
+2025-11-01T02:51:01.2702619Z       ^^^^^
+2025-11-01T02:51:01.2703279Z app/blueprints/restaurant_blueprint.rb:53:9: C: [Correctable] Style/RedundantReturn: Redundant return detected.
+2025-11-01T02:51:01.2704094Z         return render(object, **options)
+2025-11-01T02:51:01.2704496Z         ^^^^^^
+2025-11-01T02:51:01.2705190Z app/blueprints/restaurant_blueprint.rb:56:11: C: [Correctable] Style/RedundantReturn: Redundant return detected.
+2025-11-01T02:51:01.2706159Z           return render(object)
+2025-11-01T02:51:01.2706525Z           ^^^^^^
+2025-11-01T02:51:01.2707233Z app/blueprints/restaurant_blueprint.rb:58:11: C: [Correctable] Style/RedundantReturn: Redundant return detected.
+2025-11-01T02:51:01.2708025Z           return render
+2025-11-01T02:51:01.2708340Z           ^^^^^^
+2025-11-01T02:51:01.2709031Z app/blueprints/restaurant_blueprint.rb:68:7: C: [Correctable] Style/RedundantBegin: Redundant begin block detected.
+2025-11-01T02:51:01.2709928Z       begin
+2025-11-01T02:51:01.2710157Z       ^^^^^
+2025-11-01T02:51:01.2710767Z app/controllers/api/v1/base_controller.rb:61:1: C: [Correctable] Layout/EmptyLines: Extra blank line detected.
+2025-11-01T02:51:01.2712041Z app/controllers/api/v1/base_controller.rb:62:7: C: [Correctable] Layout/EmptyLineBetweenDefs: Expected 1 empty line between method definitions; found 2.
+2025-11-01T02:51:01.2713011Z       def handle_parameter_missing(exception)
+2025-11-01T02:51:01.2713395Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2714257Z app/controllers/api/v1/menus_controller.rb:62:18: C: [Correctable] Rails/StrongParametersExpect: Use expect(menu: [:name]) instead.
+2025-11-01T02:51:01.2715123Z           params.require(:menu).permit(:name)
+2025-11-01T02:51:01.2715681Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2716633Z app/controllers/api/v1/restaurants_controller.rb:60:18: C: [Correctable] Rails/StrongParametersExpect: Use expect(restaurant: [:name]) instead.
+2025-11-01T02:51:01.2717644Z           params.require(:restaurant).permit(:name).to_h
+2025-11-01T02:51:01.2718081Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2718967Z app/repositories/persistence/menu_items_repository.rb:8:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2720041Z       def for_restaurant(restaurant)
+2025-11-01T02:51:01.2720395Z   ^^^^
+2025-11-01T02:51:01.2721210Z app/repositories/persistence/menu_items_repository.rb:8:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2722152Z       def for_restaurant(restaurant) ...
+2025-11-01T02:51:01.2722533Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2723388Z app/repositories/persistence/menu_items_repository.rb:12:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2724320Z       def find_by_restaurant(restaurant, id)
+2025-11-01T02:51:01.2724697Z   ^^^^
+2025-11-01T02:51:01.2725620Z app/repositories/persistence/menu_items_repository.rb:12:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2726594Z       def find_by_restaurant(restaurant, id) ...
+2025-11-01T02:51:01.2726999Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2727882Z app/repositories/persistence/menu_items_repository.rb:16:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2728793Z       def build(attrs = {})
+2025-11-01T02:51:01.2729108Z   ^^^^
+2025-11-01T02:51:01.2729905Z app/repositories/persistence/menu_items_repository.rb:16:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2730837Z       def build(attrs = {}) ...
+2025-11-01T02:51:01.2731160Z       ^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2731981Z app/repositories/persistence/menu_items_repository.rb:20:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2732879Z       def save(record)
+2025-11-01T02:51:01.2733190Z   ^^^^
+2025-11-01T02:51:01.2734061Z app/repositories/persistence/menu_items_repository.rb:20:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2735057Z       def save(record) ...
+2025-11-01T02:51:01.2735396Z       ^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2736401Z app/repositories/persistence/menu_items_repository.rb:24:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2737379Z       def update(record, attrs)
+2025-11-01T02:51:01.2737736Z   ^^^^
+2025-11-01T02:51:01.2738601Z app/repositories/persistence/menu_items_repository.rb:24:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2739614Z       def update(record, attrs) ...
+2025-11-01T02:51:01.2739983Z       ^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2740994Z app/repositories/persistence/menu_items_repository.rb:28:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2741967Z       def destroy(record)
+2025-11-01T02:51:01.2742310Z   ^^^^
+2025-11-01T02:51:01.2743180Z app/repositories/persistence/menu_items_repository.rb:28:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2744197Z       def destroy(record) ...
+2025-11-01T02:51:01.2744556Z       ^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2745398Z app/repositories/persistence/menu_items_repository.rb:33:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2746466Z       def bulk_insert(records_attrs, unique_by: nil)
+2025-11-01T02:51:01.2746920Z   ^^^^
+2025-11-01T02:51:01.2747799Z app/repositories/persistence/menu_items_repository.rb:33:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2748873Z       def bulk_insert(records_attrs, unique_by: nil) ...
+2025-11-01T02:51:01.2749343Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2750306Z app/repositories/persistence/menu_items_repository.rb:44:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2751248Z       def bulk_update(records_data)
+2025-11-01T02:51:01.2751601Z   ^^^^
+2025-11-01T02:51:01.2752591Z app/repositories/persistence/menu_items_repository.rb:44:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2753618Z       def bulk_update(records_data) ...
+2025-11-01T02:51:01.2754025Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2754949Z app/repositories/persistence/menu_items_repository.rb:60:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2756099Z       def find_by_name(name)
+2025-11-01T02:51:01.2756444Z   ^^^^
+2025-11-01T02:51:01.2757281Z app/repositories/persistence/menu_items_repository.rb:60:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2758289Z       def find_by_name(name) ...
+2025-11-01T02:51:01.2758664Z       ^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2759558Z app/repositories/persistence/menu_items_repository.rb:64:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2760495Z       def exists_by_name?(name)
+2025-11-01T02:51:01.2760815Z   ^^^^
+2025-11-01T02:51:01.2761646Z app/repositories/persistence/menu_items_repository.rb:64:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2762638Z       def exists_by_name?(name) ...
+2025-11-01T02:51:01.2762999Z       ^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2763921Z app/repositories/persistence/menu_items_repository.rb:67:5: W: [Correctable] Layout/EndAlignment: end at 67, 4 is not aligned with class at 4, 2.
+2025-11-01T02:51:01.2764855Z     end
+2025-11-01T02:51:01.2765090Z     ^^^
+2025-11-01T02:51:01.2766021Z app/repositories/persistence/menus_repository.rb:8:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2766947Z       def for_restaurant(restaurant)
+2025-11-01T02:51:01.2767326Z   ^^^^
+2025-11-01T02:51:01.2768157Z app/repositories/persistence/menus_repository.rb:8:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2769150Z       def for_restaurant(restaurant) ...
+2025-11-01T02:51:01.2769550Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2770436Z app/repositories/persistence/menus_repository.rb:12:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2771410Z       def find_by_restaurant(restaurant, id)
+2025-11-01T02:51:01.2771811Z   ^^^^
+2025-11-01T02:51:01.2772660Z app/repositories/persistence/menus_repository.rb:12:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2773798Z       def find_by_restaurant(restaurant, id) ...
+2025-11-01T02:51:01.2774241Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2775162Z app/repositories/persistence/menus_repository.rb:18:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2776281Z       def build_for(restaurant, attrs = {})
+2025-11-01T02:51:01.2776701Z   ^^^^
+2025-11-01T02:51:01.2777574Z app/repositories/persistence/menus_repository.rb:18:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2778595Z       def build_for(restaurant, attrs = {}) ...
+2025-11-01T02:51:01.2779033Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2779926Z app/repositories/persistence/menus_repository.rb:22:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2780851Z       def save(record)
+2025-11-01T02:51:01.2781179Z   ^^^^
+2025-11-01T02:51:01.2782038Z app/repositories/persistence/menus_repository.rb:22:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2783033Z       def save(record) ...
+2025-11-01T02:51:01.2783368Z       ^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2784232Z app/repositories/persistence/menus_repository.rb:26:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2785389Z       def update(record, attrs)
+2025-11-01T02:51:01.2785862Z   ^^^^
+2025-11-01T02:51:01.2786718Z app/repositories/persistence/menus_repository.rb:26:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2787726Z       def update(record, attrs) ...
+2025-11-01T02:51:01.2788118Z       ^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2789003Z app/repositories/persistence/menus_repository.rb:30:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2789971Z       def destroy(record)
+2025-11-01T02:51:01.2790311Z   ^^^^
+2025-11-01T02:51:01.2791162Z app/repositories/persistence/menus_repository.rb:30:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2792192Z       def destroy(record) ...
+2025-11-01T02:51:01.2792557Z       ^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2793440Z app/repositories/persistence/menus_repository.rb:35:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2794446Z       def bulk_insert(records_attrs, unique_by: nil)
+2025-11-01T02:51:01.2794885Z   ^^^^
+2025-11-01T02:51:01.2796091Z app/repositories/persistence/menus_repository.rb:35:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2796884Z       def bulk_insert(records_attrs, unique_by: nil) ...
+2025-11-01T02:51:01.2797197Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2797835Z app/repositories/persistence/menus_repository.rb:46:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2798489Z       def bulk_update(records_data)
+2025-11-01T02:51:01.2798732Z   ^^^^
+2025-11-01T02:51:01.2799292Z app/repositories/persistence/menus_repository.rb:46:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2799944Z       def bulk_update(records_data) ...
+2025-11-01T02:51:01.2800208Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2800799Z app/repositories/persistence/menus_repository.rb:62:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2801456Z       def find_by_restaurant_and_name(restaurant, name)
+2025-11-01T02:51:01.2801747Z   ^^^^
+2025-11-01T02:51:01.2802287Z app/repositories/persistence/menus_repository.rb:62:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2802956Z       def find_by_restaurant_and_name(restaurant, name) ...
+2025-11-01T02:51:01.2803474Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2804062Z app/repositories/persistence/menus_repository.rb:65:5: W: [Correctable] Layout/EndAlignment: end at 65, 4 is not aligned with class at 4, 2.
+2025-11-01T02:51:01.2804642Z     end
+2025-11-01T02:51:01.2804798Z     ^^^
+2025-11-01T02:51:01.2805321Z app/repositories/persistence/restaurants_repository.rb:8:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2806336Z       def relation_for_index
+2025-11-01T02:51:01.2806667Z   ^^^^
+2025-11-01T02:51:01.2807536Z app/repositories/persistence/restaurants_repository.rb:8:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2808567Z       def relation_for_index ...
+2025-11-01T02:51:01.2808942Z       ^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2809865Z app/repositories/persistence/restaurants_repository.rb:11:57: C: [Correctable] Style/SymbolProc: Pass &:to_a as an argument to tap instead of a block.
+2025-11-01T02:51:01.2814496Z         ::Restaurant.with_full_associations.ordered.tap { |r| r.to_a }
+2025-11-01T02:51:01.2814875Z                                                         ^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2815678Z app/repositories/persistence/restaurants_repository.rb:14:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2816477Z       def find(id)
+2025-11-01T02:51:01.2816653Z   ^^^^
+2025-11-01T02:51:01.2817170Z app/repositories/persistence/restaurants_repository.rb:14:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2817766Z       def find(id) ...
+2025-11-01T02:51:01.2817957Z       ^^^^^^^^^^^^
+2025-11-01T02:51:01.2818473Z app/repositories/persistence/restaurants_repository.rb:21:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2819045Z       def build(attrs = {})
+2025-11-01T02:51:01.2819250Z   ^^^^
+2025-11-01T02:51:01.2819753Z app/repositories/persistence/restaurants_repository.rb:21:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2820361Z       def build(attrs = {}) ...
+2025-11-01T02:51:01.2820570Z       ^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2821111Z app/repositories/persistence/restaurants_repository.rb:25:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2821672Z       def save(record)
+2025-11-01T02:51:01.2821853Z   ^^^^
+2025-11-01T02:51:01.2822369Z app/repositories/persistence/restaurants_repository.rb:25:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2822939Z       def save(record) ...
+2025-11-01T02:51:01.2823137Z       ^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2823647Z app/repositories/persistence/restaurants_repository.rb:29:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2824214Z       def update(record, attrs)
+2025-11-01T02:51:01.2824414Z   ^^^^
+2025-11-01T02:51:01.2824939Z app/repositories/persistence/restaurants_repository.rb:29:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2825775Z       def update(record, attrs) ...
+2025-11-01T02:51:01.2826094Z       ^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2826646Z app/repositories/persistence/restaurants_repository.rb:33:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2827240Z       def destroy(record)
+2025-11-01T02:51:01.2827430Z   ^^^^
+2025-11-01T02:51:01.2827925Z app/repositories/persistence/restaurants_repository.rb:33:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2828499Z       def destroy(record) ...
+2025-11-01T02:51:01.2828701Z       ^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2829206Z app/repositories/persistence/restaurants_repository.rb:45:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2829958Z       def bulk_insert(records_attrs, unique_by: nil)
+2025-11-01T02:51:01.2830206Z   ^^^^
+2025-11-01T02:51:01.2830704Z app/repositories/persistence/restaurants_repository.rb:45:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2831307Z       def bulk_insert(records_attrs, unique_by: nil) ...
+2025-11-01T02:51:01.2831587Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2832153Z app/repositories/persistence/restaurants_repository.rb:56:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2832719Z       def bulk_update(records_data)
+2025-11-01T02:51:01.2832930Z   ^^^^
+2025-11-01T02:51:01.2833431Z app/repositories/persistence/restaurants_repository.rb:56:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2834020Z       def bulk_update(records_data) ...
+2025-11-01T02:51:01.2834249Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2834781Z app/repositories/persistence/restaurants_repository.rb:72:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2835340Z       def exists_by_name?(name)
+2025-11-01T02:51:01.2835722Z   ^^^^
+2025-11-01T02:51:01.2836224Z app/repositories/persistence/restaurants_repository.rb:72:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2836916Z       def exists_by_name?(name) ...
+2025-11-01T02:51:01.2837129Z       ^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2837647Z app/repositories/persistence/restaurants_repository.rb:76:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2838204Z       def find_by_name(name)
+2025-11-01T02:51:01.2838400Z   ^^^^
+2025-11-01T02:51:01.2838892Z app/repositories/persistence/restaurants_repository.rb:76:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2839473Z       def find_by_name(name) ...
+2025-11-01T02:51:01.2839681Z       ^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2840220Z app/repositories/persistence/restaurants_repository.rb:79:5: W: [Correctable] Layout/EndAlignment: end at 79, 4 is not aligned with class at 4, 2.
+2025-11-01T02:51:01.2840768Z     end
+2025-11-01T02:51:01.2840922Z     ^^^
+2025-11-01T02:51:01.2841314Z app/use_cases/imports/restaurants_json/process.rb:22:7: C: Metrics/MethodLength: Method has too many lines. [12/10]
+2025-11-01T02:51:01.2841785Z       def import_restaurants(data) ...
+2025-11-01T02:51:01.2842023Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2842480Z app/use_cases/imports/restaurants_json/process.rb:82:121: C: [Correctable] Layout/LineLength: Line is too long. [132/120]
+2025-11-01T02:51:01.2843205Z         build_success_logs(restaurant, menu, menu_item, upsert_result[:action], placement_result[:action], placement_result[:price])
+2025-11-01T02:51:01.2843717Z                                                                                                                         ^^^^^^^^^^^^
+2025-11-01T02:51:01.2844290Z app/use_cases/imports/restaurants_json/process.rb:85:29: C: Metrics/ParameterLists: Avoid parameter lists longer than 5 parameters. [6/5]
+2025-11-01T02:51:01.2844968Z       def build_success_logs(restaurant, menu, menu_item, create_action, link_action, price)
+2025-11-01T02:51:01.2845361Z                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2846212Z lib/use_case_helpers.rb:17:42: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
+2025-11-01T02:51:01.2846862Z       resource_name = context.to_s.split('.').first
+2025-11-01T02:51:01.2847126Z                                          ^^^
+2025-11-01T02:51:01.2847278Z 
+2025-11-01T02:51:01.2847574Z 61 files inspected, 119 offenses detected, 109 offenses autocorrectable
+2025-11-01T02:51:01.2856638Z ##[error]Process completed with exit code 1.

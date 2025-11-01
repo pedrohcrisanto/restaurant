@@ -1,0 +1,1291 @@
+﻿2025-11-01T02:50:27.6608891Z Current runner version: '2.329.0'
+2025-11-01T02:50:27.6632594Z ##[group]Runner Image Provisioner
+2025-11-01T02:50:27.6633541Z Hosted Compute Agent
+2025-11-01T02:50:27.6634048Z Version: 20251016.436
+2025-11-01T02:50:27.6634628Z Commit: 8ab8ac8bfd662a3739dab9fe09456aba92132568
+2025-11-01T02:50:27.6635388Z Build Date: 2025-10-15T20:44:12Z
+2025-11-01T02:50:27.6636325Z ##[endgroup]
+2025-11-01T02:50:27.6636871Z ##[group]Operating System
+2025-11-01T02:50:27.6637483Z Ubuntu
+2025-11-01T02:50:27.6637957Z 24.04.3
+2025-11-01T02:50:27.6638374Z LTS
+2025-11-01T02:50:27.6638883Z ##[endgroup]
+2025-11-01T02:50:27.6639331Z ##[group]Runner Image
+2025-11-01T02:50:27.6639975Z Image: ubuntu-24.04
+2025-11-01T02:50:27.6640519Z Version: 20251030.96.2
+2025-11-01T02:50:27.6641475Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251030.96/images/ubuntu/Ubuntu2404-Readme.md
+2025-11-01T02:50:27.6643037Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251030.96
+2025-11-01T02:50:27.6644002Z ##[endgroup]
+2025-11-01T02:50:27.6645067Z ##[group]GITHUB_TOKEN Permissions
+2025-11-01T02:50:27.6647140Z Contents: read
+2025-11-01T02:50:27.6647645Z Metadata: read
+2025-11-01T02:50:27.6648218Z ##[endgroup]
+2025-11-01T02:50:27.6650328Z Secret source: Actions
+2025-11-01T02:50:27.6651070Z Prepare workflow directory
+2025-11-01T02:50:27.6972737Z Prepare all required actions
+2025-11-01T02:50:27.7016940Z Getting action download info
+2025-11-01T02:50:28.1470195Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+2025-11-01T02:50:28.3581078Z Download action repository 'ruby/setup-ruby@v1' (SHA:d5126b9b3579e429dd52e51e68624dda2e05be25)
+2025-11-01T02:50:28.8508412Z Download action repository 'hadolint/hadolint-action@v3.1.0' (SHA:54c9adbab1582c2ef04b2016b760714a4bfde3cf)
+2025-11-01T02:50:29.3045276Z Complete job name: Prechecks (lint+segurança+config)
+2025-11-01T02:50:29.3533922Z ##[group]Build container for action use: '/home/runner/work/_actions/hadolint/hadolint-action/v3.1.0/Dockerfile'.
+2025-11-01T02:50:29.3587503Z ##[command]/usr/bin/docker build -t 9d3d65:63ded76a79d94287ae725eebd4a14bb6 -f "/home/runner/work/_actions/hadolint/hadolint-action/v3.1.0/Dockerfile" "/home/runner/work/_actions/hadolint/hadolint-action/v3.1.0"
+2025-11-01T02:50:32.3130216Z #0 building with "default" instance using docker driver
+2025-11-01T02:50:32.3130691Z 
+2025-11-01T02:50:32.3130861Z #1 [internal] load build definition from Dockerfile
+2025-11-01T02:50:32.3131270Z #1 transferring dockerfile: 221B done
+2025-11-01T02:50:32.3131603Z #1 DONE 0.0s
+2025-11-01T02:50:32.3131759Z 
+2025-11-01T02:50:32.3132005Z #2 [internal] load metadata for ghcr.io/hadolint/hadolint:v2.12.0-debian
+2025-11-01T02:50:33.0325834Z #2 DONE 0.9s
+2025-11-01T02:50:33.1527359Z 
+2025-11-01T02:50:33.1527923Z #3 [internal] load .dockerignore
+2025-11-01T02:50:33.1528715Z #3 transferring context: 2B done
+2025-11-01T02:50:33.1529349Z #3 DONE 0.0s
+2025-11-01T02:50:33.1529581Z 
+2025-11-01T02:50:33.1529789Z #4 [internal] load build context
+2025-11-01T02:50:33.1530348Z #4 transferring context: 9.11kB done
+2025-11-01T02:50:33.1530903Z #4 DONE 0.0s
+2025-11-01T02:50:33.1531105Z 
+2025-11-01T02:50:33.1531830Z #5 [1/3] FROM ghcr.io/hadolint/hadolint:v2.12.0-debian@sha256:27173fe25e062448490a32de410c08491c626a0bef360aa2ce5d5bdd9384b50d
+2025-11-01T02:50:33.1533259Z #5 resolve ghcr.io/hadolint/hadolint:v2.12.0-debian@sha256:27173fe25e062448490a32de410c08491c626a0bef360aa2ce5d5bdd9384b50d done
+2025-11-01T02:50:33.1534567Z #5 sha256:665ea7c2febb5533f964e122bb1f3a4d2226072269bd55139f7c00aebd464db3 740B / 740B done
+2025-11-01T02:50:33.2529110Z #5 sha256:df21c2da50822cd910a7abab5f311996c4b363cdd8f61937694873326c836650 1.27kB / 1.27kB done
+2025-11-01T02:50:33.2530386Z #5 sha256:e9995326b091af7b3ce352fad4d76cf3a3cb62b7a0c35cc5f625e8e649d23c50 3.15MB / 31.42MB 0.2s
+2025-11-01T02:50:33.2531379Z #5 sha256:405c84fd6fe2ec3923fb21bdc293f6d8c7ee5c91d7d64a25ef2a168539cc303f 0B / 2.38MB 0.2s
+2025-11-01T02:50:33.2532227Z #5 sha256:27173fe25e062448490a32de410c08491c626a0bef360aa2ce5d5bdd9384b50d 741B / 741B done
+2025-11-01T02:50:33.3528851Z #5 sha256:e9995326b091af7b3ce352fad4d76cf3a3cb62b7a0c35cc5f625e8e649d23c50 8.39MB / 31.42MB 0.3s
+2025-11-01T02:50:33.5531262Z #5 sha256:e9995326b091af7b3ce352fad4d76cf3a3cb62b7a0c35cc5f625e8e649d23c50 22.02MB / 31.42MB 0.5s
+2025-11-01T02:50:33.5532586Z #5 sha256:405c84fd6fe2ec3923fb21bdc293f6d8c7ee5c91d7d64a25ef2a168539cc303f 2.38MB / 2.38MB 0.3s done
+2025-11-01T02:50:33.7511793Z #5 sha256:e9995326b091af7b3ce352fad4d76cf3a3cb62b7a0c35cc5f625e8e649d23c50 26.21MB / 31.42MB 0.6s
+2025-11-01T02:50:33.7515793Z #5 extracting sha256:e9995326b091af7b3ce352fad4d76cf3a3cb62b7a0c35cc5f625e8e649d23c50
+2025-11-01T02:50:33.8547124Z #5 sha256:e9995326b091af7b3ce352fad4d76cf3a3cb62b7a0c35cc5f625e8e649d23c50 31.42MB / 31.42MB 0.7s done
+2025-11-01T02:50:34.8958603Z #5 extracting sha256:e9995326b091af7b3ce352fad4d76cf3a3cb62b7a0c35cc5f625e8e649d23c50 1.1s done
+2025-11-01T02:50:35.0836581Z #5 extracting sha256:405c84fd6fe2ec3923fb21bdc293f6d8c7ee5c91d7d64a25ef2a168539cc303f 0.0s done
+2025-11-01T02:50:35.6171228Z #5 DONE 2.6s
+2025-11-01T02:50:35.7923625Z 
+2025-11-01T02:50:35.7928210Z #6 [2/3] COPY LICENSE README.md problem-matcher.json /
+2025-11-01T02:50:35.7946981Z #6 DONE 0.0s
+2025-11-01T02:50:35.7947609Z 
+2025-11-01T02:50:35.7952520Z #7 [3/3] COPY hadolint.sh /usr/local/bin/hadolint.sh
+2025-11-01T02:50:35.7953616Z #7 DONE 0.0s
+2025-11-01T02:50:35.7954657Z 
+2025-11-01T02:50:35.7954831Z #8 exporting to image
+2025-11-01T02:50:35.7955187Z #8 exporting layers
+2025-11-01T02:50:36.0072592Z #8 exporting layers 0.4s done
+2025-11-01T02:50:36.0248901Z #8 writing image sha256:c394fbf7678147a0167113e6f81e853e7e25099df009a2653df1d96108ff932e done
+2025-11-01T02:50:36.0249796Z #8 naming to docker.io/library/9d3d65:63ded76a79d94287ae725eebd4a14bb6 done
+2025-11-01T02:50:36.0250402Z #8 DONE 0.4s
+2025-11-01T02:50:36.0386476Z ##[endgroup]
+2025-11-01T02:50:36.0634108Z ##[group]Run actions/checkout@v4
+2025-11-01T02:50:36.0634677Z with:
+2025-11-01T02:50:36.0634888Z   repository: pedrohcrisanto/restaurant
+2025-11-01T02:50:36.0635312Z   token: ***
+2025-11-01T02:50:36.0635661Z   ssh-strict: true
+2025-11-01T02:50:36.0635850Z   ssh-user: git
+2025-11-01T02:50:36.0636038Z   persist-credentials: true
+2025-11-01T02:50:36.0636249Z   clean: true
+2025-11-01T02:50:36.0636435Z   sparse-checkout-cone-mode: true
+2025-11-01T02:50:36.0636675Z   fetch-depth: 1
+2025-11-01T02:50:36.0636858Z   fetch-tags: false
+2025-11-01T02:50:36.0637033Z   show-progress: true
+2025-11-01T02:50:36.0637217Z   lfs: false
+2025-11-01T02:50:36.0637376Z   submodules: false
+2025-11-01T02:50:36.0637563Z   set-safe-directory: true
+2025-11-01T02:50:36.0637995Z ##[endgroup]
+2025-11-01T02:50:36.1690224Z Syncing repository: pedrohcrisanto/restaurant
+2025-11-01T02:50:36.1691506Z ##[group]Getting Git version info
+2025-11-01T02:50:36.1691932Z Working directory is '/home/runner/work/restaurant/restaurant'
+2025-11-01T02:50:36.1692471Z [command]/usr/bin/git version
+2025-11-01T02:50:36.1699247Z git version 2.51.2
+2025-11-01T02:50:36.1725638Z ##[endgroup]
+2025-11-01T02:50:36.1741334Z Temporarily overriding HOME='/home/runner/work/_temp/dae473e1-ae94-4df2-a8e0-58eda16319ec' before making global git config changes
+2025-11-01T02:50:36.1742645Z Adding repository directory to the temporary git global config as a safe directory
+2025-11-01T02:50:36.1754318Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/restaurant/restaurant
+2025-11-01T02:50:36.1789618Z Deleting the contents of '/home/runner/work/restaurant/restaurant'
+2025-11-01T02:50:36.1793131Z ##[group]Initializing the repository
+2025-11-01T02:50:36.1797807Z [command]/usr/bin/git init /home/runner/work/restaurant/restaurant
+2025-11-01T02:50:36.1900974Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-11-01T02:50:36.1901950Z hint: is subject to change. To configure the initial branch name to use in all
+2025-11-01T02:50:36.1902785Z hint: of your new repositories, which will suppress this warning, call:
+2025-11-01T02:50:36.1903647Z hint:
+2025-11-01T02:50:36.1904204Z hint: 	git config --global init.defaultBranch <name>
+2025-11-01T02:50:36.1904741Z hint:
+2025-11-01T02:50:36.1905215Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-11-01T02:50:36.1906220Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-11-01T02:50:36.1906712Z hint:
+2025-11-01T02:50:36.1906908Z hint: 	git branch -m <name>
+2025-11-01T02:50:36.1907116Z hint:
+2025-11-01T02:50:36.1907414Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-11-01T02:50:36.1907935Z Initialized empty Git repository in /home/runner/work/restaurant/restaurant/.git/
+2025-11-01T02:50:36.1916014Z [command]/usr/bin/git remote add origin https://github.com/pedrohcrisanto/restaurant
+2025-11-01T02:50:36.1985125Z ##[endgroup]
+2025-11-01T02:50:36.1985812Z ##[group]Disabling automatic garbage collection
+2025-11-01T02:50:36.1989269Z [command]/usr/bin/git config --local gc.auto 0
+2025-11-01T02:50:36.2015816Z ##[endgroup]
+2025-11-01T02:50:36.2016354Z ##[group]Setting up auth
+2025-11-01T02:50:36.2022630Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-11-01T02:50:36.2051155Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-11-01T02:50:36.2404340Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-11-01T02:50:36.2434110Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-11-01T02:50:36.2653502Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-11-01T02:50:36.2694480Z ##[endgroup]
+2025-11-01T02:50:36.2695190Z ##[group]Fetching the repository
+2025-11-01T02:50:36.2703610Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +43a6e1a84b44fc6325e2d623e42aa581f3f90c17:refs/remotes/origin/main
+2025-11-01T02:50:36.7847709Z From https://github.com/pedrohcrisanto/restaurant
+2025-11-01T02:50:36.7848708Z  * [new ref]         43a6e1a84b44fc6325e2d623e42aa581f3f90c17 -> origin/main
+2025-11-01T02:50:36.7920877Z ##[endgroup]
+2025-11-01T02:50:36.7921499Z ##[group]Determining the checkout info
+2025-11-01T02:50:36.7922603Z ##[endgroup]
+2025-11-01T02:50:36.7928094Z [command]/usr/bin/git sparse-checkout disable
+2025-11-01T02:50:36.7966960Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-11-01T02:50:36.7999967Z ##[group]Checking out the ref
+2025-11-01T02:50:36.8000662Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-11-01T02:50:36.8218957Z Switched to a new branch 'main'
+2025-11-01T02:50:36.8221260Z branch 'main' set up to track 'origin/main'.
+2025-11-01T02:50:36.8227407Z ##[endgroup]
+2025-11-01T02:50:36.8264887Z [command]/usr/bin/git log -1 --format=%H
+2025-11-01T02:50:36.8288231Z 43a6e1a84b44fc6325e2d623e42aa581f3f90c17
+2025-11-01T02:50:36.8459581Z ##[group]Run sudo apt-get update
+2025-11-01T02:50:36.8459889Z [36;1msudo apt-get update[0m
+2025-11-01T02:50:36.8460155Z [36;1msudo apt-get install -y libpq-dev[0m
+2025-11-01T02:50:36.8498142Z shell: /usr/bin/bash -e {0}
+2025-11-01T02:50:36.8498385Z ##[endgroup]
+2025-11-01T02:50:36.9938007Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2025-11-01T02:50:37.0336734Z Hit:6 https://packages.microsoft.com/repos/azure-cli noble InRelease
+2025-11-01T02:50:37.0343419Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2025-11-01T02:50:37.0344296Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2025-11-01T02:50:37.0402069Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2025-11-01T02:50:37.0485952Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2025-11-01T02:50:37.0586973Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2025-11-01T02:50:37.2661648Z Get:8 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [11.1 kB]
+2025-11-01T02:50:37.2982186Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [48.8 kB]
+2025-11-01T02:50:37.3092687Z Get:10 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [66.2 kB]
+2025-11-01T02:50:37.3204246Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1573 kB]
+2025-11-01T02:50:37.3338250Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [297 kB]
+2025-11-01T02:50:37.3352151Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [175 kB]
+2025-11-01T02:50:37.3379062Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 c-n-f Metadata [15.4 kB]
+2025-11-01T02:50:37.3409232Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1498 kB]
+2025-11-01T02:50:37.3513026Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [303 kB]
+2025-11-01T02:50:37.3551267Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [378 kB]
+2025-11-01T02:50:37.3588916Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 c-n-f Metadata [31.4 kB]
+2025-11-01T02:50:37.3597245Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [2226 kB]
+2025-11-01T02:50:37.3742633Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [505 kB]
+2025-11-01T02:50:37.4194974Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
+2025-11-01T02:50:37.4205056Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+2025-11-01T02:50:37.4215936Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7144 B]
+2025-11-01T02:50:37.4227418Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [11.0 kB]
+2025-11-01T02:50:37.4237085Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [216 B]
+2025-11-01T02:50:37.4250298Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
+2025-11-01T02:50:37.4470047Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1270 kB]
+2025-11-01T02:50:37.4548042Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [21.5 kB]
+2025-11-01T02:50:37.4557945Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 c-n-f Metadata [9008 B]
+2025-11-01T02:50:37.4568177Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [906 kB]
+2025-11-01T02:50:37.4628676Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [203 kB]
+2025-11-01T02:50:37.4653395Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [52.3 kB]
+2025-11-01T02:50:37.4664610Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 c-n-f Metadata [19.4 kB]
+2025-11-01T02:50:37.4673854Z Get:34 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
+2025-11-01T02:50:37.5112243Z Get:35 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
+2025-11-01T02:50:49.5070173Z Fetched 10.0 MB in 1s (7451 kB/s)
+2025-11-01T02:50:50.3154496Z Reading package lists...
+2025-11-01T02:50:50.3492475Z Reading package lists...
+2025-11-01T02:50:50.5593223Z Building dependency tree...
+2025-11-01T02:50:50.5601374Z Reading state information...
+2025-11-01T02:50:50.7851650Z libpq-dev is already the newest version (18.0-1.pgdg24.04+3).
+2025-11-01T02:50:50.7852335Z 0 upgraded, 0 newly installed, 0 to remove and 36 not upgraded.
+2025-11-01T02:50:50.7929730Z ##[group]Run ruby/setup-ruby@v1
+2025-11-01T02:50:50.7929968Z with:
+2025-11-01T02:50:50.7930143Z   ruby-version: 3.3
+2025-11-01T02:50:50.7930323Z   bundler-cache: true
+2025-11-01T02:50:50.7995620Z ##[endgroup]
+2025-11-01T02:50:51.0005825Z ##[group]Modifying PATH
+2025-11-01T02:50:51.0011454Z Entries added to PATH to use selected Ruby:
+2025-11-01T02:50:51.0016267Z   /opt/hostedtoolcache/Ruby/3.3.10/x64/bin
+2025-11-01T02:50:51.0023783Z ##[endgroup]
+2025-11-01T02:50:51.0024880Z ##[group]Print Ruby version
+2025-11-01T02:50:51.0152786Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/ruby --version
+2025-11-01T02:50:51.3227120Z ruby 3.3.10 (2025-10-23 revision 343ea05002) [x86_64-linux]
+2025-11-01T02:50:51.3260449Z Took   0.32 seconds
+2025-11-01T02:50:51.3261371Z ##[endgroup]
+2025-11-01T02:50:51.3263020Z ##[group]Installing Bundler
+2025-11-01T02:50:51.3269056Z Using Bundler 2.6.9 from Gemfile.lock BUNDLED WITH 2.6.9
+2025-11-01T02:50:51.3273385Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/gem install bundler -v 2.6.9
+2025-11-01T02:50:54.5471792Z Successfully installed bundler-2.6.9
+2025-11-01T02:50:54.5472267Z 1 gem installed
+2025-11-01T02:50:54.5527689Z Took   3.23 seconds
+2025-11-01T02:50:54.5528564Z ##[endgroup]
+2025-11-01T02:50:54.5530727Z > bundle install
+2025-11-01T02:50:54.5551701Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/bundle config --local path /home/runner/work/restaurant/restaurant/vendor/bundle
+2025-11-01T02:50:54.7331628Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/bundle config --local deployment true
+2025-11-01T02:50:54.8838902Z ##[group]Print lockfile
+2025-11-01T02:50:54.8853430Z [command]/usr/bin/cat Gemfile.lock
+2025-11-01T02:50:54.8876328Z GEM
+2025-11-01T02:50:54.8876721Z   remote: https://rubygems.org/
+2025-11-01T02:50:54.8877191Z   specs:
+2025-11-01T02:50:54.8877474Z     actioncable (8.0.4)
+2025-11-01T02:50:54.8877832Z       actionpack (= 8.0.4)
+2025-11-01T02:50:54.8878213Z       activesupport (= 8.0.4)
+2025-11-01T02:50:54.8878634Z       nio4r (~> 2.0)
+2025-11-01T02:50:54.8879009Z       websocket-driver (>= 0.6.1)
+2025-11-01T02:50:54.8879403Z       zeitwerk (~> 2.6)
+2025-11-01T02:50:54.8879750Z     actionmailbox (8.0.4)
+2025-11-01T02:50:54.8880132Z       actionpack (= 8.0.4)
+2025-11-01T02:50:54.8880480Z       activejob (= 8.0.4)
+2025-11-01T02:50:54.8880847Z       activerecord (= 8.0.4)
+2025-11-01T02:50:54.8881246Z       activestorage (= 8.0.4)
+2025-11-01T02:50:54.8881633Z       activesupport (= 8.0.4)
+2025-11-01T02:50:54.8882022Z       mail (>= 2.8.0)
+2025-11-01T02:50:54.8882363Z     actionmailer (8.0.4)
+2025-11-01T02:50:54.8882733Z       actionpack (= 8.0.4)
+2025-11-01T02:50:54.8883097Z       actionview (= 8.0.4)
+2025-11-01T02:50:54.8883459Z       activejob (= 8.0.4)
+2025-11-01T02:50:54.8883828Z       activesupport (= 8.0.4)
+2025-11-01T02:50:54.8884206Z       mail (>= 2.8.0)
+2025-11-01T02:50:54.8884546Z       rails-dom-testing (~> 2.2)
+2025-11-01T02:50:54.8884926Z     actionpack (8.0.4)
+2025-11-01T02:50:54.8885247Z       actionview (= 8.0.4)
+2025-11-01T02:50:54.8885805Z       activesupport (= 8.0.4)
+2025-11-01T02:50:54.8886194Z       nokogiri (>= 1.8.5)
+2025-11-01T02:50:54.8886529Z       rack (>= 2.2.4)
+2025-11-01T02:50:54.8886863Z       rack-session (>= 1.0.1)
+2025-11-01T02:50:54.8887225Z       rack-test (>= 0.6.3)
+2025-11-01T02:50:54.8887581Z       rails-dom-testing (~> 2.2)
+2025-11-01T02:50:54.8887980Z       rails-html-sanitizer (~> 1.6)
+2025-11-01T02:50:54.8888399Z       useragent (~> 0.16)
+2025-11-01T02:50:54.8888734Z     actiontext (8.0.4)
+2025-11-01T02:50:54.8889058Z       actionpack (= 8.0.4)
+2025-11-01T02:50:54.8889393Z       activerecord (= 8.0.4)
+2025-11-01T02:50:54.8889728Z       activestorage (= 8.0.4)
+2025-11-01T02:50:54.8890102Z       activesupport (= 8.0.4)
+2025-11-01T02:50:54.8890461Z       globalid (>= 0.6.0)
+2025-11-01T02:50:54.8890818Z       nokogiri (>= 1.8.5)
+2025-11-01T02:50:54.8891155Z     actionview (8.0.4)
+2025-11-01T02:50:54.8891489Z       activesupport (= 8.0.4)
+2025-11-01T02:50:54.8891813Z       builder (~> 3.1)
+2025-11-01T02:50:54.8892457Z       erubi (~> 1.11)
+2025-11-01T02:50:54.8893031Z       rails-dom-testing (~> 2.2)
+2025-11-01T02:50:54.8893458Z       rails-html-sanitizer (~> 1.6)
+2025-11-01T02:50:54.8893855Z     activejob (8.0.4)
+2025-11-01T02:50:54.8894213Z       activesupport (= 8.0.4)
+2025-11-01T02:50:54.8894597Z       globalid (>= 0.3.6)
+2025-11-01T02:50:54.8894942Z     activemodel (8.0.4)
+2025-11-01T02:50:54.8895295Z       activesupport (= 8.0.4)
+2025-11-01T02:50:54.8895860Z     activerecord (8.0.4)
+2025-11-01T02:50:54.8896222Z       activemodel (= 8.0.4)
+2025-11-01T02:50:54.8896592Z       activesupport (= 8.0.4)
+2025-11-01T02:50:54.8896964Z       timeout (>= 0.4.0)
+2025-11-01T02:50:54.8897310Z     activestorage (8.0.4)
+2025-11-01T02:50:54.8897675Z       actionpack (= 8.0.4)
+2025-11-01T02:50:54.8898038Z       activejob (= 8.0.4)
+2025-11-01T02:50:54.8898411Z       activerecord (= 8.0.4)
+2025-11-01T02:50:54.8898799Z       activesupport (= 8.0.4)
+2025-11-01T02:50:54.8899163Z       marcel (~> 1.0)
+2025-11-01T02:50:54.8899522Z     activesupport (8.0.4)
+2025-11-01T02:50:54.8899872Z       base64
+2025-11-01T02:50:54.8900268Z       benchmark (>= 0.3)
+2025-11-01T02:50:54.8900585Z       bigdecimal
+2025-11-01T02:50:54.8900899Z       concurrent-ruby (~> 1.0, >= 1.3.1)
+2025-11-01T02:50:54.8901334Z       connection_pool (>= 2.2.5)
+2025-11-01T02:50:54.8901702Z       drb
+2025-11-01T02:50:54.8901986Z       i18n (>= 1.6, < 2)
+2025-11-01T02:50:54.8902318Z       logger (>= 1.4.2)
+2025-11-01T02:50:54.8902660Z       minitest (>= 5.1)
+2025-11-01T02:50:54.8903004Z       securerandom (>= 0.3)
+2025-11-01T02:50:54.8903375Z       tzinfo (~> 2.0, >= 2.0.5)
+2025-11-01T02:50:54.8903728Z       uri (>= 0.13.1)
+2025-11-01T02:50:54.8904072Z     addressable (2.8.7)
+2025-11-01T02:50:54.8904432Z       public_suffix (>= 2.0.2, < 7.0)
+2025-11-01T02:50:54.8904838Z     ast (2.4.3)
+2025-11-01T02:50:54.8905150Z     base64 (0.3.0)
+2025-11-01T02:50:54.8905637Z     benchmark (0.5.0)
+2025-11-01T02:50:54.8905987Z     bigdecimal (3.3.1)
+2025-11-01T02:50:54.8906340Z     blueprinter (1.2.1)
+2025-11-01T02:50:54.8906694Z     brakeman (6.2.2)
+2025-11-01T02:50:54.8907008Z       racc
+2025-11-01T02:50:54.8907298Z     builder (3.3.0)
+2025-11-01T02:50:54.8907637Z     bundler-audit (0.9.2)
+2025-11-01T02:50:54.8908007Z       bundler (>= 1.2.0, < 3)
+2025-11-01T02:50:54.8908367Z       thor (~> 1.0)
+2025-11-01T02:50:54.8908709Z     concurrent-ruby (1.3.5)
+2025-11-01T02:50:54.8909099Z     connection_pool (2.5.4)
+2025-11-01T02:50:54.8909471Z     crass (1.0.6)
+2025-11-01T02:50:54.8909787Z     csv (3.3.5)
+2025-11-01T02:50:54.8910087Z     date (3.4.1)
+2025-11-01T02:50:54.8910401Z     debug (1.11.0)
+2025-11-01T02:50:54.8910707Z       irb (~> 1.10)
+2025-11-01T02:50:54.8911026Z       reline (>= 0.3.8)
+2025-11-01T02:50:54.8911359Z     diff-lcs (1.6.2)
+2025-11-01T02:50:54.8911699Z     docile (1.4.1)
+2025-11-01T02:50:54.8912006Z     dotenv (3.1.8)
+2025-11-01T02:50:54.8912337Z     dotenv-rails (3.1.8)
+2025-11-01T02:50:54.8912675Z       dotenv (= 3.1.8)
+2025-11-01T02:50:54.8913029Z       railties (>= 6.1)
+2025-11-01T02:50:54.8913367Z     drb (2.2.3)
+2025-11-01T02:50:54.8913704Z     dry-configurable (1.3.0)
+2025-11-01T02:50:54.8914082Z       dry-core (~> 1.1)
+2025-11-01T02:50:54.8914409Z       zeitwerk (~> 2.6)
+2025-11-01T02:50:54.8914752Z     dry-core (1.1.0)
+2025-11-01T02:50:54.8915100Z       concurrent-ruby (~> 1.0)
+2025-11-01T02:50:54.8915669Z       logger
+2025-11-01T02:50:54.8915976Z       zeitwerk (~> 2.6)
+2025-11-01T02:50:54.8916327Z     dry-inflector (1.2.0)
+2025-11-01T02:50:54.8916705Z     dry-initializer (3.2.0)
+2025-11-01T02:50:54.8917079Z     dry-logic (1.6.0)
+2025-11-01T02:50:54.8917400Z       bigdecimal
+2025-11-01T02:50:54.8917746Z       concurrent-ruby (~> 1.0)
+2025-11-01T02:50:54.8918125Z       dry-core (~> 1.1)
+2025-11-01T02:50:54.8918463Z       zeitwerk (~> 2.6)
+2025-11-01T02:50:54.8918799Z     dry-schema (1.14.1)
+2025-11-01T02:50:54.8919140Z       concurrent-ruby (~> 1.0)
+2025-11-01T02:50:54.8919561Z       dry-configurable (~> 1.0, >= 1.0.1)
+2025-11-01T02:50:54.8920239Z       dry-core (~> 1.1)
+2025-11-01T02:50:54.8920800Z       dry-initializer (~> 3.2)
+2025-11-01T02:50:54.8921184Z       dry-logic (~> 1.5)
+2025-11-01T02:50:54.8921547Z       dry-types (~> 1.8)
+2025-11-01T02:50:54.8921916Z       zeitwerk (~> 2.6)
+2025-11-01T02:50:54.8922267Z     dry-types (1.8.3)
+2025-11-01T02:50:54.8922601Z       bigdecimal (~> 3.0)
+2025-11-01T02:50:54.8922977Z       concurrent-ruby (~> 1.0)
+2025-11-01T02:50:54.8923344Z       dry-core (~> 1.0)
+2025-11-01T02:50:54.8923684Z       dry-inflector (~> 1.0)
+2025-11-01T02:50:54.8924055Z       dry-logic (~> 1.4)
+2025-11-01T02:50:54.8924408Z       zeitwerk (~> 2.6)
+2025-11-01T02:50:54.8924745Z     erb (5.1.3)
+2025-11-01T02:50:54.8925046Z     erubi (1.13.1)
+2025-11-01T02:50:54.8925367Z     factory_bot (6.5.6)
+2025-11-01T02:50:54.8925881Z       activesupport (>= 6.1.0)
+2025-11-01T02:50:54.8926258Z     factory_bot_rails (6.5.1)
+2025-11-01T02:50:54.8926612Z       factory_bot (~> 6.5)
+2025-11-01T02:50:54.8926964Z       railties (>= 6.1.0)
+2025-11-01T02:50:54.8927309Z     faker (3.5.2)
+2025-11-01T02:50:54.8927610Z       i18n (>= 1.8.11, < 2)
+2025-11-01T02:50:54.8927948Z     globalid (1.3.0)
+2025-11-01T02:50:54.8928271Z       activesupport (>= 6.1)
+2025-11-01T02:50:54.8928629Z     highline (3.1.2)
+2025-11-01T02:50:54.8928930Z       reline
+2025-11-01T02:50:54.8929215Z     i18n (1.14.7)
+2025-11-01T02:50:54.8929520Z       concurrent-ruby (~> 1.0)
+2025-11-01T02:50:54.8929879Z     i18n-tasks (1.0.15)
+2025-11-01T02:50:54.8930177Z       activesupport (>= 4.0.2)
+2025-11-01T02:50:54.8930507Z       ast (>= 2.1.0)
+2025-11-01T02:50:54.8930780Z       erubi
+2025-11-01T02:50:54.8931062Z       highline (>= 2.0.0)
+2025-11-01T02:50:54.8931950Z       i18n
+2025-11-01T02:50:54.8932209Z       parser (>= 3.2.2.1)
+2025-11-01T02:50:54.8932505Z       rails-i18n
+2025-11-01T02:50:54.8932769Z       rainbow (>= 2.2.2, < 4.0)
+2025-11-01T02:50:54.8933132Z       ruby-progressbar (~> 1.8, >= 1.8.1)
+2025-11-01T02:50:54.8933525Z       terminal-table (>= 1.5.1)
+2025-11-01T02:50:54.8933879Z     io-console (0.8.1)
+2025-11-01T02:50:54.8934177Z     irb (1.15.2)
+2025-11-01T02:50:54.8934473Z       pp (>= 0.6.0)
+2025-11-01T02:50:54.8934731Z       rdoc (>= 4.0.0)
+2025-11-01T02:50:54.8935020Z       reline (>= 0.4.2)
+2025-11-01T02:50:54.8935321Z     json (2.15.2)
+2025-11-01T02:50:54.8935833Z     json-schema (5.2.2)
+2025-11-01T02:50:54.8936161Z       addressable (~> 2.8)
+2025-11-01T02:50:54.8936484Z       bigdecimal (~> 3.1)
+2025-11-01T02:50:54.8936802Z     kind (5.10.0)
+2025-11-01T02:50:54.8937036Z     language_server-protocol (3.17.0.5)
+2025-11-01T02:50:54.8937279Z     license_finder (7.2.1)
+2025-11-01T02:50:54.8937514Z       bundler
+2025-11-01T02:50:54.8937728Z       csv (~> 3.2)
+2025-11-01T02:50:54.8937896Z       rubyzip (>= 1, < 3)
+2025-11-01T02:50:54.8938081Z       thor (~> 1.2)
+2025-11-01T02:50:54.8938288Z       tomlrb (>= 1.3, < 2.1)
+2025-11-01T02:50:54.8938546Z       with_env (= 1.1.0)
+2025-11-01T02:50:54.8938858Z       xml-simple (~> 1.1.9)
+2025-11-01T02:50:54.8939198Z     lint_roller (1.1.0)
+2025-11-01T02:50:54.8939509Z     logger (1.7.0)
+2025-11-01T02:50:54.8939808Z     loofah (2.24.1)
+2025-11-01T02:50:54.8940134Z       crass (~> 1.0.2)
+2025-11-01T02:50:54.8940464Z       nokogiri (>= 1.12.0)
+2025-11-01T02:50:54.8940817Z     mail (2.9.0)
+2025-11-01T02:50:54.8941119Z       logger
+2025-11-01T02:50:54.8941425Z       mini_mime (>= 0.1.1)
+2025-11-01T02:50:54.8941770Z       net-imap
+2025-11-01T02:50:54.8942060Z       net-pop
+2025-11-01T02:50:54.8942358Z       net-smtp
+2025-11-01T02:50:54.8942668Z     marcel (1.1.0)
+2025-11-01T02:50:54.8942985Z     mini_mime (1.1.5)
+2025-11-01T02:50:54.8943321Z     minitest (5.26.0)
+2025-11-01T02:50:54.8943645Z     net-imap (0.5.12)
+2025-11-01T02:50:54.8944003Z       date
+2025-11-01T02:50:54.8944296Z       net-protocol
+2025-11-01T02:50:54.8944631Z     net-pop (0.1.2)
+2025-11-01T02:50:54.8944951Z       net-protocol
+2025-11-01T02:50:54.8945301Z     net-protocol (0.2.2)
+2025-11-01T02:50:54.8945868Z       timeout
+2025-11-01T02:50:54.8946228Z     net-smtp (0.5.1)
+2025-11-01T02:50:54.8946800Z       net-protocol
+2025-11-01T02:50:54.8947351Z     nio4r (2.7.4)
+2025-11-01T02:50:54.8947713Z     nokogiri (1.18.10-aarch64-linux-gnu)
+2025-11-01T02:50:54.8948140Z       racc (~> 1.4)
+2025-11-01T02:50:54.8948501Z     nokogiri (1.18.10-aarch64-linux-musl)
+2025-11-01T02:50:54.8948931Z       racc (~> 1.4)
+2025-11-01T02:50:54.8949283Z     nokogiri (1.18.10-arm-linux-gnu)
+2025-11-01T02:50:54.8949696Z       racc (~> 1.4)
+2025-11-01T02:50:54.8950051Z     nokogiri (1.18.10-arm-linux-musl)
+2025-11-01T02:50:54.8950465Z       racc (~> 1.4)
+2025-11-01T02:50:54.8950810Z     nokogiri (1.18.10-arm64-darwin)
+2025-11-01T02:50:54.8951209Z       racc (~> 1.4)
+2025-11-01T02:50:54.8951553Z     nokogiri (1.18.10-x86_64-darwin)
+2025-11-01T02:50:54.8951950Z       racc (~> 1.4)
+2025-11-01T02:50:54.8952301Z     nokogiri (1.18.10-x86_64-linux-gnu)
+2025-11-01T02:50:54.8952711Z       racc (~> 1.4)
+2025-11-01T02:50:54.8953076Z     nokogiri (1.18.10-x86_64-linux-musl)
+2025-11-01T02:50:54.8953495Z       racc (~> 1.4)
+2025-11-01T02:50:54.8953820Z     ostruct (0.6.3)
+2025-11-01T02:50:54.8954155Z     pagy (6.5.0)
+2025-11-01T02:50:54.8954475Z     parallel (1.27.0)
+2025-11-01T02:50:54.8954816Z     parser (3.3.10.0)
+2025-11-01T02:50:54.8955131Z       ast (~> 2.4.1)
+2025-11-01T02:50:54.8955676Z       racc
+2025-11-01T02:50:54.8955977Z     pg (1.6.2)
+2025-11-01T02:50:54.8956306Z     pg (1.6.2-aarch64-linux)
+2025-11-01T02:50:54.8956770Z     pg (1.6.2-aarch64-linux-musl)
+2025-11-01T02:50:54.8957168Z     pg (1.6.2-arm64-darwin)
+2025-11-01T02:50:54.8957548Z     pg (1.6.2-x86_64-darwin)
+2025-11-01T02:50:54.8957922Z     pg (1.6.2-x86_64-linux)
+2025-11-01T02:50:54.8958266Z     pg (1.6.2-x86_64-linux-musl)
+2025-11-01T02:50:54.8958651Z     pp (0.6.3)
+2025-11-01T02:50:54.8958958Z       prettyprint
+2025-11-01T02:50:54.8959291Z     prettyprint (0.2.0)
+2025-11-01T02:50:54.8959632Z     prism (1.6.0)
+2025-11-01T02:50:54.8959951Z     psych (5.2.6)
+2025-11-01T02:50:54.8960259Z       date
+2025-11-01T02:50:54.8960550Z       stringio
+2025-11-01T02:50:54.8960883Z     public_suffix (6.0.2)
+2025-11-01T02:50:54.8961259Z     puma (7.1.0)
+2025-11-01T02:50:54.8961576Z       nio4r (~> 2.0)
+2025-11-01T02:50:54.8961891Z     racc (1.8.1)
+2025-11-01T02:50:54.8962196Z     rack (3.2.3)
+2025-11-01T02:50:54.8962517Z     rack-session (2.1.1)
+2025-11-01T02:50:54.8962882Z       base64 (>= 0.1.0)
+2025-11-01T02:50:54.8963218Z       rack (>= 3.0.0)
+2025-11-01T02:50:54.8963558Z     rack-test (2.2.0)
+2025-11-01T02:50:54.8963877Z       rack (>= 1.3)
+2025-11-01T02:50:54.8964200Z     rackup (2.2.1)
+2025-11-01T02:50:54.8964502Z       rack (>= 3)
+2025-11-01T02:50:54.8964809Z     rails (8.0.4)
+2025-11-01T02:50:54.8965131Z       actioncable (= 8.0.4)
+2025-11-01T02:50:54.8965750Z       actionmailbox (= 8.0.4)
+2025-11-01T02:50:54.8966139Z       actionmailer (= 8.0.4)
+2025-11-01T02:50:54.8966522Z       actionpack (= 8.0.4)
+2025-11-01T02:50:54.8966898Z       actiontext (= 8.0.4)
+2025-11-01T02:50:54.8967259Z       actionview (= 8.0.4)
+2025-11-01T02:50:54.8967630Z       activejob (= 8.0.4)
+2025-11-01T02:50:54.8968007Z       activemodel (= 8.0.4)
+2025-11-01T02:50:54.8968395Z       activerecord (= 8.0.4)
+2025-11-01T02:50:54.8968748Z       activestorage (= 8.0.4)
+2025-11-01T02:50:54.8969136Z       activesupport (= 8.0.4)
+2025-11-01T02:50:54.8969504Z       bundler (>= 1.15.0)
+2025-11-01T02:50:54.8969858Z       railties (= 8.0.4)
+2025-11-01T02:50:54.8970223Z     rails-dom-testing (2.3.0)
+2025-11-01T02:50:54.8970621Z       activesupport (>= 5.0.0)
+2025-11-01T02:50:54.8970996Z       minitest
+2025-11-01T02:50:54.8971256Z       nokogiri (>= 1.6)
+2025-11-01T02:50:54.8971599Z     rails-html-sanitizer (1.6.2)
+2025-11-01T02:50:54.8971985Z       loofah (~> 2.21)
+2025-11-01T02:50:54.8972516Z       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
+2025-11-01T02:50:54.8973133Z     rails-i18n (8.0.2)
+2025-11-01T02:50:54.8973483Z       i18n (>= 0.7, < 2)
+2025-11-01T02:50:54.8973833Z       railties (>= 8.0.0, < 9)
+2025-11-01T02:50:54.8974196Z     railties (8.0.4)
+2025-11-01T02:50:54.8974760Z       actionpack (= 8.0.4)
+2025-11-01T02:50:54.8975349Z       activesupport (= 8.0.4)
+2025-11-01T02:50:54.8975971Z       irb (~> 1.13)
+2025-11-01T02:50:54.8976307Z       rackup (>= 1.0.0)
+2025-11-01T02:50:54.8976649Z       rake (>= 12.2)
+2025-11-01T02:50:54.8976985Z       thor (~> 1.0, >= 1.2.2)
+2025-11-01T02:50:54.8977361Z       tsort (>= 0.2)
+2025-11-01T02:50:54.8977685Z       zeitwerk (~> 2.6)
+2025-11-01T02:50:54.8978029Z     rainbow (3.1.1)
+2025-11-01T02:50:54.8978358Z     rake (13.3.0)
+2025-11-01T02:50:54.8978693Z     rdoc (6.15.0)
+2025-11-01T02:50:54.8978997Z       erb
+2025-11-01T02:50:54.8979303Z       psych (>= 4.0.0)
+2025-11-01T02:50:54.8979634Z       tsort
+2025-11-01T02:50:54.8979937Z     reek (6.5.0)
+2025-11-01T02:50:54.8980273Z       dry-schema (~> 1.13)
+2025-11-01T02:50:54.8980635Z       logger (~> 1.6)
+2025-11-01T02:50:54.8980986Z       parser (~> 3.3.0)
+2025-11-01T02:50:54.8981333Z       rainbow (>= 2.0, < 4.0)
+2025-11-01T02:50:54.8981709Z       rexml (~> 3.1)
+2025-11-01T02:50:54.8982072Z     regexp_parser (2.11.3)
+2025-11-01T02:50:54.8982451Z     reline (0.6.2)
+2025-11-01T02:50:54.8982781Z       io-console (~> 0.5)
+2025-11-01T02:50:54.8983144Z     rexml (3.4.4)
+2025-11-01T02:50:54.8983470Z     rspec-core (3.13.6)
+2025-11-01T02:50:54.8983842Z       rspec-support (~> 3.13.0)
+2025-11-01T02:50:54.8984247Z     rspec-expectations (3.13.5)
+2025-11-01T02:50:54.8984658Z       diff-lcs (>= 1.2.0, < 2.0)
+2025-11-01T02:50:54.8985064Z       rspec-support (~> 3.13.0)
+2025-11-01T02:50:54.8985614Z     rspec-mocks (3.13.6)
+2025-11-01T02:50:54.8985970Z       diff-lcs (>= 1.2.0, < 2.0)
+2025-11-01T02:50:54.8986360Z       rspec-support (~> 3.13.0)
+2025-11-01T02:50:54.8986761Z     rspec-rails (6.1.5)
+2025-11-01T02:50:54.8987119Z       actionpack (>= 6.1)
+2025-11-01T02:50:54.8987501Z       activesupport (>= 6.1)
+2025-11-01T02:50:54.8987878Z       railties (>= 6.1)
+2025-11-01T02:50:54.8988236Z       rspec-core (~> 3.13)
+2025-11-01T02:50:54.8988632Z       rspec-expectations (~> 3.13)
+2025-11-01T02:50:54.8989076Z       rspec-mocks (~> 3.13)
+2025-11-01T02:50:54.8989483Z       rspec-support (~> 3.13)
+2025-11-01T02:50:54.8989874Z     rspec-support (3.13.6)
+2025-11-01T02:50:54.8990269Z     rspec_junit_formatter (0.6.0)
+2025-11-01T02:50:54.8990687Z       rspec-core (>= 2, < 4, != 2.12.0)
+2025-11-01T02:50:54.8991117Z     rswag-api (2.16.0)
+2025-11-01T02:50:54.8991461Z       activesupport (>= 5.2, < 8.1)
+2025-11-01T02:50:54.8991849Z       railties (>= 5.2, < 8.1)
+2025-11-01T02:50:54.8992198Z     rswag-specs (2.16.0)
+2025-11-01T02:50:54.8992537Z       activesupport (>= 5.2, < 8.1)
+2025-11-01T02:50:54.8992911Z       json-schema (>= 2.2, < 6.0)
+2025-11-01T02:50:54.8993295Z       railties (>= 5.2, < 8.1)
+2025-11-01T02:50:54.8993673Z       rspec-core (>= 2.14)
+2025-11-01T02:50:54.8994011Z     rswag-ui (2.16.0)
+2025-11-01T02:50:54.8994343Z       actionpack (>= 5.2, < 8.1)
+2025-11-01T02:50:54.8994715Z       railties (>= 5.2, < 8.1)
+2025-11-01T02:50:54.8995075Z     rubocop (1.81.6)
+2025-11-01T02:50:54.8995402Z       json (~> 2.3)
+2025-11-01T02:50:54.8995962Z       language_server-protocol (~> 3.17.0.2)
+2025-11-01T02:50:54.8996376Z       lint_roller (~> 1.1.0)
+2025-11-01T02:50:54.8996727Z       parallel (~> 1.10)
+2025-11-01T02:50:54.8997053Z       parser (>= 3.3.0.2)
+2025-11-01T02:50:54.8997389Z       rainbow (>= 2.2.2, < 4.0)
+2025-11-01T02:50:54.8997760Z       regexp_parser (>= 2.9.3, < 3.0)
+2025-11-01T02:50:54.8998147Z       rubocop-ast (>= 1.47.1, < 2.0)
+2025-11-01T02:50:54.8998530Z       ruby-progressbar (~> 1.7)
+2025-11-01T02:50:54.8998911Z       unicode-display_width (>= 2.4.0, < 4.0)
+2025-11-01T02:50:54.8999324Z     rubocop-ast (1.47.1)
+2025-11-01T02:50:54.8999651Z       parser (>= 3.3.7.2)
+2025-11-01T02:50:54.8999971Z       prism (~> 1.4)
+2025-11-01T02:50:54.9000288Z     rubocop-capybara (2.22.1)
+2025-11-01T02:50:54.9000655Z       lint_roller (~> 1.1)
+2025-11-01T02:50:54.9001023Z       rubocop (~> 1.72, >= 1.72.1)
+2025-11-01T02:50:54.9001411Z     rubocop-factory_bot (2.27.1)
+2025-11-01T02:50:54.9001797Z       lint_roller (~> 1.1)
+2025-11-01T02:50:54.9002101Z       rubocop (~> 1.72, >= 1.72.1)
+2025-11-01T02:50:54.9002317Z     rubocop-rails (2.33.4)
+2025-11-01T02:50:54.9002515Z       activesupport (>= 4.2.0)
+2025-11-01T02:50:54.9002721Z       lint_roller (~> 1.1)
+2025-11-01T02:50:54.9002906Z       rack (>= 1.1)
+2025-11-01T02:50:54.9003085Z       rubocop (>= 1.75.0, < 2.0)
+2025-11-01T02:50:54.9003289Z       rubocop-ast (>= 1.44.0, < 2.0)
+2025-11-01T02:50:54.9003510Z     rubocop-rspec (2.31.0)
+2025-11-01T02:50:54.9003698Z       rubocop (~> 1.40)
+2025-11-01T02:50:54.9003894Z       rubocop-capybara (~> 2.17)
+2025-11-01T02:50:54.9004108Z       rubocop-factory_bot (~> 2.22)
+2025-11-01T02:50:54.9004333Z       rubocop-rspec_rails (~> 2.28)
+2025-11-01T02:50:54.9004557Z     rubocop-rspec_rails (2.29.1)
+2025-11-01T02:50:54.9004759Z       rubocop (~> 1.61)
+2025-11-01T02:50:54.9004951Z     ruby-progressbar (1.13.0)
+2025-11-01T02:50:54.9005152Z     rubyzip (2.4.1)
+2025-11-01T02:50:54.9005333Z     securerandom (0.4.1)
+2025-11-01T02:50:54.9005784Z     shoulda-matchers (6.5.0)
+2025-11-01T02:50:54.9006008Z       activesupport (>= 5.2.0)
+2025-11-01T02:50:54.9006207Z     simplecov (0.22.0)
+2025-11-01T02:50:54.9006393Z       docile (~> 1.1)
+2025-11-01T02:50:54.9006578Z       simplecov-html (~> 0.11)
+2025-11-01T02:50:54.9006802Z       simplecov_json_formatter (~> 0.1)
+2025-11-01T02:50:54.9007041Z     simplecov-html (0.13.2)
+2025-11-01T02:50:54.9007248Z     simplecov_json_formatter (0.1.4)
+2025-11-01T02:50:54.9007468Z     stringio (3.1.7)
+2025-11-01T02:50:54.9007648Z     terminal-table (4.0.0)
+2025-11-01T02:50:54.9007861Z       unicode-display_width (>= 1.1.1, < 4)
+2025-11-01T02:50:54.9008083Z     thor (1.4.0)
+2025-11-01T02:50:54.9008254Z     timeout (0.4.3)
+2025-11-01T02:50:54.9008421Z     tomlrb (2.0.3)
+2025-11-01T02:50:54.9008588Z     tsort (0.2.0)
+2025-11-01T02:50:54.9008751Z     tzinfo (2.0.6)
+2025-11-01T02:50:54.9008929Z       concurrent-ruby (~> 1.0)
+2025-11-01T02:50:54.9009131Z     u-attributes (2.8.0)
+2025-11-01T02:50:54.9009335Z       kind (>= 4.0, < 6.0)
+2025-11-01T02:50:54.9009529Z     u-case (4.5.2)
+2025-11-01T02:50:54.9009701Z       kind (>= 5.6, < 6.0)
+2025-11-01T02:50:54.9009902Z       u-attributes (>= 2.7, < 3.0)
+2025-11-01T02:50:54.9010125Z     unicode-display_width (3.2.0)
+2025-11-01T02:50:54.9010351Z       unicode-emoji (~> 4.1)
+2025-11-01T02:50:54.9010552Z     unicode-emoji (4.1.0)
+2025-11-01T02:50:54.9010743Z     uri (1.0.4)
+2025-11-01T02:50:54.9010908Z     useragent (0.16.11)
+2025-11-01T02:50:54.9011104Z     websocket-driver (0.8.0)
+2025-11-01T02:50:54.9011295Z       base64
+2025-11-01T02:50:54.9011479Z       websocket-extensions (>= 0.1.0)
+2025-11-01T02:50:54.9011716Z     websocket-extensions (0.1.5)
+2025-11-01T02:50:54.9011923Z     with_env (1.1.0)
+2025-11-01T02:50:54.9012106Z     xml-simple (1.1.9)
+2025-11-01T02:50:54.9012278Z       rexml
+2025-11-01T02:50:54.9012439Z     zeitwerk (2.7.3)
+2025-11-01T02:50:54.9012548Z 
+2025-11-01T02:50:54.9012622Z PLATFORMS
+2025-11-01T02:50:54.9012792Z   aarch64-linux
+2025-11-01T02:50:54.9012971Z   aarch64-linux-gnu
+2025-11-01T02:50:54.9013164Z   aarch64-linux-musl
+2025-11-01T02:50:54.9013341Z   arm-linux-gnu
+2025-11-01T02:50:54.9013512Z   arm-linux-musl
+2025-11-01T02:50:54.9013680Z   arm64-darwin
+2025-11-01T02:50:54.9013849Z   x86_64-darwin
+2025-11-01T02:50:54.9014012Z   x86_64-linux
+2025-11-01T02:50:54.9014166Z   x86_64-linux-gnu
+2025-11-01T02:50:54.9014336Z   x86_64-linux-musl
+2025-11-01T02:50:54.9014442Z 
+2025-11-01T02:50:54.9014509Z DEPENDENCIES
+2025-11-01T02:50:54.9014681Z   blueprinter (~> 1.0)
+2025-11-01T02:50:54.9014862Z   brakeman (~> 6.1)
+2025-11-01T02:50:54.9015045Z   bundler-audit (~> 0.9)
+2025-11-01T02:50:54.9015232Z   debug
+2025-11-01T02:50:54.9015388Z   dotenv-rails
+2025-11-01T02:50:54.9015709Z   factory_bot_rails (~> 6.4)
+2025-11-01T02:50:54.9015915Z   faker (~> 3.2)
+2025-11-01T02:50:54.9016079Z   i18n-tasks
+2025-11-01T02:50:54.9016241Z   license_finder
+2025-11-01T02:50:54.9016405Z   ostruct
+2025-11-01T02:50:54.9016554Z   pagy (~> 6.0)
+2025-11-01T02:50:54.9016718Z   pg (~> 1.1)
+2025-11-01T02:50:54.9017003Z   puma (>= 5.0)
+2025-11-01T02:50:54.9017270Z   rails (~> 8.0.2)
+2025-11-01T02:50:54.9017436Z   rails-i18n
+2025-11-01T02:50:54.9017592Z   reek
+2025-11-01T02:50:54.9017747Z   rspec-rails (~> 6.1)
+2025-11-01T02:50:54.9017945Z   rspec_junit_formatter (~> 0.6)
+2025-11-01T02:50:54.9018159Z   rswag-api (~> 2.13)
+2025-11-01T02:50:54.9018348Z   rswag-specs (~> 2.13)
+2025-11-01T02:50:54.9018531Z   rswag-ui (~> 2.13)
+2025-11-01T02:50:54.9018714Z   rubocop (~> 1.59)
+2025-11-01T02:50:54.9018893Z   rubocop-rails (~> 2.23)
+2025-11-01T02:50:54.9019101Z   rubocop-rspec (~> 2.26)
+2025-11-01T02:50:54.9019307Z   shoulda-matchers (~> 6.0)
+2025-11-01T02:50:54.9019506Z   simplecov (~> 0.22)
+2025-11-01T02:50:54.9019689Z   tzinfo-data
+2025-11-01T02:50:54.9019846Z   u-case (~> 4.5)
+2025-11-01T02:50:54.9019954Z 
+2025-11-01T02:50:54.9020025Z BUNDLED WITH
+2025-11-01T02:50:54.9020177Z    2.6.9
+2025-11-01T02:50:54.9020976Z ##[endgroup]
+2025-11-01T02:50:54.9021842Z Cache key: setup-ruby-bundler-cache-v6-ubuntu-24.04-x64-ruby-3.3.10-wd-/home/runner/work/restaurant/restaurant-with--without--only--Gemfile.lock-d55fc1d3465e457c9082700b0ff103cce4170f5a7a5755fdbc99aa04b04c6fe6
+2025-11-01T02:50:55.1861266Z Cache hit for: setup-ruby-bundler-cache-v6-ubuntu-24.04-x64-ruby-3.3.10-wd-/home/runner/work/restaurant/restaurant-with--without--only--Gemfile.lock-d55fc1d3465e457c9082700b0ff103cce4170f5a7a5755fdbc99aa04b04c6fe6
+2025-11-01T02:50:56.4711154Z Received 0 of 58822349 (0.0%), 0.0 MBs/sec
+2025-11-01T02:50:56.8833515Z Received 58822349 of 58822349 (100.0%), 39.7 MBs/sec
+2025-11-01T02:50:56.8836127Z Cache Size: ~56 MB (58822349 B)
+2025-11-01T02:50:56.8874207Z [command]/usr/bin/tar -xf /home/runner/work/_temp/4314ab5f-360a-4f99-a263-51332d3b580c/cache.tzst -P -C /home/runner/work/restaurant/restaurant --use-compress-program unzstd
+2025-11-01T02:50:57.4950024Z Cache restored successfully
+2025-11-01T02:50:57.5076851Z Found cache for key: setup-ruby-bundler-cache-v6-ubuntu-24.04-x64-ruby-3.3.10-wd-/home/runner/work/restaurant/restaurant-with--without--only--Gemfile.lock-d55fc1d3465e457c9082700b0ff103cce4170f5a7a5755fdbc99aa04b04c6fe6
+2025-11-01T02:50:57.5087624Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/bundle install --jobs 4
+2025-11-01T02:50:58.0100701Z Bundle complete! 28 Gemfile dependencies, 137 gems now installed.
+2025-11-01T02:50:58.0102499Z Bundled gems are installed into `./vendor/bundle`
+2025-11-01T02:50:58.0105048Z 1 installed gem you directly depend on is looking for funding.
+2025-11-01T02:50:58.0105858Z   Run `bundle fund` for details
+2025-11-01T02:50:58.0247934Z Took   3.47 seconds
+2025-11-01T02:50:58.0355392Z ##[group]Run bundle exec rubocop
+2025-11-01T02:50:58.0356119Z [36;1mbundle exec rubocop[0m
+2025-11-01T02:50:58.0390429Z shell: /usr/bin/bash -e {0}
+2025-11-01T02:50:58.0390670Z ##[endgroup]
+2025-11-01T02:51:00.5187846Z Warning: Using `RSpec/Capybara/CurrentPathExpectation` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/CurrentPathExpectation`.
+2025-11-01T02:51:00.5189716Z Warning: Using `RSpec/Capybara/MatchStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/MatchStyle`.
+2025-11-01T02:51:00.5191485Z Warning: Using `RSpec/Capybara/NegationMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/NegationMatcher`.
+2025-11-01T02:51:00.5193284Z Warning: Using `RSpec/Capybara/SpecificActions` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificActions`.
+2025-11-01T02:51:00.5195314Z Warning: Using `RSpec/Capybara/SpecificFinders` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificFinders`.
+2025-11-01T02:51:00.5197256Z Warning: Using `RSpec/Capybara/SpecificMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificMatcher`.
+2025-11-01T02:51:00.5199108Z Warning: Using `RSpec/Capybara/VisibilityMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/VisibilityMatcher`.
+2025-11-01T02:51:00.5201585Z Warning: Using `RSpec/FactoryBot/AttributeDefinedStatically` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/AttributeDefinedStatically`.
+2025-11-01T02:51:00.5203808Z Warning: Using `RSpec/FactoryBot/ConsistentParenthesesStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/ConsistentParenthesesStyle`.
+2025-11-01T02:51:00.5205921Z Warning: Using `RSpec/FactoryBot/CreateList` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/CreateList`.
+2025-11-01T02:51:00.5207748Z Warning: Using `RSpec/FactoryBot/FactoryClassName` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/FactoryClassName`.
+2025-11-01T02:51:00.5209618Z Warning: Using `RSpec/FactoryBot/FactoryNameStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/FactoryNameStyle`.
+2025-11-01T02:51:00.5211446Z Warning: Using `RSpec/FactoryBot/SyntaxMethods` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/SyntaxMethods`.
+2025-11-01T02:51:00.5213222Z Warning: Using `RSpec/Rails/AvoidSetupHook` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/AvoidSetupHook`.
+2025-11-01T02:51:00.5214955Z Warning: Using `RSpec/Rails/HaveHttpStatus` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/HaveHttpStatus`.
+2025-11-01T02:51:00.5226911Z Warning: Using `RSpec/Rails/HttpStatus` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/HttpStatus`.
+2025-11-01T02:51:00.5228664Z Warning: Using `RSpec/Rails/InferredSpecType` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/InferredSpecType`.
+2025-11-01T02:51:00.5230510Z Warning: Using `RSpec/Rails/MinitestAssertions` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/MinitestAssertions`.
+2025-11-01T02:51:00.5232363Z Warning: Using `RSpec/Rails/NegationBeValid` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/NegationBeValid`.
+2025-11-01T02:51:00.5234115Z Warning: Using `RSpec/Rails/TravelAround` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/TravelAround`.
+2025-11-01T02:51:00.5266916Z Warning: Using `RSpec/Capybara/CurrentPathExpectation` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/CurrentPathExpectation`.
+2025-11-01T02:51:00.5269200Z Warning: Using `RSpec/Capybara/MatchStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/MatchStyle`.
+2025-11-01T02:51:00.5270984Z Warning: Using `RSpec/Capybara/NegationMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/NegationMatcher`.
+2025-11-01T02:51:00.5272802Z Warning: Using `RSpec/Capybara/SpecificActions` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificActions`.
+2025-11-01T02:51:00.5274612Z Warning: Using `RSpec/Capybara/SpecificFinders` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificFinders`.
+2025-11-01T02:51:00.5276563Z Warning: Using `RSpec/Capybara/SpecificMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificMatcher`.
+2025-11-01T02:51:00.5278402Z Warning: Using `RSpec/Capybara/VisibilityMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/VisibilityMatcher`.
+2025-11-01T02:51:00.5280443Z Warning: Using `RSpec/FactoryBot/AttributeDefinedStatically` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/AttributeDefinedStatically`.
+2025-11-01T02:51:00.5282623Z Warning: Using `RSpec/FactoryBot/ConsistentParenthesesStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/ConsistentParenthesesStyle`.
+2025-11-01T02:51:00.5284581Z Warning: Using `RSpec/FactoryBot/CreateList` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/CreateList`.
+2025-11-01T02:51:00.5286869Z Warning: Using `RSpec/Capybara/CurrentPathExpectation` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/CurrentPathExpectation`.
+2025-11-01T02:51:00.5293254Z Warning: Using `RSpec/FactoryBot/FactoryClassName` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/FactoryClassName`.
+2025-11-01T02:51:00.5295168Z Warning: Using `RSpec/FactoryBot/FactoryNameStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/FactoryNameStyle`.
+2025-11-01T02:51:00.5297226Z Warning: Using `RSpec/FactoryBot/SyntaxMethods` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/SyntaxMethods`.
+2025-11-01T02:51:00.5298981Z Warning: Using `RSpec/Rails/AvoidSetupHook` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/AvoidSetupHook`.
+2025-11-01T02:51:00.5300748Z Warning: Using `RSpec/Rails/HaveHttpStatus` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/HaveHttpStatus`.
+2025-11-01T02:51:00.5302453Z Warning: Using `RSpec/Rails/HttpStatus` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/HttpStatus`.
+2025-11-01T02:51:00.5304077Z Warning: Using `RSpec/Capybara/MatchStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/MatchStyle`.
+2025-11-01T02:51:00.5316270Z Warning: Using `RSpec/Rails/InferredSpecType` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/InferredSpecType`.
+2025-11-01T02:51:00.5318188Z Warning: Using `RSpec/Rails/MinitestAssertions` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/MinitestAssertions`.
+2025-11-01T02:51:00.5319993Z Warning: Using `RSpec/Rails/NegationBeValid` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/NegationBeValid`.
+2025-11-01T02:51:00.5321803Z Warning: Using `RSpec/Capybara/NegationMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/NegationMatcher`.
+2025-11-01T02:51:00.5323539Z Warning: Using `RSpec/Rails/TravelAround` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/TravelAround`.
+2025-11-01T02:51:00.5325732Z Warning: Using `RSpec/Capybara/SpecificActions` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificActions`.
+2025-11-01T02:51:00.5327575Z Warning: Using `RSpec/Capybara/SpecificFinders` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificFinders`.
+2025-11-01T02:51:00.5329379Z Warning: Using `RSpec/Capybara/SpecificMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificMatcher`.
+2025-11-01T02:51:00.5331190Z Warning: Using `RSpec/Capybara/VisibilityMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/VisibilityMatcher`.
+2025-11-01T02:51:00.5333209Z Warning: Using `RSpec/FactoryBot/AttributeDefinedStatically` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/AttributeDefinedStatically`.
+2025-11-01T02:51:00.5335386Z Warning: Using `RSpec/FactoryBot/ConsistentParenthesesStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/ConsistentParenthesesStyle`.
+2025-11-01T02:51:00.5337660Z Warning: Using `RSpec/Capybara/CurrentPathExpectation` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/CurrentPathExpectation`.
+2025-11-01T02:51:00.5339515Z Warning: Using `RSpec/FactoryBot/CreateList` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/CreateList`.
+2025-11-01T02:51:00.5386826Z Warning: Using `RSpec/FactoryBot/FactoryClassName` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/FactoryClassName`.
+2025-11-01T02:51:00.5388954Z Warning: Using `RSpec/FactoryBot/FactoryNameStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/FactoryNameStyle`.
+2025-11-01T02:51:00.5390768Z Warning: Using `RSpec/FactoryBot/SyntaxMethods` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/SyntaxMethods`.
+2025-11-01T02:51:00.5392557Z Warning: Using `RSpec/Rails/AvoidSetupHook` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/AvoidSetupHook`.
+2025-11-01T02:51:00.5394284Z Warning: Using `RSpec/Rails/HaveHttpStatus` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/HaveHttpStatus`.
+2025-11-01T02:51:00.5396126Z Warning: Using `RSpec/Rails/HttpStatus` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/HttpStatus`.
+2025-11-01T02:51:00.5397842Z Warning: Using `RSpec/Rails/InferredSpecType` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/InferredSpecType`.
+2025-11-01T02:51:00.5399662Z Warning: Using `RSpec/Rails/MinitestAssertions` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/MinitestAssertions`.
+2025-11-01T02:51:00.5401482Z Warning: Using `RSpec/Rails/NegationBeValid` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/NegationBeValid`.
+2025-11-01T02:51:00.5403192Z Warning: Using `RSpec/Rails/TravelAround` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/TravelAround`.
+2025-11-01T02:51:00.5404855Z Warning: Using `RSpec/Capybara/MatchStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/MatchStyle`.
+2025-11-01T02:51:00.5406735Z Warning: Using `RSpec/Capybara/NegationMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/NegationMatcher`.
+2025-11-01T02:51:00.5408510Z Warning: Using `RSpec/Capybara/SpecificActions` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificActions`.
+2025-11-01T02:51:00.5410311Z Warning: Using `RSpec/Capybara/SpecificFinders` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificFinders`.
+2025-11-01T02:51:00.5412086Z Warning: Using `RSpec/Capybara/SpecificMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/SpecificMatcher`.
+2025-11-01T02:51:00.5414111Z Warning: Using `RSpec/Capybara/VisibilityMatcher` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `Capybara/VisibilityMatcher`.
+2025-11-01T02:51:00.5416291Z Warning: Using `RSpec/FactoryBot/AttributeDefinedStatically` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/AttributeDefinedStatically`.
+2025-11-01T02:51:00.5418462Z Warning: Using `RSpec/FactoryBot/ConsistentParenthesesStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/ConsistentParenthesesStyle`.
+2025-11-01T02:51:00.5420300Z Warning: Using `RSpec/FactoryBot/CreateList` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/CreateList`.
+2025-11-01T02:51:00.5421864Z Warning: Using `RSpec/FactoryBot/FactoryClassName` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/FactoryClassName`.
+2025-11-01T02:51:00.5423513Z Warning: Using `RSpec/FactoryBot/FactoryNameStyle` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/FactoryNameStyle`.
+2025-11-01T02:51:00.5425160Z Warning: Using `RSpec/FactoryBot/SyntaxMethods` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `FactoryBot/SyntaxMethods`.
+2025-11-01T02:51:00.5426854Z Warning: Using `RSpec/Rails/AvoidSetupHook` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/AvoidSetupHook`.
+2025-11-01T02:51:00.5428361Z Warning: Using `RSpec/Rails/HaveHttpStatus` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/HaveHttpStatus`.
+2025-11-01T02:51:00.5430046Z Warning: Using `RSpec/Rails/HttpStatus` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/HttpStatus`.
+2025-11-01T02:51:00.5431566Z Warning: Using `RSpec/Rails/InferredSpecType` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/InferredSpecType`.
+2025-11-01T02:51:00.5433212Z Warning: Using `RSpec/Rails/MinitestAssertions` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/MinitestAssertions`.
+2025-11-01T02:51:00.5434724Z Warning: Using `RSpec/Rails/NegationBeValid` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/NegationBeValid`.
+2025-11-01T02:51:00.5486608Z Warning: Using `RSpec/Rails/TravelAround` configuration in /home/runner/work/restaurant/restaurant/.rubocop.yml for `RSpecRails/TravelAround`.
+2025-11-01T02:51:01.2552609Z Inspecting 61 files
+2025-11-01T02:51:01.2553191Z ..CCCCC..CC..........WWW.C..................................C
+2025-11-01T02:51:01.2553639Z 
+2025-11-01T02:51:01.2553762Z Offenses:
+2025-11-01T02:51:01.2553927Z 
+2025-11-01T02:51:01.2554420Z app/blueprints/menu_blueprint.rb:16:65: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+2025-11-01T02:51:01.2555931Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2556891Z                                                                 ^^^^
+2025-11-01T02:51:01.2558124Z app/blueprints/menu_blueprint.rb:16:84: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
+2025-11-01T02:51:01.2559876Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2560822Z                                                                                    ^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2561651Z app/blueprints/menu_blueprint.rb:16:121: C: [Correctable] Layout/LineLength: Line is too long. [139/120]
+2025-11-01T02:51:01.2562907Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2563853Z                                                                                                                         ^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2565220Z app/blueprints/menu_blueprint.rb:24:5: C: Metrics/AbcSize: Assignment Branch Condition size for render_as_hash is too high. [<6, 16, 11> 20.32/17]
+2025-11-01T02:51:01.2566457Z     def render_as_hash(object, **options) ...
+2025-11-01T02:51:01.2566911Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2567866Z app/blueprints/menu_blueprint.rb:24:5: C: Metrics/CyclomaticComplexity: Cyclomatic complexity for render_as_hash is too high. [10/7]
+2025-11-01T02:51:01.2568864Z     def render_as_hash(object, **options) ...
+2025-11-01T02:51:01.2569311Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2570033Z app/blueprints/menu_blueprint.rb:24:5: C: Metrics/MethodLength: Method has too many lines. [22/10]
+2025-11-01T02:51:01.2570814Z     def render_as_hash(object, **options) ...
+2025-11-01T02:51:01.2571254Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2572194Z app/blueprints/menu_blueprint.rb:24:5: C: Metrics/PerceivedComplexity: Perceived complexity for render_as_hash is too high. [12/8]
+2025-11-01T02:51:01.2573174Z     def render_as_hash(object, **options) ...
+2025-11-01T02:51:01.2573611Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2574353Z app/blueprints/menu_blueprint.rb:30:74: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+2025-11-01T02:51:01.2575765Z                    ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2576980Z                                                                          ^^^^
+2025-11-01T02:51:01.2578210Z app/blueprints/menu_blueprint.rb:30:93: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
+2025-11-01T02:51:01.2579859Z                    ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2580813Z                                                                                             ^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2581617Z app/blueprints/menu_blueprint.rb:30:121: C: [Correctable] Layout/LineLength: Line is too long. [148/120]
+2025-11-01T02:51:01.2582837Z                    ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2583813Z                                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2584598Z app/blueprints/menu_blueprint.rb:35:16: C: [Correctable] Style/EmptyElse: Redundant else-clause.
+2025-11-01T02:51:01.2585335Z                else
+2025-11-01T02:51:01.2585809Z                ^^^^
+2025-11-01T02:51:01.2586729Z app/blueprints/menu_blueprint.rb:47:29: C: [Correctable] Style/SoleNestedConditional: Consider merging nested conditions into outer if conditions.
+2025-11-01T02:51:01.2587827Z         result[:items] = [] unless result.key?(:items)
+2025-11-01T02:51:01.2588316Z                             ^^^^^^
+2025-11-01T02:51:01.2589051Z app/blueprints/menu_blueprint.rb:58:7: C: [Correctable] Style/RedundantBegin: Redundant begin block detected.
+2025-11-01T02:51:01.2589845Z       begin
+2025-11-01T02:51:01.2590124Z       ^^^^^
+2025-11-01T02:51:01.2590761Z app/blueprints/menu_item_blueprint.rb:14:65: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+2025-11-01T02:51:01.2592025Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2592916Z                                                                 ^^^^
+2025-11-01T02:51:01.2594058Z app/blueprints/menu_item_blueprint.rb:14:84: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
+2025-11-01T02:51:01.2596008Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2596930Z                                                                                    ^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2597783Z app/blueprints/menu_item_blueprint.rb:14:121: C: [Correctable] Layout/LineLength: Line is too long. [139/120]
+2025-11-01T02:51:01.2598950Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2599827Z                                                                                                                         ^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2600587Z app/blueprints/menu_item_blueprint.rb:22:5: C: Metrics/MethodLength: Method has too many lines. [16/10]
+2025-11-01T02:51:01.2601360Z     def render_as_hash(object, **options) ...
+2025-11-01T02:51:01.2601801Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2602719Z app/blueprints/menu_item_blueprint.rb:22:5: C: Metrics/PerceivedComplexity: Perceived complexity for render_as_hash is too high. [9/8]
+2025-11-01T02:51:01.2603669Z     def render_as_hash(object, **options) ...
+2025-11-01T02:51:01.2604076Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2604794Z app/blueprints/menu_item_blueprint.rb:28:65: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+2025-11-01T02:51:01.2606141Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2607184Z                                                                 ^^^^
+2025-11-01T02:51:01.2631117Z app/blueprints/menu_item_blueprint.rb:28:84: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
+2025-11-01T02:51:01.2632795Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2633694Z                                                                                    ^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2634485Z app/blueprints/menu_item_blueprint.rb:28:121: C: [Correctable] Layout/LineLength: Line is too long. [139/120]
+2025-11-01T02:51:01.2635848Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2636748Z                                                                                                                         ^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2637634Z app/blueprints/menu_item_blueprint.rb:32:24: C: [Correctable] Style/IfInsideElse: Convert if nested inside else to elsif.
+2025-11-01T02:51:01.2638469Z         parsed = super if defined?(super)
+2025-11-01T02:51:01.2638879Z                        ^^
+2025-11-01T02:51:01.2639578Z app/blueprints/menu_item_blueprint.rb:47:7: C: [Correctable] Style/RedundantBegin: Redundant begin block detected.
+2025-11-01T02:51:01.2640316Z       begin
+2025-11-01T02:51:01.2640575Z       ^^^^^
+2025-11-01T02:51:01.2641192Z app/blueprints/menu_item_blueprint.rb:48:9: C: [Correctable] Style/RedundantReturn: Redundant return detected.
+2025-11-01T02:51:01.2641932Z         return render(object, **options)
+2025-11-01T02:51:01.2642296Z         ^^^^^^
+2025-11-01T02:51:01.2642928Z app/blueprints/menu_item_blueprint.rb:51:11: C: [Correctable] Style/RedundantReturn: Redundant return detected.
+2025-11-01T02:51:01.2643664Z           return render(object)
+2025-11-01T02:51:01.2644001Z           ^^^^^^
+2025-11-01T02:51:01.2644627Z app/blueprints/menu_item_blueprint.rb:53:11: C: [Correctable] Style/RedundantReturn: Redundant return detected.
+2025-11-01T02:51:01.2645369Z           return render
+2025-11-01T02:51:01.2645858Z           ^^^^^^
+2025-11-01T02:51:01.2646524Z app/blueprints/menu_item_blueprint.rb:63:7: C: [Correctable] Style/RedundantBegin: Redundant begin block detected.
+2025-11-01T02:51:01.2647285Z       begin
+2025-11-01T02:51:01.2647775Z       ^^^^^
+2025-11-01T02:51:01.2648736Z app/blueprints/menu_item_placement_blueprint.rb:16:5: C: [Correctable] Style/SafeNavigation: Use safe navigation (&.) instead of checking if an object exists before calling the method.
+2025-11-01T02:51:01.2649736Z     p.nil? ? nil : p.to_s
+2025-11-01T02:51:01.2650040Z     ^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2650693Z app/blueprints/menu_item_placement_blueprint.rb:24:61: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+2025-11-01T02:51:01.2651961Z       ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2652831Z                                                             ^^^^
+2025-11-01T02:51:01.2654059Z app/blueprints/menu_item_placement_blueprint.rb:24:80: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
+2025-11-01T02:51:01.2655921Z       ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2656861Z                                                                                ^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2657753Z app/blueprints/menu_item_placement_blueprint.rb:24:121: C: [Correctable] Layout/LineLength: Line is too long. [135/120]
+2025-11-01T02:51:01.2659121Z       ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2660293Z                                                                                                                         ^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2661194Z app/blueprints/menu_item_placement_blueprint.rb:38:61: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+2025-11-01T02:51:01.2662518Z       ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2663429Z                                                             ^^^^
+2025-11-01T02:51:01.2664720Z app/blueprints/menu_item_placement_blueprint.rb:38:80: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
+2025-11-01T02:51:01.2666654Z       ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2667580Z                                                                                ^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2668444Z app/blueprints/menu_item_placement_blueprint.rb:38:121: C: [Correctable] Layout/LineLength: Line is too long. [135/120]
+2025-11-01T02:51:01.2669756Z       ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2670687Z                                                                                                                         ^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2671924Z app/blueprints/menu_item_placement_blueprint.rb:48:16: C: [Correctable] Style/SafeNavigation: Use safe navigation (&.) instead of checking if an object exists before calling the method.
+2025-11-01T02:51:01.2673221Z         price: placement.price.nil? ? nil : placement.price.to_s
+2025-11-01T02:51:01.2673763Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2674561Z app/blueprints/restaurant_blueprint.rb:16:65: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+2025-11-01T02:51:01.2675973Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2676881Z                                                                 ^^^^
+2025-11-01T02:51:01.2678287Z app/blueprints/restaurant_blueprint.rb:16:84: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
+2025-11-01T02:51:01.2679960Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2680875Z                                                                                    ^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2681704Z app/blueprints/restaurant_blueprint.rb:16:121: C: [Correctable] Layout/LineLength: Line is too long. [139/120]
+2025-11-01T02:51:01.2682966Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_json', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2683885Z                                                                                                                         ^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2684702Z app/blueprints/restaurant_blueprint.rb:24:5: C: Metrics/MethodLength: Method has too many lines. [16/10]
+2025-11-01T02:51:01.2685641Z     def render_as_hash(object, **options) ...
+2025-11-01T02:51:01.2686078Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2687016Z app/blueprints/restaurant_blueprint.rb:24:5: C: Metrics/PerceivedComplexity: Perceived complexity for render_as_hash is too high. [9/8]
+2025-11-01T02:51:01.2688006Z     def render_as_hash(object, **options) ...
+2025-11-01T02:51:01.2688430Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2689180Z app/blueprints/restaurant_blueprint.rb:30:65: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+2025-11-01T02:51:01.2690656Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2691542Z                                                                 ^^^^
+2025-11-01T02:51:01.2692779Z app/blueprints/restaurant_blueprint.rb:30:84: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
+2025-11-01T02:51:01.2694455Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2695361Z                                                                                    ^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2696331Z app/blueprints/restaurant_blueprint.rb:30:121: C: [Correctable] Layout/LineLength: Line is too long. [139/120]
+2025-11-01T02:51:01.2697593Z           ErrorReporter.current.notify(e, context: { blueprint: self.name, method: 'render_as_hash', object: safe_object_preview(object) })
+2025-11-01T02:51:01.2698541Z                                                                                                                         ^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2699459Z app/blueprints/restaurant_blueprint.rb:34:24: C: [Correctable] Style/IfInsideElse: Convert if nested inside else to elsif.
+2025-11-01T02:51:01.2700353Z         parsed = super if defined?(super)
+2025-11-01T02:51:01.2700779Z                        ^^
+2025-11-01T02:51:01.2701535Z app/blueprints/restaurant_blueprint.rb:52:7: C: [Correctable] Style/RedundantBegin: Redundant begin block detected.
+2025-11-01T02:51:01.2702352Z       begin
+2025-11-01T02:51:01.2702622Z       ^^^^^
+2025-11-01T02:51:01.2703283Z app/blueprints/restaurant_blueprint.rb:53:9: C: [Correctable] Style/RedundantReturn: Redundant return detected.
+2025-11-01T02:51:01.2704098Z         return render(object, **options)
+2025-11-01T02:51:01.2704499Z         ^^^^^^
+2025-11-01T02:51:01.2705194Z app/blueprints/restaurant_blueprint.rb:56:11: C: [Correctable] Style/RedundantReturn: Redundant return detected.
+2025-11-01T02:51:01.2706164Z           return render(object)
+2025-11-01T02:51:01.2706529Z           ^^^^^^
+2025-11-01T02:51:01.2707237Z app/blueprints/restaurant_blueprint.rb:58:11: C: [Correctable] Style/RedundantReturn: Redundant return detected.
+2025-11-01T02:51:01.2708028Z           return render
+2025-11-01T02:51:01.2708344Z           ^^^^^^
+2025-11-01T02:51:01.2709200Z app/blueprints/restaurant_blueprint.rb:68:7: C: [Correctable] Style/RedundantBegin: Redundant begin block detected.
+2025-11-01T02:51:01.2709931Z       begin
+2025-11-01T02:51:01.2710159Z       ^^^^^
+2025-11-01T02:51:01.2710771Z app/controllers/api/v1/base_controller.rb:61:1: C: [Correctable] Layout/EmptyLines: Extra blank line detected.
+2025-11-01T02:51:01.2712045Z app/controllers/api/v1/base_controller.rb:62:7: C: [Correctable] Layout/EmptyLineBetweenDefs: Expected 1 empty line between method definitions; found 2.
+2025-11-01T02:51:01.2713014Z       def handle_parameter_missing(exception)
+2025-11-01T02:51:01.2713399Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2714261Z app/controllers/api/v1/menus_controller.rb:62:18: C: [Correctable] Rails/StrongParametersExpect: Use expect(menu: [:name]) instead.
+2025-11-01T02:51:01.2715126Z           params.require(:menu).permit(:name)
+2025-11-01T02:51:01.2715685Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2716643Z app/controllers/api/v1/restaurants_controller.rb:60:18: C: [Correctable] Rails/StrongParametersExpect: Use expect(restaurant: [:name]) instead.
+2025-11-01T02:51:01.2717648Z           params.require(:restaurant).permit(:name).to_h
+2025-11-01T02:51:01.2718084Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2718971Z app/repositories/persistence/menu_items_repository.rb:8:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2720044Z       def for_restaurant(restaurant)
+2025-11-01T02:51:01.2720398Z   ^^^^
+2025-11-01T02:51:01.2721214Z app/repositories/persistence/menu_items_repository.rb:8:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2722155Z       def for_restaurant(restaurant) ...
+2025-11-01T02:51:01.2722536Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2723396Z app/repositories/persistence/menu_items_repository.rb:12:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2724323Z       def find_by_restaurant(restaurant, id)
+2025-11-01T02:51:01.2724700Z   ^^^^
+2025-11-01T02:51:01.2725631Z app/repositories/persistence/menu_items_repository.rb:12:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2726597Z       def find_by_restaurant(restaurant, id) ...
+2025-11-01T02:51:01.2727002Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2727885Z app/repositories/persistence/menu_items_repository.rb:16:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2728796Z       def build(attrs = {})
+2025-11-01T02:51:01.2729111Z   ^^^^
+2025-11-01T02:51:01.2729908Z app/repositories/persistence/menu_items_repository.rb:16:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2730840Z       def build(attrs = {}) ...
+2025-11-01T02:51:01.2731163Z       ^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2731989Z app/repositories/persistence/menu_items_repository.rb:20:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2732882Z       def save(record)
+2025-11-01T02:51:01.2733193Z   ^^^^
+2025-11-01T02:51:01.2734064Z app/repositories/persistence/menu_items_repository.rb:20:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2735060Z       def save(record) ...
+2025-11-01T02:51:01.2735399Z       ^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2736405Z app/repositories/persistence/menu_items_repository.rb:24:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2737383Z       def update(record, attrs)
+2025-11-01T02:51:01.2737738Z   ^^^^
+2025-11-01T02:51:01.2738605Z app/repositories/persistence/menu_items_repository.rb:24:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2739617Z       def update(record, attrs) ...
+2025-11-01T02:51:01.2740135Z       ^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2740998Z app/repositories/persistence/menu_items_repository.rb:28:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2741971Z       def destroy(record)
+2025-11-01T02:51:01.2742313Z   ^^^^
+2025-11-01T02:51:01.2743183Z app/repositories/persistence/menu_items_repository.rb:28:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2744201Z       def destroy(record) ...
+2025-11-01T02:51:01.2744559Z       ^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2745402Z app/repositories/persistence/menu_items_repository.rb:33:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2746471Z       def bulk_insert(records_attrs, unique_by: nil)
+2025-11-01T02:51:01.2746924Z   ^^^^
+2025-11-01T02:51:01.2747808Z app/repositories/persistence/menu_items_repository.rb:33:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2748877Z       def bulk_insert(records_attrs, unique_by: nil) ...
+2025-11-01T02:51:01.2749346Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2750309Z app/repositories/persistence/menu_items_repository.rb:44:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2751252Z       def bulk_update(records_data)
+2025-11-01T02:51:01.2751604Z   ^^^^
+2025-11-01T02:51:01.2752595Z app/repositories/persistence/menu_items_repository.rb:44:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2753621Z       def bulk_update(records_data) ...
+2025-11-01T02:51:01.2754028Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2754952Z app/repositories/persistence/menu_items_repository.rb:60:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2756103Z       def find_by_name(name)
+2025-11-01T02:51:01.2756453Z   ^^^^
+2025-11-01T02:51:01.2757284Z app/repositories/persistence/menu_items_repository.rb:60:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2758293Z       def find_by_name(name) ...
+2025-11-01T02:51:01.2758667Z       ^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2759566Z app/repositories/persistence/menu_items_repository.rb:64:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2760498Z       def exists_by_name?(name)
+2025-11-01T02:51:01.2760818Z   ^^^^
+2025-11-01T02:51:01.2761648Z app/repositories/persistence/menu_items_repository.rb:64:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2762641Z       def exists_by_name?(name) ...
+2025-11-01T02:51:01.2763001Z       ^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2763930Z app/repositories/persistence/menu_items_repository.rb:67:5: W: [Correctable] Layout/EndAlignment: end at 67, 4 is not aligned with class at 4, 2.
+2025-11-01T02:51:01.2764858Z     end
+2025-11-01T02:51:01.2765093Z     ^^^
+2025-11-01T02:51:01.2766026Z app/repositories/persistence/menus_repository.rb:8:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2766950Z       def for_restaurant(restaurant)
+2025-11-01T02:51:01.2767329Z   ^^^^
+2025-11-01T02:51:01.2768160Z app/repositories/persistence/menus_repository.rb:8:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2769153Z       def for_restaurant(restaurant) ...
+2025-11-01T02:51:01.2769553Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2770440Z app/repositories/persistence/menus_repository.rb:12:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2771413Z       def find_by_restaurant(restaurant, id)
+2025-11-01T02:51:01.2771814Z   ^^^^
+2025-11-01T02:51:01.2772808Z app/repositories/persistence/menus_repository.rb:12:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2773802Z       def find_by_restaurant(restaurant, id) ...
+2025-11-01T02:51:01.2774244Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2775165Z app/repositories/persistence/menus_repository.rb:18:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2776286Z       def build_for(restaurant, attrs = {})
+2025-11-01T02:51:01.2776704Z   ^^^^
+2025-11-01T02:51:01.2777577Z app/repositories/persistence/menus_repository.rb:18:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2778598Z       def build_for(restaurant, attrs = {}) ...
+2025-11-01T02:51:01.2779036Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2779930Z app/repositories/persistence/menus_repository.rb:22:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2780860Z       def save(record)
+2025-11-01T02:51:01.2781181Z   ^^^^
+2025-11-01T02:51:01.2782041Z app/repositories/persistence/menus_repository.rb:22:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2783036Z       def save(record) ...
+2025-11-01T02:51:01.2783370Z       ^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2784237Z app/repositories/persistence/menus_repository.rb:26:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2785393Z       def update(record, attrs)
+2025-11-01T02:51:01.2785865Z   ^^^^
+2025-11-01T02:51:01.2786723Z app/repositories/persistence/menus_repository.rb:26:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2787730Z       def update(record, attrs) ...
+2025-11-01T02:51:01.2788121Z       ^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2789015Z app/repositories/persistence/menus_repository.rb:30:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2789975Z       def destroy(record)
+2025-11-01T02:51:01.2790314Z   ^^^^
+2025-11-01T02:51:01.2791173Z app/repositories/persistence/menus_repository.rb:30:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2792196Z       def destroy(record) ...
+2025-11-01T02:51:01.2792561Z       ^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2793443Z app/repositories/persistence/menus_repository.rb:35:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2794449Z       def bulk_insert(records_attrs, unique_by: nil)
+2025-11-01T02:51:01.2794888Z   ^^^^
+2025-11-01T02:51:01.2796107Z app/repositories/persistence/menus_repository.rb:35:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2796887Z       def bulk_insert(records_attrs, unique_by: nil) ...
+2025-11-01T02:51:01.2797199Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2797848Z app/repositories/persistence/menus_repository.rb:46:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2798491Z       def bulk_update(records_data)
+2025-11-01T02:51:01.2798735Z   ^^^^
+2025-11-01T02:51:01.2799294Z app/repositories/persistence/menus_repository.rb:46:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2799946Z       def bulk_update(records_data) ...
+2025-11-01T02:51:01.2800216Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2800802Z app/repositories/persistence/menus_repository.rb:62:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2801458Z       def find_by_restaurant_and_name(restaurant, name)
+2025-11-01T02:51:01.2801749Z   ^^^^
+2025-11-01T02:51:01.2802290Z app/repositories/persistence/menus_repository.rb:62:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2803169Z       def find_by_restaurant_and_name(restaurant, name) ...
+2025-11-01T02:51:01.2803477Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2804073Z app/repositories/persistence/menus_repository.rb:65:5: W: [Correctable] Layout/EndAlignment: end at 65, 4 is not aligned with class at 4, 2.
+2025-11-01T02:51:01.2804644Z     end
+2025-11-01T02:51:01.2804800Z     ^^^
+2025-11-01T02:51:01.2805323Z app/repositories/persistence/restaurants_repository.rb:8:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2806344Z       def relation_for_index
+2025-11-01T02:51:01.2806671Z   ^^^^
+2025-11-01T02:51:01.2807540Z app/repositories/persistence/restaurants_repository.rb:8:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2808571Z       def relation_for_index ...
+2025-11-01T02:51:01.2808944Z       ^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2809883Z app/repositories/persistence/restaurants_repository.rb:11:57: C: [Correctable] Style/SymbolProc: Pass &:to_a as an argument to tap instead of a block.
+2025-11-01T02:51:01.2814510Z         ::Restaurant.with_full_associations.ordered.tap { |r| r.to_a }
+2025-11-01T02:51:01.2814877Z                                                         ^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2815681Z app/repositories/persistence/restaurants_repository.rb:14:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2816480Z       def find(id)
+2025-11-01T02:51:01.2816656Z   ^^^^
+2025-11-01T02:51:01.2817173Z app/repositories/persistence/restaurants_repository.rb:14:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2817769Z       def find(id) ...
+2025-11-01T02:51:01.2817959Z       ^^^^^^^^^^^^
+2025-11-01T02:51:01.2818475Z app/repositories/persistence/restaurants_repository.rb:21:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2819054Z       def build(attrs = {})
+2025-11-01T02:51:01.2819252Z   ^^^^
+2025-11-01T02:51:01.2819755Z app/repositories/persistence/restaurants_repository.rb:21:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2820363Z       def build(attrs = {}) ...
+2025-11-01T02:51:01.2820572Z       ^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2821113Z app/repositories/persistence/restaurants_repository.rb:25:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2821674Z       def save(record)
+2025-11-01T02:51:01.2821855Z   ^^^^
+2025-11-01T02:51:01.2822371Z app/repositories/persistence/restaurants_repository.rb:25:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2822941Z       def save(record) ...
+2025-11-01T02:51:01.2823139Z       ^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2823655Z app/repositories/persistence/restaurants_repository.rb:29:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2824216Z       def update(record, attrs)
+2025-11-01T02:51:01.2824416Z   ^^^^
+2025-11-01T02:51:01.2824941Z app/repositories/persistence/restaurants_repository.rb:29:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2825781Z       def update(record, attrs) ...
+2025-11-01T02:51:01.2826096Z       ^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2826648Z app/repositories/persistence/restaurants_repository.rb:33:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2827242Z       def destroy(record)
+2025-11-01T02:51:01.2827431Z   ^^^^
+2025-11-01T02:51:01.2827927Z app/repositories/persistence/restaurants_repository.rb:33:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2828501Z       def destroy(record) ...
+2025-11-01T02:51:01.2828703Z       ^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2829372Z app/repositories/persistence/restaurants_repository.rb:45:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2829961Z       def bulk_insert(records_attrs, unique_by: nil)
+2025-11-01T02:51:01.2830207Z   ^^^^
+2025-11-01T02:51:01.2830706Z app/repositories/persistence/restaurants_repository.rb:45:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2831309Z       def bulk_insert(records_attrs, unique_by: nil) ...
+2025-11-01T02:51:01.2831589Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2832155Z app/repositories/persistence/restaurants_repository.rb:56:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2832720Z       def bulk_update(records_data)
+2025-11-01T02:51:01.2832932Z   ^^^^
+2025-11-01T02:51:01.2833440Z app/repositories/persistence/restaurants_repository.rb:56:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2834022Z       def bulk_update(records_data) ...
+2025-11-01T02:51:01.2834250Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2834783Z app/repositories/persistence/restaurants_repository.rb:72:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2835342Z       def exists_by_name?(name)
+2025-11-01T02:51:01.2835730Z   ^^^^
+2025-11-01T02:51:01.2836226Z app/repositories/persistence/restaurants_repository.rb:72:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2836918Z       def exists_by_name?(name) ...
+2025-11-01T02:51:01.2837132Z       ^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2837649Z app/repositories/persistence/restaurants_repository.rb:76:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+2025-11-01T02:51:01.2838206Z       def find_by_name(name)
+2025-11-01T02:51:01.2838401Z   ^^^^
+2025-11-01T02:51:01.2838900Z app/repositories/persistence/restaurants_repository.rb:76:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+2025-11-01T02:51:01.2839476Z       def find_by_name(name) ...
+2025-11-01T02:51:01.2839683Z       ^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2840222Z app/repositories/persistence/restaurants_repository.rb:79:5: W: [Correctable] Layout/EndAlignment: end at 79, 4 is not aligned with class at 4, 2.
+2025-11-01T02:51:01.2840770Z     end
+2025-11-01T02:51:01.2840923Z     ^^^
+2025-11-01T02:51:01.2841317Z app/use_cases/imports/restaurants_json/process.rb:22:7: C: Metrics/MethodLength: Method has too many lines. [12/10]
+2025-11-01T02:51:01.2841787Z       def import_restaurants(data) ...
+2025-11-01T02:51:01.2842026Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2842483Z app/use_cases/imports/restaurants_json/process.rb:82:121: C: [Correctable] Layout/LineLength: Line is too long. [132/120]
+2025-11-01T02:51:01.2843212Z         build_success_logs(restaurant, menu, menu_item, upsert_result[:action], placement_result[:action], placement_result[:price])
+2025-11-01T02:51:01.2843719Z                                                                                                                         ^^^^^^^^^^^^
+2025-11-01T02:51:01.2844292Z app/use_cases/imports/restaurants_json/process.rb:85:29: C: Metrics/ParameterLists: Avoid parameter lists longer than 5 parameters. [6/5]
+2025-11-01T02:51:01.2844971Z       def build_success_logs(restaurant, menu, menu_item, create_action, link_action, price)
+2025-11-01T02:51:01.2845363Z                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-01T02:51:01.2846216Z lib/use_case_helpers.rb:17:42: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
+2025-11-01T02:51:01.2846864Z       resource_name = context.to_s.split('.').first
+2025-11-01T02:51:01.2847128Z                                          ^^^
+2025-11-01T02:51:01.2847400Z 
+2025-11-01T02:51:01.2847577Z 61 files inspected, 119 offenses detected, 109 offenses autocorrectable
+2025-11-01T02:51:01.2856650Z ##[error]Process completed with exit code 1.
+2025-11-01T02:51:01.2898917Z ##[group]Run bundle exec bundle audit check --update
+2025-11-01T02:51:01.2899286Z [36;1mbundle exec bundle audit check --update[0m
+2025-11-01T02:51:01.2931572Z shell: /usr/bin/bash -e {0}
+2025-11-01T02:51:01.2931800Z ##[endgroup]
+2025-11-01T02:51:01.9014556Z Download ruby-advisory-db ...
+2025-11-01T02:51:01.9029924Z Cloning into '/home/runner/.local/share/ruby-advisory-db'...
+2025-11-01T02:51:02.6796668Z ruby-advisory-db:
+2025-11-01T02:51:02.6797065Z   advisories:	1032 advisories
+2025-11-01T02:51:02.6826208Z   last updated:	2025-10-29 10:18:51 -0700
+2025-11-01T02:51:02.8175653Z   commit:	0a596546572d8cf32f7d8f0ea045ccb0e97819ba
+2025-11-01T02:51:02.8176216Z No vulnerabilities found
+2025-11-01T02:51:02.8262990Z ##[group]Run bundle exec brakeman -q -w2
+2025-11-01T02:51:02.8263338Z [36;1mbundle exec brakeman -q -w2[0m
+2025-11-01T02:51:02.8296711Z shell: /usr/bin/bash -e {0}
+2025-11-01T02:51:02.8296946Z ##[endgroup]
+2025-11-01T02:51:05.6990094Z 
+2025-11-01T02:51:05.6990518Z == Brakeman Report ==
+2025-11-01T02:51:05.6990791Z 
+2025-11-01T02:51:05.6991049Z Application Path: /home/runner/work/restaurant/restaurant
+2025-11-01T02:51:05.6991577Z Rails Version: 8.0.4
+2025-11-01T02:51:05.6991909Z Brakeman Version: 6.2.2
+2025-11-01T02:51:05.6992244Z Scan Date: 2025-11-01 02:51:03 +0000
+2025-11-01T02:51:05.6993033Z Duration: 1.925101551 seconds
+2025-11-01T02:51:05.6998352Z Checks Run: BasicAuth, BasicAuthTimingAttack, CSRFTokenForgeryCVE, ContentTag, CookieSerialization, CreateWith, CrossSiteScripting, DefaultRoutes, Deserialize, DetailedExceptions, DigestDoS, DynamicFinders, EOLRails, EOLRuby, EscapeFunction, Evaluation, Execute, FileAccess, FileDisclosure, FilterSkipping, ForgerySetting, HeaderDoS, I18nXSS, JRubyXML, JSONEncoding, JSONEntityEscape, JSONParsing, LinkTo, LinkToHref, MailTo, MassAssignment, MimeTypeDoS, ModelAttrAccessible, ModelAttributes, ModelSerialize, NestedAttributes, NestedAttributesBypass, NumberToCurrency, PageCachingCVE, Pathname, PermitAttributes, QuoteTableName, Ransack, Redirect, RegexDoS, Render, RenderDoS, RenderInline, ResponseSplitting, RouteDoS, SQL, SQLCVEs, SSLVerify, SafeBufferManipulation, SanitizeConfigCve, SanitizeMethods, SelectTag, SelectVulnerability, Send, SendFile, SessionManipulation, SessionSettings, SimpleFormat, SingleQuotes, SkipBeforeFilter, SprocketsPathTraversal, StripTags, SymbolDoSCVE, TemplateInjection, TranslateBug, UnsafeReflection, UnsafeReflectionMethods, ValidationRegex, VerbConfusion, WeakRSAKey, WithoutProtection, XMLDoS, YAMLParsing
+2025-11-01T02:51:05.7002719Z 
+2025-11-01T02:51:05.7002795Z == Overview ==
+2025-11-01T02:51:05.7002908Z 
+2025-11-01T02:51:05.7002980Z Controllers: 6
+2025-11-01T02:51:05.7003154Z Models: 5
+2025-11-01T02:51:05.7003320Z Templates: 0
+2025-11-01T02:51:05.7003493Z Errors: 0
+2025-11-01T02:51:05.7003664Z Security Warnings: 0
+2025-11-01T02:51:05.7003784Z 
+2025-11-01T02:51:05.7003859Z == Warning Types ==
+2025-11-01T02:51:05.7003977Z 
+2025-11-01T02:51:05.7003981Z 
+2025-11-01T02:51:05.7004053Z No warnings found
+2025-11-01T02:51:05.7004170Z 
+2025-11-01T02:51:05.7110843Z ##[group]Run sudo apt-get update && sudo apt-get install -y yamllint
+2025-11-01T02:51:05.7111308Z [36;1msudo apt-get update && sudo apt-get install -y yamllint[0m
+2025-11-01T02:51:05.7111621Z [36;1myamllint .[0m
+2025-11-01T02:51:05.7143175Z shell: /usr/bin/bash -e {0}
+2025-11-01T02:51:05.7143412Z ##[endgroup]
+2025-11-01T02:51:05.7925164Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2025-11-01T02:51:05.8212560Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2025-11-01T02:51:05.8226071Z Hit:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease
+2025-11-01T02:51:05.8233910Z Hit:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease
+2025-11-01T02:51:05.8241409Z Hit:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease
+2025-11-01T02:51:05.8268126Z Hit:6 https://packages.microsoft.com/repos/azure-cli noble InRelease
+2025-11-01T02:51:05.8294508Z Hit:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease
+2025-11-01T02:51:07.0236800Z Reading package lists...
+2025-11-01T02:51:07.0557788Z Reading package lists...
+2025-11-01T02:51:07.2500840Z Building dependency tree...
+2025-11-01T02:51:07.2508223Z Reading state information...
+2025-11-01T02:51:07.4154213Z The following additional packages will be installed:
+2025-11-01T02:51:07.4154960Z   python3-pathspec
+2025-11-01T02:51:07.4383614Z The following NEW packages will be installed:
+2025-11-01T02:51:07.4384152Z   python3-pathspec yamllint
+2025-11-01T02:51:07.4567229Z 0 upgraded, 2 newly installed, 0 to remove and 36 not upgraded.
+2025-11-01T02:51:07.4567853Z Need to get 71.6 kB of archives.
+2025-11-01T02:51:07.4568412Z After this operation, 321 kB of additional disk space will be used.
+2025-11-01T02:51:07.4568959Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2025-11-01T02:51:07.5413224Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 python3-pathspec all 0.12.1-1 [24.5 kB]
+2025-11-01T02:51:07.6112575Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 yamllint all 1.33.0-1 [47.2 kB]
+2025-11-01T02:51:07.8870854Z Fetched 71.6 kB in 0s (433 kB/s)
+2025-11-01T02:51:07.9546795Z Selecting previously unselected package python3-pathspec.
+2025-11-01T02:51:08.1006061Z (Reading database ... 
+2025-11-01T02:51:08.1006925Z (Reading database ... 5%
+2025-11-01T02:51:08.1007219Z (Reading database ... 10%
+2025-11-01T02:51:08.1007440Z (Reading database ... 15%
+2025-11-01T02:51:08.1007685Z (Reading database ... 20%
+2025-11-01T02:51:08.1008062Z (Reading database ... 25%
+2025-11-01T02:51:08.1008424Z (Reading database ... 30%
+2025-11-01T02:51:08.1008762Z (Reading database ... 35%
+2025-11-01T02:51:08.1009114Z (Reading database ... 40%
+2025-11-01T02:51:08.1009411Z (Reading database ... 45%
+2025-11-01T02:51:08.1009602Z (Reading database ... 50%
+2025-11-01T02:51:08.2148036Z (Reading database ... 55%
+2025-11-01T02:51:08.8748463Z (Reading database ... 60%
+2025-11-01T02:51:09.5882912Z (Reading database ... 65%
+2025-11-01T02:51:10.1920898Z (Reading database ... 70%
+2025-11-01T02:51:10.7522036Z (Reading database ... 75%
+2025-11-01T02:51:11.4446429Z (Reading database ... 80%
+2025-11-01T02:51:12.1869771Z (Reading database ... 85%
+2025-11-01T02:51:13.0728138Z (Reading database ... 90%
+2025-11-01T02:51:13.8357915Z (Reading database ... 95%
+2025-11-01T02:51:13.8358477Z (Reading database ... 100%
+2025-11-01T02:51:13.8358943Z (Reading database ... 215550 files and directories currently installed.)
+2025-11-01T02:51:13.8405057Z Preparing to unpack .../python3-pathspec_0.12.1-1_all.deb ...
+2025-11-01T02:51:13.8433445Z Unpacking python3-pathspec (0.12.1-1) ...
+2025-11-01T02:51:13.8691049Z Selecting previously unselected package yamllint.
+2025-11-01T02:51:13.8823155Z Preparing to unpack .../yamllint_1.33.0-1_all.deb ...
+2025-11-01T02:51:13.8833860Z Unpacking yamllint (1.33.0-1) ...
+2025-11-01T02:51:13.9732779Z Setting up python3-pathspec (0.12.1-1) ...
+2025-11-01T02:51:14.1370206Z Setting up yamllint (1.33.0-1) ...
+2025-11-01T02:51:14.2547845Z Processing triggers for man-db (2.12.0-4build2) ...
+2025-11-01T02:52:49.0532775Z 
+2025-11-01T02:52:49.0535415Z Running kernel seems to be up-to-date.
+2025-11-01T02:52:49.0536249Z 
+2025-11-01T02:52:49.0536387Z No services need to be restarted.
+2025-11-01T02:52:49.0536634Z 
+2025-11-01T02:52:49.0536844Z No containers need to be restarted.
+2025-11-01T02:52:49.0537253Z 
+2025-11-01T02:52:49.0537489Z No user sessions are running outdated binaries.
+2025-11-01T02:52:49.0537900Z 
+2025-11-01T02:52:49.0538291Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2025-11-01T02:52:50.8547812Z ##[group]./.rubocop.yml
+2025-11-01T02:52:50.8564108Z ##[warning]19:33 [comments] too few spaces before comment: expected 2
+2025-11-01T02:52:50.8565244Z ##[endgroup]
+2025-11-01T02:52:50.8565362Z 
+2025-11-01T02:52:50.8565804Z ##[group]./.github/workflows/ci.yml
+2025-11-01T02:52:50.8566650Z ##[warning]15:14 [comments] too few spaces before comment: expected 2
+2025-11-01T02:52:50.8567874Z ##[warning]50:9 [comments] too few spaces before comment: expected 2
+2025-11-01T02:52:50.8569047Z ##[warning]88:15 [comments] too few spaces before comment: expected 2
+2025-11-01T02:52:50.8570188Z ##[warning]123:19 [comments] too few spaces before comment: expected 2
+2025-11-01T02:52:50.8571292Z ##[warning]205:39 [comments] too few spaces before comment: expected 2
+2025-11-01T02:52:50.8572060Z ##[endgroup]
+2025-11-01T02:52:50.8572164Z 
+2025-11-01T02:52:50.8572376Z ##[group]./config/database.yml
+2025-11-01T02:52:50.8573034Z ##[warning]37:4 [comments] missing starting space in comment
+2025-11-01T02:52:50.8574088Z ##[warning]40:4 [comments] missing starting space in comment
+2025-11-01T02:52:50.8575170Z ##[warning]45:4 [comments] missing starting space in comment
+2025-11-01T02:52:50.8576494Z ##[warning]49:4 [comments] missing starting space in comment
+2025-11-01T02:52:50.8577588Z ##[warning]52:4 [comments] missing starting space in comment
+2025-11-01T02:52:50.8578649Z ##[warning]58:4 [comments] missing starting space in comment
+2025-11-01T02:52:50.8579400Z ##[endgroup]
+2025-11-01T02:52:50.8579512Z 
+2025-11-01T02:52:50.8674875Z ##[group]Run sudo apt-get install -y jq
+2025-11-01T02:52:50.8725045Z [36;1msudo apt-get install -y jq[0m
+2025-11-01T02:52:50.8725712Z [36;1mset -o pipefail[0m
+2025-11-01T02:52:50.8726197Z [36;1mgit ls-files '*.json' | xargs -I{} sh -c 'jq -e . {} > /dev/null'[0m
+2025-11-01T02:52:50.8760008Z shell: /usr/bin/bash -e {0}
+2025-11-01T02:52:50.8760253Z ##[endgroup]
+2025-11-01T02:52:50.9030899Z Reading package lists...
+2025-11-01T02:52:51.1199536Z Building dependency tree...
+2025-11-01T02:52:51.1207962Z Reading state information...
+2025-11-01T02:52:51.3124273Z jq is already the newest version (1.7.1-3ubuntu0.24.04.1).
+2025-11-01T02:52:51.3124935Z 0 upgraded, 0 newly installed, 0 to remove and 36 not upgraded.
+2025-11-01T02:52:51.4006004Z ##[group]Run hadolint/hadolint-action@v3.1.0
+2025-11-01T02:52:51.4006328Z with:
+2025-11-01T02:52:51.4006518Z   dockerfile: Dockerfile
+2025-11-01T02:52:51.4006720Z   recursive: false
+2025-11-01T02:52:51.4006922Z   output-file: /dev/stdout
+2025-11-01T02:52:51.4007131Z   no-color: false
+2025-11-01T02:52:51.4007312Z   no-fail: false
+2025-11-01T02:52:51.4007480Z   verbose: false
+2025-11-01T02:52:51.4007645Z   format: tty
+2025-11-01T02:52:51.4007824Z   failure-threshold: info
+2025-11-01T02:52:51.4008046Z ##[endgroup]
+2025-11-01T02:52:51.4132697Z ##[command]/usr/bin/docker run --name d3d6563ded76a79d94287ae725eebd4a14bb6_ced873 --label 9d3d65 --workdir /github/workspace --rm -e "INPUT_DOCKERFILE" -e "INPUT_CONFIG" -e "INPUT_RECURSIVE" -e "INPUT_OUTPUT-FILE" -e "INPUT_NO-COLOR" -e "INPUT_NO-FAIL" -e "INPUT_VERBOSE" -e "INPUT_FORMAT" -e "INPUT_FAILURE-THRESHOLD" -e "INPUT_OVERRIDE-ERROR" -e "INPUT_OVERRIDE-WARNING" -e "INPUT_OVERRIDE-INFO" -e "INPUT_OVERRIDE-STYLE" -e "INPUT_IGNORE" -e "INPUT_TRUSTED-REGISTRIES" -e "NO_COLOR" -e "HADOLINT_NOFAIL" -e "HADOLINT_VERBOSE" -e "HADOLINT_FORMAT" -e "HADOLINT_FAILURE_THRESHOLD" -e "HADOLINT_OVERRIDE_ERROR" -e "HADOLINT_OVERRIDE_WARNING" -e "HADOLINT_OVERRIDE_INFO" -e "HADOLINT_OVERRIDE_STYLE" -e "HADOLINT_IGNORE" -e "HADOLINT_TRUSTED_REGISTRIES" -e "HADOLINT_CONFIG" -e "HADOLINT_RECURSIVE" -e "HADOLINT_OUTPUT" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_RESULTS_URL" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/restaurant/restaurant":"/github/workspace" 9d3d65:63ded76a79d94287ae725eebd4a14bb6  "Dockerfile"
+2025-11-01T02:52:51.7268533Z 
+2025-11-01T02:52:51.7271592Z Hadolint output saved to: /dev/stdout
+2025-11-01T02:52:51.8006202Z Post job cleanup.
+2025-11-01T02:52:51.8948021Z [command]/usr/bin/git version
+2025-11-01T02:52:51.8983782Z git version 2.51.2
+2025-11-01T02:52:51.9026203Z Temporarily overriding HOME='/home/runner/work/_temp/6b2e03aa-eefe-4d28-a299-6b46ff2b4fcb' before making global git config changes
+2025-11-01T02:52:51.9027033Z Adding repository directory to the temporary git global config as a safe directory
+2025-11-01T02:52:51.9031554Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/restaurant/restaurant
+2025-11-01T02:52:51.9068957Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-11-01T02:52:51.9101169Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-11-01T02:52:51.9324577Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-11-01T02:52:51.9344715Z http.https://github.com/.extraheader
+2025-11-01T02:52:51.9356801Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-11-01T02:52:51.9386853Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-11-01T02:52:51.9714663Z Cleaning up orphan processes

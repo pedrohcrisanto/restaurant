@@ -1,27 +1,27 @@
-﻿2025-11-01T00:59:49.4236921Z ##[group]Run actions/upload-artifact@v4
-2025-11-01T00:59:49.4237211Z with:
-2025-11-01T00:59:49.4237388Z   name: test-reports
-2025-11-01T00:59:49.4237600Z   path: tmp/rspec.xml
+﻿2025-11-01T02:58:17.3198510Z ##[group]Run actions/upload-artifact@v4
+2025-11-01T02:58:17.3198772Z with:
+2025-11-01T02:58:17.3198942Z   name: test-reports
+2025-11-01T02:58:17.3199447Z   path: tmp/rspec.xml
 coverage/
 
-2025-11-01T00:59:49.4237838Z   if-no-files-found: warn
-2025-11-01T00:59:49.4238050Z   compression-level: 6
-2025-11-01T00:59:49.4238242Z   overwrite: false
-2025-11-01T00:59:49.4238432Z   include-hidden-files: false
-2025-11-01T00:59:49.4238642Z env:
-2025-11-01T00:59:49.4238798Z   RAILS_ENV: test
-2025-11-01T00:59:49.4239219Z   DATABASE_URL: ***localhost:5432/test
-2025-11-01T00:59:49.4239461Z ##[endgroup]
-2025-11-01T00:59:49.6457983Z Multiple search paths detected. Calculating the least common ancestor of all paths
-2025-11-01T00:59:49.6462612Z The least common ancestor is /home/runner/work/restaurant/restaurant. This will be the root directory of the artifact
-2025-11-01T00:59:49.6463637Z With the provided path, there will be 1 file uploaded
-2025-11-01T00:59:49.6468870Z Artifact name is valid!
-2025-11-01T00:59:49.6471242Z Root directory input is valid!
-2025-11-01T00:59:49.8015078Z Beginning upload of artifact content to blob storage
-2025-11-01T00:59:49.9550379Z Uploaded bytes 329
-2025-11-01T00:59:50.0008953Z Finished uploading artifact content to blob storage!
-2025-11-01T00:59:50.0012690Z SHA256 digest of uploaded artifact zip is e09877e29bbc3c7cbb711d3b5018b63ec2ae8e26de9e6e5c80a3e8389dbe461a
-2025-11-01T00:59:50.0014600Z Finalizing artifact upload
-2025-11-01T00:59:50.0920853Z Artifact test-reports.zip successfully finalized. Artifact ID 4435498991
-2025-11-01T00:59:50.0922493Z Artifact test-reports has been successfully uploaded! Final size is 329 bytes. Artifact ID is 4435498991
-2025-11-01T00:59:50.0930002Z Artifact download URL: https://github.com/pedrohcrisanto/restaurant/actions/runs/18988857563/artifacts/4435498991
+2025-11-01T02:58:17.3199834Z   if-no-files-found: warn
+2025-11-01T02:58:17.3200046Z   compression-level: 6
+2025-11-01T02:58:17.3200239Z   overwrite: false
+2025-11-01T02:58:17.3200429Z   include-hidden-files: false
+2025-11-01T02:58:17.3200629Z env:
+2025-11-01T02:58:17.3200782Z   RAILS_ENV: test
+2025-11-01T02:58:17.3201205Z   DATABASE_URL: ***localhost:5432/test
+2025-11-01T02:58:17.3201458Z ##[endgroup]
+2025-11-01T02:58:17.5320281Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2025-11-01T02:58:17.5324399Z The least common ancestor is /home/runner/work/restaurant/restaurant. This will be the root directory of the artifact
+2025-11-01T02:58:17.5325542Z With the provided path, there will be 1 file uploaded
+2025-11-01T02:58:17.5331744Z Artifact name is valid!
+2025-11-01T02:58:17.5333257Z Root directory input is valid!
+2025-11-01T02:58:17.8245193Z Beginning upload of artifact content to blob storage
+2025-11-01T02:58:18.2363429Z Uploaded bytes 19461
+2025-11-01T02:58:18.3228312Z Finished uploading artifact content to blob storage!
+2025-11-01T02:58:18.3231648Z SHA256 digest of uploaded artifact zip is 34f5573f0e1b1ce5fda003d1f080f12da1228ec1f9e247dd4b9b9fd7fac3fec6
+2025-11-01T02:58:18.3233933Z Finalizing artifact upload
+2025-11-01T02:58:18.4671795Z Artifact test-reports.zip successfully finalized. Artifact ID 4435919003
+2025-11-01T02:58:18.4672909Z Artifact test-reports has been successfully uploaded! Final size is 19461 bytes. Artifact ID is 4435919003
+2025-11-01T02:58:18.4679873Z Artifact download URL: https://github.com/pedrohcrisanto/restaurant/actions/runs/18990219329/artifacts/4435919003

@@ -1,11 +1,11 @@
-﻿2025-11-01T00:58:07.8001309Z ##[group]Run bundle exec bundle audit check --update
-2025-11-01T00:58:07.8001690Z [36;1mbundle exec bundle audit check --update[0m
-2025-11-01T00:58:07.8035844Z shell: /usr/bin/bash -e {0}
-2025-11-01T00:58:07.8036073Z ##[endgroup]
-2025-11-01T00:58:08.4055019Z Download ruby-advisory-db ...
-2025-11-01T00:58:08.4069091Z Cloning into '/home/runner/.local/share/ruby-advisory-db'...
-2025-11-01T00:58:08.9342018Z ruby-advisory-db:
-2025-11-01T00:58:08.9342991Z   advisories:	1032 advisories
-2025-11-01T00:58:08.9370172Z   last updated:	2025-10-29 10:18:51 -0700
-2025-11-01T00:58:09.0686820Z   commit:	0a596546572d8cf32f7d8f0ea045ccb0e97819ba
-2025-11-01T00:58:09.0687423Z No vulnerabilities found
+﻿2025-11-01T02:51:01.2898907Z ##[group]Run bundle exec bundle audit check --update
+2025-11-01T02:51:01.2899283Z [36;1mbundle exec bundle audit check --update[0m
+2025-11-01T02:51:01.2931566Z shell: /usr/bin/bash -e {0}
+2025-11-01T02:51:01.2931798Z ##[endgroup]
+2025-11-01T02:51:01.9014509Z Download ruby-advisory-db ...
+2025-11-01T02:51:01.9029907Z Cloning into '/home/runner/.local/share/ruby-advisory-db'...
+2025-11-01T02:51:02.6796616Z ruby-advisory-db:
+2025-11-01T02:51:02.6797059Z   advisories:	1032 advisories
+2025-11-01T02:51:02.6826193Z   last updated:	2025-10-29 10:18:51 -0700
+2025-11-01T02:51:02.8175397Z   commit:	0a596546572d8cf32f7d8f0ea045ccb0e97819ba
+2025-11-01T02:51:02.8176209Z No vulnerabilities found
