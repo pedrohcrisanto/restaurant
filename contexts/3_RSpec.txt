@@ -1,0 +1,1913 @@
+﻿2025-11-01T00:58:38.3624760Z Current runner version: '2.329.0'
+2025-11-01T00:58:38.3648402Z ##[group]Runner Image Provisioner
+2025-11-01T00:58:38.3649214Z Hosted Compute Agent
+2025-11-01T00:58:38.3649824Z Version: 20251016.436
+2025-11-01T00:58:38.3650413Z Commit: 8ab8ac8bfd662a3739dab9fe09456aba92132568
+2025-11-01T00:58:38.3651251Z Build Date: 2025-10-15T20:44:12Z
+2025-11-01T00:58:38.3651799Z ##[endgroup]
+2025-11-01T00:58:38.3652432Z ##[group]Operating System
+2025-11-01T00:58:38.3652955Z Ubuntu
+2025-11-01T00:58:38.3653418Z 24.04.3
+2025-11-01T00:58:38.3653908Z LTS
+2025-11-01T00:58:38.3654362Z ##[endgroup]
+2025-11-01T00:58:38.3654811Z ##[group]Runner Image
+2025-11-01T00:58:38.3655424Z Image: ubuntu-24.04
+2025-11-01T00:58:38.3655928Z Version: 20251030.96.2
+2025-11-01T00:58:38.3656883Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251030.96/images/ubuntu/Ubuntu2404-Readme.md
+2025-11-01T00:58:38.3658482Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251030.96
+2025-11-01T00:58:38.3659411Z ##[endgroup]
+2025-11-01T00:58:38.3660471Z ##[group]GITHUB_TOKEN Permissions
+2025-11-01T00:58:38.3663213Z Contents: read
+2025-11-01T00:58:38.3663793Z Metadata: read
+2025-11-01T00:58:38.3664311Z ##[endgroup]
+2025-11-01T00:58:38.3667170Z Secret source: Actions
+2025-11-01T00:58:38.3668139Z Prepare workflow directory
+2025-11-01T00:58:38.4099796Z Prepare all required actions
+2025-11-01T00:58:38.4137140Z Getting action download info
+2025-11-01T00:58:38.7543510Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+2025-11-01T00:58:38.9403438Z Download action repository 'ruby/setup-ruby@v1' (SHA:d5126b9b3579e429dd52e51e68624dda2e05be25)
+2025-11-01T00:58:39.3495296Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2025-11-01T00:58:39.7540187Z Complete job name: RSpec
+2025-11-01T00:58:39.8030447Z ##[group]Checking docker version
+2025-11-01T00:58:39.8043968Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+2025-11-01T00:58:39.9792806Z '1.48'
+2025-11-01T00:58:39.9805870Z Docker daemon API version: '1.48'
+2025-11-01T00:58:39.9806662Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+2025-11-01T00:58:40.0027606Z '1.48'
+2025-11-01T00:58:40.0041308Z Docker client API version: '1.48'
+2025-11-01T00:58:40.0046413Z ##[endgroup]
+2025-11-01T00:58:40.0049258Z ##[group]Clean up resources from previous jobs
+2025-11-01T00:58:40.0055245Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=f06a4c"
+2025-11-01T00:58:40.0188683Z ##[command]/usr/bin/docker network prune --force --filter "label=f06a4c"
+2025-11-01T00:58:40.0314643Z ##[endgroup]
+2025-11-01T00:58:40.0315151Z ##[group]Create local container network
+2025-11-01T00:58:40.0325245Z ##[command]/usr/bin/docker network create --label f06a4c github_network_219a76c646f14fb88269b21adc62177a
+2025-11-01T00:58:40.0811315Z f07babb55b5749801e141838f57a400c8d7519522b04f70d36e58b12d43f1ce9
+2025-11-01T00:58:40.0830735Z ##[endgroup]
+2025-11-01T00:58:40.0855210Z ##[group]Starting postgres service container
+2025-11-01T00:58:40.0874256Z ##[command]/usr/bin/docker pull postgres:16
+2025-11-01T00:58:40.4703396Z 16: Pulling from library/postgres
+2025-11-01T00:58:40.6066734Z 38513bd72563: Pulling fs layer
+2025-11-01T00:58:40.6068162Z 6a570b5ed774: Pulling fs layer
+2025-11-01T00:58:40.6069579Z e69f32e226f6: Pulling fs layer
+2025-11-01T00:58:40.6070865Z 147d1d7c0318: Pulling fs layer
+2025-11-01T00:58:40.6072322Z bc405403221b: Pulling fs layer
+2025-11-01T00:58:40.6073280Z 82742b6e768c: Pulling fs layer
+2025-11-01T00:58:40.6074201Z bd122ab2336d: Pulling fs layer
+2025-11-01T00:58:40.6075121Z 91264d87777d: Pulling fs layer
+2025-11-01T00:58:40.6076041Z e7fca4723572: Pulling fs layer
+2025-11-01T00:58:40.6077010Z 45e682a0ad62: Pulling fs layer
+2025-11-01T00:58:40.6078023Z 8221e00ace81: Pulling fs layer
+2025-11-01T00:58:40.6079022Z f50de807d554: Pulling fs layer
+2025-11-01T00:58:40.6080069Z b9fcf05c0044: Pulling fs layer
+2025-11-01T00:58:40.6081327Z 85ec668df6b0: Pulling fs layer
+2025-11-01T00:58:40.6082620Z 147d1d7c0318: Waiting
+2025-11-01T00:58:40.6083478Z bc405403221b: Waiting
+2025-11-01T00:58:40.6084368Z 82742b6e768c: Waiting
+2025-11-01T00:58:40.6085219Z e7fca4723572: Waiting
+2025-11-01T00:58:40.6086065Z bd122ab2336d: Waiting
+2025-11-01T00:58:40.6086904Z 91264d87777d: Waiting
+2025-11-01T00:58:40.6087723Z 45e682a0ad62: Waiting
+2025-11-01T00:58:40.6088697Z b9fcf05c0044: Waiting
+2025-11-01T00:58:40.6089866Z 8221e00ace81: Waiting
+2025-11-01T00:58:40.6091195Z 85ec668df6b0: Waiting
+2025-11-01T00:58:40.6092361Z f50de807d554: Waiting
+2025-11-01T00:58:40.7704496Z 6a570b5ed774: Verifying Checksum
+2025-11-01T00:58:40.7707059Z 6a570b5ed774: Download complete
+2025-11-01T00:58:40.8544897Z e69f32e226f6: Verifying Checksum
+2025-11-01T00:58:40.8547142Z e69f32e226f6: Download complete
+2025-11-01T00:58:40.9360993Z 147d1d7c0318: Verifying Checksum
+2025-11-01T00:58:40.9363340Z 147d1d7c0318: Download complete
+2025-11-01T00:58:41.0547814Z 82742b6e768c: Verifying Checksum
+2025-11-01T00:58:41.0549970Z 82742b6e768c: Download complete
+2025-11-01T00:58:41.0556673Z bc405403221b: Verifying Checksum
+2025-11-01T00:58:41.0558716Z bc405403221b: Download complete
+2025-11-01T00:58:41.1549541Z bd122ab2336d: Download complete
+2025-11-01T00:58:41.1562826Z 91264d87777d: Verifying Checksum
+2025-11-01T00:58:41.1565263Z 91264d87777d: Download complete
+2025-11-01T00:58:41.1780926Z 38513bd72563: Verifying Checksum
+2025-11-01T00:58:41.1783149Z 38513bd72563: Download complete
+2025-11-01T00:58:41.2689751Z 45e682a0ad62: Verifying Checksum
+2025-11-01T00:58:41.2691944Z 45e682a0ad62: Download complete
+2025-11-01T00:58:41.2891855Z 8221e00ace81: Verifying Checksum
+2025-11-01T00:58:41.2899009Z 8221e00ace81: Download complete
+2025-11-01T00:58:41.3789111Z f50de807d554: Download complete
+2025-11-01T00:58:41.4272234Z b9fcf05c0044: Verifying Checksum
+2025-11-01T00:58:41.4274789Z b9fcf05c0044: Download complete
+2025-11-01T00:58:41.4893172Z 85ec668df6b0: Verifying Checksum
+2025-11-01T00:58:41.4895231Z 85ec668df6b0: Download complete
+2025-11-01T00:58:42.2209372Z 38513bd72563: Pull complete
+2025-11-01T00:58:42.6588104Z e7fca4723572: Verifying Checksum
+2025-11-01T00:58:42.6588485Z e7fca4723572: Download complete
+2025-11-01T00:58:43.2876879Z 6a570b5ed774: Pull complete
+2025-11-01T00:58:43.4574506Z e69f32e226f6: Pull complete
+2025-11-01T00:58:43.4992413Z 147d1d7c0318: Pull complete
+2025-11-01T00:58:43.8066364Z bc405403221b: Pull complete
+2025-11-01T00:58:43.8863356Z 82742b6e768c: Pull complete
+2025-11-01T00:58:43.8960190Z bd122ab2336d: Pull complete
+2025-11-01T00:58:43.9062031Z 91264d87777d: Pull complete
+2025-11-01T00:58:46.8647997Z e7fca4723572: Pull complete
+2025-11-01T00:58:46.8808129Z 45e682a0ad62: Pull complete
+2025-11-01T00:58:46.8913465Z 8221e00ace81: Pull complete
+2025-11-01T00:58:46.9015526Z f50de807d554: Pull complete
+2025-11-01T00:58:46.9122134Z b9fcf05c0044: Pull complete
+2025-11-01T00:58:46.9242537Z 85ec668df6b0: Pull complete
+2025-11-01T00:58:46.9296351Z Digest: sha256:4eb532412200f7fbbf15d62ee0d96e020a9eae9eaed76066692474a7371c4d83
+2025-11-01T00:58:46.9310210Z Status: Downloaded newer image for postgres:16
+2025-11-01T00:58:46.9388512Z docker.io/library/postgres:16
+2025-11-01T00:58:46.9449930Z ##[command]/usr/bin/docker create --name 867bceb5b9a64a0ab095643e32e204cf_postgres16_d54336 --label f06a4c --network github_network_219a76c646f14fb88269b21adc62177a --network-alias postgres -p 5432:5432 --health-cmd="pg_isready -U postgres" --health-interval=10s --health-timeout=5s --health-retries=5 -e "POSTGRES_PASSWORD=postgres" -e GITHUB_ACTIONS=true -e CI=true postgres:16
+2025-11-01T00:58:47.0039017Z 80204d7be16349136a0d574e4bec1085d0845bd89e548147f7e630438d99a067
+2025-11-01T00:58:47.0062932Z ##[command]/usr/bin/docker start 80204d7be16349136a0d574e4bec1085d0845bd89e548147f7e630438d99a067
+2025-11-01T00:58:48.6950045Z 80204d7be16349136a0d574e4bec1085d0845bd89e548147f7e630438d99a067
+2025-11-01T00:58:48.6974944Z ##[command]/usr/bin/docker ps --all --filter id=80204d7be16349136a0d574e4bec1085d0845bd89e548147f7e630438d99a067 --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2025-11-01T00:58:48.7101656Z 80204d7be16349136a0d574e4bec1085d0845bd89e548147f7e630438d99a067 Up 1 second (health: starting)
+2025-11-01T00:58:48.7124030Z ##[command]/usr/bin/docker port 80204d7be16349136a0d574e4bec1085d0845bd89e548147f7e630438d99a067
+2025-11-01T00:58:48.7257861Z 5432/tcp -> 0.0.0.0:5432
+2025-11-01T00:58:48.7258614Z 5432/tcp -> [::]:5432
+2025-11-01T00:58:48.7304483Z ##[endgroup]
+2025-11-01T00:58:48.7313030Z ##[group]Waiting for all services to be ready
+2025-11-01T00:58:48.7326352Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 80204d7be16349136a0d574e4bec1085d0845bd89e548147f7e630438d99a067
+2025-11-01T00:58:48.7457430Z starting
+2025-11-01T00:58:48.7479564Z postgres service is starting, waiting 2 seconds before checking again.
+2025-11-01T00:58:50.7480215Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 80204d7be16349136a0d574e4bec1085d0845bd89e548147f7e630438d99a067
+2025-11-01T00:58:50.7604662Z starting
+2025-11-01T00:58:50.7618200Z postgres service is starting, waiting 3 seconds before checking again.
+2025-11-01T00:58:54.3817628Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 80204d7be16349136a0d574e4bec1085d0845bd89e548147f7e630438d99a067
+2025-11-01T00:58:54.3938194Z starting
+2025-11-01T00:58:54.3953403Z postgres service is starting, waiting 6 seconds before checking again.
+2025-11-01T00:59:01.2232115Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 80204d7be16349136a0d574e4bec1085d0845bd89e548147f7e630438d99a067
+2025-11-01T00:59:01.2350492Z healthy
+2025-11-01T00:59:01.2371876Z postgres service is healthy.
+2025-11-01T00:59:01.2372585Z ##[endgroup]
+2025-11-01T00:59:01.2623160Z ##[group]Run actions/checkout@v4
+2025-11-01T00:59:01.2623689Z with:
+2025-11-01T00:59:01.2623889Z   repository: pedrohcrisanto/restaurant
+2025-11-01T00:59:01.2624309Z   token: ***
+2025-11-01T00:59:01.2624487Z   ssh-strict: true
+2025-11-01T00:59:01.2624664Z   ssh-user: git
+2025-11-01T00:59:01.2624851Z   persist-credentials: true
+2025-11-01T00:59:01.2625055Z   clean: true
+2025-11-01T00:59:01.2625247Z   sparse-checkout-cone-mode: true
+2025-11-01T00:59:01.2625468Z   fetch-depth: 1
+2025-11-01T00:59:01.2625646Z   fetch-tags: false
+2025-11-01T00:59:01.2625822Z   show-progress: true
+2025-11-01T00:59:01.2626006Z   lfs: false
+2025-11-01T00:59:01.2626163Z   submodules: false
+2025-11-01T00:59:01.2626345Z   set-safe-directory: true
+2025-11-01T00:59:01.2626778Z env:
+2025-11-01T00:59:01.2626939Z   RAILS_ENV: test
+2025-11-01T00:59:01.2627273Z   DATABASE_URL: ***localhost:5432/test
+2025-11-01T00:59:01.2627505Z ##[endgroup]
+2025-11-01T00:59:01.3686764Z Syncing repository: pedrohcrisanto/restaurant
+2025-11-01T00:59:01.3688052Z ##[group]Getting Git version info
+2025-11-01T00:59:01.3688425Z Working directory is '/home/runner/work/restaurant/restaurant'
+2025-11-01T00:59:01.3688959Z [command]/usr/bin/git version
+2025-11-01T00:59:01.3771554Z git version 2.51.2
+2025-11-01T00:59:01.3797787Z ##[endgroup]
+2025-11-01T00:59:01.3813762Z Temporarily overriding HOME='/home/runner/work/_temp/2cc4dd0d-ba26-4a2d-bd3a-b28195a07897' before making global git config changes
+2025-11-01T00:59:01.3815063Z Adding repository directory to the temporary git global config as a safe directory
+2025-11-01T00:59:01.3827709Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/restaurant/restaurant
+2025-11-01T00:59:01.3866016Z Deleting the contents of '/home/runner/work/restaurant/restaurant'
+2025-11-01T00:59:01.3869564Z ##[group]Initializing the repository
+2025-11-01T00:59:01.3874425Z [command]/usr/bin/git init /home/runner/work/restaurant/restaurant
+2025-11-01T00:59:01.3980821Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-11-01T00:59:01.3981655Z hint: is subject to change. To configure the initial branch name to use in all
+2025-11-01T00:59:01.3982362Z hint: of your new repositories, which will suppress this warning, call:
+2025-11-01T00:59:01.3982962Z hint:
+2025-11-01T00:59:01.3983377Z hint: 	git config --global init.defaultBranch <name>
+2025-11-01T00:59:01.3983869Z hint:
+2025-11-01T00:59:01.3984332Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-11-01T00:59:01.3985159Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-11-01T00:59:01.3985760Z hint:
+2025-11-01T00:59:01.3986046Z hint: 	git branch -m <name>
+2025-11-01T00:59:01.3986387Z hint:
+2025-11-01T00:59:01.3986891Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-11-01T00:59:01.3987702Z Initialized empty Git repository in /home/runner/work/restaurant/restaurant/.git/
+2025-11-01T00:59:01.3997362Z [command]/usr/bin/git remote add origin https://github.com/pedrohcrisanto/restaurant
+2025-11-01T00:59:01.4031255Z ##[endgroup]
+2025-11-01T00:59:01.4031848Z ##[group]Disabling automatic garbage collection
+2025-11-01T00:59:01.4035320Z [command]/usr/bin/git config --local gc.auto 0
+2025-11-01T00:59:01.4061882Z ##[endgroup]
+2025-11-01T00:59:01.4062299Z ##[group]Setting up auth
+2025-11-01T00:59:01.4068734Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-11-01T00:59:01.4097342Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-11-01T00:59:01.4420016Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-11-01T00:59:01.4449763Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-11-01T00:59:01.4667901Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-11-01T00:59:01.4702143Z ##[endgroup]
+2025-11-01T00:59:01.4702871Z ##[group]Fetching the repository
+2025-11-01T00:59:01.4718675Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +9d3ecb13ad25356f8c3d524d6fdcfa0140af7474:refs/remotes/origin/main
+2025-11-01T00:59:01.8568424Z From https://github.com/pedrohcrisanto/restaurant
+2025-11-01T00:59:01.8569449Z  * [new ref]         9d3ecb13ad25356f8c3d524d6fdcfa0140af7474 -> origin/main
+2025-11-01T00:59:01.8602387Z ##[endgroup]
+2025-11-01T00:59:01.8678346Z ##[group]Determining the checkout info
+2025-11-01T00:59:01.8679076Z ##[endgroup]
+2025-11-01T00:59:01.8679518Z [command]/usr/bin/git sparse-checkout disable
+2025-11-01T00:59:01.8680802Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-11-01T00:59:01.8685655Z ##[group]Checking out the ref
+2025-11-01T00:59:01.8689831Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-11-01T00:59:01.8870277Z Switched to a new branch 'main'
+2025-11-01T00:59:01.8873550Z branch 'main' set up to track 'origin/main'.
+2025-11-01T00:59:01.8878627Z ##[endgroup]
+2025-11-01T00:59:01.8911884Z [command]/usr/bin/git log -1 --format=%H
+2025-11-01T00:59:01.8933638Z 9d3ecb13ad25356f8c3d524d6fdcfa0140af7474
+2025-11-01T00:59:01.9098626Z ##[group]Run sudo apt-get update
+2025-11-01T00:59:01.9098936Z [36;1msudo apt-get update[0m
+2025-11-01T00:59:01.9099196Z [36;1msudo apt-get install -y libpq-dev[0m
+2025-11-01T00:59:01.9134611Z shell: /usr/bin/bash -e {0}
+2025-11-01T00:59:01.9134848Z env:
+2025-11-01T00:59:01.9135006Z   RAILS_ENV: test
+2025-11-01T00:59:01.9135463Z   DATABASE_URL: ***localhost:5432/test
+2025-11-01T00:59:01.9135704Z ##[endgroup]
+2025-11-01T00:59:06.0052580Z Hit:1 https://packages.microsoft.com/repos/azure-cli noble InRelease
+2025-11-01T00:59:06.0054117Z Get:2 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2025-11-01T00:59:06.0068001Z Get:3 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2025-11-01T00:59:06.0301502Z Hit:4 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2025-11-01T00:59:06.0313479Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2025-11-01T00:59:06.0359404Z Get:6 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2025-11-01T00:59:06.0393892Z Get:7 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2025-11-01T00:59:06.2503615Z Get:8 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [66.2 kB]
+2025-11-01T00:59:06.2708835Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [48.8 kB]
+2025-11-01T00:59:06.2738308Z Get:10 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [11.1 kB]
+2025-11-01T00:59:06.3623960Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1573 kB]
+2025-11-01T00:59:06.3829183Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [297 kB]
+2025-11-01T00:59:06.3871414Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [175 kB]
+2025-11-01T00:59:06.3899713Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 c-n-f Metadata [15.4 kB]
+2025-11-01T00:59:06.3909833Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1498 kB]
+2025-11-01T00:59:06.4027260Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [303 kB]
+2025-11-01T00:59:06.4054127Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [378 kB]
+2025-11-01T00:59:06.4081543Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 c-n-f Metadata [31.4 kB]
+2025-11-01T00:59:06.4093011Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [2226 kB]
+2025-11-01T00:59:06.4229681Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [505 kB]
+2025-11-01T00:59:06.4747151Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
+2025-11-01T00:59:06.4761361Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+2025-11-01T00:59:06.4770629Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7144 B]
+2025-11-01T00:59:06.4802987Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [11.0 kB]
+2025-11-01T00:59:06.4812635Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [216 B]
+2025-11-01T00:59:06.4821892Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
+2025-11-01T00:59:06.4872348Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1270 kB]
+2025-11-01T00:59:06.4941597Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [21.5 kB]
+2025-11-01T00:59:06.4950730Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 c-n-f Metadata [9008 B]
+2025-11-01T00:59:06.4961498Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [906 kB]
+2025-11-01T00:59:06.5022743Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [203 kB]
+2025-11-01T00:59:06.5041230Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [52.3 kB]
+2025-11-01T00:59:06.5051915Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 c-n-f Metadata [19.4 kB]
+2025-11-01T00:59:06.5061308Z Get:34 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
+2025-11-01T00:59:06.5509298Z Get:35 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
+2025-11-01T00:59:16.0007967Z Fetched 10.0 MB in 1s (7067 kB/s)
+2025-11-01T00:59:16.7915236Z Reading package lists...
+2025-11-01T00:59:16.8242344Z Reading package lists...
+2025-11-01T00:59:17.0178554Z Building dependency tree...
+2025-11-01T00:59:17.0186012Z Reading state information...
+2025-11-01T00:59:17.2146082Z libpq-dev is already the newest version (18.0-1.pgdg24.04+3).
+2025-11-01T00:59:17.2146557Z 0 upgraded, 0 newly installed, 0 to remove and 36 not upgraded.
+2025-11-01T00:59:17.2207238Z ##[group]Run ruby/setup-ruby@v1
+2025-11-01T00:59:17.2207471Z with:
+2025-11-01T00:59:17.2207638Z   ruby-version: 3.3
+2025-11-01T00:59:17.2207817Z   bundler-cache: true
+2025-11-01T00:59:17.2207989Z env:
+2025-11-01T00:59:17.2208138Z   RAILS_ENV: test
+2025-11-01T00:59:17.2208597Z   DATABASE_URL: ***localhost:5432/test
+2025-11-01T00:59:17.2208827Z ##[endgroup]
+2025-11-01T00:59:17.4463115Z ##[group]Modifying PATH
+2025-11-01T00:59:17.4467675Z Entries added to PATH to use selected Ruby:
+2025-11-01T00:59:17.4471630Z   /opt/hostedtoolcache/Ruby/3.3.10/x64/bin
+2025-11-01T00:59:17.4478621Z ##[endgroup]
+2025-11-01T00:59:17.4479493Z ##[group]Print Ruby version
+2025-11-01T00:59:17.4619580Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/ruby --version
+2025-11-01T00:59:17.8527115Z ruby 3.3.10 (2025-10-23 revision 343ea05002) [x86_64-linux]
+2025-11-01T00:59:17.8559615Z Took   0.41 seconds
+2025-11-01T00:59:17.8560544Z ##[endgroup]
+2025-11-01T00:59:17.8562750Z ##[group]Installing Bundler
+2025-11-01T00:59:17.8568338Z Using Bundler 2.6.9 from Gemfile.lock BUNDLED WITH 2.6.9
+2025-11-01T00:59:17.8572832Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/gem install bundler -v 2.6.9
+2025-11-01T00:59:21.2200108Z Successfully installed bundler-2.6.9
+2025-11-01T00:59:21.2200634Z 1 gem installed
+2025-11-01T00:59:21.2253921Z Took   3.37 seconds
+2025-11-01T00:59:21.2254790Z ##[endgroup]
+2025-11-01T00:59:21.2256646Z > bundle install
+2025-11-01T00:59:21.2272553Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/bundle config --local path /home/runner/work/restaurant/restaurant/vendor/bundle
+2025-11-01T00:59:21.4013874Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/bundle config --local deployment true
+2025-11-01T00:59:21.5509884Z ##[group]Print lockfile
+2025-11-01T00:59:21.5524582Z [command]/usr/bin/cat Gemfile.lock
+2025-11-01T00:59:21.5554143Z GEM
+2025-11-01T00:59:21.5554557Z   remote: https://rubygems.org/
+2025-11-01T00:59:21.5554962Z   specs:
+2025-11-01T00:59:21.5555243Z     actioncable (8.0.4)
+2025-11-01T00:59:21.5555619Z       actionpack (= 8.0.4)
+2025-11-01T00:59:21.5555992Z       activesupport (= 8.0.4)
+2025-11-01T00:59:21.5556367Z       nio4r (~> 2.0)
+2025-11-01T00:59:21.5556710Z       websocket-driver (>= 0.6.1)
+2025-11-01T00:59:21.5557084Z       zeitwerk (~> 2.6)
+2025-11-01T00:59:21.5557425Z     actionmailbox (8.0.4)
+2025-11-01T00:59:21.5557780Z       actionpack (= 8.0.4)
+2025-11-01T00:59:21.5558126Z       activejob (= 8.0.4)
+2025-11-01T00:59:21.5558474Z       activerecord (= 8.0.4)
+2025-11-01T00:59:21.5558855Z       activestorage (= 8.0.4)
+2025-11-01T00:59:21.5559234Z       activesupport (= 8.0.4)
+2025-11-01T00:59:21.5559602Z       mail (>= 2.8.0)
+2025-11-01T00:59:21.5559923Z     actionmailer (8.0.4)
+2025-11-01T00:59:21.5560285Z       actionpack (= 8.0.4)
+2025-11-01T00:59:21.5560657Z       actionview (= 8.0.4)
+2025-11-01T00:59:21.5561010Z       activejob (= 8.0.4)
+2025-11-01T00:59:21.5561625Z       activesupport (= 8.0.4)
+2025-11-01T00:59:21.5561941Z       mail (>= 2.8.0)
+2025-11-01T00:59:21.5562281Z       rails-dom-testing (~> 2.2)
+2025-11-01T00:59:21.5562664Z     actionpack (8.0.4)
+2025-11-01T00:59:21.5563000Z       actionview (= 8.0.4)
+2025-11-01T00:59:21.5563344Z       activesupport (= 8.0.4)
+2025-11-01T00:59:21.5563685Z       nokogiri (>= 1.8.5)
+2025-11-01T00:59:21.5563976Z       rack (>= 2.2.4)
+2025-11-01T00:59:21.5564284Z       rack-session (>= 1.0.1)
+2025-11-01T00:59:21.5564632Z       rack-test (>= 0.6.3)
+2025-11-01T00:59:21.5564999Z       rails-dom-testing (~> 2.2)
+2025-11-01T00:59:21.5565395Z       rails-html-sanitizer (~> 1.6)
+2025-11-01T00:59:21.5565781Z       useragent (~> 0.16)
+2025-11-01T00:59:21.5566104Z     actiontext (8.0.4)
+2025-11-01T00:59:21.5566421Z       actionpack (= 8.0.4)
+2025-11-01T00:59:21.5566765Z       activerecord (= 8.0.4)
+2025-11-01T00:59:21.5567467Z       activestorage (= 8.0.4)
+2025-11-01T00:59:21.5567819Z       activesupport (= 8.0.4)
+2025-11-01T00:59:21.5568147Z       globalid (>= 0.6.0)
+2025-11-01T00:59:21.5568464Z       nokogiri (>= 1.8.5)
+2025-11-01T00:59:21.5569137Z     actionview (8.0.4)
+2025-11-01T00:59:21.5569515Z       activesupport (= 8.0.4)
+2025-11-01T00:59:21.5569883Z       builder (~> 3.1)
+2025-11-01T00:59:21.5570166Z       erubi (~> 1.11)
+2025-11-01T00:59:21.5570469Z       rails-dom-testing (~> 2.2)
+2025-11-01T00:59:21.5570826Z       rails-html-sanitizer (~> 1.6)
+2025-11-01T00:59:21.5571570Z     activejob (8.0.4)
+2025-11-01T00:59:21.5571918Z       activesupport (= 8.0.4)
+2025-11-01T00:59:21.5572287Z       globalid (>= 0.3.6)
+2025-11-01T00:59:21.5572614Z     activemodel (8.0.4)
+2025-11-01T00:59:21.5572968Z       activesupport (= 8.0.4)
+2025-11-01T00:59:21.5573333Z     activerecord (8.0.4)
+2025-11-01T00:59:21.5573686Z       activemodel (= 8.0.4)
+2025-11-01T00:59:21.5574042Z       activesupport (= 8.0.4)
+2025-11-01T00:59:21.5574426Z       timeout (>= 0.4.0)
+2025-11-01T00:59:21.5574769Z     activestorage (8.0.4)
+2025-11-01T00:59:21.5575115Z       actionpack (= 8.0.4)
+2025-11-01T00:59:21.5575490Z       activejob (= 8.0.4)
+2025-11-01T00:59:21.5575861Z       activerecord (= 8.0.4)
+2025-11-01T00:59:21.5576237Z       activesupport (= 8.0.4)
+2025-11-01T00:59:21.5576595Z       marcel (~> 1.0)
+2025-11-01T00:59:21.5576939Z     activesupport (8.0.4)
+2025-11-01T00:59:21.5577306Z       base64
+2025-11-01T00:59:21.5577598Z       benchmark (>= 0.3)
+2025-11-01T00:59:21.5577925Z       bigdecimal
+2025-11-01T00:59:21.5578243Z       concurrent-ruby (~> 1.0, >= 1.3.1)
+2025-11-01T00:59:21.5578672Z       connection_pool (>= 2.2.5)
+2025-11-01T00:59:21.5579028Z       drb
+2025-11-01T00:59:21.5579274Z       i18n (>= 1.6, < 2)
+2025-11-01T00:59:21.5579577Z       logger (>= 1.4.2)
+2025-11-01T00:59:21.5579899Z       minitest (>= 5.1)
+2025-11-01T00:59:21.5580224Z       securerandom (>= 0.3)
+2025-11-01T00:59:21.5580580Z       tzinfo (~> 2.0, >= 2.0.5)
+2025-11-01T00:59:21.5580951Z       uri (>= 0.13.1)
+2025-11-01T00:59:21.5581833Z     addressable (2.8.7)
+2025-11-01T00:59:21.5582215Z       public_suffix (>= 2.0.2, < 7.0)
+2025-11-01T00:59:21.5582617Z     ast (2.4.3)
+2025-11-01T00:59:21.5582930Z     base64 (0.3.0)
+2025-11-01T00:59:21.5583232Z     benchmark (0.5.0)
+2025-11-01T00:59:21.5583558Z     bigdecimal (3.3.1)
+2025-11-01T00:59:21.5583883Z     blueprinter (1.2.1)
+2025-11-01T00:59:21.5584199Z     brakeman (6.2.2)
+2025-11-01T00:59:21.5584491Z       racc
+2025-11-01T00:59:21.5584766Z     builder (3.3.0)
+2025-11-01T00:59:21.5585080Z     bundler-audit (0.9.2)
+2025-11-01T00:59:21.5585433Z       bundler (>= 1.2.0, < 3)
+2025-11-01T00:59:21.5585790Z       thor (~> 1.0)
+2025-11-01T00:59:21.5586116Z     concurrent-ruby (1.3.5)
+2025-11-01T00:59:21.5586493Z     connection_pool (2.5.4)
+2025-11-01T00:59:21.5586836Z     crass (1.0.6)
+2025-11-01T00:59:21.5587135Z     csv (3.3.5)
+2025-11-01T00:59:21.5587419Z     date (3.4.1)
+2025-11-01T00:59:21.5587721Z     debug (1.11.0)
+2025-11-01T00:59:21.5588034Z       irb (~> 1.10)
+2025-11-01T00:59:21.5588339Z       reline (>= 0.3.8)
+2025-11-01T00:59:21.5588664Z     diff-lcs (1.6.2)
+2025-11-01T00:59:21.5588986Z     docile (1.4.1)
+2025-11-01T00:59:21.5589274Z     dotenv (3.1.8)
+2025-11-01T00:59:21.5589613Z     dotenv-rails (3.1.8)
+2025-11-01T00:59:21.5590033Z       dotenv (= 3.1.8)
+2025-11-01T00:59:21.5590360Z       railties (>= 6.1)
+2025-11-01T00:59:21.5590685Z     drb (2.2.3)
+2025-11-01T00:59:21.5590992Z     dry-configurable (1.3.0)
+2025-11-01T00:59:21.5591563Z       dry-core (~> 1.1)
+2025-11-01T00:59:21.5591916Z       zeitwerk (~> 2.6)
+2025-11-01T00:59:21.5592250Z     dry-core (1.1.0)
+2025-11-01T00:59:21.5592585Z       concurrent-ruby (~> 1.0)
+2025-11-01T00:59:21.5592947Z       logger
+2025-11-01T00:59:21.5593215Z       zeitwerk (~> 2.6)
+2025-11-01T00:59:21.5593550Z     dry-inflector (1.2.0)
+2025-11-01T00:59:21.5593904Z     dry-initializer (3.2.0)
+2025-11-01T00:59:21.5594271Z     dry-logic (1.6.0)
+2025-11-01T00:59:21.5594584Z       bigdecimal
+2025-11-01T00:59:21.5595211Z       concurrent-ruby (~> 1.0)
+2025-11-01T00:59:21.5595587Z       dry-core (~> 1.1)
+2025-11-01T00:59:21.5595922Z       zeitwerk (~> 2.6)
+2025-11-01T00:59:21.5596248Z     dry-schema (1.14.1)
+2025-11-01T00:59:21.5596826Z       concurrent-ruby (~> 1.0)
+2025-11-01T00:59:21.5597255Z       dry-configurable (~> 1.0, >= 1.0.1)
+2025-11-01T00:59:21.5597667Z       dry-core (~> 1.1)
+2025-11-01T00:59:21.5598005Z       dry-initializer (~> 3.2)
+2025-11-01T00:59:21.5598385Z       dry-logic (~> 1.5)
+2025-11-01T00:59:21.5598733Z       dry-types (~> 1.8)
+2025-11-01T00:59:21.5599069Z       zeitwerk (~> 2.6)
+2025-11-01T00:59:21.5599404Z     dry-types (1.8.3)
+2025-11-01T00:59:21.5599732Z       bigdecimal (~> 3.0)
+2025-11-01T00:59:21.5600100Z       concurrent-ruby (~> 1.0)
+2025-11-01T00:59:21.5600468Z       dry-core (~> 1.0)
+2025-11-01T00:59:21.5600811Z       dry-inflector (~> 1.0)
+2025-11-01T00:59:21.5601424Z       dry-logic (~> 1.4)
+2025-11-01T00:59:21.5601758Z       zeitwerk (~> 2.6)
+2025-11-01T00:59:21.5602097Z     erb (5.1.3)
+2025-11-01T00:59:21.5602373Z     erubi (1.13.1)
+2025-11-01T00:59:21.5602674Z     factory_bot (6.5.6)
+2025-11-01T00:59:21.5603007Z       activesupport (>= 6.1.0)
+2025-11-01T00:59:21.5603394Z     factory_bot_rails (6.5.1)
+2025-11-01T00:59:21.5603771Z       factory_bot (~> 6.5)
+2025-11-01T00:59:21.5604120Z       railties (>= 6.1.0)
+2025-11-01T00:59:21.5604447Z     faker (3.5.2)
+2025-11-01T00:59:21.5604759Z       i18n (>= 1.8.11, < 2)
+2025-11-01T00:59:21.5605102Z     globalid (1.3.0)
+2025-11-01T00:59:21.5605438Z       activesupport (>= 6.1)
+2025-11-01T00:59:21.5605796Z     highline (3.1.2)
+2025-11-01T00:59:21.5606094Z       reline
+2025-11-01T00:59:21.5606370Z     i18n (1.14.7)
+2025-11-01T00:59:21.5606677Z       concurrent-ruby (~> 1.0)
+2025-11-01T00:59:21.5607043Z     i18n-tasks (1.0.15)
+2025-11-01T00:59:21.5607384Z       activesupport (>= 4.0.2)
+2025-11-01T00:59:21.5607747Z       ast (>= 2.1.0)
+2025-11-01T00:59:21.5608043Z       erubi
+2025-11-01T00:59:21.5608314Z       highline (>= 2.0.0)
+2025-11-01T00:59:21.5608656Z       i18n
+2025-11-01T00:59:21.5608944Z       parser (>= 3.2.2.1)
+2025-11-01T00:59:21.5609278Z       rails-i18n
+2025-11-01T00:59:21.5609608Z       rainbow (>= 2.2.2, < 4.0)
+2025-11-01T00:59:21.5610030Z       ruby-progressbar (~> 1.8, >= 1.8.1)
+2025-11-01T00:59:21.5610476Z       terminal-table (>= 1.5.1)
+2025-11-01T00:59:21.5610866Z     io-console (0.8.1)
+2025-11-01T00:59:21.5611414Z     irb (1.15.2)
+2025-11-01T00:59:21.5611715Z       pp (>= 0.6.0)
+2025-11-01T00:59:21.5612017Z       rdoc (>= 4.0.0)
+2025-11-01T00:59:21.5612338Z       reline (>= 0.4.2)
+2025-11-01T00:59:21.5612652Z     json (2.15.2)
+2025-11-01T00:59:21.5612961Z     json-schema (5.2.2)
+2025-11-01T00:59:21.5613372Z       addressable (~> 2.8)
+2025-11-01T00:59:21.5613742Z       bigdecimal (~> 3.1)
+2025-11-01T00:59:21.5614095Z     kind (5.10.0)
+2025-11-01T00:59:21.5614435Z     language_server-protocol (3.17.0.5)
+2025-11-01T00:59:21.5614891Z     license_finder (7.2.1)
+2025-11-01T00:59:21.5615239Z       bundler
+2025-11-01T00:59:21.5615543Z       csv (~> 3.2)
+2025-11-01T00:59:21.5615848Z       rubyzip (>= 1, < 3)
+2025-11-01T00:59:21.5616191Z       thor (~> 1.2)
+2025-11-01T00:59:21.5616500Z       tomlrb (>= 1.3, < 2.1)
+2025-11-01T00:59:21.5616868Z       with_env (= 1.1.0)
+2025-11-01T00:59:21.5617212Z       xml-simple (~> 1.1.9)
+2025-11-01T00:59:21.5617569Z     lint_roller (1.1.0)
+2025-11-01T00:59:21.5617901Z     logger (1.7.0)
+2025-11-01T00:59:21.5618220Z     loofah (2.24.1)
+2025-11-01T00:59:21.5618530Z       crass (~> 1.0.2)
+2025-11-01T00:59:21.5618851Z       nokogiri (>= 1.12.0)
+2025-11-01T00:59:21.5619199Z     mail (2.9.0)
+2025-11-01T00:59:21.5619488Z       logger
+2025-11-01T00:59:21.5619779Z       mini_mime (>= 0.1.1)
+2025-11-01T00:59:21.5620102Z       net-imap
+2025-11-01T00:59:21.5620387Z       net-pop
+2025-11-01T00:59:21.5620661Z       net-smtp
+2025-11-01T00:59:21.5620942Z     marcel (1.1.0)
+2025-11-01T00:59:21.5621472Z     mini_mime (1.1.5)
+2025-11-01T00:59:21.5621801Z     minitest (5.26.0)
+2025-11-01T00:59:21.5622413Z     net-imap (0.5.12)
+2025-11-01T00:59:21.5622733Z       date
+2025-11-01T00:59:21.5623002Z       net-protocol
+2025-11-01T00:59:21.5623304Z     net-pop (0.1.2)
+2025-11-01T00:59:21.5623605Z       net-protocol
+2025-11-01T00:59:21.5624140Z     net-protocol (0.2.2)
+2025-11-01T00:59:21.5624494Z       timeout
+2025-11-01T00:59:21.5624783Z     net-smtp (0.5.1)
+2025-11-01T00:59:21.5625089Z       net-protocol
+2025-11-01T00:59:21.5625384Z     nio4r (2.7.4)
+2025-11-01T00:59:21.5625718Z     nokogiri (1.18.10-aarch64-linux-gnu)
+2025-11-01T00:59:21.5626140Z       racc (~> 1.4)
+2025-11-01T00:59:21.5626476Z     nokogiri (1.18.10-aarch64-linux-musl)
+2025-11-01T00:59:21.5626894Z       racc (~> 1.4)
+2025-11-01T00:59:21.5627225Z     nokogiri (1.18.10-arm-linux-gnu)
+2025-11-01T00:59:21.5627624Z       racc (~> 1.4)
+2025-11-01T00:59:21.5627965Z     nokogiri (1.18.10-arm-linux-musl)
+2025-11-01T00:59:21.5628360Z       racc (~> 1.4)
+2025-11-01T00:59:21.5628687Z     nokogiri (1.18.10-arm64-darwin)
+2025-11-01T00:59:21.5629058Z       racc (~> 1.4)
+2025-11-01T00:59:21.5629385Z     nokogiri (1.18.10-x86_64-darwin)
+2025-11-01T00:59:21.5629760Z       racc (~> 1.4)
+2025-11-01T00:59:21.5630087Z     nokogiri (1.18.10-x86_64-linux-gnu)
+2025-11-01T00:59:21.5630466Z       racc (~> 1.4)
+2025-11-01T00:59:21.5630802Z     nokogiri (1.18.10-x86_64-linux-musl)
+2025-11-01T00:59:21.5631409Z       racc (~> 1.4)
+2025-11-01T00:59:21.5631703Z     ostruct (0.6.3)
+2025-11-01T00:59:21.5632008Z     pagy (6.5.0)
+2025-11-01T00:59:21.5632320Z     parallel (1.27.0)
+2025-11-01T00:59:21.5632652Z     parser (3.3.10.0)
+2025-11-01T00:59:21.5632962Z       ast (~> 2.4.1)
+2025-11-01T00:59:21.5633269Z       racc
+2025-11-01T00:59:21.5633527Z     pg (1.6.2)
+2025-11-01T00:59:21.5633809Z     pg (1.6.2-aarch64-linux)
+2025-11-01T00:59:21.5634179Z     pg (1.6.2-aarch64-linux-musl)
+2025-11-01T00:59:21.5634568Z     pg (1.6.2-arm64-darwin)
+2025-11-01T00:59:21.5634916Z     pg (1.6.2-x86_64-darwin)
+2025-11-01T00:59:21.5635276Z     pg (1.6.2-x86_64-linux)
+2025-11-01T00:59:21.5635648Z     pg (1.6.2-x86_64-linux-musl)
+2025-11-01T00:59:21.5636024Z     pp (0.6.3)
+2025-11-01T00:59:21.5636300Z       prettyprint
+2025-11-01T00:59:21.5636588Z     prettyprint (0.2.0)
+2025-11-01T00:59:21.5636918Z     prism (1.6.0)
+2025-11-01T00:59:21.5637215Z     psych (5.2.6)
+2025-11-01T00:59:21.5637500Z       date
+2025-11-01T00:59:21.5637770Z       stringio
+2025-11-01T00:59:21.5638083Z     public_suffix (6.0.2)
+2025-11-01T00:59:21.5638428Z     puma (7.1.0)
+2025-11-01T00:59:21.5638734Z       nio4r (~> 2.0)
+2025-11-01T00:59:21.5639033Z     racc (1.8.1)
+2025-11-01T00:59:21.5639316Z     rack (3.2.3)
+2025-11-01T00:59:21.5639614Z     rack-session (2.1.1)
+2025-11-01T00:59:21.5639967Z       base64 (>= 0.1.0)
+2025-11-01T00:59:21.5640298Z       rack (>= 3.0.0)
+2025-11-01T00:59:21.5640617Z     rack-test (2.2.0)
+2025-11-01T00:59:21.5640939Z       rack (>= 1.3)
+2025-11-01T00:59:21.5641460Z     rackup (2.2.1)
+2025-11-01T00:59:21.5641769Z       rack (>= 3)
+2025-11-01T00:59:21.5642067Z     rails (8.0.4)
+2025-11-01T00:59:21.5642398Z       actioncable (= 8.0.4)
+2025-11-01T00:59:21.5642766Z       actionmailbox (= 8.0.4)
+2025-11-01T00:59:21.5643153Z       actionmailer (= 8.0.4)
+2025-11-01T00:59:21.5643527Z       actionpack (= 8.0.4)
+2025-11-01T00:59:21.5643902Z       actiontext (= 8.0.4)
+2025-11-01T00:59:21.5644260Z       actionview (= 8.0.4)
+2025-11-01T00:59:21.5644623Z       activejob (= 8.0.4)
+2025-11-01T00:59:21.5644990Z       activemodel (= 8.0.4)
+2025-11-01T00:59:21.5645358Z       activerecord (= 8.0.4)
+2025-11-01T00:59:21.5645745Z       activestorage (= 8.0.4)
+2025-11-01T00:59:21.5646124Z       activesupport (= 8.0.4)
+2025-11-01T00:59:21.5646503Z       bundler (>= 1.15.0)
+2025-11-01T00:59:21.5646842Z       railties (= 8.0.4)
+2025-11-01T00:59:21.5647211Z     rails-dom-testing (2.3.0)
+2025-11-01T00:59:21.5647596Z       activesupport (>= 5.0.0)
+2025-11-01T00:59:21.5647967Z       minitest
+2025-11-01T00:59:21.5648273Z       nokogiri (>= 1.6)
+2025-11-01T00:59:21.5648642Z     rails-html-sanitizer (1.6.2)
+2025-11-01T00:59:21.5649038Z       loofah (~> 2.21)
+2025-11-01T00:59:21.5649856Z       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
+2025-11-01T00:59:21.5650487Z     rails-i18n (8.0.2)
+2025-11-01T00:59:21.5651248Z       i18n (>= 0.7, < 2)
+2025-11-01T00:59:21.5651653Z       railties (>= 8.0.0, < 9)
+2025-11-01T00:59:21.5652030Z     railties (8.0.4)
+2025-11-01T00:59:21.5652373Z       actionpack (= 8.0.4)
+2025-11-01T00:59:21.5652747Z       activesupport (= 8.0.4)
+2025-11-01T00:59:21.5653119Z       irb (~> 1.13)
+2025-11-01T00:59:21.5653433Z       rackup (>= 1.0.0)
+2025-11-01T00:59:21.5653767Z       rake (>= 12.2)
+2025-11-01T00:59:21.5654095Z       thor (~> 1.0, >= 1.2.2)
+2025-11-01T00:59:21.5654441Z       tsort (>= 0.2)
+2025-11-01T00:59:21.5654764Z       zeitwerk (~> 2.6)
+2025-11-01T00:59:21.5655087Z     rainbow (3.1.1)
+2025-11-01T00:59:21.5655402Z     rake (13.3.0)
+2025-11-01T00:59:21.5655703Z     rdoc (6.15.0)
+2025-11-01T00:59:21.5655998Z       erb
+2025-11-01T00:59:21.5656278Z       psych (>= 4.0.0)
+2025-11-01T00:59:21.5656588Z       tsort
+2025-11-01T00:59:21.5656840Z     reek (6.5.0)
+2025-11-01T00:59:21.5657133Z       dry-schema (~> 1.13)
+2025-11-01T00:59:21.5657449Z       logger (~> 1.6)
+2025-11-01T00:59:21.5657754Z       parser (~> 3.3.0)
+2025-11-01T00:59:21.5658075Z       rainbow (>= 2.0, < 4.0)
+2025-11-01T00:59:21.5658411Z       rexml (~> 3.1)
+2025-11-01T00:59:21.5658726Z     regexp_parser (2.11.3)
+2025-11-01T00:59:21.5659053Z     reline (0.6.2)
+2025-11-01T00:59:21.5659356Z       io-console (~> 0.5)
+2025-11-01T00:59:21.5659683Z     rexml (3.4.4)
+2025-11-01T00:59:21.5659983Z     rspec-core (3.13.6)
+2025-11-01T00:59:21.5660312Z       rspec-support (~> 3.13.0)
+2025-11-01T00:59:21.5660683Z     rspec-expectations (3.13.5)
+2025-11-01T00:59:21.5661233Z       diff-lcs (>= 1.2.0, < 2.0)
+2025-11-01T00:59:21.5661606Z       rspec-support (~> 3.13.0)
+2025-11-01T00:59:21.5661950Z     rspec-mocks (3.13.6)
+2025-11-01T00:59:21.5662274Z       diff-lcs (>= 1.2.0, < 2.0)
+2025-11-01T00:59:21.5662648Z       rspec-support (~> 3.13.0)
+2025-11-01T00:59:21.5662987Z     rspec-rails (6.1.5)
+2025-11-01T00:59:21.5663302Z       actionpack (>= 6.1)
+2025-11-01T00:59:21.5663629Z       activesupport (>= 6.1)
+2025-11-01T00:59:21.5663984Z       railties (>= 6.1)
+2025-11-01T00:59:21.5664290Z       rspec-core (~> 3.13)
+2025-11-01T00:59:21.5664639Z       rspec-expectations (~> 3.13)
+2025-11-01T00:59:21.5665006Z       rspec-mocks (~> 3.13)
+2025-11-01T00:59:21.5665347Z       rspec-support (~> 3.13)
+2025-11-01T00:59:21.5665712Z     rspec-support (3.13.6)
+2025-11-01T00:59:21.5666096Z     rspec_junit_formatter (0.6.0)
+2025-11-01T00:59:21.5666386Z       rspec-core (>= 2, < 4, != 2.12.0)
+2025-11-01T00:59:21.5666603Z     rswag-api (2.16.0)
+2025-11-01T00:59:21.5666803Z       activesupport (>= 5.2, < 8.1)
+2025-11-01T00:59:21.5667021Z       railties (>= 5.2, < 8.1)
+2025-11-01T00:59:21.5667222Z     rswag-specs (2.16.0)
+2025-11-01T00:59:21.5667412Z       activesupport (>= 5.2, < 8.1)
+2025-11-01T00:59:21.5667628Z       json-schema (>= 2.2, < 6.0)
+2025-11-01T00:59:21.5667836Z       railties (>= 5.2, < 8.1)
+2025-11-01T00:59:21.5668032Z       rspec-core (>= 2.14)
+2025-11-01T00:59:21.5668215Z     rswag-ui (2.16.0)
+2025-11-01T00:59:21.5668397Z       actionpack (>= 5.2, < 8.1)
+2025-11-01T00:59:21.5668604Z       railties (>= 5.2, < 8.1)
+2025-11-01T00:59:21.5668789Z     rubocop (1.81.6)
+2025-11-01T00:59:21.5668960Z       json (~> 2.3)
+2025-11-01T00:59:21.5669147Z       language_server-protocol (~> 3.17.0.2)
+2025-11-01T00:59:21.5669388Z       lint_roller (~> 1.1.0)
+2025-11-01T00:59:21.5669578Z       parallel (~> 1.10)
+2025-11-01T00:59:21.5669761Z       parser (>= 3.3.0.2)
+2025-11-01T00:59:21.5669941Z       rainbow (>= 2.2.2, < 4.0)
+2025-11-01T00:59:21.5670146Z       regexp_parser (>= 2.9.3, < 3.0)
+2025-11-01T00:59:21.5670365Z       rubocop-ast (>= 1.47.1, < 2.0)
+2025-11-01T00:59:21.5670589Z       ruby-progressbar (~> 1.7)
+2025-11-01T00:59:21.5670812Z       unicode-display_width (>= 2.4.0, < 4.0)
+2025-11-01T00:59:21.5671235Z     rubocop-ast (1.47.1)
+2025-11-01T00:59:21.5671665Z       parser (>= 3.3.7.2)
+2025-11-01T00:59:21.5671847Z       prism (~> 1.4)
+2025-11-01T00:59:21.5672033Z     rubocop-capybara (2.22.1)
+2025-11-01T00:59:21.5672235Z       lint_roller (~> 1.1)
+2025-11-01T00:59:21.5672528Z       rubocop (~> 1.72, >= 1.72.1)
+2025-11-01T00:59:21.5672745Z     rubocop-factory_bot (2.27.1)
+2025-11-01T00:59:21.5672950Z       lint_roller (~> 1.1)
+2025-11-01T00:59:21.5673131Z       rubocop (~> 1.72, >= 1.72.1)
+2025-11-01T00:59:21.5673337Z     rubocop-rails (2.33.4)
+2025-11-01T00:59:21.5673529Z       activesupport (>= 4.2.0)
+2025-11-01T00:59:21.5673734Z       lint_roller (~> 1.1)
+2025-11-01T00:59:21.5673915Z       rack (>= 1.1)
+2025-11-01T00:59:21.5674078Z       rubocop (>= 1.75.0, < 2.0)
+2025-11-01T00:59:21.5674283Z       rubocop-ast (>= 1.44.0, < 2.0)
+2025-11-01T00:59:21.5674494Z     rubocop-rspec (2.31.0)
+2025-11-01T00:59:21.5674683Z       rubocop (~> 1.40)
+2025-11-01T00:59:21.5674863Z       rubocop-capybara (~> 2.17)
+2025-11-01T00:59:21.5675092Z       rubocop-factory_bot (~> 2.22)
+2025-11-01T00:59:21.5675307Z       rubocop-rspec_rails (~> 2.28)
+2025-11-01T00:59:21.5675532Z     rubocop-rspec_rails (2.29.1)
+2025-11-01T00:59:21.5675731Z       rubocop (~> 1.61)
+2025-11-01T00:59:21.5675916Z     ruby-progressbar (1.13.0)
+2025-11-01T00:59:21.5676116Z     rubyzip (2.4.1)
+2025-11-01T00:59:21.5676282Z     securerandom (0.4.1)
+2025-11-01T00:59:21.5676478Z     shoulda-matchers (6.5.0)
+2025-11-01T00:59:21.5676676Z       activesupport (>= 5.2.0)
+2025-11-01T00:59:21.5676873Z     simplecov (0.22.0)
+2025-11-01T00:59:21.5677044Z       docile (~> 1.1)
+2025-11-01T00:59:21.5677228Z       simplecov-html (~> 0.11)
+2025-11-01T00:59:21.5677539Z       simplecov_json_formatter (~> 0.1)
+2025-11-01T00:59:21.5677939Z     simplecov-html (0.13.2)
+2025-11-01T00:59:21.5678304Z     simplecov_json_formatter (0.1.4)
+2025-11-01T00:59:21.5678711Z     stringio (3.1.7)
+2025-11-01T00:59:21.5679040Z     terminal-table (4.0.0)
+2025-11-01T00:59:21.5679418Z       unicode-display_width (>= 1.1.1, < 4)
+2025-11-01T00:59:21.5679837Z     thor (1.4.0)
+2025-11-01T00:59:21.5680139Z     timeout (0.4.3)
+2025-11-01T00:59:21.5680439Z     tomlrb (2.0.3)
+2025-11-01T00:59:21.5680722Z     tsort (0.2.0)
+2025-11-01T00:59:21.5681215Z     tzinfo (2.0.6)
+2025-11-01T00:59:21.5681565Z       concurrent-ruby (~> 1.0)
+2025-11-01T00:59:21.5681949Z     u-attributes (2.8.0)
+2025-11-01T00:59:21.5682218Z       kind (>= 4.0, < 6.0)
+2025-11-01T00:59:21.5682404Z     u-case (4.5.2)
+2025-11-01T00:59:21.5682592Z       kind (>= 5.6, < 6.0)
+2025-11-01T00:59:21.5682796Z       u-attributes (>= 2.7, < 3.0)
+2025-11-01T00:59:21.5683031Z     unicode-display_width (3.2.0)
+2025-11-01T00:59:21.5683246Z       unicode-emoji (~> 4.1)
+2025-11-01T00:59:21.5683448Z     unicode-emoji (4.1.0)
+2025-11-01T00:59:21.5683628Z     uri (1.0.4)
+2025-11-01T00:59:21.5683796Z     useragent (0.16.11)
+2025-11-01T00:59:21.5683976Z     websocket-driver (0.8.0)
+2025-11-01T00:59:21.5684171Z       base64
+2025-11-01T00:59:21.5684347Z       websocket-extensions (>= 0.1.0)
+2025-11-01T00:59:21.5684589Z     websocket-extensions (0.1.5)
+2025-11-01T00:59:21.5684788Z     with_env (1.1.0)
+2025-11-01T00:59:21.5684967Z     xml-simple (1.1.9)
+2025-11-01T00:59:21.5685146Z       rexml
+2025-11-01T00:59:21.5685302Z     zeitwerk (2.7.3)
+2025-11-01T00:59:21.5685418Z 
+2025-11-01T00:59:21.5685502Z PLATFORMS
+2025-11-01T00:59:21.5685664Z   aarch64-linux
+2025-11-01T00:59:21.5685851Z   aarch64-linux-gnu
+2025-11-01T00:59:21.5686039Z   aarch64-linux-musl
+2025-11-01T00:59:21.5686227Z   arm-linux-gnu
+2025-11-01T00:59:21.5686390Z   arm-linux-musl
+2025-11-01T00:59:21.5686559Z   arm64-darwin
+2025-11-01T00:59:21.5686713Z   x86_64-darwin
+2025-11-01T00:59:21.5686866Z   x86_64-linux
+2025-11-01T00:59:21.5687017Z   x86_64-linux-gnu
+2025-11-01T00:59:21.5687183Z   x86_64-linux-musl
+2025-11-01T00:59:21.5687284Z 
+2025-11-01T00:59:21.5687356Z DEPENDENCIES
+2025-11-01T00:59:21.5687518Z   blueprinter (~> 1.0)
+2025-11-01T00:59:21.5687701Z   brakeman (~> 6.1)
+2025-11-01T00:59:21.5687868Z   bundler-audit (~> 0.9)
+2025-11-01T00:59:21.5688271Z   debug
+2025-11-01T00:59:21.5688417Z   dotenv-rails
+2025-11-01T00:59:21.5688592Z   factory_bot_rails (~> 6.4)
+2025-11-01T00:59:21.5688778Z   faker (~> 3.2)
+2025-11-01T00:59:21.5688939Z   i18n-tasks
+2025-11-01T00:59:21.5689260Z   license_finder
+2025-11-01T00:59:21.5689441Z   ostruct
+2025-11-01T00:59:21.5689586Z   pagy (~> 6.0)
+2025-11-01T00:59:21.5689744Z   pg (~> 1.1)
+2025-11-01T00:59:21.5689902Z   puma (>= 5.0)
+2025-11-01T00:59:21.5690105Z   rails (~> 8.0.2)
+2025-11-01T00:59:21.5690271Z   rails-i18n
+2025-11-01T00:59:21.5690419Z   reek
+2025-11-01T00:59:21.5690574Z   rspec-rails (~> 6.1)
+2025-11-01T00:59:21.5690765Z   rspec_junit_formatter (~> 0.6)
+2025-11-01T00:59:21.5691017Z   rswag-api (~> 2.13)
+2025-11-01T00:59:21.5691489Z   rswag-specs (~> 2.13)
+2025-11-01T00:59:21.5691820Z   rswag-ui (~> 2.13)
+2025-11-01T00:59:21.5692137Z   rubocop (~> 1.59)
+2025-11-01T00:59:21.5692471Z   rubocop-rails (~> 2.23)
+2025-11-01T00:59:21.5692830Z   rubocop-rspec (~> 2.26)
+2025-11-01T00:59:21.5693201Z   shoulda-matchers (~> 6.0)
+2025-11-01T00:59:21.5693587Z   simplecov (~> 0.22)
+2025-11-01T00:59:21.5693900Z   tzinfo-data
+2025-11-01T00:59:21.5694199Z   u-case (~> 4.5)
+2025-11-01T00:59:21.5694441Z 
+2025-11-01T00:59:21.5694560Z BUNDLED WITH
+2025-11-01T00:59:21.5694904Z    2.6.9
+2025-11-01T00:59:21.5695610Z ##[endgroup]
+2025-11-01T00:59:21.5697227Z Cache key: setup-ruby-bundler-cache-v6-ubuntu-24.04-x64-ruby-3.3.10-wd-/home/runner/work/restaurant/restaurant-with--without--only--Gemfile.lock-d55fc1d3465e457c9082700b0ff103cce4170f5a7a5755fdbc99aa04b04c6fe6
+2025-11-01T00:59:21.7145872Z Cache hit for: setup-ruby-bundler-cache-v6-ubuntu-24.04-x64-ruby-3.3.10-wd-/home/runner/work/restaurant/restaurant-with--without--only--Gemfile.lock-d55fc1d3465e457c9082700b0ff103cce4170f5a7a5755fdbc99aa04b04c6fe6
+2025-11-01T00:59:22.5382380Z Received 58822349 of 58822349 (100.0%), 89.3 MBs/sec
+2025-11-01T00:59:22.5384953Z Cache Size: ~56 MB (58822349 B)
+2025-11-01T00:59:22.5440893Z [command]/usr/bin/tar -xf /home/runner/work/_temp/58d9ee68-d51b-4d20-a5ee-8b98dd5e3dec/cache.tzst -P -C /home/runner/work/restaurant/restaurant --use-compress-program unzstd
+2025-11-01T00:59:23.1213730Z Cache restored successfully
+2025-11-01T00:59:23.1335394Z Found cache for key: setup-ruby-bundler-cache-v6-ubuntu-24.04-x64-ruby-3.3.10-wd-/home/runner/work/restaurant/restaurant-with--without--only--Gemfile.lock-d55fc1d3465e457c9082700b0ff103cce4170f5a7a5755fdbc99aa04b04c6fe6
+2025-11-01T00:59:23.1348851Z [command]/opt/hostedtoolcache/Ruby/3.3.10/x64/bin/bundle install --jobs 4
+2025-11-01T00:59:23.5636165Z Bundle complete! 28 Gemfile dependencies, 137 gems now installed.
+2025-11-01T00:59:23.5637510Z Bundled gems are installed into `./vendor/bundle`
+2025-11-01T00:59:23.5638106Z 1 installed gem you directly depend on is looking for funding.
+2025-11-01T00:59:23.5638651Z   Run `bundle fund` for details
+2025-11-01T00:59:23.5776572Z Took   2.35 seconds
+2025-11-01T00:59:23.5901393Z ##[group]Run bin/rails db:prepare
+2025-11-01T00:59:23.5901708Z [36;1mbin/rails db:prepare[0m
+2025-11-01T00:59:23.5935376Z shell: /usr/bin/bash -e {0}
+2025-11-01T00:59:23.5935603Z env:
+2025-11-01T00:59:23.5935767Z   RAILS_ENV: test
+2025-11-01T00:59:23.5936206Z   DATABASE_URL: ***localhost:5432/test
+2025-11-01T00:59:23.5936452Z ##[endgroup]
+2025-11-01T00:59:47.2158321Z Created database 'test'
+2025-11-01T00:59:47.2357828Z ##[group]Run bundle exec rspec --format progress --format RspecJunitFormatter --out tmp/rspec.xml
+2025-11-01T00:59:47.2358491Z [36;1mbundle exec rspec --format progress --format RspecJunitFormatter --out tmp/rspec.xml[0m
+2025-11-01T00:59:47.2390592Z shell: /usr/bin/bash -e {0}
+2025-11-01T00:59:47.2390811Z env:
+2025-11-01T00:59:47.2390972Z   RAILS_ENV: test
+2025-11-01T00:59:47.2391569Z   DATABASE_URL: ***localhost:5432/test
+2025-11-01T00:59:47.2391819Z ##[endgroup]
+2025-11-01T00:59:48.2787586Z /home/runner/work/restaurant/restaurant/vendor/bundle/ruby/3.3.0/gems/u-case-4.5.2/lib/micro/case.rb:74: warning: method redefined; discarding old inherited
+2025-11-01T00:59:48.2789002Z /home/runner/work/restaurant/restaurant/vendor/bundle/ruby/3.3.0/gems/u-attributes-2.8.0/lib/micro/attributes.rb:22: warning: previous definition of inherited was here
+2025-11-01T00:59:49.2271772Z 
+2025-11-01T00:59:49.2272471Z An error occurred while loading ./spec/blueprints/menu_blueprint_spec.rb.
+2025-11-01T00:59:49.2273250Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.2273718Z 
+2025-11-01T00:59:49.2279484Z Zeitwerk::NameError:
+2025-11-01T00:59:49.2280334Z   expected file /home/runner/work/restaurant/restaurant/app/repositories/persistence/menu_items_repository.rb to define constant Persistence::MenuItemsRepository, but didn't
+2025-11-01T00:59:49.2281795Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/loader/callbacks.rb:31:in `on_file_autoloaded'
+2025-11-01T00:59:49.2282525Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:27:in `require'
+2025-11-01T00:59:49.2283143Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/cref.rb:62:in `const_get'
+2025-11-01T00:59:49.2283720Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/cref.rb:62:in `get'
+2025-11-01T00:59:49.2284456Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/loader/eager_load.rb:173:in `block in actual_eager_load_dir'
+2025-11-01T00:59:49.2285169Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/loader/helpers.rb:47:in `block in ls'
+2025-11-01T00:59:49.2285741Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/loader/helpers.rb:25:in `each'
+2025-11-01T00:59:49.2286289Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/loader/helpers.rb:25:in `ls'
+2025-11-01T00:59:49.2286893Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/loader/eager_load.rb:168:in `actual_eager_load_dir'
+2025-11-01T00:59:49.2287591Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/loader/eager_load.rb:17:in `block (2 levels) in eager_load'
+2025-11-01T00:59:49.2288219Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/loader/eager_load.rb:16:in `each'
+2025-11-01T00:59:49.2288821Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/loader/eager_load.rb:16:in `block in eager_load'
+2025-11-01T00:59:49.2289449Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/loader/eager_load.rb:10:in `synchronize'
+2025-11-01T00:59:49.2290032Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/loader/eager_load.rb:10:in `eager_load'
+2025-11-01T00:59:49.2290615Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/loader.rb:431:in `block in eager_load_all'
+2025-11-01T00:59:49.2291382Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/registry/loaders.rb:10:in `each'
+2025-11-01T00:59:49.2291925Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/registry/loaders.rb:10:in `each'
+2025-11-01T00:59:49.2292474Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/loader.rb:429:in `eager_load_all'
+2025-11-01T00:59:49.2293099Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application/finisher.rb:79:in `block in <module:Finisher>'
+2025-11-01T00:59:49.2293754Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.2294574Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.2295185Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.2295744Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.2296340Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.2297003Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.2297612Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.2298312Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.2298728Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.2299254Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.2299757Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.2300185Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.2300694Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.2301460Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.2301883Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.2302170Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.2302465Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.2302798Z # ./spec/blueprints/menu_blueprint_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.2303035Z 
+2025-11-01T00:59:49.2303230Z An error occurred while loading ./spec/blueprints/menu_item_blueprint_spec.rb.
+2025-11-01T00:59:49.2303654Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.2303872Z 
+2025-11-01T00:59:49.2303943Z FrozenError:
+2025-11-01T00:59:49.2305955Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.2308172Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.2308720Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.2309302Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.2309845Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.2310429Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.2311002Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.2311795Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.2312484Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.2313177Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.2313829Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.2314583Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.2315181Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.2315728Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.2316223Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.2316729Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.2317349Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.2318050Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.2318608Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.2319112Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.2319617Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.2320229Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.2320734Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.2321396Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.2321890Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.2322395Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.2322828Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.2323338Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.2323907Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.2324324Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.2324609Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.2324883Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.2325291Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.2325776Z # ./spec/blueprints/menu_item_blueprint_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.2326034Z 
+2025-11-01T00:59:49.2326256Z An error occurred while loading ./spec/blueprints/menu_item_placement_blueprint_spec.rb.
+2025-11-01T00:59:49.2326693Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.2326900Z 
+2025-11-01T00:59:49.2326969Z FrozenError:
+2025-11-01T00:59:49.2328993Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.2331284Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.2331834Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.2332422Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.2332952Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.2333680Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.2334270Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.2334856Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.2335540Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.2336230Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.2336877Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.2337630Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.2338213Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.2338756Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.2339256Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.2339756Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.2340366Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.2340938Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.2341619Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.2342120Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.2342628Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.2343259Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.2343776Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.2344179Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.2344666Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.2345173Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.2345610Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.2346120Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.2346692Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.2347115Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.2347400Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.2347676Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.2348083Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.2348595Z # ./spec/blueprints/menu_item_placement_blueprint_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.2719785Z 
+2025-11-01T00:59:49.2720388Z An error occurred while loading ./spec/blueprints/restaurant_blueprint_spec.rb.
+2025-11-01T00:59:49.2721600Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.2722129Z 
+2025-11-01T00:59:49.2722281Z FrozenError:
+2025-11-01T00:59:49.2726691Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.2730737Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.2731872Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.2732965Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.2733610Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.2734473Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.2735117Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.2735753Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.2736439Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.2737140Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.2737806Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.2738425Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.2739012Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.2739561Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.2740077Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.2740582Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.2741420Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.2742036Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.2742594Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.2743091Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.2743614Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.2744240Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.2744749Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.2745146Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.2745625Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.2746127Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.2746554Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.2747068Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.2747635Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.2748063Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.2748344Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.2748619Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.2749153Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.2749678Z # ./spec/blueprints/restaurant_blueprint_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.2749945Z 
+2025-11-01T00:59:49.2750119Z An error occurred while loading ./spec/contracts/menu_contract_spec.rb.
+2025-11-01T00:59:49.2750523Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.2750741Z 
+2025-11-01T00:59:49.2750815Z FrozenError:
+2025-11-01T00:59:49.2753130Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.2755548Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.2756097Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.2756681Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.2757207Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.2757785Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.2758357Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.2758947Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.2759643Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.2760349Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.2761002Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.2761899Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.2762491Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.2763039Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.2763556Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.2764064Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.2764690Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.2765275Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.2765817Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.2766311Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.2766806Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.2767417Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.2767930Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.2768326Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.2768936Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.2769481Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.2769922Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.2770430Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.2770998Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.2771573Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.2771860Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.2772131Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.2772668Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.2773141Z # ./spec/contracts/menu_contract_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.2773367Z 
+2025-11-01T00:59:49.2773561Z An error occurred while loading ./spec/contracts/restaurant_contract_spec.rb.
+2025-11-01T00:59:49.2773958Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.2774171Z 
+2025-11-01T00:59:49.2774238Z FrozenError:
+2025-11-01T00:59:49.2776290Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.2778483Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.2779022Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.2779597Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.2780131Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.2780708Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.2781400Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.2781982Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.2782669Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.2783374Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.2784023Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.2784652Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.2785232Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.2785774Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.2786268Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.2786767Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.2787391Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.2787956Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.2788612Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.2789131Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.2789638Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.2790247Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.2790755Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.2791253Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.2791739Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.2792398Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.2792831Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.2793345Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.2793908Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.2794327Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.2794626Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.2794901Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.2795305Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.2795797Z # ./spec/contracts/restaurant_contract_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.2852349Z /home/runner/work/restaurant/restaurant/spec/models/menu_item_spec.rb:36: warning: assigned but unused variable - item3
+2025-11-01T00:59:49.2853391Z /home/runner/work/restaurant/restaurant/spec/models/menu_item_spec.rb:37: warning: assigned but unused variable - item1
+2025-11-01T00:59:49.2854401Z /home/runner/work/restaurant/restaurant/spec/models/menu_item_spec.rb:38: warning: assigned but unused variable - item2
+2025-11-01T00:59:49.2908410Z /home/runner/work/restaurant/restaurant/spec/models/menu_spec.rb:38: warning: assigned but unused variable - menu3
+2025-11-01T00:59:49.2909399Z /home/runner/work/restaurant/restaurant/spec/models/menu_spec.rb:39: warning: assigned but unused variable - menu1
+2025-11-01T00:59:49.2910333Z /home/runner/work/restaurant/restaurant/spec/models/menu_spec.rb:40: warning: assigned but unused variable - menu2
+2025-11-01T00:59:49.2965150Z 
+2025-11-01T00:59:49.2965585Z An error occurred while loading ./spec/models/menu_item_placement_spec.rb.
+2025-11-01T00:59:49.2966461Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.2966912Z 
+2025-11-01T00:59:49.2967058Z FrozenError:
+2025-11-01T00:59:49.2970068Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.2973688Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.2974366Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.2975294Z /home/runner/work/restaurant/restaurant/spec/models/restaurant_spec.rb:37: warning: assigned but unused variable - restaurant3
+2025-11-01T00:59:49.2976216Z /home/runner/work/restaurant/restaurant/spec/models/restaurant_spec.rb:38: warning: assigned but unused variable - restaurant1
+2025-11-01T00:59:49.2977366Z /home/runner/work/restaurant/restaurant/spec/models/restaurant_spec.rb:39: warning: assigned but unused variable - restaurant2
+2025-11-01T00:59:49.2978161Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.2978749Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.2979382Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.2980003Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.2980652Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.2981711Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.2982473Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.2983175Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.2983859Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.2984495Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.2985099Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.2985638Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.2986165Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.2986795Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.2987369Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.2987913Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.2988427Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.2988934Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.2989547Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.2990058Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.2990452Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.2990938Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.2991545Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.2991983Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.2992489Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.2993062Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.2993487Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.2993768Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.2994048Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.2994460Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.2994944Z # ./spec/models/menu_item_placement_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.2995186Z 
+2025-11-01T00:59:49.2995338Z An error occurred while loading ./spec/models/menu_item_spec.rb.
+2025-11-01T00:59:49.2995697Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.2995902Z 
+2025-11-01T00:59:49.2996092Z FrozenError:
+2025-11-01T00:59:49.2998140Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.3000351Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.3001005Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.3001697Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.3002240Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.3002817Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.3003386Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.3003966Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.3004654Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3005362Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3006020Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3006661Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3007243Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3007787Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3008286Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3008794Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3009418Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3009993Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3010544Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3011150Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3011653Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3012290Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.3012802Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.3013201Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.3013675Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.3014182Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.3014621Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.3015132Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.3015817Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.3016263Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.3016564Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.3016837Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.3017250Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.3017697Z # ./spec/models/menu_item_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.3017903Z 
+2025-11-01T00:59:49.3018045Z An error occurred while loading ./spec/models/menu_spec.rb.
+2025-11-01T00:59:49.3018386Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.3018704Z 
+2025-11-01T00:59:49.3018772Z FrozenError:
+2025-11-01T00:59:49.3020806Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.3023122Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.3023664Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.3024236Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.3024774Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.3025356Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.3025930Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.3026503Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.3027192Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3027886Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3028528Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3029151Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3029733Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3030280Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3030773Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3031398Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3032024Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3032597Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3033136Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3033635Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3034149Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3034872Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.3035465Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.3035865Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.3036351Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.3036854Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.3037288Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.3037802Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.3038488Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.3038907Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.3039189Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.3039467Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.3039877Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.3040298Z # ./spec/models/menu_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.3139820Z 
+2025-11-01T00:59:49.3140193Z An error occurred while loading ./spec/models/restaurant_spec.rb.
+2025-11-01T00:59:49.3141211Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.3141670Z 
+2025-11-01T00:59:49.3141812Z FrozenError:
+2025-11-01T00:59:49.3144608Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.3147035Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.3147587Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.3148178Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.3148706Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.3149290Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.3149912Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.3150501Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.3151331Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3152018Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3152664Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3153290Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3153871Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3154418Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3154923Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3155574Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3156210Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3156771Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3157313Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3157813Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3158314Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3158914Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.3159545Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.3159956Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.3160441Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.3160946Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.3161500Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.3162016Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.3162577Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.3162997Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.3163284Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.3163557Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.3163973Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.3164425Z # ./spec/models/restaurant_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.3164635Z 
+2025-11-01T00:59:49.3164898Z An error occurred while loading ./spec/repositories/persistence/menu_items_repository_spec.rb.
+2025-11-01T00:59:49.3165362Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.3165582Z 
+2025-11-01T00:59:49.3165659Z FrozenError:
+2025-11-01T00:59:49.3167674Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.3169869Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.3170413Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.3170980Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.3171602Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.3172180Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.3172746Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.3173320Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.3174005Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3174814Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3175488Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3176107Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3176691Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3177253Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3177751Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3178256Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3178997Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3179577Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3180122Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3180612Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3181205Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3181815Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.3182318Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.3182715Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.3183199Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.3183698Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.3184129Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.3184641Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.3185207Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.3185627Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.3185910Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.3186181Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.3186587Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.3187136Z # ./spec/repositories/persistence/menu_items_repository_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.3187451Z 
+2025-11-01T00:59:49.3187679Z An error occurred while loading ./spec/repositories/persistence/menus_repository_spec.rb.
+2025-11-01T00:59:49.3188124Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.3188330Z 
+2025-11-01T00:59:49.3188397Z FrozenError:
+2025-11-01T00:59:49.3190417Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.3192720Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.3193257Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.3193956Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.3194519Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.3195095Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.3195663Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.3196237Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.3196914Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3197721Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3198366Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3198986Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3199555Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3200096Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3200594Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3201189Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3201803Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3202382Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3202920Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3203418Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3203912Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3204517Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.3205028Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.3205426Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.3205904Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.3206412Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.3206842Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.3207351Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.3207917Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.3208337Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.3208617Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.3208890Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.3209297Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.3209840Z # ./spec/repositories/persistence/menus_repository_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.3365181Z 
+2025-11-01T00:59:49.3365818Z An error occurred while loading ./spec/repositories/persistence/restaurants_repository_spec.rb.
+2025-11-01T00:59:49.3366773Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.3367049Z 
+2025-11-01T00:59:49.3367131Z FrozenError:
+2025-11-01T00:59:49.3369893Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.3372943Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.3373955Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.3374917Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.3375602Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.3376218Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.3376806Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.3377413Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.3378120Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3378835Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3379530Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3380173Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3380774Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3381460Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3381972Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3382486Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3383127Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3383718Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3384275Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3384785Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3385305Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3385937Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.3386457Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.3386868Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.3387366Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.3387887Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.3388330Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.3388857Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.3389439Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.3390046Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.3390354Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.3390641Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.3391170Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.3391745Z # ./spec/repositories/persistence/restaurants_repository_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.3392081Z 
+2025-11-01T00:59:49.3392268Z An error occurred while loading ./spec/requests/api/v1/imports_spec.rb.
+2025-11-01T00:59:49.3392675Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.3392884Z 
+2025-11-01T00:59:49.3392959Z FrozenError:
+2025-11-01T00:59:49.3395107Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.3397309Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.3397859Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.3398439Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.3398971Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.3399555Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.3400129Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.3400719Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.3401502Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3402190Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3402839Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3403463Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3404035Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3404584Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3405087Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3405592Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3406213Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3406789Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3407327Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3407827Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3408325Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3408937Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.3409561Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.3409973Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.3410452Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.3410958Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.3411519Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.3412028Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.3412603Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.3413162Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.3413459Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.3413727Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.3414147Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.3414574Z # ./spec/swagger_helper.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.3414984Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.3415447Z # ./spec/requests/api/v1/imports_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.3415683Z 
+2025-11-01T00:59:49.3415860Z An error occurred while loading ./spec/requests/api/v1/menu_items_spec.rb.
+2025-11-01T00:59:49.3416246Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.3416450Z 
+2025-11-01T00:59:49.3416517Z FrozenError:
+2025-11-01T00:59:49.3418528Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.3420701Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.3421340Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.3421913Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.3422437Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.3423015Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.3423583Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.3424170Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.3424850Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3425538Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3426186Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3426805Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3427379Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3427918Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3428554Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3429084Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3429721Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3430294Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3430835Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3431423Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3431925Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3432656Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.3433181Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.3433584Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.3434072Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.3434576Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.3435006Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.3435517Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.3436086Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.3436512Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.3436797Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.3437077Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.3437490Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.3437907Z # ./spec/swagger_helper.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.3438325Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.3438798Z # ./spec/requests/api/v1/menu_items_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.3547692Z 
+2025-11-01T00:59:49.3548093Z An error occurred while loading ./spec/requests/api/v1/menus_spec.rb.
+2025-11-01T00:59:49.3548944Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.3549305Z 
+2025-11-01T00:59:49.3549392Z FrozenError:
+2025-11-01T00:59:49.3552131Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.3554958Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.3555636Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.3556273Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.3556800Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.3557381Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.3557955Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.3558684Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.3559405Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3560105Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3560765Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3561546Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3562231Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3563012Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3563579Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3564427Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3565131Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3614241Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3615178Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3616010Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3616824Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3617839Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.3618744Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.3619491Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.3620383Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.3621557Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.3622392Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.3623319Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.3624011Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.3624461Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.3624764Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.3625054Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.3625479Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.3625912Z # ./spec/swagger_helper.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.3626332Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.3626802Z # ./spec/requests/api/v1/menus_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.3627028Z 
+2025-11-01T00:59:49.3627258Z An error occurred while loading ./spec/requests/api/v1/restaurants_pagination_spec.rb.
+2025-11-01T00:59:49.3627732Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.3627953Z 
+2025-11-01T00:59:49.3628024Z FrozenError:
+2025-11-01T00:59:49.3630257Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.3632774Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.3633339Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.3633926Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.3634520Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.3635122Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.3635921Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.3636537Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.3637258Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3637948Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3638587Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3639203Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3639787Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3640344Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3640843Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3641557Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3642183Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3642768Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3643315Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3643823Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3644339Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3644963Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.3645487Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.3645907Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.3646402Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.3646913Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.3647358Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.3647872Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.3648448Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.3648875Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.3649177Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.3649461Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.3649868Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.3650517Z # ./spec/requests/api/v1/restaurants_pagination_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.3650831Z 
+2025-11-01T00:59:49.3651163Z An error occurred while loading ./spec/requests/api/v1/restaurants_spec.rb.
+2025-11-01T00:59:49.3651609Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.3651821Z 
+2025-11-01T00:59:49.3651892Z FrozenError:
+2025-11-01T00:59:49.3653919Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.3656239Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.3656807Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.3657403Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.3657941Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.3658533Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.3659118Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.3659712Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.3660401Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3661275Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3661942Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3662575Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3663154Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3663706Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3664220Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3664752Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3665378Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3665961Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3666512Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3667022Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3667531Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3668146Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.3668662Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.3669065Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.3669563Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.3670235Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.3670722Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.3671443Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.3672035Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.3672482Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.3672775Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.3673059Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.3673480Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.3674051Z # ./spec/swagger_helper.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.3674479Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.3674983Z # ./spec/requests/api/v1/restaurants_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.3742018Z 
+2025-11-01T00:59:49.3742368Z An error occurred while loading ./spec/use_cases/menus/create_spec.rb.
+2025-11-01T00:59:49.3743068Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.3743435Z 
+2025-11-01T00:59:49.3743558Z FrozenError:
+2025-11-01T00:59:49.3746635Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.3748888Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.3749495Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.3750104Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.3750663Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.3751558Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.3752361Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.3752984Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.3753706Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3754434Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3755102Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3755752Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3756353Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3756921Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3757448Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3757972Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3758617Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3759386Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3759980Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3760497Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3761159Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3761796Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.3762314Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.3762871Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.3763372Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.3763895Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.3764331Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.3764853Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.3765429Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.3765861Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.3766149Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.3766439Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.3766857Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.3767325Z # ./spec/use_cases/menus/create_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.3767553Z 
+2025-11-01T00:59:49.3767766Z An error occurred while loading ./spec/use_cases/menus/find_for_restaurant_spec.rb.
+2025-11-01T00:59:49.3768199Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.3768413Z 
+2025-11-01T00:59:49.3768488Z FrozenError:
+2025-11-01T00:59:49.3770558Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.3772885Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.3773441Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.3774042Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.3774592Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.3775186Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.3775765Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.3776357Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.3777060Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3777766Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3778426Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3779172Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3779794Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3780351Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3780856Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3781472Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3782105Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3782832Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3783410Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3783929Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3784442Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3785055Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.3785573Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.3785980Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.3786477Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.3786994Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.3787438Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.3787962Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.3788542Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.3788969Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.3789266Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.3789552Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.3789970Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.3790481Z # ./spec/use_cases/menus/find_for_restaurant_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.3790749Z 
+2025-11-01T00:59:49.3790966Z An error occurred while loading ./spec/use_cases/menus/list_for_restaurant_spec.rb.
+2025-11-01T00:59:49.3791676Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.3791892Z 
+2025-11-01T00:59:49.3791960Z FrozenError:
+2025-11-01T00:59:49.3794013Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.3796238Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.3796791Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.3797376Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.3797919Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.3798671Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.3799274Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.3799879Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.3800591Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3801399Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3802069Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3802827Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3803414Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3803966Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3804475Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3804984Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3805605Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3806187Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3806740Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3807244Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3807751Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3808365Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.3808883Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.3809285Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.3809777Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.3810289Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.3810733Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.3811350Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.3811927Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.3812358Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.3812651Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.3812930Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.3813359Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.3813868Z # ./spec/use_cases/menus/list_for_restaurant_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.3903229Z 
+2025-11-01T00:59:49.3903645Z An error occurred while loading ./spec/use_cases/restaurants/create_spec.rb.
+2025-11-01T00:59:49.3904530Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.3904988Z 
+2025-11-01T00:59:49.3905126Z FrozenError:
+2025-11-01T00:59:49.3907782Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.3910058Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.3910622Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.3911388Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.3911943Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.3912677Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.3913257Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.3913863Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.3914578Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3915293Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3915954Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3916601Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3917197Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3917763Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3918280Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3918798Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3919433Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3920022Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3920600Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3921206Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3921724Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3922385Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.3922908Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.3923318Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.3923814Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.3924329Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.3924772Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.3925290Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.3925875Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.3926314Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.3926614Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.3926895Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.3927429Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.3927938Z # ./spec/use_cases/restaurants/create_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.3928186Z 
+2025-11-01T00:59:49.3928375Z An error occurred while loading ./spec/use_cases/restaurants/destroy_spec.rb.
+2025-11-01T00:59:49.3928778Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.3929001Z 
+2025-11-01T00:59:49.3929076Z FrozenError:
+2025-11-01T00:59:49.3931209Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.3933571Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.3934128Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.3934718Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.3935265Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.3935857Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.3936441Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.3937048Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.3937742Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3938449Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3939103Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3939741Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3940320Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3940876Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3941492Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3942004Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3942630Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3943209Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3943754Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3944252Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3944754Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3945370Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.3945888Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.3946293Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.3946934Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.3947485Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.3947930Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.3948443Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.3949020Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.3949446Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.3949740Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.3950015Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.3950558Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.3951228Z # ./spec/use_cases/restaurants/destroy_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.3951480Z 
+2025-11-01T00:59:49.3951666Z An error occurred while loading ./spec/use_cases/restaurants/find_spec.rb.
+2025-11-01T00:59:49.3952065Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.3952280Z 
+2025-11-01T00:59:49.3952349Z FrozenError:
+2025-11-01T00:59:49.3954390Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.3956601Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.3957150Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.3957732Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.3958267Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.3958852Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.3959423Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.3960012Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.3960704Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3961507Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3962157Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3962785Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3963367Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3963916Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3964414Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3964922Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3965553Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.3966128Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.3966791Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.3967316Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.3967825Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.3968436Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.3968947Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.3969355Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.3969963Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.3970474Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.3970918Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.3971528Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.3972100Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.3972533Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.3972823Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.3973103Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.3973512Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.3973995Z # ./spec/use_cases/restaurants/find_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.4017073Z 
+2025-11-01T00:59:49.4017496Z An error occurred while loading ./spec/use_cases/restaurants/list_spec.rb.
+2025-11-01T00:59:49.4018351Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.4018796Z 
+2025-11-01T00:59:49.4018950Z FrozenError:
+2025-11-01T00:59:49.4022780Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.4025875Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.4026576Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.4027754Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.4028714Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.4029310Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.4029886Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.4030473Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.4031485Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.4032203Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.4033000Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.4033913Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.4034663Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.4035429Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.4036167Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.4036684Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.4037341Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.4037913Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.4038673Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.4039344Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.4039875Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.4040496Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.4041015Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.4041666Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.4042151Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.4042677Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.4043122Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.4043633Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.4044201Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.4044627Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.4044914Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.4045190Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.4045598Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.4046077Z # ./spec/use_cases/restaurants/list_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.4046314Z 
+2025-11-01T00:59:49.4046509Z An error occurred while loading ./spec/use_cases/restaurants/update_spec.rb.
+2025-11-01T00:59:49.4046909Z Failure/Error: require_relative "../config/environment"
+2025-11-01T00:59:49.4047125Z 
+2025-11-01T00:59:49.4047194Z FrozenError:
+2025-11-01T00:59:49.4049245Z   can't modify frozen Array: ["/home/runner/work/restaurant/restaurant/lib", "/home/runner/work/restaurant/restaurant/app/blueprints", "/home/runner/work/restaurant/restaurant/app/controllers", "/home/runner/work/restaurant/restaurant/app/controllers/concerns", "/home/runner/work/restaurant/restaurant/app/models", "/home/runner/work/restaurant/restaurant/app/models/concerns", "/home/runner/work/restaurant/restaurant/app/repositories", "/home/runner/work/restaurant/restaurant/app/services", "/home/runner/work/restaurant/restaurant/app/use_cases"]
+2025-11-01T00:59:49.4051558Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `unshift'
+2025-11-01T00:59:49.4052108Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/engine.rb:579:in `block in <class:Engine>'
+2025-11-01T00:59:49.4052684Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `instance_exec'
+2025-11-01T00:59:49.4053224Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:32:in `run'
+2025-11-01T00:59:49.4053803Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+2025-11-01T00:59:49.4054508Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:231:in `block in tsort_each'
+2025-11-01T00:59:49.4055123Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:353:in `block (2 levels) in each_strongly_connected_component'
+2025-11-01T00:59:49.4056183Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.4056921Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:425:in `block (2 levels) in each_strongly_connected_component_from'
+2025-11-01T00:59:49.4057582Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:434:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.4058206Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.4058943Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.4059497Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.4060002Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.4060505Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.4061384Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:424:in `block in each_strongly_connected_component_from'
+2025-11-01T00:59:49.4062010Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `each'
+2025-11-01T00:59:49.4062557Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:50:in `tsort_each_child'
+2025-11-01T00:59:49.4063048Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `call'
+2025-11-01T00:59:49.4063555Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:418:in `each_strongly_connected_component_from'
+2025-11-01T00:59:49.4064207Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:352:in `block in each_strongly_connected_component'
+2025-11-01T00:59:49.4064713Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each'
+2025-11-01T00:59:49.4065117Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `call'
+2025-11-01T00:59:49.4065601Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:350:in `each_strongly_connected_component'
+2025-11-01T00:59:49.4066106Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:229:in `tsort_each'
+2025-11-01T00:59:49.4066537Z # ./vendor/bundle/ruby/3.3.0/gems/tsort-0.2.0/lib/tsort.rb:208:in `tsort_each'
+2025-11-01T00:59:49.4067047Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/initializable.rb:60:in `run_initializers'
+2025-11-01T00:59:49.4067620Z # ./vendor/bundle/ruby/3.3.0/gems/railties-8.0.4/lib/rails/application.rb:444:in `initialize!'
+2025-11-01T00:59:49.4068043Z # ./config/environment.rb:7:in `<top (required)>'
+2025-11-01T00:59:49.4068326Z # ./spec/rails_helper.rb:6:in `require_relative'
+2025-11-01T00:59:49.4068606Z # ./spec/rails_helper.rb:6:in `<top (required)>'
+2025-11-01T00:59:49.4069018Z # ./vendor/bundle/ruby/3.3.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in `require'
+2025-11-01T00:59:49.4069497Z # ./spec/use_cases/restaurants/update_spec.rb:3:in `<top (required)>'
+2025-11-01T00:59:49.4069814Z No examples found.
+2025-11-01T00:59:49.4069928Z 
+2025-11-01T00:59:49.4069932Z 
+2025-11-01T00:59:49.4070065Z Top 0 slowest examples (0 seconds, 0.0% of total time):
+2025-11-01T00:59:49.4070264Z 
+2025-11-01T00:59:49.4070409Z Finished in 0.00007 seconds (files took 1.89 seconds to load)
+2025-11-01T00:59:49.4070770Z 0 examples, 0 failures, 26 errors occurred outside of examples
+2025-11-01T00:59:49.4070997Z 
+2025-11-01T00:59:49.4180123Z ##[error]Process completed with exit code 1.
+2025-11-01T00:59:49.4236930Z ##[group]Run actions/upload-artifact@v4
+2025-11-01T00:59:49.4237214Z with:
+2025-11-01T00:59:49.4237392Z   name: test-reports
+2025-11-01T00:59:49.4237604Z   path: tmp/rspec.xml
+coverage/
+
+2025-11-01T00:59:49.4237840Z   if-no-files-found: warn
+2025-11-01T00:59:49.4238052Z   compression-level: 6
+2025-11-01T00:59:49.4238245Z   overwrite: false
+2025-11-01T00:59:49.4238440Z   include-hidden-files: false
+2025-11-01T00:59:49.4238645Z env:
+2025-11-01T00:59:49.4238800Z   RAILS_ENV: test
+2025-11-01T00:59:49.4239222Z   DATABASE_URL: ***localhost:5432/test
+2025-11-01T00:59:49.4239464Z ##[endgroup]
+2025-11-01T00:59:49.6458057Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2025-11-01T00:59:49.6462629Z The least common ancestor is /home/runner/work/restaurant/restaurant. This will be the root directory of the artifact
+2025-11-01T00:59:49.6463648Z With the provided path, there will be 1 file uploaded
+2025-11-01T00:59:49.6468883Z Artifact name is valid!
+2025-11-01T00:59:49.6471316Z Root directory input is valid!
+2025-11-01T00:59:49.8015105Z Beginning upload of artifact content to blob storage
+2025-11-01T00:59:49.9550413Z Uploaded bytes 329
+2025-11-01T00:59:50.0008978Z Finished uploading artifact content to blob storage!
+2025-11-01T00:59:50.0012705Z SHA256 digest of uploaded artifact zip is e09877e29bbc3c7cbb711d3b5018b63ec2ae8e26de9e6e5c80a3e8389dbe461a
+2025-11-01T00:59:50.0014613Z Finalizing artifact upload
+2025-11-01T00:59:50.0920908Z Artifact test-reports.zip successfully finalized. Artifact ID 4435498991
+2025-11-01T00:59:50.0922506Z Artifact test-reports has been successfully uploaded! Final size is 329 bytes. Artifact ID is 4435498991
+2025-11-01T00:59:50.0930017Z Artifact download URL: https://github.com/pedrohcrisanto/restaurant/actions/runs/18988857563/artifacts/4435498991
+2025-11-01T00:59:50.1083535Z Post job cleanup.
+2025-11-01T00:59:50.2021464Z [command]/usr/bin/git version
+2025-11-01T00:59:50.2057080Z git version 2.51.2
+2025-11-01T00:59:50.2102167Z Temporarily overriding HOME='/home/runner/work/_temp/34a5f180-0c0d-47f8-8809-a21ff5962867' before making global git config changes
+2025-11-01T00:59:50.2103139Z Adding repository directory to the temporary git global config as a safe directory
+2025-11-01T00:59:50.2107363Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/restaurant/restaurant
+2025-11-01T00:59:50.2142547Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-11-01T00:59:50.2173564Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-11-01T00:59:50.2396994Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-11-01T00:59:50.2417810Z http.https://github.com/.extraheader
+2025-11-01T00:59:50.2430147Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-11-01T00:59:50.2460196Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-11-01T00:59:50.2761637Z Print service container logs: 867bceb5b9a64a0ab095643e32e204cf_postgres16_d54336
+2025-11-01T00:59:50.2766040Z ##[command]/usr/bin/docker logs --details 80204d7be16349136a0d574e4bec1085d0845bd89e548147f7e630438d99a067
+2025-11-01T00:59:50.2904932Z  initdb: warning: enabling "trust" authentication for local connections
+2025-11-01T00:59:50.2906349Z  initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+2025-11-01T00:59:50.2907490Z  The files belonging to this database system will be owned by user "postgres".
+2025-11-01T00:59:50.2908653Z  2025-11-01 00:58:49.567 UTC [1] LOG:  starting PostgreSQL 16.10 (Debian 16.10-1.pgdg13+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+2025-11-01T00:59:50.2909487Z  2025-11-01 00:58:49.567 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2025-11-01T00:59:50.2909942Z  2025-11-01 00:58:49.567 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2025-11-01T00:59:50.2910418Z  2025-11-01 00:58:49.568 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2025-11-01T00:59:50.2910904Z  2025-11-01 00:58:49.571 UTC [62] LOG:  database system was shut down at 2025-11-01 00:58:49 UTC
+2025-11-01T00:59:50.2911663Z  2025-11-01 00:58:49.575 UTC [1] LOG:  database system is ready to accept connections
+2025-11-01T00:59:50.2912080Z  2025-11-01 00:59:25.918 UTC [91] FATAL:  database "test" does not exist
+2025-11-01T00:59:50.2912413Z  This user must also own the server process.
+2025-11-01T00:59:50.2912660Z  
+2025-11-01T00:59:50.2912916Z  The database cluster will be initialized with locale "en_US.utf8".
+2025-11-01T00:59:50.2913320Z  The default database encoding has accordingly been set to "UTF8".
+2025-11-01T00:59:50.2913975Z  The default text search configuration will be set to "english".
+2025-11-01T00:59:50.2914273Z  
+2025-11-01T00:59:50.2914448Z  Data page checksums are disabled.
+2025-11-01T00:59:50.2914671Z  
+2025-11-01T00:59:50.2914944Z  fixing permissions on existing directory /var/lib/postgresql/data ... ok
+2025-11-01T00:59:50.2915293Z  creating subdirectories ... ok
+2025-11-01T00:59:50.2915583Z  selecting dynamic shared memory implementation ... posix
+2025-11-01T00:59:50.2915900Z  selecting default max_connections ... 100
+2025-11-01T00:59:50.2916168Z  selecting default shared_buffers ... 128MB
+2025-11-01T00:59:50.2916428Z  selecting default time zone ... Etc/UTC
+2025-11-01T00:59:50.2916684Z  creating configuration files ... ok
+2025-11-01T00:59:50.2916936Z  running bootstrap script ... ok
+2025-11-01T00:59:50.2917205Z  performing post-bootstrap initialization ... ok
+2025-11-01T00:59:50.2917484Z  syncing data to disk ... ok
+2025-11-01T00:59:50.2917687Z  
+2025-11-01T00:59:50.2917835Z  
+2025-11-01T00:59:50.2918043Z  Success. You can now start the database server using:
+2025-11-01T00:59:50.2918405Z  
+2025-11-01T00:59:50.2918791Z      pg_ctl -D /var/lib/postgresql/data -l logfile start
+2025-11-01T00:59:50.2919440Z  
+2025-11-01T00:59:50.2920398Z  waiting for server to start....2025-11-01 00:58:49.330 UTC [48] LOG:  starting PostgreSQL 16.10 (Debian 16.10-1.pgdg13+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+2025-11-01T00:59:50.2921533Z  2025-11-01 00:58:49.330 UTC [48] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2025-11-01T00:59:50.2922034Z  2025-11-01 00:58:49.333 UTC [51] LOG:  database system was shut down at 2025-11-01 00:58:49 UTC
+2025-11-01T00:59:50.2922476Z  2025-11-01 00:58:49.337 UTC [48] LOG:  database system is ready to accept connections
+2025-11-01T00:59:50.2922799Z   done
+2025-11-01T00:59:50.2922962Z  server started
+2025-11-01T00:59:50.2923131Z  
+2025-11-01T00:59:50.2923435Z  /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+2025-11-01T00:59:50.2923806Z  
+2025-11-01T00:59:50.2924028Z  2025-11-01 00:58:49.448 UTC [48] LOG:  received fast shutdown request
+2025-11-01T00:59:50.2924820Z  waiting for server to shut down....2025-11-01 00:58:49.449 UTC [48] LOG:  aborting any active transactions
+2025-11-01T00:59:50.2925453Z  2025-11-01 00:58:49.450 UTC [48] LOG:  background worker "logical replication launcher" (PID 54) exited with exit code 1
+2025-11-01T00:59:50.2925919Z  2025-11-01 00:58:49.450 UTC [49] LOG:  shutting down
+2025-11-01T00:59:50.2926261Z  2025-11-01 00:58:49.451 UTC [49] LOG:  checkpoint starting: shutdown immediate
+2025-11-01T00:59:50.2927129Z  2025-11-01 00:58:49.453 UTC [49] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.003 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/14F2AD8, redo lsn=0/14F2AD8
+2025-11-01T00:59:50.2927982Z  2025-11-01 00:58:49.457 UTC [48] LOG:  database system is shut down
+2025-11-01T00:59:50.2928270Z   done
+2025-11-01T00:59:50.2928433Z  server stopped
+2025-11-01T00:59:50.2928603Z  
+2025-11-01T00:59:50.2928822Z  PostgreSQL init process complete; ready for start up.
+2025-11-01T00:59:50.2929095Z  
+2025-11-01T00:59:50.2934875Z Stop and remove container: 867bceb5b9a64a0ab095643e32e204cf_postgres16_d54336
+2025-11-01T00:59:50.2939475Z ##[command]/usr/bin/docker rm --force 80204d7be16349136a0d574e4bec1085d0845bd89e548147f7e630438d99a067
+2025-11-01T00:59:50.4575896Z 80204d7be16349136a0d574e4bec1085d0845bd89e548147f7e630438d99a067
+2025-11-01T00:59:50.4603733Z Remove container network: github_network_219a76c646f14fb88269b21adc62177a
+2025-11-01T00:59:50.4607938Z ##[command]/usr/bin/docker network rm github_network_219a76c646f14fb88269b21adc62177a
+2025-11-01T00:59:50.5983519Z github_network_219a76c646f14fb88269b21adc62177a
+2025-11-01T00:59:50.6042224Z Cleaning up orphan processes

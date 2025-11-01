@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe Restaurants::List do
-  let(:repo) { ::Repositories::Persistence::RestaurantsRepository.new }
+  let(:repo) { ::Persistence::RestaurantsRepository.new }
   let(:call_params) { { repo: repo } }
 
   describe "#call!" do

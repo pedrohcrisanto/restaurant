@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-module Repositories
-  module Persistence
-    class MenuItemsRepository
-      BATCH_SIZE = 1000
+module Persistence
+  class MenuItemsRepository
+    BATCH_SIZE = 1000
 
       # Returns an AR::Relation of menu items for a restaurant (distinct)
       def for_restaurant(restaurant)
@@ -66,5 +65,4 @@ module Repositories
         ::MenuItem.by_name_ci(name).exists?
       end
     end
-  end
 end

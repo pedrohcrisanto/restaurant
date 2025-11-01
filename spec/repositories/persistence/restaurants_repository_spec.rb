@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Repositories::Persistence::RestaurantsRepository do
+RSpec.describe ::Persistence::RestaurantsRepository do
   subject(:repo) { described_class.new }
 
   describe "#relation_for_index" do

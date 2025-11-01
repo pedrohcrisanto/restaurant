@@ -1,0 +1,89 @@
+﻿2025-11-01T00:58:11.9423018Z ##[group]Run sudo apt-get update && sudo apt-get install -y yamllint
+2025-11-01T00:58:11.9423786Z [36;1msudo apt-get update && sudo apt-get install -y yamllint[0m
+2025-11-01T00:58:11.9424528Z [36;1myamllint .[0m
+2025-11-01T00:58:11.9469255Z shell: /usr/bin/bash -e {0}
+2025-11-01T00:58:11.9469658Z ##[endgroup]
+2025-11-01T00:58:12.0148671Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2025-11-01T00:58:12.0446085Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2025-11-01T00:58:12.0461700Z Hit:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease
+2025-11-01T00:58:12.0469563Z Hit:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease
+2025-11-01T00:58:12.0479442Z Hit:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease
+2025-11-01T00:58:12.0572485Z Hit:6 https://packages.microsoft.com/repos/azure-cli noble InRelease
+2025-11-01T00:58:12.0596619Z Hit:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease
+2025-11-01T00:58:13.2328907Z Reading package lists...
+2025-11-01T00:58:13.2643652Z Reading package lists...
+2025-11-01T00:58:13.4184511Z Building dependency tree...
+2025-11-01T00:58:13.4191440Z Reading state information...
+2025-11-01T00:58:13.5618438Z The following additional packages will be installed:
+2025-11-01T00:58:13.5619153Z   python3-pathspec
+2025-11-01T00:58:13.5822425Z The following NEW packages will be installed:
+2025-11-01T00:58:13.5823127Z   python3-pathspec yamllint
+2025-11-01T00:58:13.5993131Z 0 upgraded, 2 newly installed, 0 to remove and 36 not upgraded.
+2025-11-01T00:58:13.5993783Z Need to get 71.6 kB of archives.
+2025-11-01T00:58:13.5994489Z After this operation, 321 kB of additional disk space will be used.
+2025-11-01T00:58:13.5995107Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2025-11-01T00:58:13.6412387Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 python3-pathspec all 0.12.1-1 [24.5 kB]
+2025-11-01T00:58:13.6639016Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 yamllint all 1.33.0-1 [47.2 kB]
+2025-11-01T00:58:13.9171081Z Fetched 71.6 kB in 0s (931 kB/s)
+2025-11-01T00:58:13.9440184Z Selecting previously unselected package python3-pathspec.
+2025-11-01T00:58:13.9767218Z (Reading database ... 
+2025-11-01T00:58:13.9767713Z (Reading database ... 5%
+2025-11-01T00:58:13.9768111Z (Reading database ... 10%
+2025-11-01T00:58:13.9768460Z (Reading database ... 15%
+2025-11-01T00:58:13.9768799Z (Reading database ... 20%
+2025-11-01T00:58:13.9769130Z (Reading database ... 25%
+2025-11-01T00:58:13.9769385Z (Reading database ... 30%
+2025-11-01T00:58:13.9769613Z (Reading database ... 35%
+2025-11-01T00:58:13.9769845Z (Reading database ... 40%
+2025-11-01T00:58:13.9770071Z (Reading database ... 45%
+2025-11-01T00:58:13.9770294Z (Reading database ... 50%
+2025-11-01T00:58:13.9976634Z (Reading database ... 55%
+2025-11-01T00:58:14.2469702Z (Reading database ... 60%
+2025-11-01T00:58:14.4500494Z (Reading database ... 65%
+2025-11-01T00:58:14.6994824Z (Reading database ... 70%
+2025-11-01T00:58:14.8572507Z (Reading database ... 75%
+2025-11-01T00:58:15.1043710Z (Reading database ... 80%
+2025-11-01T00:58:15.3436740Z (Reading database ... 85%
+2025-11-01T00:58:15.5930796Z (Reading database ... 90%
+2025-11-01T00:58:15.7658156Z (Reading database ... 95%
+2025-11-01T00:58:15.7658575Z (Reading database ... 100%
+2025-11-01T00:58:15.7658977Z (Reading database ... 215550 files and directories currently installed.)
+2025-11-01T00:58:15.7701032Z Preparing to unpack .../python3-pathspec_0.12.1-1_all.deb ...
+2025-11-01T00:58:15.7726235Z Unpacking python3-pathspec (0.12.1-1) ...
+2025-11-01T00:58:15.7999337Z Selecting previously unselected package yamllint.
+2025-11-01T00:58:15.8127691Z Preparing to unpack .../yamllint_1.33.0-1_all.deb ...
+2025-11-01T00:58:15.8138214Z Unpacking yamllint (1.33.0-1) ...
+2025-11-01T00:58:15.8681328Z Setting up python3-pathspec (0.12.1-1) ...
+2025-11-01T00:58:16.0655729Z Setting up yamllint (1.33.0-1) ...
+2025-11-01T00:58:16.1839178Z Processing triggers for man-db (2.12.0-4build2) ...
+2025-11-01T00:58:28.1999642Z 
+2025-11-01T00:58:28.2000175Z Running kernel seems to be up-to-date.
+2025-11-01T00:58:28.2000631Z 
+2025-11-01T00:58:28.2000812Z No services need to be restarted.
+2025-11-01T00:58:28.2001141Z 
+2025-11-01T00:58:28.2001260Z No containers need to be restarted.
+2025-11-01T00:58:28.2001488Z 
+2025-11-01T00:58:28.2001634Z No user sessions are running outdated binaries.
+2025-11-01T00:58:28.2001884Z 
+2025-11-01T00:58:28.2002130Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2025-11-01T00:58:29.9298880Z ##[group]./.rubocop.yml
+2025-11-01T00:58:29.9313671Z ##[warning]19:33 [comments] too few spaces before comment: expected 2
+2025-11-01T00:58:29.9315161Z ##[endgroup]
+2025-11-01T00:58:29.9315282Z 
+2025-11-01T00:58:29.9315532Z ##[group]./.github/workflows/ci.yml
+2025-11-01T00:58:29.9316476Z ##[warning]15:14 [comments] too few spaces before comment: expected 2
+2025-11-01T00:58:29.9317839Z ##[warning]50:9 [comments] too few spaces before comment: expected 2
+2025-11-01T00:58:29.9319137Z ##[warning]88:15 [comments] too few spaces before comment: expected 2
+2025-11-01T00:58:29.9320433Z ##[warning]123:19 [comments] too few spaces before comment: expected 2
+2025-11-01T00:58:29.9321580Z ##[warning]205:39 [comments] too few spaces before comment: expected 2
+2025-11-01T00:58:29.9322357Z ##[endgroup]
+2025-11-01T00:58:29.9322467Z 
+2025-11-01T00:58:29.9322674Z ##[group]./config/database.yml
+2025-11-01T00:58:29.9323345Z ##[warning]37:4 [comments] missing starting space in comment
+2025-11-01T00:58:29.9324595Z ##[warning]40:4 [comments] missing starting space in comment
+2025-11-01T00:58:29.9325739Z ##[warning]45:4 [comments] missing starting space in comment
+2025-11-01T00:58:29.9326831Z ##[warning]49:4 [comments] missing starting space in comment
+2025-11-01T00:58:29.9327924Z ##[warning]52:4 [comments] missing starting space in comment
+2025-11-01T00:58:29.9328999Z ##[warning]58:4 [comments] missing starting space in comment
+2025-11-01T00:58:29.9329778Z ##[endgroup]
+2025-11-01T00:58:29.9329879Z 

@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe Restaurants::Destroy do
-  let(:repo) { ::Repositories::Persistence::RestaurantsRepository.new }
+  let(:repo) { ::Persistence::RestaurantsRepository.new }
   let(:restaurant) { create(:restaurant) }
   let(:call_params) { { repo: repo, restaurant: restaurant } }
 

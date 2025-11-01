@@ -1,0 +1,63 @@
+﻿2025-11-01T00:59:50.2761620Z Print service container logs: 867bceb5b9a64a0ab095643e32e204cf_postgres16_d54336
+2025-11-01T00:59:50.2766029Z ##[command]/usr/bin/docker logs --details 80204d7be16349136a0d574e4bec1085d0845bd89e548147f7e630438d99a067
+2025-11-01T00:59:50.2904895Z  initdb: warning: enabling "trust" authentication for local connections
+2025-11-01T00:59:50.2906342Z  initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+2025-11-01T00:59:50.2907485Z  The files belonging to this database system will be owned by user "postgres".
+2025-11-01T00:59:50.2908648Z  2025-11-01 00:58:49.567 UTC [1] LOG:  starting PostgreSQL 16.10 (Debian 16.10-1.pgdg13+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+2025-11-01T00:59:50.2909483Z  2025-11-01 00:58:49.567 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2025-11-01T00:59:50.2909893Z  2025-11-01 00:58:49.567 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2025-11-01T00:59:50.2910415Z  2025-11-01 00:58:49.568 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2025-11-01T00:59:50.2910901Z  2025-11-01 00:58:49.571 UTC [62] LOG:  database system was shut down at 2025-11-01 00:58:49 UTC
+2025-11-01T00:59:50.2911658Z  2025-11-01 00:58:49.575 UTC [1] LOG:  database system is ready to accept connections
+2025-11-01T00:59:50.2912077Z  2025-11-01 00:59:25.918 UTC [91] FATAL:  database "test" does not exist
+2025-11-01T00:59:50.2912411Z  This user must also own the server process.
+2025-11-01T00:59:50.2912658Z  
+2025-11-01T00:59:50.2912914Z  The database cluster will be initialized with locale "en_US.utf8".
+2025-11-01T00:59:50.2913318Z  The default database encoding has accordingly been set to "UTF8".
+2025-11-01T00:59:50.2913972Z  The default text search configuration will be set to "english".
+2025-11-01T00:59:50.2914270Z  
+2025-11-01T00:59:50.2914445Z  Data page checksums are disabled.
+2025-11-01T00:59:50.2914669Z  
+2025-11-01T00:59:50.2914930Z  fixing permissions on existing directory /var/lib/postgresql/data ... ok
+2025-11-01T00:59:50.2915291Z  creating subdirectories ... ok
+2025-11-01T00:59:50.2915581Z  selecting dynamic shared memory implementation ... posix
+2025-11-01T00:59:50.2915898Z  selecting default max_connections ... 100
+2025-11-01T00:59:50.2916166Z  selecting default shared_buffers ... 128MB
+2025-11-01T00:59:50.2916426Z  selecting default time zone ... Etc/UTC
+2025-11-01T00:59:50.2916682Z  creating configuration files ... ok
+2025-11-01T00:59:50.2916934Z  running bootstrap script ... ok
+2025-11-01T00:59:50.2917202Z  performing post-bootstrap initialization ... ok
+2025-11-01T00:59:50.2917482Z  syncing data to disk ... ok
+2025-11-01T00:59:50.2917685Z  
+2025-11-01T00:59:50.2917833Z  
+2025-11-01T00:59:50.2918040Z  Success. You can now start the database server using:
+2025-11-01T00:59:50.2918402Z  
+2025-11-01T00:59:50.2918787Z      pg_ctl -D /var/lib/postgresql/data -l logfile start
+2025-11-01T00:59:50.2919436Z  
+2025-11-01T00:59:50.2920382Z  waiting for server to start....2025-11-01 00:58:49.330 UTC [48] LOG:  starting PostgreSQL 16.10 (Debian 16.10-1.pgdg13+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+2025-11-01T00:59:50.2921529Z  2025-11-01 00:58:49.330 UTC [48] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2025-11-01T00:59:50.2922031Z  2025-11-01 00:58:49.333 UTC [51] LOG:  database system was shut down at 2025-11-01 00:58:49 UTC
+2025-11-01T00:59:50.2922473Z  2025-11-01 00:58:49.337 UTC [48] LOG:  database system is ready to accept connections
+2025-11-01T00:59:50.2922796Z   done
+2025-11-01T00:59:50.2922959Z  server started
+2025-11-01T00:59:50.2923129Z  
+2025-11-01T00:59:50.2923433Z  /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+2025-11-01T00:59:50.2923803Z  
+2025-11-01T00:59:50.2924026Z  2025-11-01 00:58:49.448 UTC [48] LOG:  received fast shutdown request
+2025-11-01T00:59:50.2924516Z  waiting for server to shut down....2025-11-01 00:58:49.449 UTC [48] LOG:  aborting any active transactions
+2025-11-01T00:59:50.2925451Z  2025-11-01 00:58:49.450 UTC [48] LOG:  background worker "logical replication launcher" (PID 54) exited with exit code 1
+2025-11-01T00:59:50.2925916Z  2025-11-01 00:58:49.450 UTC [49] LOG:  shutting down
+2025-11-01T00:59:50.2926258Z  2025-11-01 00:58:49.451 UTC [49] LOG:  checkpoint starting: shutdown immediate
+2025-11-01T00:59:50.2927125Z  2025-11-01 00:58:49.453 UTC [49] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.003 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/14F2AD8, redo lsn=0/14F2AD8
+2025-11-01T00:59:50.2927980Z  2025-11-01 00:58:49.457 UTC [48] LOG:  database system is shut down
+2025-11-01T00:59:50.2928268Z   done
+2025-11-01T00:59:50.2928431Z  server stopped
+2025-11-01T00:59:50.2928596Z  
+2025-11-01T00:59:50.2928820Z  PostgreSQL init process complete; ready for start up.
+2025-11-01T00:59:50.2929089Z  
+2025-11-01T00:59:50.2934863Z Stop and remove container: 867bceb5b9a64a0ab095643e32e204cf_postgres16_d54336
+2025-11-01T00:59:50.2939464Z ##[command]/usr/bin/docker rm --force 80204d7be16349136a0d574e4bec1085d0845bd89e548147f7e630438d99a067
+2025-11-01T00:59:50.4575847Z 80204d7be16349136a0d574e4bec1085d0845bd89e548147f7e630438d99a067
+2025-11-01T00:59:50.4603721Z Remove container network: github_network_219a76c646f14fb88269b21adc62177a
+2025-11-01T00:59:50.4607928Z ##[command]/usr/bin/docker network rm github_network_219a76c646f14fb88269b21adc62177a
+2025-11-01T00:59:50.5983472Z github_network_219a76c646f14fb88269b21adc62177a

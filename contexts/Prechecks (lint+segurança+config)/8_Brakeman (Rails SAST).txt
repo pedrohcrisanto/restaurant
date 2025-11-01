@@ -1,0 +1,27 @@
+﻿2025-11-01T00:58:09.0786068Z ##[group]Run bundle exec brakeman -q -w2
+2025-11-01T00:58:09.0786613Z [36;1mbundle exec brakeman -q -w2[0m
+2025-11-01T00:58:09.0832268Z shell: /usr/bin/bash -e {0}
+2025-11-01T00:58:09.0832678Z ##[endgroup]
+2025-11-01T00:58:11.9300989Z 
+2025-11-01T00:58:11.9301421Z == Brakeman Report ==
+2025-11-01T00:58:11.9301711Z 
+2025-11-01T00:58:11.9301918Z Application Path: /home/runner/work/restaurant/restaurant
+2025-11-01T00:58:11.9302281Z Rails Version: 8.0.4
+2025-11-01T00:58:11.9302535Z Brakeman Version: 6.2.2
+2025-11-01T00:58:11.9302782Z Scan Date: 2025-11-01 00:58:09 +0000
+2025-11-01T00:58:11.9303061Z Duration: 1.945674822 seconds
+2025-11-01T00:58:11.9307856Z Checks Run: BasicAuth, BasicAuthTimingAttack, CSRFTokenForgeryCVE, ContentTag, CookieSerialization, CreateWith, CrossSiteScripting, DefaultRoutes, Deserialize, DetailedExceptions, DigestDoS, DynamicFinders, EOLRails, EOLRuby, EscapeFunction, Evaluation, Execute, FileAccess, FileDisclosure, FilterSkipping, ForgerySetting, HeaderDoS, I18nXSS, JRubyXML, JSONEncoding, JSONEntityEscape, JSONParsing, LinkTo, LinkToHref, MailTo, MassAssignment, MimeTypeDoS, ModelAttrAccessible, ModelAttributes, ModelSerialize, NestedAttributes, NestedAttributesBypass, NumberToCurrency, PageCachingCVE, Pathname, PermitAttributes, QuoteTableName, Ransack, Redirect, RegexDoS, Render, RenderDoS, RenderInline, ResponseSplitting, RouteDoS, SQL, SQLCVEs, SSLVerify, SafeBufferManipulation, SanitizeConfigCve, SanitizeMethods, SelectTag, SelectVulnerability, Send, SendFile, SessionManipulation, SessionSettings, SimpleFormat, SingleQuotes, SkipBeforeFilter, SprocketsPathTraversal, StripTags, SymbolDoSCVE, TemplateInjection, TranslateBug, UnsafeReflection, UnsafeReflectionMethods, ValidationRegex, VerbConfusion, WeakRSAKey, WithoutProtection, XMLDoS, YAMLParsing
+2025-11-01T00:58:11.9312688Z 
+2025-11-01T00:58:11.9313073Z == Overview ==
+2025-11-01T00:58:11.9313197Z 
+2025-11-01T00:58:11.9313286Z Controllers: 6
+2025-11-01T00:58:11.9313481Z Models: 5
+2025-11-01T00:58:11.9313667Z Templates: 0
+2025-11-01T00:58:11.9313851Z Errors: 0
+2025-11-01T00:58:11.9314022Z Security Warnings: 0
+2025-11-01T00:58:11.9314157Z 
+2025-11-01T00:58:11.9314236Z == Warning Types ==
+2025-11-01T00:58:11.9314592Z 
+2025-11-01T00:58:11.9314597Z 
+2025-11-01T00:58:11.9314685Z No warnings found
+2025-11-01T00:58:11.9314809Z 

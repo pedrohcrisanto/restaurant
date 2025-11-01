@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-module Repositories
-  module Persistence
-    class RestaurantsRepository
-      BATCH_SIZE = 1000
+module Persistence
+  class RestaurantsRepository
+    BATCH_SIZE = 1000
 
       # Returns an AR::Relation optimized for listing with eager loading
       def relation_for_index
@@ -78,5 +77,4 @@ module Repositories
         ::Restaurant.by_name_ci(name).first
       end
     end
-  end
 end
